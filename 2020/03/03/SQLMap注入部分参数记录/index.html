@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="yanm1ng&#39;s blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      SQLMap注入部分参数记录 | Hexo
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Hexo</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>SQLMap注入部分参数记录</h2>
+  <p class="post-date">2020-03-03</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h2 id="SQLMap注入"><a href="#SQLMap注入" class="headerlink" title="SQLMap注入"></a>SQLMap注入</h2><p>在浏览别人分享的文章后，了解到SQLMap的灵活性。观赏大佬的操作，忍不住惊呼！竟然还能这么用。我太菜了，现在才越发觉得自己的眼界太小了，有好工具不会用你说气人不气人，连脚本小子都算不上。没有仔细地看过这款工具，这可能就是差距吧。orz</p>
+<h3 id="SQLMap支持的数据库"><a href="#SQLMap支持的数据库" class="headerlink" title="SQLMap支持的数据库"></a>SQLMap支持的数据库</h3><p>MySQL, Oracle, PostgreSQL, Microsoft SQL Server, Microsoft Access, IBM DB2, SQLite, Firebird, Sybase和SAP MaxDB</p>
+<h3 id="SQLMap参数介绍"><a href="#SQLMap参数介绍" class="headerlink" title="SQLMap参数介绍"></a>SQLMap参数介绍</h3><p>今天突发奇想记录一下SQLMap常用的参数，平常我也没怎么用过。就先记下吧。</p>
+<p><code>sqlmap.py -u &quot;www.xxx.com&quot; -v 3 --flush-session</code></p>
+<blockquote>
+<p>如果你想观察sqlmap对一个点是进行了怎样的尝试判断以及读取数据的，可以使用-v参数</p>
+<p>共有7个等级，默认为1</p>
+<p>0、只显示python错误以及严重的信息。</p>
+<p>1、同时显示基本信息和警告信息。（默认）</p>
+<p>2、同时显示debug信息。</p>
+<p>3、同时显示注入的payload。</p>
+<p>4、同时显示HTTP请求。</p>
+<p>5、同时显示HTTP响应头。</p>
+<p>6、同时显示HTTP响应页面。</p>
+<p>注：如果你想看到sqlmap发送的测试payload最好的等级就是3。</p>
+</blockquote>
+<p>不知道后面参数<code>--flush-session</code>的意思，只能百度搜一下看看。有用有用。</p>
+<blockquote>
+<p>参数：–flush-session<br>如果不想用之前缓存这个目标的session文件，可以使用这个参数。 会清空之前的session，重新测试该目标。自动获取form表单测试</p>
+</blockquote>
+<p><code>sqlmap -u &quot;www.xxx.com&quot; -v 3 --technique=B -D security -T users -C &#39;id,username,password&#39; --dump</code></p>
+<p>不知道后面参数<code>--technique=B</code>的意思，只能百度搜一下看看。</p>
+<blockquote>
+<p>参数：–technique<br>这个参数可以指定sqlmap使用的探测技术，默认情况下会测试所有的方式。<br>–technique=B<br>支持的探测方式如下：<br>B: Boolean-based blind SQL injection（布尔型注入）<br>E: Error-based SQL injection（报错型注入）<br>U: UNION query SQL injection（可联合查询注入）<br>S: Stacked queries SQL injection（可多语句查询注入）<br>T: Time-based blind SQL injection（基于时间延迟注入）</p>
+</blockquote>
+<p>把GET请求改为POST请求发送</p>
+<blockquote>
+<p>参数：–data<br>此参数是把数据以POST方式提交，sqlmap会像检测GET参数一样检测POST的参数。<br>例子：<br>python sqlmap.py -u “<a href="http://www.target.com/vuln.php&quot;" target="_blank" rel="noopener">http://www.target.com/vuln.php&quot;</a> –data=”id=1” -f –banner –dbs –users</p>
+</blockquote>
+<p><code>-p</code>手动指出存在注入的参数</p>
+<blockquote>
+<p>参数：-p,–skip<br>sqlmap默认测试所有的GET和POST参数，当–level的值大于等于2的时候也会测试HTTP Cookie头的值，当大于等于3的时候也会测试User-Agent和HTTP Referer头的值。但是你可以手动用-p参数设置想要测试的参数。例如： -p “id,user-anget”<br>当你使用–level的值很大但是有个别参数不想测试的时候可以使用–skip参数。<br>例如：–skip=”user-angent.referer”</p>
+</blockquote>
+<p><code>--random-agent</code>随机user-agent</p>
+<blockquote>
+<p>参数：–user-agent,–random-agent<br>默认情况下sqlmap的HTTP请求头中User-Agent值是：<br>sqlmap/1.0-dev-xxxxxxx (<a href="http://sqlmap.org" target="_blank" rel="noopener">http://sqlmap.org</a>)<br>可以使用–user-anget参数来修改，同时也可以使用–random-agnet参数来随机的从./txt/user-agents.txt中获取。</p>
+</blockquote>
+<p><code>tamper</code>防止过滤，绕waf用的。</p>
+<blockquote>
+<p>参数：–tamper<br>sqlmap除了使用CHAR()函数来防止出现单引号之外没有对注入的数据修改，你可以使用–tamper参数对数据做修改来绕过WAF等设备。<br>例如：–temper=”between”</p>
+</blockquote>
+<p><code>--batch</code> 使用默认的选项进行下一步</p>
+<p><code>-r</code> 使用burpsuite抓包，把请求包放进txt文件，用sqlmap读这个文件就可以了。</p>
+<blockquote>
+<p>什么时候使用-r参数</p>
+<p>post注入、搜索型注入、http头注入、登陆后的注入点。</p>
+</blockquote>
+<p><code>--delay=0.2</code> 0.2s发一个请求，可以设置sqlmap发送请求的速度。</p>
+<h3 id="sqlmap闭合语句"><a href="#sqlmap闭合语句" class="headerlink" title="sqlmap闭合语句"></a>sqlmap闭合语句</h3><blockquote>
+<p>尝试使用<code>)</code>来闭合前面的语句<br>直接注入，使用<code>--</code>注释掉后面的语句<br>使用 <code>&#39;)</code>来闭合前面语句 构造一个判断条件 使用<code>(&#39;</code>闭合后面语句<br>使用<code>&#39;</code>来闭合前面语句 构造一个判断条件 使用<code>&#39;</code>闭合后面语句<br><code>&#39;;</code>闭合前面语句 <code>#</code> 闭合后面语句<br><code>&#39;;</code> 闭合前面语句 构造’zOkG’=’zOkG 用单引号<code>&#39;</code>闭合后面语句</p>
+</blockquote>
+<p>参考文章：SQLMap用户手册<a href="https://www.cnblogs.com/hongfei/p/3872156.html" target="_blank" rel="noopener">https://www.cnblogs.com/hongfei/p/3872156.html</a></p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#SQLMap" >
+    <span class="tag-code">SQLMap</span>
+  </a>
+
+  <a href="/tags#数据库" >
+    <span class="tag-code">数据库</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2020/03/03/Nmap%E4%BD%BF%E7%94%A8%E5%8F%82%E6%95%B0%E8%AE%B0%E5%BD%95/">
+        <span class="nav-arrow">← </span>
+        
+          Nmap使用参数记录
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2020/03/05/DVWA-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%85%A5%E9%97%A8/">
+        
+          DVWA-渗透测试入门
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- No Comment -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#SQLMap注入"><span class="toc-nav-text">SQLMap注入</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#SQLMap支持的数据库"><span class="toc-nav-text">SQLMap支持的数据库</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#SQLMap参数介绍"><span class="toc-nav-text">SQLMap参数介绍</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#sqlmap闭合语句"><span class="toc-nav-text">sqlmap闭合语句</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2020/03/03/SQLMap注入部分参数记录/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2020 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng" target="_blank" rel="noopener">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

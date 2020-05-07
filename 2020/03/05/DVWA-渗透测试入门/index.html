@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="yanm1ng&#39;s blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      DVWA-渗透测试入门 | Hexo
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Hexo</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>DVWA-渗透测试入门</h2>
+  <p class="post-date">2020-03-05</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h2 id="DVWA-渗透测试入门"><a href="#DVWA-渗透测试入门" class="headerlink" title="DVWA-渗透测试入门"></a>DVWA-渗透测试入门</h2><h3 id="暴力破解"><a href="#暴力破解" class="headerlink" title="暴力破解"></a>暴力破解</h3><p>暴力破解即用暴力穷举的方式大量尝试性地猜破密码。</p>
+<h4 id="low"><a href="#low" class="headerlink" title="low"></a>low</h4><p>刚开始看到这个题目不知如何下手。只知道要使用暴力破解，我手头也没有字典。然后就从网上随便找了一个字典进行测试。</p>
+<p>首先打开burpsuite抓包。</p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegkp6cjvqj30ne07haa4.jpg"/>
+
+<p>抓到数据包。send to intruder，我第一次做时，是使用sniper模式进行爆破的。用户名随便输了个admin，只设置了密码变量。成功爆出密码后，又使用cluster bomb模式进行了多变量交叉爆破。</p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegkq3lge8j30o10c6jsl.jpg"/>
+
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjrsh33gj30z10dz0ub.jpg"/>
+
+<p>成功爆破到用户名和密码。</p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjszl523j30n80i4gn9.jpg"/>
+
+<p>暴力破解成功</p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegju8ma2kj30nj09a3yo.jpg"/>
+
+<h4 id="medium"><a href="#medium" class="headerlink" title="medium"></a>medium</h4><p>仍然可以爆破成功。爆破时间长了一点。</p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjupv6b0j30n30i3404.jpg"/>
+
+<p>查看源代码，发现有sleep(2)的函数。登陆失败会等待2秒。</p>
+<h4 id="high"><a href="#high" class="headerlink" title="high"></a>high</h4><p>还用之前的方法进行尝试，发现除了第一个包返回正常，其他的都显示302。看来之前的方法行不通了。</p>
+<p>看看源代码。好像多加了一个参数，没思路。看看别人怎么搞的。</p>
+<p>有token验证。抓包使用pitchfork模式。添加爆破的参数。</p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjv4tbaij30yp0dxgn8.jpg"/>
+
+<p>对攻击的模块做一些配置，线程设为1个线程。</p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjvh80z7j30yu0gb75a.jpg"/>
+
+<p>允许重定向。</p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjvu60cnj30hr05wjrh.jpg"/>
+
+<p>在Option中Grep-Extract模块，添加筛选条件，获得user_token。</p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjwi50ejj30ss0pewhr.jpg"/>
+
+<p>为了能够成功破解，把字典缩小了一下，并将其正确的账号和密码对应起来，才成功爆破。要是不知道账号密码，爆破起来还是很困难的。</p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjwv4mgej30ud0i076a.jpg"/>
+
+<p>我觉得这样pitchfork爆破有点鸡肋，必须账号字典和密码字典刚好一一对应起来才能爆破成功。总之爆破成功不太容易。</p>
+<p>使用交叉爆破模式，三个参数又比较费时间。太难了。</p>
+<h4 id="impossible"><a href="#impossible" class="headerlink" title="impossible"></a>impossible</h4><img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjx4caapj30no0asdgd.jpg"/>
+
+<p>输错一次就要等15分钟，GG。暴力破解基本没得搞。</p>
+<h3 id="DVWA命令执行漏洞"><a href="#DVWA命令执行漏洞" class="headerlink" title="DVWA命令执行漏洞"></a>DVWA命令执行漏洞</h3><h4 id="什么是命令执行漏洞"><a href="#什么是命令执行漏洞" class="headerlink" title="什么是命令执行漏洞"></a>什么是命令执行漏洞</h4><p>命令执行漏洞的原理：在操作系统中，&amp;、&amp;&amp;、|、||都可以作为命令连接符使用，用户通过客户端提交执行命令，服务器端未做过滤，导致命令执行成功的过程。</p>
+<h4 id="amp-、-amp-amp-、-、-命令拼接符的区别"><a href="#amp-、-amp-amp-、-、-命令拼接符的区别" class="headerlink" title="&amp;、&amp;&amp;、|、||命令拼接符的区别"></a>&amp;、&amp;&amp;、|、||命令拼接符的区别</h4><p>A&amp;B           简单的拼接，AB间无制约关系</p>
+<p>A&amp;&amp;B        A执行成功，然后再执行B</p>
+<p>A|B            A的输出，作为B的输入</p>
+<p>A||B          A执行失败，然后再执行B  </p>
+<hr>
+<h4 id="low-1"><a href="#low-1" class="headerlink" title="low"></a>low</h4><p>查看一下源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'Submit'</span> ]  ) ) &#123;</span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	$target = $_REQUEST[ <span class="string">'ip'</span> ];</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Determine OS and execute the ping command.</span></span><br><span class="line">	<span class="keyword">if</span>( stristr( php_uname( <span class="string">'s'</span> ), <span class="string">'Windows NT'</span> ) ) &#123;</span><br><span class="line">		<span class="comment">// Windows</span></span><br><span class="line">		$cmd = shell_exec( <span class="string">'ping  '</span> . $target );</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// *nix</span></span><br><span class="line">		$cmd = shell_exec( <span class="string">'ping  -c 4 '</span> . $target );</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Feedback for the end user</span></span><br><span class="line">	$html .= <span class="string">"&lt;pre&gt;&#123;$cmd&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>输入一个IP试一下。<code>127.0.0.1</code></p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjxk3zogj30v30dimza.jpg"/>
+
+<p>返回正常，尝试添加其他命令。<code>127.0.0.1&amp;ipconfig</code></p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjy7euevj30uv0odjvo.jpg"/>
+
+<p>&amp;两边的命令都被成功执行。<code>127.0.0.1&amp;&amp;ipconfig</code></p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjygltrbj30uv0oy42u.jpg"/>
+
+<p>&amp;&amp;两边的命令都被成功执行。<code>127.0.0.1|ipconfig</code></p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjyq07zrj30v20nzq6g.jpg"/>
+
+<p>经过验证表明，<code>|</code>前面的命令不会被执行。只执行后面的命令。</p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjyzbmyaj30ne08tt96.jpg"/>
+
+<p>使用<code>||</code>命令试一下，<code>127.0.0.1||ipconfig</code></p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjz9feeoj30v10kh0vz.jpg"/>
+
+<p>发现<code>||</code>前的命令必须是错误的才能执行<code>||</code>后的命令。否则只执行<code>||</code>前的命令。</p>
+<h4 id="medium-1"><a href="#medium-1" class="headerlink" title="medium"></a>medium</h4><p>首先，查看源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'Submit'</span> ]  ) ) &#123;</span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	$target = $_REQUEST[ <span class="string">'ip'</span> ];</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Set blacklist</span></span><br><span class="line">	$substitutions = <span class="keyword">array</span>(</span><br><span class="line">		<span class="string">'&amp;&amp;'</span> =&gt; <span class="string">''</span>,</span><br><span class="line">		<span class="string">';'</span>  =&gt; <span class="string">''</span>,</span><br><span class="line">	);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Remove any of the charactars in the array (blacklist).</span></span><br><span class="line">	$target = str_replace( array_keys( $substitutions ), $substitutions, $target );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Determine OS and execute the ping command.</span></span><br><span class="line">	<span class="keyword">if</span>( stristr( php_uname( <span class="string">'s'</span> ), <span class="string">'Windows NT'</span> ) ) &#123;</span><br><span class="line">		<span class="comment">// Windows</span></span><br><span class="line">		$cmd = shell_exec( <span class="string">'ping  '</span> . $target );</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// *nix</span></span><br><span class="line">		$cmd = shell_exec( <span class="string">'ping  -c 4 '</span> . $target );</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Feedback for the end user</span></span><br><span class="line">	$html .= <span class="string">"&lt;pre&gt;&#123;$cmd&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>发现只过滤了两个符号。</p>
+<blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$substitutions = <span class="keyword">array</span>(</span><br><span class="line">	<span class="string">'&amp;&amp;'</span> =&gt; <span class="string">''</span>,</span><br><span class="line">	<span class="string">';'</span>  =&gt; <span class="string">''</span>,</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>那么其他&amp;、|、||仍然能够使用。</p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjzksq2nj30nl0c23zd.jpg"/>
+
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjzscr8lj30n00k9jty.jpg"/>
+
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk004ok9j30nb0hc0uu.jpg"/>
+
+<h4 id="high-1"><a href="#high-1" class="headerlink" title="high"></a>high</h4><p>先查看一下源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'Submit'</span> ]  ) ) &#123;</span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	$target = trim($_REQUEST[ <span class="string">'ip'</span> ]);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Set blacklist</span></span><br><span class="line">	$substitutions = <span class="keyword">array</span>(</span><br><span class="line">		<span class="string">'&amp;'</span>  =&gt; <span class="string">''</span>,</span><br><span class="line">		<span class="string">';'</span>  =&gt; <span class="string">''</span>,</span><br><span class="line">		<span class="string">'| '</span> =&gt; <span class="string">''</span>,</span><br><span class="line">		<span class="string">'-'</span>  =&gt; <span class="string">''</span>,</span><br><span class="line">		<span class="string">'$'</span>  =&gt; <span class="string">''</span>,</span><br><span class="line">		<span class="string">'('</span>  =&gt; <span class="string">''</span>,</span><br><span class="line">		<span class="string">')'</span>  =&gt; <span class="string">''</span>,</span><br><span class="line">		<span class="string">'`'</span>  =&gt; <span class="string">''</span>,</span><br><span class="line">		<span class="string">'||'</span> =&gt; <span class="string">''</span>,</span><br><span class="line">	);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Remove any of the charactars in the array (blacklist).</span></span><br><span class="line">	$target = str_replace( array_keys( $substitutions ), $substitutions, $target );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Determine OS and execute the ping command.</span></span><br><span class="line">	<span class="keyword">if</span>( stristr( php_uname( <span class="string">'s'</span> ), <span class="string">'Windows NT'</span> ) ) &#123;</span><br><span class="line">		<span class="comment">// Windows</span></span><br><span class="line">		$cmd = shell_exec( <span class="string">'ping  '</span> . $target );</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// *nix</span></span><br><span class="line">		$cmd = shell_exec( <span class="string">'ping  -c 4 '</span> . $target );</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Feedback for the end user</span></span><br><span class="line">	$html .= <span class="string">"&lt;pre&gt;&#123;$cmd&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>仍然是过滤符号，发现<code>&#39;| &#39;</code>多了一个空格。于是我们使用|绕过。</p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk07w955j30nb0btmy0.jpg"/>
+
+<h4 id="impossible-1"><a href="#impossible-1" class="headerlink" title="impossible"></a>impossible</h4><p>查看一下源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'Submit'</span> ]  ) ) &#123;</span><br><span class="line">	<span class="comment">// Check Anti-CSRF token</span></span><br><span class="line">	checkToken( $_REQUEST[ <span class="string">'user_token'</span> ], $_SESSION[ <span class="string">'session_token'</span> ], <span class="string">'index.php'</span> );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	$target = $_REQUEST[ <span class="string">'ip'</span> ];</span><br><span class="line">	$target = stripslashes( $target );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Split the IP into 4 octects</span></span><br><span class="line">	$octet = explode( <span class="string">"."</span>, $target );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Check IF each octet is an integer</span></span><br><span class="line">	<span class="keyword">if</span>( ( is_numeric( $octet[<span class="number">0</span>] ) ) &amp;&amp; ( is_numeric( $octet[<span class="number">1</span>] ) ) &amp;&amp; ( is_numeric( $octet[<span class="number">2</span>] ) ) &amp;&amp; ( is_numeric( $octet[<span class="number">3</span>] ) ) &amp;&amp; ( sizeof( $octet ) == <span class="number">4</span> ) ) &#123;</span><br><span class="line">		<span class="comment">// If all 4 octets are int's put the IP back together.</span></span><br><span class="line">		$target = $octet[<span class="number">0</span>] . <span class="string">'.'</span> . $octet[<span class="number">1</span>] . <span class="string">'.'</span> . $octet[<span class="number">2</span>] . <span class="string">'.'</span> . $octet[<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Determine OS and execute the ping command.</span></span><br><span class="line">		<span class="keyword">if</span>( stristr( php_uname( <span class="string">'s'</span> ), <span class="string">'Windows NT'</span> ) ) &#123;</span><br><span class="line">			<span class="comment">// Windows</span></span><br><span class="line">			$cmd = shell_exec( <span class="string">'ping  '</span> . $target );</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">// *nix</span></span><br><span class="line">			$cmd = shell_exec( <span class="string">'ping  -c 4 '</span> . $target );</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Feedback for the end user</span></span><br><span class="line">		$html .= <span class="string">"&lt;pre&gt;&#123;$cmd&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// Ops. Let the user name theres a mistake</span></span><br><span class="line">		$html .= <span class="string">'&lt;pre&gt;ERROR: You have entered an invalid IP.&lt;/pre&gt;'</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Generate Anti-CSRF token</span></span><br><span class="line">generateSessionToken();</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>用<code>|net user</code>试一下。发现被要求输入正确的IP。注入失败。</p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk0weg12j30nf094q3l.jpg"/>
+
+<p>直接限制了输入的格式，有效的防止了命令注入漏洞。</p>
+<h3 id="CSRF-跨站请求伪造"><a href="#CSRF-跨站请求伪造" class="headerlink" title="CSRF 跨站请求伪造"></a>CSRF 跨站请求伪造</h3><p>跨站请求伪造是一种挟制用户在当前已登录的Web应用程序上执行非本意的操作的攻击方法。跟XSS相比，<strong>XSS</strong> 利用的是用户对指定网站的信任，<strong>CSRF</strong> 利用的是网站对用户网页浏览器的信任。</p>
+<p>攻击者构建好对目标网站伪造的请求，并把该请求放入自己的网站中，诱使受害者访问攻击者搭建的网站，如果受害者刚好在目标网站登陆过且目标网站存在该漏洞。那么攻击者伪造的请求就会成功执行。这是我自己的理解。</p>
+<h4 id="CSRF漏洞检测"><a href="#CSRF漏洞检测" class="headerlink" title="CSRF漏洞检测"></a>CSRF漏洞检测</h4><blockquote>
+<p> 检测CSRF漏洞是一项比较繁琐的工作，最简单的方法就是抓取一个正常请求的数据包，去掉Referer字段后再重新提交，如果该提交还有效，那么基本上可以确定存在CSRF漏洞。</p>
+</blockquote>
+<h4 id="low-2"><a href="#low-2" class="headerlink" title="low"></a>low</h4><img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk1e5p8xj30nt09hwex.jpg"/>
+
+<p><code>http://192.168.1.132/dvwa/vulnerabilities/csrf/?password_new=1234&amp;password_conf=1234&amp;Change=Change#</code></p>
+<p>当受害者点击这个链接，他的密码就会被修改。这个攻击链接很明显。真正攻击场景会对链接做一些处理。比如网址缩短。</p>
+<p>攻击者在网站上搭建攻击页面。如下图所示。</p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk1n1yjqj30l8072mxa.jpg"/>
+
+<p>该页面源代码为：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>404<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://192.168.1.132/dvwa/vulnerabilities/csrf/?password_new=123456&amp;password_conf=123456&amp;Change=Change#"</span> <span class="attr">border</span>=<span class="string">"0"</span> <span class="attr">style</span>=<span class="string">"display:none;"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>404<span class="tag">&lt;<span class="name">h1</span></span></span><br><span class="line">&lt;h2&gt;file not found.&lt;h2&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在受害者点击后成功修改密码。</p>
+<h4 id="medium-2"><a href="#medium-2" class="headerlink" title="medium"></a>medium</h4><blockquote>
+<p>Medium级别的代码检查了保留变量 HTTP_REFERER（http包头的Referer参数的值，表示来源地址）中是否包含SERVER_NAME（http包头的Host参数，及要访问的主机名，这里是192.168.1.132），希望通过这种机制抵御CSRF攻击。</p>
+</blockquote>
+<p>过滤规则是http包头的Referer参数的值中必须包含受害者主机名（这里是192.168.1.132）</p>
+<p>我们可以将攻击页面命名为192.168.1.132.html（页面被放置在攻击者的服务器里，这里是192.168.1.129）就可以绕过了。</p>
+<p>在攻击端搭建网站，先搭建了一个主页index.html。链接使用的是短链接（有效期7天），就是密码修改链接。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- /*超链接，点击跳转*/ --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"192.168.1.132.html"</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span>11111111<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>有搭建了一个静态页面，192.168.1.132.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>404<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://suo.im/6nTcXO"</span> <span class="attr">border</span>=<span class="string">"0"</span> <span class="attr">style</span>=<span class="string">"display:none;"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>404<span class="tag">&lt;<span class="name">h1</span></span></span><br><span class="line">&lt;h2&gt;file not found.&lt;h2&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在受害者访问这个页面并点击超链接，密码才会被修改。</p>
+<h4 id="high-2"><a href="#high-2" class="headerlink" title="high"></a>high</h4><blockquote>
+<p>High级别的代码加入了Anti-CSRF token机制，用户每次访问改密页面时，服务器会返回一个随机的token，向服务器发起请求时，需要提交token参数，而服务器在收到请求时，会优先检查token，只有token正确，才会处理客户端的请求。</p>
+</blockquote>
+<p>搞不出来，不会写代码。就这样吧。什么时候会写代码了再说吧。orz</p>
+<h4 id="impossible-2"><a href="#impossible-2" class="headerlink" title="impossible"></a>impossible</h4><blockquote>
+<p>Impossible级别的代码利用PDO技术防御SQL注入，至于防护CSRF，则要求用户输入原始密码（简单粗暴），攻击者在不知道原始密码的情况下，无论如何都无法进行CSRF攻击。</p>
+</blockquote>
+<h3 id="XSS（跨站脚本攻击）"><a href="#XSS（跨站脚本攻击）" class="headerlink" title="XSS（跨站脚本攻击）"></a>XSS（跨站脚本攻击）</h3><p>跨站脚本攻击(CrossSite Scripting)，为了和层叠样式表(CascadingStyle Sheets,CSS)的缩写进行区分，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意Script代码，当用户浏览该页面时，嵌入其中Web里面的Script代码会被执行，从而达到恶意攻击用户的目的。</p>
+<h4 id="什么是XSS"><a href="#什么是XSS" class="headerlink" title="什么是XSS"></a>什么是XSS</h4><p>通过脚本语言注入篡改网页，插入恶意脚本，控制用户浏览器的攻击行为。</p>
+<blockquote>
+<p>XSS分为反射型xss、存储型xss和基于DOM的xss。</p>
+</blockquote>
+<p>反射型xss和基于DOM的xss都属于非持久性攻击。存储型xss属于持久性攻击。</p>
+<hr>
+<h4 id="反射型xss"><a href="#反射型xss" class="headerlink" title="反射型xss"></a>反射型xss</h4><h5 id="low-3"><a href="#low-3" class="headerlink" title="low"></a>low</h5><p>先查看一下源代码，发现没有任何过滤。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">header (<span class="string">"X-XSS-Protection: 0"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span>( array_key_exists( <span class="string">"name"</span>, $_GET ) &amp;&amp; $_GET[ <span class="string">'name'</span> ] != <span class="keyword">NULL</span> ) &#123;</span><br><span class="line">	<span class="comment">// Feedback for end user</span></span><br><span class="line">	$html .= <span class="string">'&lt;pre&gt;Hello '</span> . $_GET[ <span class="string">'name'</span> ] . <span class="string">'&lt;/pre&gt;'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;</code></p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk21a9uyj30n905bglu.jpg"/>
+
+<h5 id="medium-3"><a href="#medium-3" class="headerlink" title="medium"></a>medium</h5><p>看一下源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">header (<span class="string">"X-XSS-Protection: 0"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span>( array_key_exists( <span class="string">"name"</span>, $_GET ) &amp;&amp; $_GET[ <span class="string">'name'</span> ] != <span class="keyword">NULL</span> ) &#123;</span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	$name = str_replace( <span class="string">'&lt;script&gt;'</span>, <span class="string">''</span>, $_GET[ <span class="string">'name'</span> ] );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Feedback for end user</span></span><br><span class="line">	$html .= <span class="string">"&lt;pre&gt;Hello $&#123;name&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在输入框输入<code>&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;</code>。</p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk2q6wc0j30nl0570t0.jpg"/>
+
+<p><code>&lt;script&gt;</code>被过滤掉了。使用<code>&lt;scr&lt;script&gt;ipt&gt;alert(&quot;xss&quot;)&lt;/script&gt;</code></p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk385v0sj30lh05nt8s.jpg"/>
+
+<p>除此之外，使用大小写也可以绕过。<code>&lt;Script&gt;alert(&quot;xss&quot;)&lt;/script&gt;</code></p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk3nrosxj30n705hjrm.jpg"/>
+
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk45rnczj30ky05qq30.jpg"/>
+
+
+
+<h5 id="high-3"><a href="#high-3" class="headerlink" title="high"></a>high</h5><p>看一下源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">header (<span class="string">"X-XSS-Protection: 0"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span>( array_key_exists( <span class="string">"name"</span>, $_GET ) &amp;&amp; $_GET[ <span class="string">'name'</span> ] != <span class="keyword">NULL</span> ) &#123;</span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	$name = preg_replace( <span class="string">'/&lt;(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i'</span>, <span class="string">''</span>, $_GET[ <span class="string">'name'</span> ] );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Feedback for end user</span></span><br><span class="line">	$html .= <span class="string">"&lt;pre&gt;Hello $&#123;name&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>发现使用了正则表达式进行过滤</p>
+<blockquote>
+<p>$name = preg_replace( ‘/&lt;(.<em>)s(.</em>)c(.<em>)r(.</em>)i(.<em>)p(.</em>)t/i’, ‘’, $_GET[ ‘name’ ] );</p>
+</blockquote>
+<p><code>&lt;script&gt;</code>标签被过滤。但仍然可以使用img、body、iframe等其他标签注入恶意的js代码。</p>
+<p><code>&lt;img src=1 onerror=alert(/xss/)&gt;</code></p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk4u10jlj30kz05ojrg.jpg"/>
+
+<p><code>&lt;svg onload=alert(/xss/)&gt;</code></p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk56hhptj30ks05mq30.jpg"/>
+
+<h5 id="impossible-3"><a href="#impossible-3" class="headerlink" title="impossible"></a>impossible</h5><p>看一下源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span>( array_key_exists( <span class="string">"name"</span>, $_GET ) &amp;&amp; $_GET[ <span class="string">'name'</span> ] != <span class="keyword">NULL</span> ) &#123;</span><br><span class="line">	<span class="comment">// Check Anti-CSRF token</span></span><br><span class="line">	checkToken( $_REQUEST[ <span class="string">'user_token'</span> ], $_SESSION[ <span class="string">'session_token'</span> ], <span class="string">'index.php'</span> );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	$name = htmlspecialchars( $_GET[ <span class="string">'name'</span> ] );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Feedback for end user</span></span><br><span class="line">	$html .= <span class="string">"&lt;pre&gt;Hello $&#123;name&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Generate Anti-CSRF token</span></span><br><span class="line">generateSessionToken();</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>看到有一个<code>htmlspecialchars（）函数</code> 。</p>
+<p>这个函数的功能：把预定义的字符 “&lt;” （小于）和 “&gt;” （大于）转换为 HTML 实体。</p>
+<p>无法构造标签进行攻击。</p>
+<h4 id="存储型xss"><a href="#存储型xss" class="headerlink" title="存储型xss"></a>存储型xss</h4><h5 id="low-4"><a href="#low-4" class="headerlink" title="low"></a>low</h5><p>看一下源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'btnSign'</span> ] ) ) &#123;</span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	$message = trim( $_POST[ <span class="string">'mtxMessage'</span> ] );</span><br><span class="line">	$name    = trim( $_POST[ <span class="string">'txtName'</span> ] );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Sanitize message input</span></span><br><span class="line">	$message = stripslashes( $message );</span><br><span class="line">	$message = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $message ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Sanitize name input</span></span><br><span class="line">	$name = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $name ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Update database</span></span><br><span class="line">	$query  = <span class="string">"INSERT INTO guestbook ( comment, name ) VALUES ( '$message', '$name' );"</span>;</span><br><span class="line">	$result = mysqli_query($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . ((is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_error($GLOBALS[<span class="string">"___mysqli_ston"</span>]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : <span class="keyword">false</span>)) . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">	<span class="comment">//mysql_close();</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>把代码插入到消息框中。<code>&lt;script&gt;alert(/xss/)&lt;/script&gt;</code></p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk5kzhd8j30n706bwes.jpg"/>
+
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk5uzd0wj30it05mt8o.jpg"/>
+
+<p>成功。</p>
+<h5 id="medium-4"><a href="#medium-4" class="headerlink" title="medium"></a>medium</h5><p>看一下源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'btnSign'</span> ] ) ) &#123;</span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	$message = trim( $_POST[ <span class="string">'mtxMessage'</span> ] );</span><br><span class="line">	$name    = trim( $_POST[ <span class="string">'txtName'</span> ] );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Sanitize message input</span></span><br><span class="line">	$message = strip_tags( addslashes( $message ) );</span><br><span class="line">	$message = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $message ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line">	$message = htmlspecialchars( $message );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Sanitize name input</span></span><br><span class="line">	$name = str_replace( <span class="string">'&lt;script&gt;'</span>, <span class="string">''</span>, $name );</span><br><span class="line">	$name = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $name ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Update database</span></span><br><span class="line">	$query  = <span class="string">"INSERT INTO guestbook ( comment, name ) VALUES ( '$message', '$name' );"</span>;</span><br><span class="line">	$result = mysqli_query($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . ((is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_error($GLOBALS[<span class="string">"___mysqli_ston"</span>]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : <span class="keyword">false</span>)) . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">	<span class="comment">//mysql_close();</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>查看源代码，发现message有htmlspecialchars()函数，因此没法使用message进行xss。</p>
+<blockquote>
+<p>$message = htmlspecialchars( $message );</p>
+</blockquote>
+<p>发现name没有做实体化限制。因此在name处进行注入。输入代码，发现输入长度被限制了。通过浏览器控制台进行修改。</p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk6btuzqj30nd069wes.jpg"/>
+
+<p>仍然是使用<code>&lt;scr&lt;script&gt;ipt&gt;alert(/xss/)&lt;/script&gt;</code>绕过，或使用大小写。</p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk6ojajnj30ik05mq2w.jpg"/>
+
+<p>使用大小写绕过。</p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk6zisnwj30no06iwes.jpg"/>
+
+<p>成功。</p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk7hiabkj30ik05imx4.jpg"/>
+
+<h5 id="high-4"><a href="#high-4" class="headerlink" title="high"></a>high</h5><p>看一下源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'btnSign'</span> ] ) ) &#123;</span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	$message = trim( $_POST[ <span class="string">'mtxMessage'</span> ] );</span><br><span class="line">	$name    = trim( $_POST[ <span class="string">'txtName'</span> ] );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Sanitize message input</span></span><br><span class="line">	$message = strip_tags( addslashes( $message ) );</span><br><span class="line">	$message = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $message ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line">	$message = htmlspecialchars( $message );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Sanitize name input</span></span><br><span class="line">	$name = preg_replace( <span class="string">'/&lt;(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i'</span>, <span class="string">''</span>, $name );</span><br><span class="line">	$name = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $name ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Update database</span></span><br><span class="line">	$query  = <span class="string">"INSERT INTO guestbook ( comment, name ) VALUES ( '$message', '$name' );"</span>;</span><br><span class="line">	$result = mysqli_query($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . ((is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_error($GLOBALS[<span class="string">"___mysqli_ston"</span>]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : <span class="keyword">false</span>)) . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">	<span class="comment">//mysql_close();</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>查看源代码，和之前一样。</p>
+<blockquote>
+<p>$message = htmlspecialchars( $message );</p>
+<p>$name = preg_replace( ‘/&lt;(.<em>)s(.</em>)c(.<em>)r(.</em>)i(.<em>)p(.</em>)t/i’, ‘’, $name );</p>
+</blockquote>
+<p>从name处使用其他标签进行xss注入。</p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk7z4gwoj30nc068aac.jpg"/>
+
+<p>成功注入。</p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk88swh4j30ie05odfs.jpg"/>
+
+<h5 id="impossible-4"><a href="#impossible-4" class="headerlink" title="impossible"></a>impossible</h5><p>看一下源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'btnSign'</span> ] ) ) &#123;</span><br><span class="line">	<span class="comment">// Check Anti-CSRF token</span></span><br><span class="line">	checkToken( $_REQUEST[ <span class="string">'user_token'</span> ], $_SESSION[ <span class="string">'session_token'</span> ], <span class="string">'index.php'</span> );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	$message = trim( $_POST[ <span class="string">'mtxMessage'</span> ] );</span><br><span class="line">	$name    = trim( $_POST[ <span class="string">'txtName'</span> ] );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Sanitize message input</span></span><br><span class="line">	$message = stripslashes( $message );</span><br><span class="line">	$message = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $message ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line">	$message = htmlspecialchars( $message );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Sanitize name input</span></span><br><span class="line">	$name = stripslashes( $name );</span><br><span class="line">	$name = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $name ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line">	$name = htmlspecialchars( $name );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Update database</span></span><br><span class="line">	$data = $db-&gt;prepare( <span class="string">'INSERT INTO guestbook ( comment, name ) VALUES ( :message, :name );'</span> );</span><br><span class="line">	$data-&gt;bindParam( <span class="string">':message'</span>, $message, PDO::PARAM_STR );</span><br><span class="line">	$data-&gt;bindParam( <span class="string">':name'</span>, $name, PDO::PARAM_STR );</span><br><span class="line">	$data-&gt;execute();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Generate Anti-CSRF token</span></span><br><span class="line">generateSessionToken();</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>name和message都是用htmlspecialchars函数，把符号转化为了实体。</p>
+<h4 id="DOM型xss"><a href="#DOM型xss" class="headerlink" title="DOM型xss"></a>DOM型xss</h4><h5 id="low-5"><a href="#low-5" class="headerlink" title="low"></a>low</h5><img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk8kp9exj30nn095755.jpg"/>
+
+<p>把English更改为<code>&lt;script&gt;alert(/xss/)&lt;/script&gt;</code></p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk8womrtj30g905nq2y.jpg"/>
+
+<h5 id="medium-5"><a href="#medium-5" class="headerlink" title="medium"></a>medium</h5><p>看一下源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span> ( array_key_exists( <span class="string">"default"</span>, $_GET ) &amp;&amp; !is_null ($_GET[ <span class="string">'default'</span> ]) ) &#123;</span><br><span class="line">	$default = $_GET[<span class="string">'default'</span>];</span><br><span class="line">	</span><br><span class="line">	<span class="comment"># Do not allow script tags</span></span><br><span class="line">	<span class="keyword">if</span> (stripos ($default, <span class="string">"&lt;script"</span>) !== <span class="keyword">false</span>) &#123;</span><br><span class="line">		header (<span class="string">"location: ?default=English"</span>);</span><br><span class="line">		<span class="keyword">exit</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里过滤了&lt;script，如果default值中存在&lt;script，default=English。</p>
+<p><code>&lt;img src=1 onerror=alert(/xss/)&gt;</code></p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk979l8hj30np08yt9k.jpg"/>
+
+<p>页面并没有出现弹窗。</p>
+<blockquote>
+<option value="%3Cimg%20src=1%20onerror=alert(/xss/)%3E"></option>
+
+<option value="English">English</option>
+</blockquote>
+<p>发现代码被插入到value值中，并没有在option标签中，所以img标签没起到作用。</p>
+<p>首先闭合option，发现xss&gt;被插入到了option值中。于是在闭合select标签。之后再加入注入语句就可以了。成功执行。</p>
+<p><code>xss&gt;&lt;/option&gt;&lt;/select&gt;&lt;img src=1 onerror=alert(/xss/)&gt;</code></p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk9lgdjzj30g705qwej.jpg"/>
+
+<h5 id="high-5"><a href="#high-5" class="headerlink" title="high"></a>high</h5><p>看一下源代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span> ( array_key_exists( <span class="string">"default"</span>, $_GET ) &amp;&amp; !is_null ($_GET[ <span class="string">'default'</span> ]) ) &#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment"># White list the allowable languages</span></span><br><span class="line">	<span class="keyword">switch</span> ($_GET[<span class="string">'default'</span>]) &#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"French"</span>:</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"English"</span>:</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"German"</span>:</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"Spanish"</span>:</span><br><span class="line">			<span class="comment"># ok</span></span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			header (<span class="string">"location: ?default=English"</span>);</span><br><span class="line">			<span class="keyword">exit</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>使用<code>#&lt;script&gt;alert(/xss/)&lt;/script&gt;</code>，注意#前有空格。</p>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk9v6s4ij30hq05o74c.jpg"/>
+
+<h5 id="impossible-5"><a href="#impossible-5" class="headerlink" title="impossible"></a>impossible</h5><blockquote>
+<p>Don’t need to do anything, protction handled on the client side</p>
+</blockquote>
+<p>对我们输入的参数不进行URL解码。我们输入的数据经过URL编码，直接赋值到optio标签。直接在客户端处理，所以就不存在xss漏洞了。</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#web" >
+    <span class="tag-code">web</span>
+  </a>
+
+  <a href="/tags#DVWA" >
+    <span class="tag-code">DVWA</span>
+  </a>
+
+  <a href="/tags#XSS" >
+    <span class="tag-code">XSS</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2020/03/03/SQLMap%E6%B3%A8%E5%85%A5%E9%83%A8%E5%88%86%E5%8F%82%E6%95%B0%E8%AE%B0%E5%BD%95/">
+        <span class="nav-arrow">← </span>
+        
+          SQLMap注入部分参数记录
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2020/03/08/Burp-Suite%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/">
+        
+          Burp Suite使用记录
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- No Comment -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#DVWA-渗透测试入门"><span class="toc-nav-text">DVWA-渗透测试入门</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#暴力破解"><span class="toc-nav-text">暴力破解</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#low"><span class="toc-nav-text">low</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#medium"><span class="toc-nav-text">medium</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#high"><span class="toc-nav-text">high</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#impossible"><span class="toc-nav-text">impossible</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#DVWA命令执行漏洞"><span class="toc-nav-text">DVWA命令执行漏洞</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#什么是命令执行漏洞"><span class="toc-nav-text">什么是命令执行漏洞</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#amp-、-amp-amp-、-、-命令拼接符的区别"><span class="toc-nav-text">&amp;、&amp;&amp;、|、||命令拼接符的区别</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#low-1"><span class="toc-nav-text">low</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#medium-1"><span class="toc-nav-text">medium</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#high-1"><span class="toc-nav-text">high</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#impossible-1"><span class="toc-nav-text">impossible</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#CSRF-跨站请求伪造"><span class="toc-nav-text">CSRF 跨站请求伪造</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#CSRF漏洞检测"><span class="toc-nav-text">CSRF漏洞检测</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#low-2"><span class="toc-nav-text">low</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#medium-2"><span class="toc-nav-text">medium</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#high-2"><span class="toc-nav-text">high</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#impossible-2"><span class="toc-nav-text">impossible</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#XSS（跨站脚本攻击）"><span class="toc-nav-text">XSS（跨站脚本攻击）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#什么是XSS"><span class="toc-nav-text">什么是XSS</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#反射型xss"><span class="toc-nav-text">反射型xss</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#low-3"><span class="toc-nav-text">low</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#medium-3"><span class="toc-nav-text">medium</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#high-3"><span class="toc-nav-text">high</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#impossible-3"><span class="toc-nav-text">impossible</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#存储型xss"><span class="toc-nav-text">存储型xss</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#low-4"><span class="toc-nav-text">low</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#medium-4"><span class="toc-nav-text">medium</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#high-4"><span class="toc-nav-text">high</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#impossible-4"><span class="toc-nav-text">impossible</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#DOM型xss"><span class="toc-nav-text">DOM型xss</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#low-5"><span class="toc-nav-text">low</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#medium-5"><span class="toc-nav-text">medium</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#high-5"><span class="toc-nav-text">high</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#impossible-5"><span class="toc-nav-text">impossible</span></a></li></ol></li></ol></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2020/03/05/DVWA-渗透测试入门/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2020 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng" target="_blank" rel="noopener">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>
