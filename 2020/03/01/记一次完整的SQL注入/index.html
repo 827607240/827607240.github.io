@@ -126,7 +126,8 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><h2 id="SQLMAP注入"><a href="#SQLMAP注入" class="headerlink" title="SQLMAP注入"></a>SQLMAP注入</h2><p>首先查找到注入点，用sqlmap进行注入。</p>
+    <section class="markdown-content"><p>这是之前学习SQLMAP时做过的记录，第一次使用SQL注入获取用户密码，当时还是挺激动的，虽然这个很简单。存粹的学习记录，把一些试错的过程删掉了。</p>
+<h2 id="SQLMAP注入"><a href="#SQLMAP注入" class="headerlink" title="SQLMAP注入"></a>SQLMAP注入</h2><p>首先查找到注入点，用sqlmap进行注入。</p>
 <p><code>sqlmap.py -u &quot;https://www.xxx.com/subcat.php?id=2&quot;</code></p>
 <p>查看当前数据库。</p>
 <p><code>sqlmap.py -u &quot;https://www.xxx.com/subcat.php?id=2&quot; --current-db</code></p>
