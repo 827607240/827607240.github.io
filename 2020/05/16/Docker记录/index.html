@@ -10,7 +10,7 @@
   
   <title>
     
-      HA
+      Docker记录 | HA
     
   </title>
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -117,97 +117,140 @@
 </header>
 
     <div id="article-banner">
-  <h2>Archives</h2>
-  <p class="post-date">文章归档</p>
+  <h2>Docker记录</h2>
+  <p class="post-date">2020-05-16</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
 </div>
-<main class="app-body" id="archives">
-  
-  
-  
-    <section class="time-section">
-  <h1 class="section-year">
-    2020
-  </h1>
-  <div class="section-list">
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>以前听过docker这个名字，最近听的有点多了，于是就想简单了解一下docker到底是个什么东西，对我有没有一些帮助，于是在B站上看了一个docker入门视频。</p>
+<h3 id="Docker是什么？"><a href="#Docker是什么？" class="headerlink" title="Docker是什么？"></a>Docker是什么？</h3><p>Docker是一个轻量级的虚拟机，是一个主要应用在linux的虚拟机。<br>包括镜像，容器(虚拟机)，tar文件(vmdk文件)，Dockerfile是配置文件。还有一个仓库（有很多系统镜像文件）。<br>通过load加载镜像，run运行虚拟机。</p>
+<p>[网页版docker]<a href="https://labs.play-with-docker.com" target="_blank" rel="noopener">https://labs.play-with-docker.com</a></p>
+<h3 id="Docker使用参数"><a href="#Docker使用参数" class="headerlink" title="Docker使用参数"></a>Docker使用参数</h3><p>docker pull nginx等于docker pull  nginx:latest<br>Docker images查看已安装的镜像。</p>
+<p><img src="https://s1.ax1x.com/2020/05/16/Y6bGjg.png" alt="Y6bGjg.png"></p>
+<p>docker run -d（后台运行）-p（端口） 外部端口：内部端口 nginx</p>
+<p>decker exec -it ID bash，修改容器（虚拟机）配置。</p>
+<p>ctrl+F5强制刷新。</p>
+<p>docker rm -f ID删除容器</p>
+<p>docker commit ID 自定义名字</p>
+<p>docker images 查看所有镜像</p>
+<p>docker build -t 镜像名 .</p>
+<p>docker save 镜像名 &gt; 1.tar</p>
+<p>docker load &lt;  1.tar</p>
+<p>-p映射内外端口，-v映射文件</p>
+</section>
+    <!-- Tags START -->
     
-    
-      <div class="section-list-item">
-        <a href="/2020/05/16/Docker%E8%AE%B0%E5%BD%95/" class="archive-title">Docker记录</a>
-        <p class="archive-date">05-16</p>
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Docker" >
+    <span class="tag-code">Docker</span>
+  </a>
+
       </div>
     
-      <div class="section-list-item">
-        <a href="/2020/05/10/%E5%91%BD%E4%BB%A4%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" class="archive-title">命令上传漏洞利用</a>
-        <p class="archive-date">05-10</p>
-      </div>
+    <!-- Tags END -->
+    <!-- NAV START -->
     
-      <div class="section-list-item">
-        <a href="/2020/05/04/Linux%E4%B8%AD%E7%9A%84nc%E5%91%BD%E4%BB%A4%E5%92%8Cscp%E5%91%BD%E4%BB%A4/" class="archive-title">Linux中的nc命令和scp命令</a>
-        <p class="archive-date">05-04</p>
-      </div>
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <div class="section-list-item">
-        <a href="/2020/04/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/" class="archive-title">计算机网络基础笔记</a>
-        <p class="archive-date">04-19</p>
-      </div>
+      <a class="nav-left" href="/2020/05/10/%E5%91%BD%E4%BB%A4%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/">
+        <span class="nav-arrow">← </span>
+        
+          命令上传漏洞利用
+        
+      </a>
     
-      <div class="section-list-item">
-        <a href="/2020/04/11/%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0Linux%E7%B3%BB%E7%BB%9F-%E7%AC%94%E8%AE%B0/" class="archive-title">如何学习Linux系统_笔记</a>
-        <p class="archive-date">04-11</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2020/03/09/Vim%E7%BB%83%E7%BA%A7%E6%94%BB%E7%95%A5%E8%AE%B0%E5%BD%95/" class="archive-title">Vim练级攻略记录</a>
-        <p class="archive-date">03-09</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2020/03/08/Burp-Suite%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" class="archive-title">Burp Suite使用记录</a>
-        <p class="archive-date">03-08</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2020/03/05/DVWA-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%85%A5%E9%97%A8/" class="archive-title">DVWA-渗透测试入门</a>
-        <p class="archive-date">03-05</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2020/03/03/SQLMap%E6%B3%A8%E5%85%A5%E9%83%A8%E5%88%86%E5%8F%82%E6%95%B0%E8%AE%B0%E5%BD%95/" class="archive-title">SQLMap注入部分参数记录</a>
-        <p class="archive-date">03-03</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2020/03/03/Nmap%E4%BD%BF%E7%94%A8%E5%8F%82%E6%95%B0%E8%AE%B0%E5%BD%95/" class="archive-title">Nmap使用参数记录</a>
-        <p class="archive-date">03-03</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2020/03/02/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="archive-title">数据库基本使用</a>
-        <p class="archive-date">03-02</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2020/03/01/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AE%8C%E6%95%B4%E7%9A%84SQL%E6%B3%A8%E5%85%A5/" class="archive-title">记一次完整的SQL注入</a>
-        <p class="archive-date">03-01</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2020/02/24/%E5%85%B3%E4%BA%8EBASH%E8%84%9A%E6%9C%AC%E7%9A%84%E5%AD%A6%E4%B9%A0/" class="archive-title">关于BASH脚本的学习</a>
-        <p class="archive-date">02-24</p>
-      </div>
     
   </div>
-</section>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- No Comment -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
   
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Docker是什么？"><span class="toc-nav-text">Docker是什么？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Docker使用参数"><span class="toc-nav-text">Docker使用参数</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
 </main>
 
 <script>
   (function () {
-    var url = 'http://yoursite.com/categories/计算机网络/index.html';
-    $('#article-banner').geopattern(url);
-    $('.header').removeClass('fixed-header');
+    var url = 'http://yoursite.com/2020/05/16/Docker记录/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
   })();
 </script>
+
+
+
+
+
+
+
     <div class="scroll-top">
   <span class="arrow-icon"></span>
 </div>
