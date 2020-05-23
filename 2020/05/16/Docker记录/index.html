@@ -141,6 +141,40 @@
 <p>docker save 镜像名 &gt; 1.tar</p>
 <p>docker load &lt;  1.tar</p>
 <p>-p映射内外端口，-v映射文件</p>
+<p><strong>Docker环境信息</strong></p>
+<ul>
+<li>sudo docker info</li>
+<li>sudo docker version</li>
+</ul>
+<p><strong>容器生命周期管理</strong></p>
+<ul>
+<li><p>sudo docker run –help</p>
+</li>
+<li><p>sudo -i -t  –name xxxx ubuntu:latest /bin/bash</p>
+<blockquote>
+<p>-i选项表示使用交互模式，始终保持输人流开放;<br>-t选项表示分配一个伪终端，一般两个参数结合时使用-it，即可在容器中利用打开的伪终端进行交互操作;<br>– name选项可以指定docker run命令启动的容器的名字，若无此选项，Docker将 为容器随机分配一个名字。</p>
+</blockquote>
+</li>
+<li><p>sudo docker start/stop/restart</p>
+</li>
+<li><p>sudo docker pull ubuntu12.04</p>
+</li>
+<li><p>sudo docker images             //查看主机上的所有镜像</p>
+</li>
+<li><p>docker rmi 删除镜像</p>
+</li>
+<li><p>docker rm 删除容器</p>
+</li>
+</ul>
+<p><strong>系统日志信息</strong></p>
+<p>events、history 和logs这3个命令用于查看Docker的系统日志信息。</p>
+<ul>
+<li>events命令会打印出实时的系统事件; </li>
+<li>history命令会打印出指定镜像的历史版本信息，即构建该镜像的每一层镜像的<br>命令记录; </li>
+<li>logs命令会打印出容器中进程的运行日志。</li>
+</ul>
+<hr>
+<p>一个容器只运行一个进程。所以要使用多个容器。</p>
 </section>
     <!-- Tags START -->
     
