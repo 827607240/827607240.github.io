@@ -10,7 +10,7 @@
   
   <title>
     
-      Docker记录 | HA
+      Linux命令行读书笔记 | HA
     
   </title>
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -117,8 +117,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>Docker记录</h2>
-  <p class="post-date">2020-05-16</p>
+  <h2>Linux命令行读书笔记</h2>
+  <p class="post-date">2020-05-24</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -126,63 +126,70 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><p>以前听过docker这个名字，最近听的有点多了，于是就想简单了解一下docker到底是个什么东西，对我有没有一些帮助，于是在B站上看了一个docker入门视频。</p>
-<h3 id="Docker是什么？"><a href="#Docker是什么？" class="headerlink" title="Docker是什么？"></a>Docker是什么？</h3><p>Docker是一个轻量级的虚拟机，是一个主要应用在linux的虚拟机。<br>包括镜像，容器(虚拟机)，tar文件(vmdk文件)，Dockerfile是配置文件。还有一个仓库（有很多系统镜像文件）。<br>通过load加载镜像，run运行虚拟机。</p>
-<p>[网页版docker]<a href="https://labs.play-with-docker.com" target="_blank" rel="noopener">https://labs.play-with-docker.com</a></p>
-<h3 id="Docker使用参数"><a href="#Docker使用参数" class="headerlink" title="Docker使用参数"></a>Docker使用参数</h3><p>docker pull nginx等于docker pull  nginx:latest<br>Docker images查看已安装的镜像。</p>
-<p><img src="https://s1.ax1x.com/2020/05/16/Y6bGjg.png" alt="Y6bGjg.png"></p>
-<p>docker run -d（后台运行）-p（端口） 外部端口：内部端口 nginx</p>
-<p>decker exec -it ID bash，修改容器（虚拟机）配置。</p>
-<p>ctrl+F5强制刷新。</p>
-<p>docker rm -f ID删除容器</p>
-<p>docker commit ID 自定义名字</p>
-<p>docker images 查看所有镜像</p>
-<p>docker build -t 镜像名 .</p>
-<p>docker save 镜像名 &gt; 1.tar</p>
-<p>docker load &lt;  1.tar</p>
-<p>-p映射内外端口，-v映射文件</p>
-<p><strong>Docker环境信息</strong></p>
-<ul>
-<li>sudo docker info</li>
-<li>sudo docker version</li>
+    <section class="markdown-content"><p>今天看了Linux shell脚本编程大全，对linux系统又进行了学习。</p>
+<h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><ul>
+<li>Linux内核</li>
+<li>GNU工具</li>
+<li>图形化桌面环境</li>
+<li>应用软件</li>
 </ul>
-<p><strong>容器生命周期管理</strong></p>
-<ul>
-<li><p>sudo docker run –help</p>
+<p><img src="https://s1.ax1x.com/2020/05/24/tSo18H.png" alt="tSo18H.png"></p>
+<h3 id="Linux内核功能"><a href="#Linux内核功能" class="headerlink" title="Linux内核功能"></a>Linux内核功能</h3><ul>
+<li><p>系统内存管理</p>
+<p>管理物理内存和虚拟内存。</p>
 </li>
-<li><p>sudo -i -t  –name xxxx ubuntu:latest /bin/bash</p>
+<li><p>软件程序管理</p>
+<p>内核创建了第一个进程(称为init进程)来启动系统上所有其他进程。当内核启动时，它会将init进程加载到虚拟内存中。内核在启动任何其他进程时，都会在虚拟内存中给新进程分配一块专有区域来存储该进程用到的数据和代码。</p>
+<ul>
+<li><p>运行级为1时，只启动基本的系统进程以及一个控制台终端进程。一般称之为单用户模式。</p>
+</li>
+<li><p>标准启动运行级为3级，大多数应用和网络程序会启动。</p>
+</li>
+<li><p>运行级为5，为Linux启动图形化的系统。</p>
+</li>
+</ul>
+</li>
+<li><p>硬件设备管理</p>
+</li>
+<li><p>文件系统管理</p>
+<p><img src="https://s1.ax1x.com/2020/05/24/tSo32d.png" alt="tSo32d.png"></p>
+</li>
+</ul>
+<h3 id="Linux文件系统结构"><a href="#Linux文件系统结构" class="headerlink" title="Linux文件系统结构"></a>Linux文件系统结构</h3><p><img src="https://s1.ax1x.com/2020/05/24/tSoEvR.png" alt="tSoEvR.png"></p>
+<p>shell提示符</p>
 <blockquote>
-<p>-i选项表示使用交互模式，始终保持输人流开放;<br>-t选项表示分配一个伪终端，一般两个参数结合时使用-it，即可在容器中利用打开的伪终端进行交互操作;<br>– name选项可以指定docker run命令启动的容器的名字，若无此选项，Docker将 为容器随机分配一个名字。</p>
+<p>$ 普通用户输入模式</p>
+<p># root用户输入模式</p>
 </blockquote>
-</li>
-<li><p>sudo docker start/stop/restart</p>
-</li>
-<li><p>sudo docker pull ubuntu12.04</p>
-</li>
-<li><p>sudo docker images             //查看主机上的所有镜像</p>
-</li>
-<li><p>docker rmi 删除镜像</p>
-</li>
-<li><p>docker rm 删除容器</p>
-</li>
-</ul>
-<p><strong>系统日志信息</strong></p>
-<p>events、history 和logs这3个命令用于查看Docker的系统日志信息。</p>
+<p>bash手册</p>
+<p>相对路径</p>
 <ul>
-<li>events命令会打印出实时的系统事件; </li>
-<li>history命令会打印出指定镜像的历史版本信息，即构建该镜像的每一层镜像的<br>命令记录; </li>
-<li>logs命令会打印出容器中进程的运行日志。</li>
+<li>. 表示当前目录</li>
+<li>.. 表示当前目录的父目录</li>
 </ul>
-<hr>
-<p>一个容器只运行一个进程。所以要使用多个容器。</p>
+<p>目录（d）、文件（-）、字符型文件（c）、块设备（b）。</p>
+<p>ln -s 源文件 快捷方式</p>
+<p>可以给原始文件创建多个软连接。</p>
+<blockquote>
+<p>需要注意的是，不要创建软连接文件的软链接。容易造成不必要的麻烦。</p>
+</blockquote>
+<p>查看文件类型 file myfile</p>
+<p>cat -n myfile</p>
+<p>killall命令支持通过进程名来结束进程。</p>
+<p>du -h查看磁盘使用情况，查找大文件。</p>
+<p>sort排序文件</p>
 </section>
     <!-- Tags START -->
     
       <div class="tags">
         <span>Tags:</span>
         
-  <a href="/tags#Docker" >
-    <span class="tag-code">Docker</span>
+  <a href="/tags#Linux" >
+    <span class="tag-code">Linux</span>
+  </a>
+
+  <a href="/tags#shell" >
+    <span class="tag-code">shell</span>
   </a>
 
       </div>
@@ -193,20 +200,13 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2020/05/10/%E5%91%BD%E4%BB%A4%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/">
+      <a class="nav-left" href="/2020/05/16/Docker%E8%AE%B0%E5%BD%95/">
         <span class="nav-arrow">← </span>
         
-          命令上传漏洞利用
+          Docker记录
         
       </a>
     
-    
-      <a class="nav-right" href="/2020/05/24/Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
-        
-          Linux命令行读书笔记
-        
-        <span class="nav-arrow"> →</span>
-      </a>
     
   </div>
 
@@ -228,7 +228,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Docker是什么？"><span class="toc-nav-text">Docker是什么？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Docker使用参数"><span class="toc-nav-text">Docker使用参数</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Linux"><span class="toc-nav-text">Linux</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Linux内核功能"><span class="toc-nav-text">Linux内核功能</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Linux文件系统结构"><span class="toc-nav-text">Linux文件系统结构</span></a></li></ol>
     
   </div>
 </aside>
@@ -238,7 +238,7 @@
 
 <script>
   (function () {
-    var url = 'http://yoursite.com/2020/05/16/Docker记录/';
+    var url = 'http://yoursite.com/2020/05/24/Linux命令行读书笔记/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
