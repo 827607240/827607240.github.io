@@ -10,7 +10,7 @@
   
   <title>
     
-      Kylin-3.3.4系统单用户重置密码 | HA
+      服务器上安装iMC智能管理中心 | HA
     
   </title>
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -117,8 +117,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>Kylin-3.3.4系统单用户重置密码</h2>
-  <p class="post-date">2020-05-26</p>
+  <h2>服务器上安装iMC智能管理中心</h2>
+  <p class="post-date">2020-05-27</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -126,31 +126,99 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><p>安装系统时，创建了新用户并勾选了设置为管理员。登陆后却没有权限，也无法切换其他用户。secadm、sysadm在创建系统是未配置。在登录界面也无法正常登录。无果，联系湖南麒麟客服热线，无人接听。没办法，由于湖南麒麟也是用的Linux内核，只能尝试通过Linux系统重置密码的方式来尝试一下。</p>
-<h2 id="Kylin3-3-4系统忘记密码使用单用户模式修改密码"><a href="#Kylin3-3-4系统忘记密码使用单用户模式修改密码" class="headerlink" title="Kylin3.3.4系统忘记密码使用单用户模式修改密码"></a>Kylin3.3.4系统忘记密码使用单用户模式修改密码</h2><ol>
-<li>重启服务器，在启动界面按‘e’键进入编辑模式。</li>
+    <section class="markdown-content"><p>仅以此做一下记录。</p>
+<h2 id="服务器上安装iMC智能管理中心"><a href="#服务器上安装iMC智能管理中心" class="headerlink" title="服务器上安装iMC智能管理中心"></a>服务器上安装iMC智能管理中心</h2><ol>
+<li>服务器安装系统前做磁盘阵列（此次使用的是raid5），提升磁盘读写速度，备份数据，保护数据安全。</li>
+<li>安装操作系统，此次安装的是湖南麒麟系统，工作站运行模式。</li>
+<li>安装数据库，安装iMC智能管理中心，部署平台组件。</li>
 </ol>
-<p><img src="https://s1.ax1x.com/2020/05/26/tFHgJI.png" alt="tFHgJI.png"></p>
-<ol start="2">
-<li>找到<code>linux16</code>开头的段，在<code>UTF-8</code>后面添加<code>init=/bin/sh</code>，同时删除<code>rhgb quite</code>参数。 </li>
+<h3 id="安装准备"><a href="#安装准备" class="headerlink" title="安装准备"></a>安装准备</h3><ul>
+<li>Kylin-3.3.4系统镜像</li>
+<li>H3C_iMC_PLAT_7.3_E0703_Standard_linux.rar安装包</li>
+<li>H3C_iMC_PLAT_7.3_E0703P08_linux.zip升级包</li>
+<li>服务器一台（此次的服务器配置为64G运行内存，3.6T硬盘）</li>
+</ul>
+<h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><p><strong>服务器做raid</strong></p>
+<ol>
+<li>开启服务器，（按Ese、F7或F12）进入BIOS，SETUP模式做磁盘阵列。</li>
+<li>服务器型号不同，做raid的方法也不同，所有磁盘默认情况下未开启，需要开启后在配置raid5。</li>
+<li>具体型号参考官方文档。</li>
 </ol>
-<p><img src="https://s1.ax1x.com/2020/05/26/tFbpTJ.png" alt="tFbpTJ.png"></p>
-<p>修改完成后，如下图所示。</p>
-<p><img src="https://s1.ax1x.com/2020/05/26/tFbGX8.png" alt="tFbGX8.png"></p>
-<ol start="3">
-<li><code>CTRL+x</code>重启系统，登录到不需要密码的系统。重新挂载根目录<code>/</code>否则没有写权限。按照正常操作修改密码。</li>
+<blockquote>
+<p>参考文档：<a href="https://cloud.tencent.com/developer/news/392275" target="_blank" rel="noopener">https://cloud.tencent.com/developer/news/392275</a></p>
+</blockquote>
+<hr>
+<p><strong>服务器安装操作系统</strong></p>
+<ol>
+<li>使用笔记本连接到服务器远程管理端口：HDM，默认IP为192.168.1.2.默认用户名密码为<code>admin/Password@_</code></li>
+<li>查看服务器状态是否正常。</li>
+<li>之后挂载系统镜像。查看服务器BIOS中是否识别挂载的镜像。连接成功后，重启服务器。</li>
+<li>按照提示安装操作系统。分区按自定义推荐的分区进行修改即可完成。</li>
 </ol>
-<p><img src="https://s1.ax1x.com/2020/05/26/tFbdts.png" alt="tFbdts.png"></p>
-<ol start="4">
-<li>密码修改完成后，编辑配置文件/etc/sysconfig/selinux，关闭Linux安全模块。</li>
-</ol>
-<p><img src="https://s1.ax1x.com/2020/05/26/tFbD10.png" alt="tFbD10.png"></p>
-<ol start="5">
-<li>运行<code>touch /.autorelabel</code>使配置生效。然后运行<code>exec /sbin/init</code>重启系统。</li>
-</ol>
-<p><img src="https://s1.ax1x.com/2020/05/26/tFbsXT.png" alt="tFbsXT.png"></p>
-<ol start="6">
-<li>如果之前的操作没问题的话，就可以根据修改后的密码正常登入系统了。</li>
+<hr>
+<p><strong>安装iMC平台软件</strong></p>
+<ol>
+<li><p>服务器无法联网，首先要挂载系统镜像安装数据库。</p>
+</li>
+<li><p>修改yum源为本地镜像，vi /etc/yum.repos.d/Kylin-Base.repo</p>
+<p><img src="https://s1.ax1x.com/2020/05/27/tE9USO.png" alt="tE9USO.png"></p>
+</li>
+<li><p><code>yum makecache</code>刷新yum的数据缓存。</p>
+<p><img src="https://s1.ax1x.com/2020/05/27/tE9alD.png" alt="tE9alD.png"></p>
+</li>
+<li><p>安装mariadb数据库和imc运行需要的32位库软件<br>yum install mariadb-server ncurses-libs.i686 libaio.i686</p>
+<p><img src="https://s1.ax1x.com/2020/05/27/tE9ykt.png" alt="tE9ykt.png"></p>
+</li>
+<li><p>安装成功过，修改数据库内容，编辑文件/etc/my.cnf.d/server.cnf。在[mysqld]下添加参数内容。</p>
+<p>[mysqld]</p>
+<p>max_connections=1024</p>
+<p>lower_case_table_names=1</p>
+<p>innodb_buffer_pool_size=1G</p>
+<p>innodb_additional_mem_pool_size=24M </p>
+<p>max_allowed_packet=256M </p>
+<p>character-set-server=gbk</p>
+<p><img src="https://s1.ax1x.com/2020/05/27/tE96tP.png" alt="tE96tP.png"></p>
+</li>
+<li><p>重启数据库mariadb，运行<code>mysql_secure_installation</code>初始化数据库配置。</p>
+<p><img src="https://s1.ax1x.com/2020/05/27/tE92p8.png" alt="tE92p8.png"></p>
+</li>
+<li><p>密码为空密码，回车进入下一步。</p>
+<p><img src="https://s1.ax1x.com/2020/05/27/tE9W6g.png" alt="tE9W6g.png"></p>
+<p>设置数据库root用户密码(imc软件安装时对密码字符有限制，尽量不要使用特殊符号)，后面设置项全部回车，使用默认选项。</p>
+</li>
+<li><p><code>vi ./H3C_iMC_PLAT_7.3_E0703_Standard_linux/linux/install/components/common/deploy/dma.sh</code>修改最后一行DUnsupportMysql参数的值为false</p>
+<p><img src="https://s1.ax1x.com/2020/05/27/tE9fXQ.png" alt="tE9fXQ.png"></p>
+</li>
+<li><p>开始安装imc，进入imc安装包的install目录，以root权限运行install.sh文件</p>
+<p><img src="https://s1.ax1x.com/2020/05/27/tE94mj.png" alt="tE94mj.png"></p>
+</li>
+<li><p>选择典型安装确定好后，弹出检查安装参数，填写正确的信息，即可安装并部署平台所有的组件。</p>
+<p><img src="https://s1.ax1x.com/2020/05/27/tE9I7n.png" alt="tE9I7n.png"></p>
+</li>
+<li><p>检查安装环境出现错误。</p>
+<p><img src="https://s1.ax1x.com/2020/05/27/tE97t0.png" alt="tE97t0.png"></p>
+<p>最后发现是之前修改的max_connections参数未生效，通过数据库查询<code>show variables like &#39;%max_connections%&#39;;</code>值为214。与设置的数值不一致。</p>
+</li>
+<li><p>解决方法为修改数据库配置文件参数。</p>
+<blockquote>
+<p>vi /usr/lib/systemd/system/mariadb.service<br>在[Service]标签下设置如下两个参数<br>LimitNOFILE=65535<br>LimitNPROC=65535<br>保存，退出。<br>systemctl daemon-reload<br>systemctl restart mariadb.service </p>
+</blockquote>
+<p>在使用数据库查询，<code>show variables like &#39;%max_connections%&#39;;</code>值为1024。与设置的数值一致。然后重新执行第9步。</p>
+</li>
+<li><p>安装成功。</p>
+<p><img src="https://s1.ax1x.com/2020/05/27/tE9qpT.png" alt="tE9qpT.png"></p>
+</li>
+<li><p>使用网页打开管理页面，admin/admin登录。</p>
+<p><img src="https://s1.ax1x.com/2020/05/27/tE9XX4.png" alt="tE9XX4.png"></p>
+</li>
+<li><p>到这一步，软件安装就完成了。接下来要把软件升级到最新版，使用H3C_iMC_PLAT_7.3_E0703P08_linux.zip升级包</p>
+<p><img src="https://s1.ax1x.com/2020/05/27/tECpA1.png" alt="tECpA1.png"></p>
+</li>
+<li><p>升级成功，浏览器清除缓存后重新登录就完事了。</p>
+<p><img src="https://s1.ax1x.com/2020/05/27/tECCh6.png" alt="tECCh6.png"></p>
+</li>
+<li><p>完</p>
+</li>
 </ol>
 </section>
     <!-- Tags START -->
@@ -170,20 +238,13 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2020/05/24/Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+      <a class="nav-left" href="/2020/05/26/Kylin-3-3-4%E7%B3%BB%E7%BB%9F%E5%8D%95%E7%94%A8%E6%88%B7%E9%87%8D%E7%BD%AE%E5%AF%86%E7%A0%81/">
         <span class="nav-arrow">← </span>
         
-          Linux命令行读书笔记
+          Kylin-3.3.4系统单用户重置密码
         
       </a>
     
-    
-      <a class="nav-right" href="/2020/05/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%AE%89%E8%A3%85iMC%E6%99%BA%E8%83%BD%E7%AE%A1%E7%90%86%E4%B8%AD%E5%BF%83/">
-        
-          服务器上安装iMC智能管理中心
-        
-        <span class="nav-arrow"> →</span>
-      </a>
     
   </div>
 
@@ -205,7 +266,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Kylin3-3-4系统忘记密码使用单用户模式修改密码"><span class="toc-nav-text">Kylin3.3.4系统忘记密码使用单用户模式修改密码</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#服务器上安装iMC智能管理中心"><span class="toc-nav-text">服务器上安装iMC智能管理中心</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#安装准备"><span class="toc-nav-text">安装准备</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#安装步骤"><span class="toc-nav-text">安装步骤</span></a></li></ol></li></ol>
     
   </div>
 </aside>
@@ -215,7 +276,7 @@
 
 <script>
   (function () {
-    var url = 'http://yoursite.com/2020/05/26/Kylin-3-3-4系统单用户重置密码/';
+    var url = 'http://yoursite.com/2020/05/27/服务器上安装iMC智能管理中心/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
