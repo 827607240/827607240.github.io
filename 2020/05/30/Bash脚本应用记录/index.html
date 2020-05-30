@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="yanm1ng&#39;s blog">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      Bash脚本应用记录 | HA
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>HA</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Bash脚本应用记录</h2>
+  <p class="post-date">2020-05-30</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>最近一直在看关于脚本的书籍，但是没有需求就没有想要去实现的动力。不仅如此，只看不练的话其实没什么用，过一段时间就忘了。这可真是让人头疼的一件事，不练习的话看书总感觉是浪费时间的一件事。最近要安装一个平台，安装过程稍微有点繁琐。想着通过脚本提高效率。</p>
+<hr>
+<h2 id="Bash脚本应用"><a href="#Bash脚本应用" class="headerlink" title="Bash脚本应用"></a>Bash脚本应用</h2><p>通过脚本来实现功能。首先遇到的第一个需求是在文件中插入多行文字。</p>
+<h3 id="在文件中添加多行文字"><a href="#在文件中添加多行文字" class="headerlink" title="在文件中添加多行文字"></a>在文件中添加多行文字</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这是一个错误的脚本示范</span></span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">cd</span> /etc/my.cnf.d/</span><br><span class="line">sed -i <span class="string">'/\[mysqld\]/a\max_connections=1024</span></span><br><span class="line"><span class="string">lower_case_table_names=1</span></span><br><span class="line"><span class="string">innodb_buffer_pool_size=1G</span></span><br><span class="line"><span class="string">innodb_additional_mem_pool_size=24M</span></span><br><span class="line"><span class="string">max_allowed_packet=256M</span></span><br><span class="line"><span class="string">character-set-server=gbk'</span> server.cnf</span><br><span class="line">systemctl restart mariadb.service</span><br><span class="line">mysql_secure_installation</span><br></pre></td></tr></table></figure>
+
+<p>踩的第一个坑就是换行符，运行后提示命令后含有多余的字符↵。多了一个回车符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">不同操作系统下的含义：</span><br><span class="line">\n:  UNIX 系统行末结束符</span><br><span class="line">\r\n: window 系统行末结束符</span><br><span class="line">\r:  MAC OS 系统行末结束符</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>参考文档：<a href="https://www.pythontab.com/html/2017/linuxkaiyuan_0115/1116.html" target="_blank" rel="noopener">https://www.pythontab.com/html/2017/linuxkaiyuan_0115/1116.html</a></p>
+</blockquote>
+<p>于是正确的脚本为</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">cd</span> /etc/my.cnf.d/</span><br><span class="line">sed -i <span class="string">'/\[mysqld\]/a\max_connections=1024\nlower_case_table_names=1\ninnodb_buffer_pool_size=1G\ninnodb_additional_mem_pool_size=24M\nmax_allowed_packet=256M\ncharacter-set-server=gbk'</span> server.cnf</span><br><span class="line">systemctl restart mariadb.service</span><br><span class="line">mysql_secure_installation</span><br></pre></td></tr></table></figure>
+
+<p>通过脚本实现了第一个功能，在文件中添加多行内容。</p>
+<h3 id="用脚本实现进度条"><a href="#用脚本实现进度条" class="headerlink" title="用脚本实现进度条"></a>用脚本实现进度条</h3><p>在网上摘抄的记录一下。</p>
+<ul>
+<li><p>按百分比显示进度</p>
+<p><strong>printf %3d</strong>为显示百分比预留了3位，循环条件i每次递增5主要是为了减少进度条显示的长度</p>
+<p><strong>i每次递增5，取模之后的index值还是依次循环，保证了转圈圈的方向和频率</strong></p>
+<p>改用其他数字，转圈的显示效果没有add=4n+1时的好</p>
+<p><img src="https://s1.ax1x.com/2020/05/30/tQQi7D.png" alt="tQQi7D.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">i&#x3D;0</span><br><span class="line">str&#x3D;&quot;&quot;</span><br><span class="line">arry&#x3D;(&quot;|&quot; &quot;&#x2F;&quot; &quot;-&quot; &quot;\\&quot;)</span><br><span class="line">while [ $i -le 100 ]</span><br><span class="line">do</span><br><span class="line">    let index&#x3D;i%4</span><br><span class="line">    printf &quot;%3d%% %c%-20s%c\r&quot; &quot;$i&quot; &quot;$&#123;arry[$index]&#125;&quot; &quot;$str&quot; &quot;$&#123;arry[$index]&#125;&quot;</span><br><span class="line">    sleep 0.2</span><br><span class="line">    let i&#x3D;i+5</span><br><span class="line">    str+&#x3D;&quot;*&quot;</span><br><span class="line">done</span><br><span class="line">echo &quot;&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进度条递进填充(绿色进度条)</p>
+<p><strong>ssty size</strong>获取终端X轴和Y轴长度</p>
+<p>total=total_stdx-2head 用来控制整个进度条的长度，左右各预留了head长度</p>
+<p>per和remain相加永远是total大小</p>
+<p>y;xH设置光标位置，${total_stdy};0H设置光标在终端的左下角</p>
+<p>%${n}s指定了宽度为n个字符，%${per}s+%${remain}s的总宽是total不变的</p>
+<p>设置两个不同颜色的宽度区域，用来显示进度变化，参数赋值空字符串</p>
+<p><img src="https://s1.ax1x.com/2020/05/30/tQQ8hj.png" alt="tQQ8hj.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line"></span><br><span class="line">total_stdy&#x3D;&quot;$(($(stty size|cut -d&#39; &#39; -f1)))&quot;</span><br><span class="line">total_stdx&#x3D;&quot;$(($(stty size|cut -d&#39; &#39; -f2)))&quot;</span><br><span class="line"></span><br><span class="line">head&#x3D;&quot;Progress bar: &quot;</span><br><span class="line">total&#x3D;$[$&#123;total_stdx&#125; - $&#123;#head&#125;*2]</span><br><span class="line"></span><br><span class="line">i&#x3D;0</span><br><span class="line">loop&#x3D;100</span><br><span class="line">while [ $i -lt $loop ]</span><br><span class="line">do</span><br><span class="line">    let i&#x3D;i+1</span><br><span class="line">    </span><br><span class="line">    per&#x3D;$[$&#123;i&#125;*$&#123;total&#125;&#x2F;$&#123;loop&#125;]</span><br><span class="line">    remain&#x3D;$[$&#123;total&#125; - $&#123;per&#125;]</span><br><span class="line">    printf &quot;\r\e[$&#123;total_stdy&#125;;0H$&#123;head&#125;\e[42m%$&#123;per&#125;s\e[47m%$&#123;remain&#125;s\e[00m&quot; &quot;&quot; &quot;&quot;</span><br><span class="line">    sleep 0.1</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">echo &quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>进度条内容转自：<a href="http://yangtze736.github.io/技术/2018/05/02/shell-tips/" target="_blank" rel="noopener">http://yangtze736.github.io/%E6%8A%80%E6%9C%AF/2018/05/02/shell-tips/</a></p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<p>mv etc/*   把目录下的文件移走</p>
+<p>mv etc/ 把etc整个目录移走</p>
+<p>sudo 命令需要输入当前用户的密码</p>
+<p>su 命令需要输入 root 用户的密码。</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#shell" >
+    <span class="tag-code">shell</span>
+  </a>
+
+  <a href="/tags#bash" >
+    <span class="tag-code">bash</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2020/05/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%AE%89%E8%A3%85iMC%E6%99%BA%E8%83%BD%E7%AE%A1%E7%90%86%E4%B8%AD%E5%BF%83/">
+        <span class="nav-arrow">← </span>
+        
+          服务器上安装iMC智能管理中心
+        
+      </a>
+    
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- No Comment -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Bash脚本应用"><span class="toc-nav-text">Bash脚本应用</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#在文件中添加多行文字"><span class="toc-nav-text">在文件中添加多行文字</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#用脚本实现进度条"><span class="toc-nav-text">用脚本实现进度条</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2020/05/30/Bash脚本应用记录/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2020 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng" target="_blank" rel="noopener">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>
