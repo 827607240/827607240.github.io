@@ -179,6 +179,35 @@
 <p>使用set -e 没有办法使用$? 来获取命令执行状态了，因为bash无法获得任何非0的返回值。你可以使用另一种结构，使用command。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">command</span> ||  （<span class="built_in">echo</span> <span class="string">"command failed"</span>; <span class="built_in">exit</span> 1） ; </span><br><span class="line">或者使用： </span><br><span class="line"><span class="keyword">if</span> ! <span class="built_in">command</span>; <span class="keyword">then</span> <span class="built_in">echo</span> <span class="string">"command failed"</span>; <span class="built_in">exit</span> 1; <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">判断句</span><br><span class="line"><span class="keyword">if</span> [ $? -ne 0 ]; <span class="keyword">then</span></span><br><span class="line">            <span class="built_in">echo</span> <span class="string">"failed"</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">echo</span> <span class="string">"succeed"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
 
+<p>shell中的比较符号如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">-eq</th>
+<th align="center">等于</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-ne</td>
+<td align="center">不等于</td>
+</tr>
+<tr>
+<td align="center">-gt</td>
+<td align="center">大于</td>
+</tr>
+<tr>
+<td align="center">-lt</td>
+<td align="center">小于</td>
+</tr>
+<tr>
+<td align="center">ge</td>
+<td align="center">大于等于</td>
+</tr>
+<tr>
+<td align="center">le</td>
+<td align="center">小于等于</td>
+</tr>
+</tbody></table>
 <hr>
 <p>mv etc/*   把目录下的文件移走</p>
 <p>mv etc/ 把etc整个目录移走</p>
