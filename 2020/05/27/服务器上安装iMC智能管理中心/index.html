@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="服务器上安装iMC智能管理中心, HA">
+    <meta name="keywords" content="安装iMC智能管理中心, HA">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>服务器上安装iMC智能管理中心 | HA</title>
+    <title>安装iMC智能管理中心 | HA</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -201,12 +201,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">服务器上安装iMC智能管理中心</h1>
+                    <h1 class="description center-align post-title">安装iMC智能管理中心</h1>
                 </div>
             </div>
         </div>
@@ -461,8 +461,42 @@
 </ol>
 <h3 id="脚本安装"><a href="#脚本安装" class="headerlink" title="脚本安装"></a>脚本安装</h3><p>为了提高效率，写了这个安装脚本，虽然不够完美，但确实简化了修改配置文件的步骤。</p>
 <p>以下是脚本文件内容。运行该脚本前要修改yum源从挂载的镜像进行更新。运行后再执行iMC安装脚本就可以。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/bash -e</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"!!!!运行脚本之前确保系统镜像已挂载，yum源能正常使用，将imc安装包复制到/tmp目录下!!!!"</span></span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">read</span> -r -p <span class="string">"Are You Sure? [Y/n] "</span> input</span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> <span class="variable">$input</span> <span class="keyword">in</span></span><br><span class="line">    [yY][eE][sS]|[yY])</span><br><span class="line">		<span class="built_in">echo</span> <span class="string">"Yes"</span></span><br><span class="line">		;;</span><br><span class="line"></span><br><span class="line">    [nN][oO]|[nN])</span><br><span class="line">		<span class="built_in">echo</span> <span class="string">"No"</span></span><br><span class="line">		;;</span><br><span class="line"></span><br><span class="line">    *)</span><br><span class="line">		<span class="built_in">echo</span> <span class="string">"Invalid input..."</span></span><br><span class="line">		<span class="built_in">exit</span> 1</span><br><span class="line">		;;</span><br><span class="line"><span class="keyword">esac</span></span><br><span class="line"></span><br><span class="line">yum makecache</span><br><span class="line">yum -y install mariadb-server ncurses-libs.i686 libaio.i686</span><br><span class="line"><span class="built_in">cd</span> /etc/my.cnf.d/</span><br><span class="line">sed -i <span class="string">'/\[mysqld\]/a\max_connections=1024\nlower_case_table_names=1\ninnodb_buffer_pool_size=1G\ninnodb_additional_mem_pool_size=24M\nmax_allowed_packet=256M\ncharacter-set-server=gbk'</span> server.cnf </span><br><span class="line">systemctl restart mariadb.service</span><br><span class="line">mysql_secure_installation</span><br><span class="line"><span class="built_in">cd</span> /tmp/H3C_iMC_PLAT_7.3_E0703_Standard_linux/linux/install/</span><br><span class="line">sed -i <span class="string">"s/DUnsupportMySQL=true/DUnsupportMySQL=false/g"</span> install.sh</span><br><span class="line"><span class="built_in">cd</span> /usr/lib/systemd/system/</span><br><span class="line">sed -i <span class="string">'/\[Service\]/a\LimitNOFILE=65535\nLimitNPROC=65535'</span> mariadb.service</span><br><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart mariadb.service</span><br><span class="line"><span class="built_in">cd</span> /tmp/H3C_iMC_PLAT_7.3_E0703_Standard_linux/linux/install/</span><br><span class="line">chmod u+x install.sh</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"请执行这条命令开始安装  sh /tmp/H3C_iMC_PLAT_7.3_E0703_Standard_linux/linux/install/install.sh"</span></span><br></pre></td></tr></table></figure>
+<pre><code class="bash">#!/bin/bash -e
+echo &quot;!!!!运行脚本之前确保系统镜像已挂载，yum源能正常使用，将imc安装包复制到/tmp目录下!!!!&quot;
+#!/bin/bash
 
+read -r -p &quot;Are You Sure? [Y/n] &quot; input
+
+case $input in
+    [yY][eE][sS]|[yY])
+        echo &quot;Yes&quot;
+        ;;
+
+    [nN][oO]|[nN])
+        echo &quot;No&quot;
+        ;;
+
+    *)
+        echo &quot;Invalid input...&quot;
+        exit 1
+        ;;
+esac
+
+yum makecache
+yum -y install mariadb-server ncurses-libs.i686 libaio.i686
+cd /etc/my.cnf.d/
+sed -i &#39;/\[mysqld\]/a\max_connections=1024\nlower_case_table_names=1\ninnodb_buffer_pool_size=1G\ninnodb_additional_mem_pool_size=24M\nmax_allowed_packet=256M\ncharacter-set-server=gbk&#39; server.cnf 
+systemctl restart mariadb.service
+mysql_secure_installation
+cd /tmp/H3C_iMC_PLAT_7.3_E0703_Standard_linux/linux/install/
+sed -i &quot;s/DUnsupportMySQL=true/DUnsupportMySQL=false/g&quot; install.sh
+cd /usr/lib/systemd/system/
+sed -i &#39;/\[Service\]/a\LimitNOFILE=65535\nLimitNPROC=65535&#39; mariadb.service
+systemctl daemon-reload
+systemctl restart mariadb.service
+cd /tmp/H3C_iMC_PLAT_7.3_E0703_Standard_linux/linux/install/
+chmod u+x install.sh
+echo &quot;请执行这条命令开始安装  sh /tmp/H3C_iMC_PLAT_7.3_E0703_Standard_linux/linux/install/install.sh&quot;</code></pre>
 
             </div>
             <hr/>
@@ -843,7 +877,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">19.1k</span>&nbsp;字
+                class="white-color">19.2k</span>&nbsp;字
             
             
             

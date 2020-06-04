@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="一张图片引起的数据库复习风波, HA">
+    <meta name="keywords" content="数据库复习风波, HA">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>一张图片引起的数据库复习风波 | HA</title>
+    <title>数据库复习风波 | HA</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -201,12 +201,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">一张图片引起的数据库复习风波</h1>
+                    <h1 class="description center-align post-title">数据库复习风波</h1>
                 </div>
             </div>
         </div>
@@ -348,7 +348,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    471
+                    470
                 </div>
                 
 
@@ -367,17 +367,27 @@
             <div id="articleContent">
                 <p>写这篇文章的起因，实在是巧合，微信群里有人发了一张有关于数据库的面试题。本来想着自己会点儿，于是试着做一下。但由于自己也好久没用过数据库，很多基本的命令都忘记了。orz，真的是不做题都不知道自己其实根本就不会。学点皮毛又缺乏练习导致最后跟没学一样，这样看来，复习真的是太有必要了。不过自己一直都是随缘复习。发现自己不会了才会再进行复习。</p>
 <p>觉得自己太废物了，自愧不如，再使用以下数据库，不使用数据库管理工具，完全使用命令来进行数据库的创建，删除等基础操作。再多练习一下增删改查。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create table students(id int,name varchar(20),gender varchar(1),join_date date,birthday date) default charset&#x3D;utf8;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; insert into students(id,name,gender,join_date,birthday) values(1,&#39;张三&#39;,&#39;M&#39;,&#39;2020-01-01&#39;,&#39;2020-01-01&#39;);</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from students;</span><br><span class="line">+------+--------+--------+------------+------------+</span><br><span class="line">| id   | name   | gender | join_date  | birthday   |</span><br><span class="line">+------+--------+--------+------------+------------+</span><br><span class="line">|    1 | 张三   | M      | 2020-01-01 | 2020-01-01 |</span><br><span class="line">+------+--------+--------+------------+------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<pre><code class="mysql">mysql&gt; create table students(id int,name varchar(20),gender varchar(1),join_date date,birthday date) default charset=utf8;
+Query OK, 0 rows affected (0.01 sec)
 
+mysql&gt; insert into students(id,name,gender,join_date,birthday) values(1,&#39;张三&#39;,&#39;M&#39;,&#39;2020-01-01&#39;,&#39;2020-01-01&#39;);
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; select * from students;
++------+--------+--------+------------+------------+
+| id   | name   | gender | join_date  | birthday   |
++------+--------+--------+------------+------------+
+|    1 | 张三   | M      | 2020-01-01 | 2020-01-01 |
++------+--------+--------+------------+------------+
+1 row in set (0.00 sec)</code></pre>
 <p>创建一条表数据，发现mysql数据库一开始不能输入中文数据。需要修改编码格式才能正常运行。解决方法为在创建表的命令后面添加指定字符集的命令<code>default charset=utf8</code></p>
 <p>还有就是格式化显示数据库的表格，有时候数据库的表格看不清楚需要进行处理。</p>
 <ul>
 <li><p>在命令后面添加<code>\g</code>这样数据会按照列显示。看的更明了一些。</p>
 </li>
 <li><p>使用方向键看左右的表格，esc可以退出</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; pager less -SFX;</span><br><span class="line">PAGER set to &#39;less -SFX&#39;</span><br></pre></td></tr></table></figure>
-
-</li>
+<pre><code>mysql&gt; pager less -SFX;
+PAGER set to &#39;less -SFX&#39;</code></pre></li>
 </ul>
 <p>暂时就记录这些，之后在更新。</p>
 
@@ -495,9 +505,9 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="一张图片引起的数据库复习风波">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="数据库复习风波">
                         
-                        <span class="card-title">一张图片引起的数据库复习风波</span>
+                        <span class="card-title">数据库复习风波</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -762,7 +772,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">19.1k</span>&nbsp;字
+                class="white-color">19.2k</span>&nbsp;字
             
             
             
