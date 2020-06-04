@@ -1,236 +1,589 @@
-<!DOCTYPE html>
-<html>
-  <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-  <meta name="description" content="yanm1ng&#39;s blog">
-  <meta name="keyword" content="hexo-theme, vuejs">
-  
-    <link rel="shortcut icon" href="/css/images/logo.png">
-  
-  <title>
-    
-      HA
-    
-  </title>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
-  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
-  
-<link rel="stylesheet" href="/css/style.css">
+<!DOCTYPE HTML>
+<html lang="zh-CN">
 
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
-  
-  
-  
 
-  
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="HA">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>HA</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
 <meta name="generator" content="Hexo 4.2.0"></head>
-<div class="wechat-share">
-  <img src="/css/images/logo.png" />
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">HA</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">HA</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+    </ul>
 </div>
 
-  <body>
-    <header class="header fixed-header">
-  <div class="header-container">
-    <a class="home-link" href="/">
-      <div class="logo"></div>
-      <span>HA</span>
-    </a>
-    <ul class="right-list">
-      
-        <li class="list-item">
-          
-            <a href="/" class="item-link active">Home</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/tags/" class="item-link">Tags</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/archives/" class="item-link">Archives</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/project/" class="item-link">Projects</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/about/" class="item-link">About</a>
-          
-        </li>
-      
-    </ul>
-    <div class="menu">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </div>
-    <div class="menu-mask">
-      <ul class="menu-list">
+
+        </div>
+
         
-          <li class="menu-item">
-            
-              <a href="/" class="menu-link mobile-active">Home</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/tags/" class="menu-link">Tags</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/archives/" class="menu-link">Archives</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/project/" class="menu-link">Projects</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/about/" class="menu-link">About</a>
-            
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+    </nav>
+
 </header>
 
-    <main class="app-body">
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2020/06/02/%E4%B8%80%E5%BC%A0%E5%9B%BE%E7%89%87%E5%BC%95%E8%B5%B7%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E9%A3%8E%E6%B3%A2/">一张图片引起的数据库复习风波</a>
-      </h2>
-      <p class="article-date">June 2, 2020</p>
-      
-        
-  <a href="/tags#mysql" >
-    <span class="tag-code">mysql</span>
-  </a>
+    
+<style>
+    .carousel-control {
+        width: 45px;
+        height: 45px;
+        line-height: 55px;
+        border-radius: 45px;
+        background: transparent;
+        cursor: pointer;
+        z-index: 100;
+    }
 
-      
-      <div class="article-summary">
-        
-          写这篇文章的起因，实在是巧合，微信群里有人发了一张有关于数据库的面试题。本来想着自己会点儿，于是试着做一下。但由于自己也好久没用过数据库，很多基本的命令都忘记了。orz，真的是不做题都不知道自己其实根本就不会。学点皮毛又缺乏练习导致最后跟没学一样，这样看来，复习真的是太有必要了。不过自己一直 ...
-        
-      </div>
-      <a class="more" href="/2020/06/02/%E4%B8%80%E5%BC%A0%E5%9B%BE%E7%89%87%E5%BC%95%E8%B5%B7%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E9%A3%8E%E6%B3%A2/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2020/05/30/Bash%E8%84%9A%E6%9C%AC%E5%BA%94%E7%94%A8%E8%AE%B0%E5%BD%95/">Bash脚本应用记录</a>
-      </h2>
-      <p class="article-date">May 30, 2020</p>
-      
-        
-  <a href="/tags#shell" >
-    <span class="tag-code">shell</span>
-  </a>
+    #prev-cover {
+        position: absolute;
+        top: 48%;
+        left: 8px;
+    }
 
-  <a href="/tags#bash" >
-    <span class="tag-code">bash</span>
-  </a>
+    #next-cover {
+        position: absolute;
+        top: 48%;
+        right: 8px;;
+    }
 
-      
-      <div class="article-summary">
-        
-          最近一直在看关于脚本的书籍，但是没有需求就没有想要去实现的动力。不仅如此，只看不练的话其实没什么用，过一段时间就忘了。这可真是让人头疼的一件事，不练习的话看书总感觉是浪费时间的一件事。最近要安装一个平台，安装过程稍微有点繁琐。想着通过脚本提高效率。
+    #prev-cover i {
+        margin-right: 3px;
+    }
 
-Bash脚本应用通过脚本来实现功能。首先 ...
-        
-      </div>
-      <a class="more" href="/2020/05/30/Bash%E8%84%9A%E6%9C%AC%E5%BA%94%E7%94%A8%E8%AE%B0%E5%BD%95/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2020/05/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%AE%89%E8%A3%85iMC%E6%99%BA%E8%83%BD%E7%AE%A1%E7%90%86%E4%B8%AD%E5%BF%83/">服务器上安装iMC智能管理中心</a>
-      </h2>
-      <p class="article-date">May 27, 2020</p>
-      
-        
-  <a href="/tags#Kylin" >
-    <span class="tag-code">Kylin</span>
-  </a>
+    #next-cover i {
+        margin-left: 3px;
+    }
 
-      
-      <div class="article-summary">
+    .carousel-control:hover {
+        background-color: rgba(0, 0, 0, .4);
+    }
+
+    .carousel-control i {
+        color: #fff;
+        font-size: 2.4rem;
+    }
+</style>
+
+
+
+<div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
+    
+
+    <div class="carousel-item red white-text bg-cover about-cover">
+        <div class="container">
+            <div class="row">
+    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+        <div class="brand">
+            <div class="title center-align">
+                
+                学习记录
+                
+            </div>
+
+            <div class="description center-align">
+                
+                <span id="subtitle"></span>
+                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+                <script>
+                    var typed = new Typed("#subtitle", {
+                        strings: ['从来没有真正的绝境, 只有心灵的迷途','Never really desperate, only the lost of the soul'],
+                        startDelay: 300,
+                        typeSpeed: 100,
+                        loop: true,
+                        backSpeed: 50,
+                        showCursor: true
+                    });
+                </script>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    // 每天切换 banner 图.  Switch banner image every day.
+    $('.bg-cover').css('background-image', 'url(/medias/banner/4.jpg)');
+</script>
+
+
+
+            <div class="cover-btns">
+                <a href="#indexCard" class="waves-effect waves-light btn">
+                    <i class="fa fa-angle-double-down"></i>开始阅读
+                </a>
+
+                
+            </div>
+            <div class="cover-social-link">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script>
+    $(function () {
+        let coverSlider = $('.carousel');
+
+        //用户触摸轮播自动 restartPlay 是否生效
+        let initUserPressedOrDraggedActive = false
+
+        //用户触摸轮播自动 restartPlay
+        function initUserPressedOrDragged(instance) {
+            setInterval(() => {
+                if (instance.pressed || instance.dragged) {
+                    // console.log('initUserPressedOrDragged: ',instance.pressed,instance.dragged)
+                    restartPlay()
+                }
+            }, 1000)
+        }
+
+        coverSlider.carousel({
+            duration: Number('120'),
+            fullWidth: true,
+            indicators: 'false' === 'true',
+            onCycleTo() {
+                if (!initUserPressedOrDraggedActive) {
+                    // console.log('initUserPressedOrDraggedActive')
+                    initUserPressedOrDragged(this)
+                    initUserPressedOrDraggedActive = true
+                }
+            },
+        })
+
+        let carouselIntervalId;
         
-          仅以此做一下记录。
+
+        function restartPlay() {
+            
+        };
+
+        
+    });
+</script>
+
+
+
+<main class="content">
+
+    
+    <div id="indexCard" class="index-card">
+        <div class="container ">
+            <div class="card">
+                <div class="card-content">
+                    
+
+                    
+
+                    
+
+                    
+                    <div id="recommend-sections" class="recommend">
+                        
+
+
+
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    
+
+    <!-- 所有文章卡片 -->
+    <article id="articles" class="container articles">
+        <div class="row article-row">
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2020/06/02/%E4%B8%80%E5%BC%A0%E5%9B%BE%E7%89%87%E5%BC%95%E8%B5%B7%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%8D%E4%B9%A0%E9%A3%8E%E6%B3%A2/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="一张图片引起的数据库复习风波">
+                            
+                            <span class="card-title">一张图片引起的数据库复习风波</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                写这篇文章的起因，实在是巧合，微信群里有人发了一张有关于数据库的面试题。本来想着自己会点儿，于是试着做一下。但由于自己也好久没用过数据库，很多基本的命令都忘记了。orz，真的是不做题都不知道自己其实根本就不会。学点皮毛又缺乏练习导致最后跟没
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-02
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                HA
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/mysql/">
+                            <span class="chip bg-color">mysql</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2020/05/30/Bash%E8%84%9A%E6%9C%AC%E5%BA%94%E7%94%A8%E8%AE%B0%E5%BD%95/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Bash脚本应用记录">
+                            
+                            <span class="card-title">Bash脚本应用记录</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                最近一直在看关于脚本的书籍，但是没有需求就没有想要去实现的动力。不仅如此，只看不练的话其实没什么用，过一段时间就忘了。这可真是让人头疼的一件事，不练习的话看书总感觉是浪费时间的一件事。最近要安装一个平台，安装过程稍微有点繁琐。想着通过脚本提
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-30
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                HA
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/bash/">
+                            <span class="chip bg-color">bash</span>
+                        </a>
+                        
+                        <a href="/tags/shell/">
+                            <span class="chip bg-color">shell</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2020/05/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%AE%89%E8%A3%85iMC%E6%99%BA%E8%83%BD%E7%AE%A1%E7%90%86%E4%B8%AD%E5%BF%83/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="服务器上安装iMC智能管理中心">
+                            
+                            <span class="card-title">服务器上安装iMC智能管理中心</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                仅以此做一下记录。
 服务器上安装iMC智能管理中心
 服务器安装系统前做磁盘阵列（此次使用的是raid5），提升磁盘读写速度，备份数据，保护数据安全。
 安装操作系统，此次安装的是湖南麒麟系统，工作站运行模式。
-安装数据库，安装iMC智能管理中心，部署平台组件。
+安装数据库，安装iMC智能管理中
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-27
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                HA
+                                
+                            </span>
+                        </div>
+                    </div>
 
-安装准备
-Kylin-3.3. ...
-        
-      </div>
-      <a class="more" href="/2020/05/27/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%AE%89%E8%A3%85iMC%E6%99%BA%E8%83%BD%E7%AE%A1%E7%90%86%E4%B8%AD%E5%BF%83/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2020/05/26/Kylin-3-3-4%E7%B3%BB%E7%BB%9F%E5%8D%95%E7%94%A8%E6%88%B7%E9%87%8D%E7%BD%AE%E5%AF%86%E7%A0%81/">Kylin-3.3.4系统单用户重置密码</a>
-      </h2>
-      <p class="article-date">May 26, 2020</p>
-      
-        
-  <a href="/tags#Kylin" >
-    <span class="tag-code">Kylin</span>
-  </a>
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Kylin/">
+                            <span class="chip bg-color">Kylin</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2020/05/26/Kylin-3-3-4%E7%B3%BB%E7%BB%9F%E5%8D%95%E7%94%A8%E6%88%B7%E9%87%8D%E7%BD%AE%E5%AF%86%E7%A0%81/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Kylin-3.3.4系统单用户重置密码">
+                            
+                            <span class="card-title">Kylin-3.3.4系统单用户重置密码</span>
+                        </div>
+                    </a>
 
-      
-      <div class="article-summary">
-        
-          安装系统时，创建了新用户并勾选了设置为管理员。登陆后却没有权限，也无法切换其他用户。secadm、sysadm在创建系统是未配置。在登录界面也无法正常登录。无果，联系湖南麒麟客服热线，无人接听。没办法，由于湖南麒麟也是用的Linux内核，只能尝试通过Linux系统重置密码的方式来尝试一下。
- ...
-        
-      </div>
-      <a class="more" href="/2020/05/26/Kylin-3-3-4%E7%B3%BB%E7%BB%9F%E5%8D%95%E7%94%A8%E6%88%B7%E9%87%8D%E7%BD%AE%E5%AF%86%E7%A0%81/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2020/05/24/Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">Linux命令行读书笔记</a>
-      </h2>
-      <p class="article-date">May 24, 2020</p>
-      
-        
-  <a href="/tags#Linux" >
-    <span class="tag-code">Linux</span>
-  </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                安装系统时，创建了新用户并勾选了设置为管理员。登陆后却没有权限，也无法切换其他用户。secadm、sysadm在创建系统是未配置。在登录界面也无法正常登录。无果，联系湖南麒麟客服热线，无人接听。没办法，由于湖南麒麟也是用的Linux内核，只
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-26
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                HA
+                                
+                            </span>
+                        </div>
+                    </div>
 
-  <a href="/tags#shell" >
-    <span class="tag-code">shell</span>
-  </a>
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Kylin/">
+                            <span class="chip bg-color">Kylin</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2020/05/24/Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Linux命令行读书笔记">
+                            
+                            <span class="card-title">Linux命令行读书笔记</span>
+                        </div>
+                    </a>
 
-      
-      <div class="article-summary">
-        
-          今天看了Linux shell脚本编程大全，对linux系统又进行了学习。
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                今天看了Linux shell脚本编程大全，对linux系统又进行了学习。
 Linux
 Linux内核
 GNU工具
@@ -243,191 +596,485 @@ Linux内核功能
 管理物理内存和虚拟内存。
 
 软件程序管理
-内核创建了第一个进程(称为init进程)来启动系统上所有其他进程。当内 ...
-        
-      </div>
-      <a class="more" href="/2020/05/24/Linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2020/05/16/Docker%E8%AE%B0%E5%BD%95/">Docker记录</a>
-      </h2>
-      <p class="article-date">May 16, 2020</p>
-      
-        
-  <a href="/tags#Docker" >
-    <span class="tag-code">Docker</span>
-  </a>
+内核创建了第一个进
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-24
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                HA
+                                
+                            </span>
+                        </div>
+                    </div>
 
-      
-      <div class="article-summary">
-        
-          以前听过docker这个名字，最近听的有点多了，于是就想简单了解一下docker到底是个什么东西，对我有没有一些帮助，于是在B站上看了一个docker入门视频。
-Docker是什么？Docker是一个轻量级的虚拟机，是一个主要应用在linux的虚拟机。包括镜像，容器(虚拟机)，tar文件(v ...
-        
-      </div>
-      <a class="more" href="/2020/05/16/Docker%E8%AE%B0%E5%BD%95/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2020/05/10/%E5%91%BD%E4%BB%A4%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/">命令上传漏洞利用</a>
-      </h2>
-      <p class="article-date">May 10, 2020</p>
-      
-        
-  <a href="/tags#dvwa" >
-    <span class="tag-code">dvwa</span>
-  </a>
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/shell/">
+                            <span class="chip bg-color">shell</span>
+                        </a>
+                        
+                        <a href="/tags/Linux/">
+                            <span class="chip bg-color">Linux</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2020/05/16/Docker%E8%AE%B0%E5%BD%95/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Docker记录">
+                            
+                            <span class="card-title">Docker记录</span>
+                        </div>
+                    </a>
 
-      
-      <div class="article-summary">
-        
-          之前的测试没做完，先做一点。(っ °Д °;)っ
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                以前听过docker这个名字，最近听的有点多了，于是就想简单了解一下docker到底是个什么东西，对我有没有一些帮助，于是在B站上看了一个docker入门视频。
+Docker是什么？Docker是一个轻量级的虚拟机，是一个主要应用在linu
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-16
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                HA
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Docker/">
+                            <span class="chip bg-color">Docker</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2020/05/10/%E5%91%BD%E4%BB%A4%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="命令上传漏洞利用">
+                            
+                            <span class="card-title">命令上传漏洞利用</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                之前的测试没做完，先做一点。(っ °Д °;)っ
 命令上传漏洞利用练习dvwa中的文件上传漏洞，想着把之前的一句话木马拿过来用，发现之前做的时候没留下痕迹，\┑(￣Д ￣)┍于是从网上找一句话木马再测试一下。
 最简单的一句话木马。
-1&lt;?php @eval($_POST[&#39;sh ...
-        
-      </div>
-      <a class="more" href="/2020/05/10/%E5%91%BD%E4%BB%A4%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2020/05/04/Linux%E4%B8%AD%E7%9A%84nc%E5%91%BD%E4%BB%A4%E5%92%8Cscp%E5%91%BD%E4%BB%A4/">Linux中的nc命令和scp命令</a>
-      </h2>
-      <p class="article-date">May 4, 2020</p>
-      
-        
-  <a href="/tags#Linux" >
-    <span class="tag-code">Linux</span>
-  </a>
+1&lt
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-10
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                HA
+                                
+                            </span>
+                        </div>
+                    </div>
 
-      
-      <div class="article-summary">
-        
-          这几个命令平常不怎么用，但是实际用途还是有的。就先记录一下。
-lastblastb命令用于显示用户错误的登录列表，此指令可以发现系统的登录异常。单独执行lastb命令，它会读取位于/var/log目录下，名称为btmp的文件，并把该文件内容记录的登入失败的用户名单，全部显示出来。
-ncnc命 ...
-        
-      </div>
-      <a class="more" href="/2020/05/04/Linux%E4%B8%AD%E7%9A%84nc%E5%91%BD%E4%BB%A4%E5%92%8Cscp%E5%91%BD%E4%BB%A4/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2020/04/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/">计算机网络基础笔记</a>
-      </h2>
-      <p class="article-date">April 19, 2020</p>
-      
-        
-  <a href="/tags#网络" >
-    <span class="tag-code">网络</span>
-  </a>
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/dvwa/">
+                            <span class="chip bg-color">dvwa</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2020/05/04/Linux%E4%B8%AD%E7%9A%84nc%E5%91%BD%E4%BB%A4%E5%92%8Cscp%E5%91%BD%E4%BB%A4/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Linux中的nc命令和scp命令">
+                            
+                            <span class="card-title">Linux中的nc命令和scp命令</span>
+                        </div>
+                    </a>
 
-  <a href="/tags#服务器" >
-    <span class="tag-code">服务器</span>
-  </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                这几个命令平常不怎么用，但是实际用途还是有的。就先记录一下。
+lastblastb命令用于显示用户错误的登录列表，此指令可以发现系统的登录异常。单独执行lastb命令，它会读取位于/var/log目录下，名称为btmp的文件，并把该文件内容
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-04
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
 
-      
-      <div class="article-summary">
-        
-          在一个风和日丽的下午，看了一篇关于计算机网络的文章，发现自己有些东西也忘的差不多了，就想着顺便复习一下网络基础知识，并记录一下今天做了什么。
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Linux/">
+                            <span class="chip bg-color">Linux</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2020/04/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="计算机网络基础笔记">
+                            
+                            <span class="card-title">计算机网络基础笔记</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                在一个风和日丽的下午，看了一篇关于计算机网络的文章，发现自己有些东西也忘的差不多了，就想着顺便复习一下网络基础知识，并记录一下今天做了什么。
 
 保持清醒的头脑，知道自己在做什么，知道自己做过什么。
 
-我这个人还是比较健忘的，有时候两秒前刚做的事转头就忘的一干二净，想起来还挺费劲。于是为了避免 ...
-        
-      </div>
-      <a class="more" href="/2020/04/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%AC%94%E8%AE%B0/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2020/04/11/%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0Linux%E7%B3%BB%E7%BB%9F-%E7%AC%94%E8%AE%B0/">如何学习Linux系统_笔记</a>
-      </h2>
-      <p class="article-date">April 11, 2020</p>
-      
-        
-  <a href="/tags#Linux" >
-    <span class="tag-code">Linux</span>
-  </a>
+我这个人还是比较健忘的，有时候两秒前刚做
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-19
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
+                                    计算机网络
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
 
-      
-      <div class="article-summary">
-        
-          网上冲浪过程中看到这样一篇文章，觉得有些地方写的挺不错，摘抄过来，留一些我觉得比较有用的东西。这就是一篇关于linux系统的科普文。
-如何学习Linux系统_笔记1、Linux初学者入门首选-Redhat系列Redhat 是最早发行的个人版Linux。学会Redhat Linux，其他的Li ...
-        
-      </div>
-      <a class="more" href="/2020/04/11/%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0Linux%E7%B3%BB%E7%BB%9F-%E7%AC%94%E8%AE%B0/">Read more</a>
-    </article>
-  
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E7%BD%91%E7%BB%9C/">
+                            <span class="chip bg-color">网络</span>
+                        </a>
+                        
+                        <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+                            <span class="chip bg-color">服务器</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2020/04/11/%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0Linux%E7%B3%BB%E7%BB%9F-%E7%AC%94%E8%AE%B0/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="如何学习Linux系统_笔记">
+                            
+                            <span class="card-title">如何学习Linux系统_笔记</span>
+                        </div>
+                    </a>
 
-  
-    <div class="guide-pager">
-  
-    <a class="unvisible" href="/"><span class="page-arrow">←</span> Prev</a>
-  
-  
-    <a href="/page/2/">Next<span class="page-arrow"> →</span></a>
-  
-</div>
-  
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                网上冲浪过程中看到这样一篇文章，觉得有些地方写的挺不错，摘抄过来，留一些我觉得比较有用的东西。这就是一篇关于linux系统的科普文。
+如何学习Linux系统_笔记1、Linux初学者入门首选-Redhat系列Redhat 是最早发行的个人版
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-11
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Linux/">
+                            <span class="chip bg-color">Linux</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </article>
+
 </main>
 
 
-    <div class="scroll-top">
-  <span class="arrow-icon"></span>
+<div class="container paging">
+    <div class="row">
+        <div class="col s6 m4 l4">
+            
+            <a class="left btn-floating btn-large disabled">
+                <i class="fas fa-angle-left"></i>
+            </a>
+            
+        </div>
+        <div class="page-info col m4 l4 hide-on-small-only">
+            <div class="center-align b-text-gray">1 / 2</div>
+        </div>
+        <div class="col s6 m4 l4">
+            
+            <a href="/page/2/"
+               class="right btn-floating btn-large waves-effect waves-light bg-color">
+                <i class="fas fa-angle-right"></i>
+            </a>
+            
+        </div>
+    </div>
 </div>
-    <footer class="app-footer">
-  <p class="copyright">
-    &copy; 2020 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
-    <br>
-    Theme by <a href="https://github.com/yanm1ng" target="_blank" rel="noopener">yanm1ng</a>
-  </p>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2020</span>
+            <a href="/about" target="_blank">HA</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">19.1k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2020";
+                    var startMonth = "2";
+                    var startDate = "24";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
 </footer>
 
-<script>
-  function async(u, c) {
-    var d = document, t = 'script',
-      o = d.createElement(t),
-      s = d.getElementsByTagName(t)[0];
-    o.src = u;
-    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-    s.parentNode.insertBefore(o, s);
-  }
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
 </script>
-<script>
-  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
-    FastClick.attach(document.body);
-  })
-</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
 
 <script>
-  var hasLine = 'true';
-  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
-    $('figure pre').each(function(i, block) {
-      var figure = $(this).parents('figure');
-      if (hasLine === 'false') {
-        figure.find('.gutter').hide();
-      }
-      var lang = figure.attr('class').split(' ')[1] || 'code';
-      var codeHtml = $(this).html();
-      var codeTag = document.createElement('code');
-      codeTag.className = lang;
-      codeTag.innerHTML = codeHtml;
-      $(this).attr('class', '').empty().html(codeTag);
-      figure.attr('data-lang', lang.toUpperCase());
-      hljs.highlightBlock(block);
-    });
-  })
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
 </script>
-<!-- Baidu Tongji -->
 
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
 
-<script src="/js/script.js"></script>
+    
 
-  </body>
+    
+
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
 </html>
