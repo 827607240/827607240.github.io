@@ -372,17 +372,30 @@
                 <p>最近一直在看关于脚本的书籍，但是没有需求就没有想要去实现的动力。不仅如此，只看不练的话其实没什么用，过一段时间就忘了。这可真是让人头疼的一件事，不练习的话看书总感觉是浪费时间的一件事。最近要安装一个平台，安装过程稍微有点繁琐。想着通过脚本提高效率。</p>
 <hr>
 <h2 id="Bash脚本应用"><a href="#Bash脚本应用" class="headerlink" title="Bash脚本应用"></a>Bash脚本应用</h2><p>通过脚本来实现功能。首先遇到的第一个需求是在文件中插入多行文字。</p>
-<h3 id="在文件中添加多行文字"><a href="#在文件中添加多行文字" class="headerlink" title="在文件中添加多行文字"></a>在文件中添加多行文字</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这是一个错误的脚本示范</span></span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">cd</span> /etc/my.cnf.d/</span><br><span class="line">sed -i <span class="string">'/\[mysqld\]/a\max_connections=1024</span></span><br><span class="line"><span class="string">lower_case_table_names=1</span></span><br><span class="line"><span class="string">innodb_buffer_pool_size=1G</span></span><br><span class="line"><span class="string">innodb_additional_mem_pool_size=24M</span></span><br><span class="line"><span class="string">max_allowed_packet=256M</span></span><br><span class="line"><span class="string">character-set-server=gbk'</span> server.cnf</span><br><span class="line">systemctl restart mariadb.service</span><br><span class="line">mysql_secure_installation</span><br></pre></td></tr></table></figure>
-
+<h3 id="在文件中添加多行文字"><a href="#在文件中添加多行文字" class="headerlink" title="在文件中添加多行文字"></a>在文件中添加多行文字</h3><pre><code class="bash"># 这是一个错误的脚本示范
+#!/bin/bash
+cd /etc/my.cnf.d/
+sed -i &#39;/\[mysqld\]/a\max_connections=1024
+lower_case_table_names=1
+innodb_buffer_pool_size=1G
+innodb_additional_mem_pool_size=24M
+max_allowed_packet=256M
+character-set-server=gbk&#39; server.cnf
+systemctl restart mariadb.service
+mysql_secure_installation</code></pre>
 <p>踩的第一个坑就是换行符，运行后提示命令后含有多余的字符↵。多了一个回车符。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">不同操作系统下的含义：</span><br><span class="line">\n:  UNIX 系统行末结束符</span><br><span class="line">\r\n: window 系统行末结束符</span><br><span class="line">\r:  MAC OS 系统行末结束符</span><br></pre></td></tr></table></figure>
-
-<blockquote>
+<pre><code>不同操作系统下的含义：
+\n:  UNIX 系统行末结束符
+\r\n: window 系统行末结束符
+\r:  MAC OS 系统行末结束符</code></pre><blockquote>
 <p>参考文档：<a href="https://www.pythontab.com/html/2017/linuxkaiyuan_0115/1116.html" target="_blank" rel="noopener">https://www.pythontab.com/html/2017/linuxkaiyuan_0115/1116.html</a></p>
 </blockquote>
 <p>于是正确的脚本为</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">cd</span> /etc/my.cnf.d/</span><br><span class="line">sed -i <span class="string">'/\[mysqld\]/a\max_connections=1024\nlower_case_table_names=1\ninnodb_buffer_pool_size=1G\ninnodb_additional_mem_pool_size=24M\nmax_allowed_packet=256M\ncharacter-set-server=gbk'</span> server.cnf</span><br><span class="line">systemctl restart mariadb.service</span><br><span class="line">mysql_secure_installation</span><br></pre></td></tr></table></figure>
-
+<pre><code class="bash">#!/bin/bash
+cd /etc/my.cnf.d/
+sed -i &#39;/\[mysqld\]/a\max_connections=1024\nlower_case_table_names=1\ninnodb_buffer_pool_size=1G\ninnodb_additional_mem_pool_size=24M\nmax_allowed_packet=256M\ncharacter-set-server=gbk&#39; server.cnf
+systemctl restart mariadb.service
+mysql_secure_installation</code></pre>
 <p>通过脚本实现了第一个功能，在文件中添加多行内容。</p>
 <h3 id="用脚本实现进度条"><a href="#用脚本实现进度条" class="headerlink" title="用脚本实现进度条"></a>用脚本实现进度条</h3><p>在网上摘抄的记录一下。</p>
 <ul>
@@ -391,8 +404,19 @@
 <p><strong>i每次递增5，取模之后的index值还是依次循环，保证了转圈圈的方向和频率</strong></p>
 <p>改用其他数字，转圈的显示效果没有add=4n+1时的好</p>
 <p><img src="https://s1.ax1x.com/2020/05/30/tQQi7D.png" alt="tQQi7D.png"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">i&#x3D;0</span><br><span class="line">str&#x3D;&quot;&quot;</span><br><span class="line">arry&#x3D;(&quot;|&quot; &quot;&#x2F;&quot; &quot;-&quot; &quot;\\&quot;)</span><br><span class="line">while [ $i -le 100 ]</span><br><span class="line">do</span><br><span class="line">    let index&#x3D;i%4</span><br><span class="line">    printf &quot;%3d%% %c%-20s%c\r&quot; &quot;$i&quot; &quot;$&#123;arry[$index]&#125;&quot; &quot;$str&quot; &quot;$&#123;arry[$index]&#125;&quot;</span><br><span class="line">    sleep 0.2</span><br><span class="line">    let i&#x3D;i+5</span><br><span class="line">    str+&#x3D;&quot;*&quot;</span><br><span class="line">done</span><br><span class="line">echo &quot;&quot;</span><br></pre></td></tr></table></figure>
-</li>
+<pre><code>#!/bin/bash
+i=0
+str=&quot;&quot;
+arry=(&quot;|&quot; &quot;/&quot; &quot;-&quot; &quot;\\&quot;)
+while [ $i -le 100 ]
+do
+    let index=i%4
+    printf &quot;%3d%% %c%-20s%c\r&quot; &quot;$i&quot; &quot;${arry[$index]}&quot; &quot;$str&quot; &quot;${arry[$index]}&quot;
+    sleep 0.2
+    let i=i+5
+    str+=&quot;*&quot;
+done
+echo &quot;&quot;</code></pre></li>
 <li><p>进度条递进填充(绿色进度条)</p>
 <p><strong>ssty size</strong>获取终端X轴和Y轴长度</p>
 <p>total=total_stdx-2head 用来控制整个进度条的长度，左右各预留了head长度</p>
@@ -401,27 +425,89 @@
 <p>%${n}s指定了宽度为n个字符，%${per}s+%${remain}s的总宽是total不变的</p>
 <p>设置两个不同颜色的宽度区域，用来显示进度变化，参数赋值空字符串</p>
 <p><img src="https://s1.ax1x.com/2020/05/30/tQQ8hj.png" alt="tQQ8hj.png"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line"></span><br><span class="line">total_stdy&#x3D;&quot;$(($(stty size|cut -d&#39; &#39; -f1)))&quot;</span><br><span class="line">total_stdx&#x3D;&quot;$(($(stty size|cut -d&#39; &#39; -f2)))&quot;</span><br><span class="line"></span><br><span class="line">head&#x3D;&quot;Progress bar: &quot;</span><br><span class="line">total&#x3D;$[$&#123;total_stdx&#125; - $&#123;#head&#125;*2]</span><br><span class="line"></span><br><span class="line">i&#x3D;0</span><br><span class="line">loop&#x3D;100</span><br><span class="line">while [ $i -lt $loop ]</span><br><span class="line">do</span><br><span class="line">    let i&#x3D;i+1</span><br><span class="line">    </span><br><span class="line">    per&#x3D;$[$&#123;i&#125;*$&#123;total&#125;&#x2F;$&#123;loop&#125;]</span><br><span class="line">    remain&#x3D;$[$&#123;total&#125; - $&#123;per&#125;]</span><br><span class="line">    printf &quot;\r\e[$&#123;total_stdy&#125;;0H$&#123;head&#125;\e[42m%$&#123;per&#125;s\e[47m%$&#123;remain&#125;s\e[00m&quot; &quot;&quot; &quot;&quot;</span><br><span class="line">    sleep 0.1</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">echo &quot;&quot;</span><br></pre></td></tr></table></figure>
+<pre><code>#!/bin/bash
 
-<blockquote>
+total_stdy=&quot;$(($(stty size|cut -d&#39; &#39; -f1)))&quot;
+total_stdx=&quot;$(($(stty size|cut -d&#39; &#39; -f2)))&quot;
+
+head=&quot;Progress bar: &quot;
+total=$[${total_stdx} - ${#head}*2]
+
+i=0
+loop=100
+while [ $i -lt $loop ]
+do
+    let i=i+1
+
+    per=$[${i}*${total}/${loop}]
+    remain=$[${total} - ${per}]
+    printf &quot;\r\e[${total_stdy};0H${head}\e[42m%${per}s\e[47m%${remain}s\e[00m&quot; &quot;&quot; &quot;&quot;
+    sleep 0.1
+done
+
+echo &quot;&quot;</code></pre><blockquote>
 <p>进度条内容转自：<a href="http://yangtze736.github.io/技术/2018/05/02/shell-tips/" target="_blank" rel="noopener">http://yangtze736.github.io/%E6%8A%80%E6%9C%AF/2018/05/02/shell-tips/</a></p>
 </blockquote>
 </li>
 </ul>
 <h3 id="脚本运行提示确认"><a href="#脚本运行提示确认" class="headerlink" title="脚本运行提示确认"></a>脚本运行提示确认</h3><p>有些情况下需要确认脚本的运行环境。所以添加了一步用户确认的指令。这条指令在很多情况下是不可或缺的一部分。</p>
 <h4 id="提示确认（输入错误则退出当前脚本）"><a href="#提示确认（输入错误则退出当前脚本）" class="headerlink" title="提示确认（输入错误则退出当前脚本）"></a>提示确认（输入错误则退出当前脚本）</h4><p>确认提示一次，如果你给输入错误，程序会以状态1退出。这个例子将只接受Y或N或YES或NO（不区分大小写）。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">read</span> -r -p <span class="string">"Are You Sure? [Y/n] "</span> input</span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> <span class="variable">$input</span> <span class="keyword">in</span></span><br><span class="line">    [yY][eE][sS]|[yY])</span><br><span class="line">		<span class="built_in">echo</span> <span class="string">"Yes"</span></span><br><span class="line">		;;</span><br><span class="line"></span><br><span class="line">    [nN][oO]|[nN])</span><br><span class="line">		<span class="built_in">echo</span> <span class="string">"No"</span></span><br><span class="line">       	;;</span><br><span class="line"></span><br><span class="line">    *)</span><br><span class="line">		<span class="built_in">echo</span> <span class="string">"Invalid input..."</span></span><br><span class="line">		<span class="built_in">exit</span> 1</span><br><span class="line">		;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
+<pre><code class="bash">#!/bin/bash
 
-<h4 id="提示确认（输入错误则需要重新输入）"><a href="#提示确认（输入错误则需要重新输入）" class="headerlink" title="提示确认（输入错误则需要重新输入）"></a>提示确认（输入错误则需要重新输入）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">true</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">	<span class="built_in">read</span> -r -p <span class="string">"Are You Sure? [Y/n] "</span> input</span><br><span class="line"></span><br><span class="line">	<span class="keyword">case</span> <span class="variable">$input</span> <span class="keyword">in</span></span><br><span class="line">	    [yY][eE][sS]|[yY])</span><br><span class="line">			<span class="built_in">echo</span> <span class="string">"Yes"</span></span><br><span class="line">			<span class="built_in">exit</span> 1</span><br><span class="line">			;;</span><br><span class="line"></span><br><span class="line">	    [nN][oO]|[nN])</span><br><span class="line">			<span class="built_in">echo</span> <span class="string">"No"</span></span><br><span class="line">			<span class="built_in">exit</span> 1	       	</span><br><span class="line">			;;</span><br><span class="line"></span><br><span class="line">	    *)</span><br><span class="line">			<span class="built_in">echo</span> <span class="string">"Invalid input..."</span></span><br><span class="line">			;;</span><br><span class="line">	<span class="keyword">esac</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+read -r -p &quot;Are You Sure? [Y/n] &quot; input
 
+case $input in
+    [yY][eE][sS]|[yY])
+        echo &quot;Yes&quot;
+        ;;
+
+    [nN][oO]|[nN])
+        echo &quot;No&quot;
+           ;;
+
+    *)
+        echo &quot;Invalid input...&quot;
+        exit 1
+        ;;
+esac</code></pre>
+<h4 id="提示确认（输入错误则需要重新输入）"><a href="#提示确认（输入错误则需要重新输入）" class="headerlink" title="提示确认（输入错误则需要重新输入）"></a>提示确认（输入错误则需要重新输入）</h4><pre><code class="bash">#!/bin/bash
+
+while true
+do
+    read -r -p &quot;Are You Sure? [Y/n] &quot; input
+
+    case $input in
+        [yY][eE][sS]|[yY])
+            echo &quot;Yes&quot;
+            exit 1
+            ;;
+
+        [nN][oO]|[nN])
+            echo &quot;No&quot;
+            exit 1               
+            ;;
+
+        *)
+            echo &quot;Invalid input...&quot;
+            ;;
+    esac
+done</code></pre>
 <blockquote>
 <p>原文链接：<a href="https://blog.csdn.net/liyyzz33/article/details/93497802" target="_blank" rel="noopener">https://blog.csdn.net/liyyzz33/article/details/93497802</a></p>
 </blockquote>
 <h3 id="脚本运行错误自动退出"><a href="#脚本运行错误自动退出" class="headerlink" title="脚本运行错误自动退出"></a>脚本运行错误自动退出</h3><p>让脚本在某条命令执行失败的时候停止执行后续的指令。</p>
 <p>在Shell脚本中加入：<code>#!/bin/bash -e 或者 set -e</code>就能够让脚本在有错误的时候退出。</p>
 <p>使用set -e 没有办法使用$? 来获取命令执行状态了，因为bash无法获得任何非0的返回值。你可以使用另一种结构，使用command。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">command</span> ||  （<span class="built_in">echo</span> <span class="string">"command failed"</span>; <span class="built_in">exit</span> 1） ; </span><br><span class="line">或者使用： </span><br><span class="line"><span class="keyword">if</span> ! <span class="built_in">command</span>; <span class="keyword">then</span> <span class="built_in">echo</span> <span class="string">"command failed"</span>; <span class="built_in">exit</span> 1; <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">判断句</span><br><span class="line"><span class="keyword">if</span> [ $? -ne 0 ]; <span class="keyword">then</span></span><br><span class="line">            <span class="built_in">echo</span> <span class="string">"failed"</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">echo</span> <span class="string">"succeed"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<pre><code class="bash">command ||  （echo &quot;command failed&quot;; exit 1） ; 
+或者使用： 
+if ! command; then echo &quot;command failed&quot;; exit 1; fi
 
+判断句
+if [ $? -ne 0 ]; then
+            echo &quot;failed&quot;
+    else
+            echo &quot;succeed&quot;
+fi</code></pre>
 <p>shell中的比较符号如下：</p>
 <table>
 <thead>
@@ -840,7 +926,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">19.2k</span>&nbsp;字
+                class="white-color">19.7k</span>&nbsp;字
             
             
             

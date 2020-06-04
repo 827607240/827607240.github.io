@@ -357,7 +357,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    578
+                    600
                 </div>
                 
 
@@ -378,32 +378,134 @@
 <h2 id="数据库的基本用法"><a href="#数据库的基本用法" class="headerlink" title="数据库的基本用法"></a>数据库的基本用法</h2><p>数据库的种类有很多，也有对应的图形化管理界面，但还是要掌握使用命令来对数据库进行操作。</p>
 <p>由于平常自己也很少使用数据库，现在只记录一些最基本的用法。</p>
 <h3 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h3><p>登录数据库；</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
-
+<pre><code class="shell">mysql -u root -p</code></pre>
 <p>查看数据库；</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> show databases;   </span></span><br><span class="line">+--------------------+</span><br><span class="line">| Database           |</span><br><span class="line">+--------------------+</span><br><span class="line">| information_schema |</span><br><span class="line">| app                |</span><br><span class="line">| mysql              |</span><br><span class="line">| performance_schema |</span><br><span class="line">| sys                |</span><br><span class="line">+--------------------+</span><br><span class="line">5 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
-
+<pre><code class="shell">mysql&gt; show databases;   
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| app                |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)</code></pre>
 <p>删除app数据库；</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> drop database app;</span></span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> show databases;</span></span><br><span class="line">+--------------------+</span><br><span class="line">| Database           |</span><br><span class="line">+--------------------+</span><br><span class="line">| information_schema |</span><br><span class="line">| mysql              |</span><br><span class="line">| performance_schema |</span><br><span class="line">| sys                |</span><br><span class="line">+--------------------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<pre><code class="shell">mysql&gt; drop database app;
+Query OK, 0 rows affected (0.00 sec)
 
+mysql&gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)</code></pre>
 <p>创建app数据库；</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> create database app;</span></span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line"></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> show databases;</span></span><br><span class="line">+--------------------+</span><br><span class="line">| Database           |</span><br><span class="line">+--------------------+</span><br><span class="line">| information_schema |</span><br><span class="line">| app                |</span><br><span class="line">| mysql              |</span><br><span class="line">| performance_schema |</span><br><span class="line">| sys                |</span><br><span class="line">+--------------------+</span><br><span class="line">5 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<pre><code class="shell">mysql&gt; create database app;
+Query OK, 1 row affected (0.00 sec)
 
+mysql&gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| app                |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)</code></pre>
 <p>选择数据库，查看数据库中的表；</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use app;    </span><br><span class="line">show tables;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="shell">use app;    
+show tables;   </code></pre>
 <p>选择数据库，创建一个新表，插入一行新数据；</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> use app;</span></span><br><span class="line">Database changed</span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> create table table_name(id int,username varchar(50),password varchar(50));</span></span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br><span class="line"></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> select * from table_name;</span></span><br><span class="line">Empty set (0.00 sec)</span><br><span class="line"></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> insert into table_name(id,username,password) values(1,<span class="string">'root'</span>,<span class="string">'toor'</span>);</span></span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line"></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> select * from table_name;</span></span><br><span class="line">+------+----------+----------+</span><br><span class="line">| id   | username | password |</span><br><span class="line">+------+----------+----------+</span><br><span class="line">|    1 | root     | toor     |</span><br><span class="line">+------+----------+----------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<pre><code class="shell">mysql&gt; use app;
+Database changed
+mysql&gt; create table table_name(id int,username varchar(50),password varchar(50));
+Query OK, 0 rows affected (0.01 sec)
 
+mysql&gt; select * from table_name;
+Empty set (0.00 sec)
+
+mysql&gt; insert into table_name(id,username,password) values(1,&#39;root&#39;,&#39;toor&#39;);
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; select * from table_name;
++------+----------+----------+
+| id   | username | password |
++------+----------+----------+
+|    1 | root     | toor     |
++------+----------+----------+
+1 row in set (0.00 sec)</code></pre>
 <p>插入多行新数据；</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> insert into table_name(id,username,password) values(2,<span class="string">'admin'</span>,<span class="string">'admin123'</span>),(3,<span class="string">'sysadm'</span>,<span class="string">'admin456'</span>),(4,<span class="string">'secadm'</span>,<span class="string">'secadm'</span>);</span></span><br><span class="line">Query OK, 3 rows affected (0.01 sec)</span><br><span class="line">Records: 3  Duplicates: 0  Warnings: 0</span><br><span class="line"></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> select * from table_name;</span></span><br><span class="line">+------+----------+----------+</span><br><span class="line">| id   | username | password |</span><br><span class="line">+------+----------+----------+</span><br><span class="line">|    1 | root     | toor     |</span><br><span class="line">|    2 | admin    | admin123 |</span><br><span class="line">|    3 | sysadm   | admin456 |</span><br><span class="line">|    4 | secadm   | secadm   |</span><br><span class="line">+------+----------+----------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<pre><code class="shell">mysql&gt; insert into table_name(id,username,password) values(2,&#39;admin&#39;,&#39;admin123&#39;),(3,&#39;sysadm&#39;,&#39;admin456&#39;),(4,&#39;secadm&#39;,&#39;secadm&#39;);
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
 
+mysql&gt; select * from table_name;
++------+----------+----------+
+| id   | username | password |
++------+----------+----------+
+|    1 | root     | toor     |
+|    2 | admin    | admin123 |
+|    3 | sysadm   | admin456 |
+|    4 | secadm   | secadm   |
++------+----------+----------+
+4 rows in set (0.00 sec)</code></pre>
 <p>更新表中的字段内容；</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> update table_name <span class="built_in">set</span> password=<span class="string">'123456'</span> <span class="built_in">where</span> id=4;</span></span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line">Rows matched: 1  Changed: 1  Warnings: 0</span><br><span class="line"></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> select * from table_name;</span></span><br><span class="line">+------+----------+----------+</span><br><span class="line">| id   | username | password |</span><br><span class="line">+------+----------+----------+</span><br><span class="line">|    1 | root     | toor     |</span><br><span class="line">|    2 | admin    | admin123 |</span><br><span class="line">|    3 | sysadm   | admin456 |</span><br><span class="line">|    4 | secadm   | 123456   |</span><br><span class="line">+------+----------+----------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> select * from table_name <span class="built_in">where</span> id=4;</span></span><br><span class="line">+------+----------+----------+</span><br><span class="line">| id   | username | password |</span><br><span class="line">+------+----------+----------+</span><br><span class="line">|    4 | secadm   | 123456   |</span><br><span class="line">+------+----------+----------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> select * from table_name;</span></span><br><span class="line">+------+----------+----------+</span><br><span class="line">| id   | username | password |</span><br><span class="line">+------+----------+----------+</span><br><span class="line">|    1 | root     | toor     |</span><br><span class="line">|    2 | admin    | admin123 |</span><br><span class="line">|    3 | sysadm   | admin456 |</span><br><span class="line">|    4 | secadm   | 123456   |</span><br><span class="line">+------+----------+----------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<pre><code class="shell">mysql&gt; update table_name set password=&#39;123456&#39; where id=4;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
 
+mysql&gt; select * from table_name;
++------+----------+----------+
+| id   | username | password |
++------+----------+----------+
+|    1 | root     | toor     |
+|    2 | admin    | admin123 |
+|    3 | sysadm   | admin456 |
+|    4 | secadm   | 123456   |
++------+----------+----------+
+4 rows in set (0.00 sec)
+
+mysql&gt; select * from table_name where id=4;
++------+----------+----------+
+| id   | username | password |
++------+----------+----------+
+|    4 | secadm   | 123456   |
++------+----------+----------+
+1 row in set (0.00 sec)
+
+mysql&gt; select * from table_name;
++------+----------+----------+
+| id   | username | password |
++------+----------+----------+
+|    1 | root     | toor     |
+|    2 | admin    | admin123 |
+|    3 | sysadm   | admin456 |
+|    4 | secadm   | 123456   |
++------+----------+----------+
+4 rows in set (0.00 sec)</code></pre>
 <p>删除一行数据；</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> delete from table_name <span class="built_in">where</span> id=3;</span></span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line"></span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> select * from table_name;</span></span><br><span class="line">+------+----------+----------+</span><br><span class="line">| id   | username | password |</span><br><span class="line">+------+----------+----------+</span><br><span class="line">|    1 | root     | toor     |</span><br><span class="line">|    2 | admin    | admin123 |</span><br><span class="line">|    4 | secadm   | 123456   |</span><br><span class="line">+------+----------+----------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br><span class="line"><span class="meta">mysql&gt;</span><span class="bash"> <span class="built_in">exit</span></span></span><br><span class="line">Bye</span><br></pre></td></tr></table></figure>
+<pre><code class="shell">mysql&gt; delete from table_name where id=3;
+Query OK, 1 row affected (0.01 sec)
 
+mysql&gt; select * from table_name;
++------+----------+----------+
+| id   | username | password |
++------+----------+----------+
+|    1 | root     | toor     |
+|    2 | admin    | admin123 |
+|    4 | secadm   | 123456   |
++------+----------+----------+
+3 rows in set (0.00 sec)
+mysql&gt; exit
+Bye</code></pre>
 <h3 id="SQL-server"><a href="#SQL-server" class="headerlink" title="SQL server"></a>SQL server</h3><h3 id="access"><a href="#access" class="headerlink" title="access"></a>access</h3><h3 id="Oracle"><a href="#Oracle" class="headerlink" title="Oracle"></a>Oracle</h3>
             </div>
             <hr/>
@@ -811,7 +913,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">19.2k</span>&nbsp;字
+                class="white-color">19.7k</span>&nbsp;字
             
             
             

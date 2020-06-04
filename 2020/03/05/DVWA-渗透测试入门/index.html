@@ -323,16 +323,16 @@
                     
                     <div class="article-tag">
                         
+                            <a href="/tags/web/">
+                                <span class="chip bg-color">web</span>
+                            </a>
+                        
                             <a href="/tags/DVWA/">
                                 <span class="chip bg-color">DVWA</span>
                             </a>
                         
                             <a href="/tags/XSS/">
                                 <span class="chip bg-color">XSS</span>
-                            </a>
-                        
-                            <a href="/tags/web/">
-                                <span class="chip bg-color">web</span>
                             </a>
                         
                     </div>
@@ -365,7 +365,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.3k
+                    4.6k
                 </div>
                 
 
@@ -432,8 +432,27 @@
 <p>A||B          A执行失败，然后再执行B  </p>
 <hr>
 <h4 id="low-1"><a href="#low-1" class="headerlink" title="low"></a>low</h4><p>查看一下源代码：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'Submit'</span> ]  ) ) &#123;</span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	$target = $_REQUEST[ <span class="string">'ip'</span> ];</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Determine OS and execute the ping command.</span></span><br><span class="line">	<span class="keyword">if</span>( stristr( php_uname( <span class="string">'s'</span> ), <span class="string">'Windows NT'</span> ) ) &#123;</span><br><span class="line">		<span class="comment">// Windows</span></span><br><span class="line">		$cmd = shell_exec( <span class="string">'ping  '</span> . $target );</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// *nix</span></span><br><span class="line">		$cmd = shell_exec( <span class="string">'ping  -c 4 '</span> . $target );</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Feedback for the end user</span></span><br><span class="line">	$html .= <span class="string">"&lt;pre&gt;&#123;$cmd&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="php">&lt;?php
 
+if( isset( $_POST[ &#39;Submit&#39; ]  ) ) {
+    // Get input
+    $target = $_REQUEST[ &#39;ip&#39; ];
+
+    // Determine OS and execute the ping command.
+    if( stristr( php_uname( &#39;s&#39; ), &#39;Windows NT&#39; ) ) {
+        // Windows
+        $cmd = shell_exec( &#39;ping  &#39; . $target );
+    }
+    else {
+        // *nix
+        $cmd = shell_exec( &#39;ping  -c 4 &#39; . $target );
+    }
+
+    // Feedback for the end user
+    $html .= &quot;&lt;pre&gt;{$cmd}&lt;/pre&gt;&quot;;
+}
+
+?&gt;</code></pre>
 <p>输入一个IP试一下。<code>127.0.0.1</code></p>
 <img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjxk3zogj30v30dimza.jpg"/>
 
@@ -454,11 +473,42 @@
 
 <p>发现<code>||</code>前的命令必须是错误的才能执行<code>||</code>后的命令。否则只执行<code>||</code>前的命令。</p>
 <h4 id="medium-1"><a href="#medium-1" class="headerlink" title="medium"></a>medium</h4><p>首先，查看源代码：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'Submit'</span> ]  ) ) &#123;</span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	$target = $_REQUEST[ <span class="string">'ip'</span> ];</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Set blacklist</span></span><br><span class="line">	$substitutions = <span class="keyword">array</span>(</span><br><span class="line">		<span class="string">'&amp;&amp;'</span> =&gt; <span class="string">''</span>,</span><br><span class="line">		<span class="string">';'</span>  =&gt; <span class="string">''</span>,</span><br><span class="line">	);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Remove any of the charactars in the array (blacklist).</span></span><br><span class="line">	$target = str_replace( array_keys( $substitutions ), $substitutions, $target );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Determine OS and execute the ping command.</span></span><br><span class="line">	<span class="keyword">if</span>( stristr( php_uname( <span class="string">'s'</span> ), <span class="string">'Windows NT'</span> ) ) &#123;</span><br><span class="line">		<span class="comment">// Windows</span></span><br><span class="line">		$cmd = shell_exec( <span class="string">'ping  '</span> . $target );</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// *nix</span></span><br><span class="line">		$cmd = shell_exec( <span class="string">'ping  -c 4 '</span> . $target );</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Feedback for the end user</span></span><br><span class="line">	$html .= <span class="string">"&lt;pre&gt;&#123;$cmd&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="php">&lt;?php
 
+if( isset( $_POST[ &#39;Submit&#39; ]  ) ) {
+    // Get input
+    $target = $_REQUEST[ &#39;ip&#39; ];
+
+    // Set blacklist
+    $substitutions = array(
+        &#39;&amp;&amp;&#39; =&gt; &#39;&#39;,
+        &#39;;&#39;  =&gt; &#39;&#39;,
+    );
+
+    // Remove any of the charactars in the array (blacklist).
+    $target = str_replace( array_keys( $substitutions ), $substitutions, $target );
+
+    // Determine OS and execute the ping command.
+    if( stristr( php_uname( &#39;s&#39; ), &#39;Windows NT&#39; ) ) {
+        // Windows
+        $cmd = shell_exec( &#39;ping  &#39; . $target );
+    }
+    else {
+        // *nix
+        $cmd = shell_exec( &#39;ping  -c 4 &#39; . $target );
+    }
+
+    // Feedback for the end user
+    $html .= &quot;&lt;pre&gt;{$cmd}&lt;/pre&gt;&quot;;
+}
+
+?&gt;</code></pre>
 <p>发现只过滤了两个符号。</p>
 <blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$substitutions = <span class="keyword">array</span>(</span><br><span class="line">	<span class="string">'&amp;&amp;'</span> =&gt; <span class="string">''</span>,</span><br><span class="line">	<span class="string">';'</span>  =&gt; <span class="string">''</span>,</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<pre><code class="php">$substitutions = array(
+    &#39;&amp;&amp;&#39; =&gt; &#39;&#39;,
+    &#39;;&#39;  =&gt; &#39;&#39;,
+);</code></pre>
 </blockquote>
 <p>那么其他&amp;、|、||仍然能够使用。</p>
 <img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjzksq2nj30nl0c23zd.jpg"/>
@@ -468,14 +518,88 @@
 <img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk004ok9j30nb0hc0uu.jpg"/>
 
 <h4 id="high-1"><a href="#high-1" class="headerlink" title="high"></a>high</h4><p>先查看一下源代码：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'Submit'</span> ]  ) ) &#123;</span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	$target = trim($_REQUEST[ <span class="string">'ip'</span> ]);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Set blacklist</span></span><br><span class="line">	$substitutions = <span class="keyword">array</span>(</span><br><span class="line">		<span class="string">'&amp;'</span>  =&gt; <span class="string">''</span>,</span><br><span class="line">		<span class="string">';'</span>  =&gt; <span class="string">''</span>,</span><br><span class="line">		<span class="string">'| '</span> =&gt; <span class="string">''</span>,</span><br><span class="line">		<span class="string">'-'</span>  =&gt; <span class="string">''</span>,</span><br><span class="line">		<span class="string">'$'</span>  =&gt; <span class="string">''</span>,</span><br><span class="line">		<span class="string">'('</span>  =&gt; <span class="string">''</span>,</span><br><span class="line">		<span class="string">')'</span>  =&gt; <span class="string">''</span>,</span><br><span class="line">		<span class="string">'`'</span>  =&gt; <span class="string">''</span>,</span><br><span class="line">		<span class="string">'||'</span> =&gt; <span class="string">''</span>,</span><br><span class="line">	);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Remove any of the charactars in the array (blacklist).</span></span><br><span class="line">	$target = str_replace( array_keys( $substitutions ), $substitutions, $target );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Determine OS and execute the ping command.</span></span><br><span class="line">	<span class="keyword">if</span>( stristr( php_uname( <span class="string">'s'</span> ), <span class="string">'Windows NT'</span> ) ) &#123;</span><br><span class="line">		<span class="comment">// Windows</span></span><br><span class="line">		$cmd = shell_exec( <span class="string">'ping  '</span> . $target );</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// *nix</span></span><br><span class="line">		$cmd = shell_exec( <span class="string">'ping  -c 4 '</span> . $target );</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Feedback for the end user</span></span><br><span class="line">	$html .= <span class="string">"&lt;pre&gt;&#123;$cmd&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="php">&lt;?php
 
+if( isset( $_POST[ &#39;Submit&#39; ]  ) ) {
+    // Get input
+    $target = trim($_REQUEST[ &#39;ip&#39; ]);
+
+    // Set blacklist
+    $substitutions = array(
+        &#39;&amp;&#39;  =&gt; &#39;&#39;,
+        &#39;;&#39;  =&gt; &#39;&#39;,
+        &#39;| &#39; =&gt; &#39;&#39;,
+        &#39;-&#39;  =&gt; &#39;&#39;,
+        &#39;$&#39;  =&gt; &#39;&#39;,
+        &#39;(&#39;  =&gt; &#39;&#39;,
+        &#39;)&#39;  =&gt; &#39;&#39;,
+        &#39;`&#39;  =&gt; &#39;&#39;,
+        &#39;||&#39; =&gt; &#39;&#39;,
+    );
+
+    // Remove any of the charactars in the array (blacklist).
+    $target = str_replace( array_keys( $substitutions ), $substitutions, $target );
+
+    // Determine OS and execute the ping command.
+    if( stristr( php_uname( &#39;s&#39; ), &#39;Windows NT&#39; ) ) {
+        // Windows
+        $cmd = shell_exec( &#39;ping  &#39; . $target );
+    }
+    else {
+        // *nix
+        $cmd = shell_exec( &#39;ping  -c 4 &#39; . $target );
+    }
+
+    // Feedback for the end user
+    $html .= &quot;&lt;pre&gt;{$cmd}&lt;/pre&gt;&quot;;
+}
+
+?&gt;</code></pre>
 <p>仍然是过滤符号，发现<code>&#39;| &#39;</code>多了一个空格。于是我们使用|绕过。</p>
 <img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk07w955j30nb0btmy0.jpg"/>
 
 <h4 id="impossible-1"><a href="#impossible-1" class="headerlink" title="impossible"></a>impossible</h4><p>查看一下源代码：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'Submit'</span> ]  ) ) &#123;</span><br><span class="line">	<span class="comment">// Check Anti-CSRF token</span></span><br><span class="line">	checkToken( $_REQUEST[ <span class="string">'user_token'</span> ], $_SESSION[ <span class="string">'session_token'</span> ], <span class="string">'index.php'</span> );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	$target = $_REQUEST[ <span class="string">'ip'</span> ];</span><br><span class="line">	$target = stripslashes( $target );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Split the IP into 4 octects</span></span><br><span class="line">	$octet = explode( <span class="string">"."</span>, $target );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Check IF each octet is an integer</span></span><br><span class="line">	<span class="keyword">if</span>( ( is_numeric( $octet[<span class="number">0</span>] ) ) &amp;&amp; ( is_numeric( $octet[<span class="number">1</span>] ) ) &amp;&amp; ( is_numeric( $octet[<span class="number">2</span>] ) ) &amp;&amp; ( is_numeric( $octet[<span class="number">3</span>] ) ) &amp;&amp; ( sizeof( $octet ) == <span class="number">4</span> ) ) &#123;</span><br><span class="line">		<span class="comment">// If all 4 octets are int's put the IP back together.</span></span><br><span class="line">		$target = $octet[<span class="number">0</span>] . <span class="string">'.'</span> . $octet[<span class="number">1</span>] . <span class="string">'.'</span> . $octet[<span class="number">2</span>] . <span class="string">'.'</span> . $octet[<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Determine OS and execute the ping command.</span></span><br><span class="line">		<span class="keyword">if</span>( stristr( php_uname( <span class="string">'s'</span> ), <span class="string">'Windows NT'</span> ) ) &#123;</span><br><span class="line">			<span class="comment">// Windows</span></span><br><span class="line">			$cmd = shell_exec( <span class="string">'ping  '</span> . $target );</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">// *nix</span></span><br><span class="line">			$cmd = shell_exec( <span class="string">'ping  -c 4 '</span> . $target );</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Feedback for the end user</span></span><br><span class="line">		$html .= <span class="string">"&lt;pre&gt;&#123;$cmd&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// Ops. Let the user name theres a mistake</span></span><br><span class="line">		$html .= <span class="string">'&lt;pre&gt;ERROR: You have entered an invalid IP.&lt;/pre&gt;'</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Generate Anti-CSRF token</span></span><br><span class="line">generateSessionToken();</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="php">&lt;?php
 
+if( isset( $_POST[ &#39;Submit&#39; ]  ) ) {
+    // Check Anti-CSRF token
+    checkToken( $_REQUEST[ &#39;user_token&#39; ], $_SESSION[ &#39;session_token&#39; ], &#39;index.php&#39; );
+
+    // Get input
+    $target = $_REQUEST[ &#39;ip&#39; ];
+    $target = stripslashes( $target );
+
+    // Split the IP into 4 octects
+    $octet = explode( &quot;.&quot;, $target );
+
+    // Check IF each octet is an integer
+    if( ( is_numeric( $octet[0] ) ) &amp;&amp; ( is_numeric( $octet[1] ) ) &amp;&amp; ( is_numeric( $octet[2] ) ) &amp;&amp; ( is_numeric( $octet[3] ) ) &amp;&amp; ( sizeof( $octet ) == 4 ) ) {
+        // If all 4 octets are int&#39;s put the IP back together.
+        $target = $octet[0] . &#39;.&#39; . $octet[1] . &#39;.&#39; . $octet[2] . &#39;.&#39; . $octet[3];
+
+        // Determine OS and execute the ping command.
+        if( stristr( php_uname( &#39;s&#39; ), &#39;Windows NT&#39; ) ) {
+            // Windows
+            $cmd = shell_exec( &#39;ping  &#39; . $target );
+        }
+        else {
+            // *nix
+            $cmd = shell_exec( &#39;ping  -c 4 &#39; . $target );
+        }
+
+        // Feedback for the end user
+        $html .= &quot;&lt;pre&gt;{$cmd}&lt;/pre&gt;&quot;;
+    }
+    else {
+        // Ops. Let the user name theres a mistake
+        $html .= &#39;&lt;pre&gt;ERROR: You have entered an invalid IP.&lt;/pre&gt;&#39;;
+    }
+}
+
+// Generate Anti-CSRF token
+generateSessionToken();
+
+?&gt;</code></pre>
 <p>用<code>|net user</code>试一下。发现被要求输入正确的IP。注入失败。</p>
 <img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk0weg12j30nf094q3l.jpg"/>
 
@@ -493,8 +617,16 @@
 <img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk1n1yjqj30l8072mxa.jpg"/>
 
 <p>该页面源代码为：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>404<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://192.168.1.132/dvwa/vulnerabilities/csrf/?password_new=123456&amp;password_conf=123456&amp;Change=Change#"</span> <span class="attr">border</span>=<span class="string">"0"</span> <span class="attr">style</span>=<span class="string">"display:none;"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>404<span class="tag">&lt;<span class="name">h1</span></span></span><br><span class="line">&lt;h2&gt;file not found.&lt;h2&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
+<pre><code class="html">&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;404&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;img src=&quot;http://192.168.1.132/dvwa/vulnerabilities/csrf/?password_new=123456&amp;password_conf=123456&amp;Change=Change#&quot; border=&quot;0&quot; style=&quot;display:none;&quot;/&gt;
+&lt;h1&gt;404&lt;h1
+&lt;h2&gt;file not found.&lt;h2&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
 <p>在受害者点击后成功修改密码。</p>
 <h4 id="medium-2"><a href="#medium-2" class="headerlink" title="medium"></a>medium</h4><blockquote>
 <p>Medium级别的代码检查了保留变量 HTTP_REFERER（http包头的Referer参数的值，表示来源地址）中是否包含SERVER_NAME（http包头的Host参数，及要访问的主机名，这里是192.168.1.132），希望通过这种机制抵御CSRF攻击。</p>
@@ -502,11 +634,23 @@
 <p>过滤规则是http包头的Referer参数的值中必须包含受害者主机名（这里是192.168.1.132）</p>
 <p>我们可以将攻击页面命名为192.168.1.132.html（页面被放置在攻击者的服务器里，这里是192.168.1.129）就可以绕过了。</p>
 <p>在攻击端搭建网站，先搭建了一个主页index.html。链接使用的是短链接（有效期7天），就是密码修改链接。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- /*超链接，点击跳转*/ --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"192.168.1.132.html"</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span>11111111<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
+<pre><code class="html">&lt;!-- /*超链接，点击跳转*/ --&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;a href=&quot;192.168.1.132.html&quot; target=&quot;_blank&quot;&gt;11111111&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
 <p>有搭建了一个静态页面，192.168.1.132.html</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>404<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://suo.im/6nTcXO"</span> <span class="attr">border</span>=<span class="string">"0"</span> <span class="attr">style</span>=<span class="string">"display:none;"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>404<span class="tag">&lt;<span class="name">h1</span></span></span><br><span class="line">&lt;h2&gt;file not found.&lt;h2&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
+<pre><code class="html">&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;404&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;img src=&quot;http://suo.im/6nTcXO&quot; border=&quot;0&quot; style=&quot;display:none;&quot;/&gt;
+&lt;h1&gt;404&lt;h1
+&lt;h2&gt;file not found.&lt;h2&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
 <p>在受害者访问这个页面并点击超链接，密码才会被修改。</p>
 <h4 id="high-2"><a href="#high-2" class="headerlink" title="high"></a>high</h4><blockquote>
 <p>High级别的代码加入了Anti-CSRF token机制，用户每次访问改密页面时，服务器会返回一个随机的token，向服务器发起请求时，需要提交token参数，而服务器在收到请求时，会优先检查token，只有token正确，才会处理客户端的请求。</p>
@@ -527,23 +671,54 @@
 <p>通过URL可以随意修改要访问的文件。<code>http://192.168.1.132/dvwa/vulnerabilities/fi/?page=..\..\..\..\..\..\wamp\www\dvwa\phpinfo.php</code></p>
 <p><img src="https://s1.ax1x.com/2020/05/10/Y3BAEV.png" alt="Y3BAEV.png"></p>
 <p>查看源代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; The page we wish to display</span><br><span class="line">$file &#x3D; $_GET[ &#39;page&#39; ];</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;?php
 
-<p>从源代码我们可以看到，没有做任何过滤。</p>
+// The page we wish to display
+$file = $_GET[ &#39;page&#39; ];
+
+?&gt;</code></pre><p>从源代码我们可以看到，没有做任何过滤。</p>
 <h4 id="medium-3"><a href="#medium-3" class="headerlink" title="medium"></a>medium</h4><p>查看源代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; The page we wish to display</span><br><span class="line">$file &#x3D; $_GET[ &#39;page&#39; ];</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Input validation</span><br><span class="line">$file &#x3D; str_replace( array( &quot;http:&#x2F;&#x2F;&quot;, &quot;https:&#x2F;&#x2F;&quot; ), &quot;&quot;, $file );</span><br><span class="line">$file &#x3D; str_replace( array( &quot;..&#x2F;&quot;, &quot;..\&quot;&quot; ), &quot;&quot;, $file );</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;?php
 
-<p><img src="https://s1.ax1x.com/2020/05/10/Y30I9e.png" alt="Y30I9e.png"></p>
+// The page we wish to display
+$file = $_GET[ &#39;page&#39; ];
+
+// Input validation
+$file = str_replace( array( &quot;http://&quot;, &quot;https://&quot; ), &quot;&quot;, $file );
+$file = str_replace( array( &quot;../&quot;, &quot;..\&quot;&quot; ), &quot;&quot;, $file );
+
+?&gt;</code></pre><p><img src="https://s1.ax1x.com/2020/05/10/Y30I9e.png" alt="Y30I9e.png"></p>
 <p>过滤了<code>http://</code>,<code>https://</code>,<code>../</code>,<code>..\</code>但仍可以使用绝对路径、双写绕过。</p>
 <p><img src="https://s1.ax1x.com/2020/05/10/Y3BeCF.png" alt="Y3BeCF.png"></p>
 <h4 id="high-3"><a href="#high-3" class="headerlink" title="high"></a>high</h4><p>查看源代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; The page we wish to display</span><br><span class="line">$file &#x3D; $_GET[ &#39;page&#39; ];</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Input validation</span><br><span class="line">if( !fnmatch( &quot;file*&quot;, $file ) &amp;&amp; $file !&#x3D; &quot;include.php&quot; ) &#123;</span><br><span class="line">	&#x2F;&#x2F; This isn&#39;t the page we want!</span><br><span class="line">	echo &quot;ERROR: File not found!&quot;;</span><br><span class="line">	exit;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<pre><code class="\">&lt;?php
 
+// The page we wish to display
+$file = $_GET[ &#39;page&#39; ];
+
+// Input validation
+if( !fnmatch( &quot;file*&quot;, $file ) &amp;&amp; $file != &quot;include.php&quot; ) {
+    // This isn&#39;t the page we want!
+    echo &quot;ERROR: File not found!&quot;;
+    exit;
+}
+
+?&gt;</code></pre>
 <p>使用file协议绕过。</p>
 <h4 id="impossible-3"><a href="#impossible-3" class="headerlink" title="impossible"></a>impossible</h4><p>查看源代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; The page we wish to display</span><br><span class="line">$file &#x3D; $_GET[ &#39;page&#39; ];</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Input validation</span><br><span class="line">if( !fnmatch( &quot;file*&quot;, $file ) &amp;&amp; $file !&#x3D; &quot;include.php&quot; ) &#123;</span><br><span class="line">	&#x2F;&#x2F; This isn&#39;t the page we want!</span><br><span class="line">	echo &quot;ERROR: File not found!&quot;;</span><br><span class="line">	exit;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;?php
 
-<p>分析源码可以看到,使用白名单,page只能为include.php”、“file1.php”、“file2.php”、“file3.php”之一，只允许包含include.php、file1.php、file2.php、file3.php，不能包含别的文件，彻底杜绝文件包含漏洞</p>
+// The page we wish to display
+$file = $_GET[ &#39;page&#39; ];
+
+// Input validation
+if( !fnmatch( &quot;file*&quot;, $file ) &amp;&amp; $file != &quot;include.php&quot; ) {
+    // This isn&#39;t the page we want!
+    echo &quot;ERROR: File not found!&quot;;
+    exit;
+}
+
+?&gt;</code></pre><p>分析源码可以看到,使用白名单,page只能为include.php”、“file1.php”、“file2.php”、“file3.php”之一，只允许包含include.php、file1.php、file2.php、file3.php，不能包含别的文件，彻底杜绝文件包含漏洞</p>
 <p><img src="https://s1.ax1x.com/2020/05/10/Y3B3E6.png" alt="Y3B3E6.png"></p>
 <h3 id="XSS（跨站脚本攻击）"><a href="#XSS（跨站脚本攻击）" class="headerlink" title="XSS（跨站脚本攻击）"></a>XSS（跨站脚本攻击）</h3><p>跨站脚本攻击(CrossSite Scripting)，为了和层叠样式表(CascadingStyle Sheets,CSS)的缩写进行区分，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意Script代码，当用户浏览该页面时，嵌入其中Web里面的Script代码会被执行，从而达到恶意攻击用户的目的。</p>
 <h4 id="什么是XSS"><a href="#什么是XSS" class="headerlink" title="什么是XSS"></a>什么是XSS</h4><p>通过脚本语言注入篡改网页，插入恶意脚本，控制用户浏览器的攻击行为。</p>
@@ -553,14 +728,35 @@
 <p>反射型xss和基于DOM的xss都属于非持久性攻击。存储型xss属于持久性攻击。</p>
 <hr>
 <h4 id="反射型xss"><a href="#反射型xss" class="headerlink" title="反射型xss"></a>反射型xss</h4><h5 id="low-4"><a href="#low-4" class="headerlink" title="low"></a>low</h5><p>先查看一下源代码，发现没有任何过滤。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">header (<span class="string">"X-XSS-Protection: 0"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span>( array_key_exists( <span class="string">"name"</span>, $_GET ) &amp;&amp; $_GET[ <span class="string">'name'</span> ] != <span class="keyword">NULL</span> ) &#123;</span><br><span class="line">	<span class="comment">// Feedback for end user</span></span><br><span class="line">	$html .= <span class="string">'&lt;pre&gt;Hello '</span> . $_GET[ <span class="string">'name'</span> ] . <span class="string">'&lt;/pre&gt;'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="php">&lt;?php
 
+header (&quot;X-XSS-Protection: 0&quot;);
+
+// Is there any input?
+if( array_key_exists( &quot;name&quot;, $_GET ) &amp;&amp; $_GET[ &#39;name&#39; ] != NULL ) {
+    // Feedback for end user
+    $html .= &#39;&lt;pre&gt;Hello &#39; . $_GET[ &#39;name&#39; ] . &#39;&lt;/pre&gt;&#39;;
+}
+
+?&gt;</code></pre>
 <p><code>&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;</code></p>
 <img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk21a9uyj30n905bglu.jpg"/>
 
 <h5 id="medium-4"><a href="#medium-4" class="headerlink" title="medium"></a>medium</h5><p>看一下源代码：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">header (<span class="string">"X-XSS-Protection: 0"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span>( array_key_exists( <span class="string">"name"</span>, $_GET ) &amp;&amp; $_GET[ <span class="string">'name'</span> ] != <span class="keyword">NULL</span> ) &#123;</span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	$name = str_replace( <span class="string">'&lt;script&gt;'</span>, <span class="string">''</span>, $_GET[ <span class="string">'name'</span> ] );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Feedback for end user</span></span><br><span class="line">	$html .= <span class="string">"&lt;pre&gt;Hello $&#123;name&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="php">&lt;?php
 
+header (&quot;X-XSS-Protection: 0&quot;);
+
+// Is there any input?
+if( array_key_exists( &quot;name&quot;, $_GET ) &amp;&amp; $_GET[ &#39;name&#39; ] != NULL ) {
+    // Get input
+    $name = str_replace( &#39;&lt;script&gt;&#39;, &#39;&#39;, $_GET[ &#39;name&#39; ] );
+
+    // Feedback for end user
+    $html .= &quot;&lt;pre&gt;Hello ${name}&lt;/pre&gt;&quot;;
+}
+
+?&gt;</code></pre>
 <p>在输入框输入<code>&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;</code>。</p>
 <img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk2q6wc0j30nl0570t0.jpg"/>
 
@@ -575,8 +771,20 @@
 
 
 <h5 id="high-4"><a href="#high-4" class="headerlink" title="high"></a>high</h5><p>看一下源代码：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">header (<span class="string">"X-XSS-Protection: 0"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span>( array_key_exists( <span class="string">"name"</span>, $_GET ) &amp;&amp; $_GET[ <span class="string">'name'</span> ] != <span class="keyword">NULL</span> ) &#123;</span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	$name = preg_replace( <span class="string">'/&lt;(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i'</span>, <span class="string">''</span>, $_GET[ <span class="string">'name'</span> ] );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Feedback for end user</span></span><br><span class="line">	$html .= <span class="string">"&lt;pre&gt;Hello $&#123;name&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="php">&lt;?php
 
+header (&quot;X-XSS-Protection: 0&quot;);
+
+// Is there any input?
+if( array_key_exists( &quot;name&quot;, $_GET ) &amp;&amp; $_GET[ &#39;name&#39; ] != NULL ) {
+    // Get input
+    $name = preg_replace( &#39;/&lt;(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i&#39;, &#39;&#39;, $_GET[ &#39;name&#39; ] );
+
+    // Feedback for end user
+    $html .= &quot;&lt;pre&gt;Hello ${name}&lt;/pre&gt;&quot;;
+}
+
+?&gt;</code></pre>
 <p>发现使用了正则表达式进行过滤</p>
 <blockquote>
 <p>$name = preg_replace( ‘/&lt;(.<em>)s(.</em>)c(.<em>)r(.</em>)i(.<em>)p(.</em>)t/i’, ‘’, $_GET[ ‘name’ ] );</p>
@@ -589,14 +797,50 @@
 <img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk56hhptj30ks05mq30.jpg"/>
 
 <h5 id="impossible-4"><a href="#impossible-4" class="headerlink" title="impossible"></a>impossible</h5><p>看一下源代码：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span>( array_key_exists( <span class="string">"name"</span>, $_GET ) &amp;&amp; $_GET[ <span class="string">'name'</span> ] != <span class="keyword">NULL</span> ) &#123;</span><br><span class="line">	<span class="comment">// Check Anti-CSRF token</span></span><br><span class="line">	checkToken( $_REQUEST[ <span class="string">'user_token'</span> ], $_SESSION[ <span class="string">'session_token'</span> ], <span class="string">'index.php'</span> );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	$name = htmlspecialchars( $_GET[ <span class="string">'name'</span> ] );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Feedback for end user</span></span><br><span class="line">	$html .= <span class="string">"&lt;pre&gt;Hello $&#123;name&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Generate Anti-CSRF token</span></span><br><span class="line">generateSessionToken();</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="php">&lt;?php
 
+// Is there any input?
+if( array_key_exists( &quot;name&quot;, $_GET ) &amp;&amp; $_GET[ &#39;name&#39; ] != NULL ) {
+    // Check Anti-CSRF token
+    checkToken( $_REQUEST[ &#39;user_token&#39; ], $_SESSION[ &#39;session_token&#39; ], &#39;index.php&#39; );
+
+    // Get input
+    $name = htmlspecialchars( $_GET[ &#39;name&#39; ] );
+
+    // Feedback for end user
+    $html .= &quot;&lt;pre&gt;Hello ${name}&lt;/pre&gt;&quot;;
+}
+
+// Generate Anti-CSRF token
+generateSessionToken();
+
+?&gt;</code></pre>
 <p>看到有一个<code>htmlspecialchars（）函数</code> 。</p>
 <p>这个函数的功能：把预定义的字符 “&lt;” （小于）和 “&gt;” （大于）转换为 HTML 实体。</p>
 <p>无法构造标签进行攻击。</p>
 <h4 id="存储型xss"><a href="#存储型xss" class="headerlink" title="存储型xss"></a>存储型xss</h4><h5 id="low-5"><a href="#low-5" class="headerlink" title="low"></a>low</h5><p>看一下源代码：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'btnSign'</span> ] ) ) &#123;</span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	$message = trim( $_POST[ <span class="string">'mtxMessage'</span> ] );</span><br><span class="line">	$name    = trim( $_POST[ <span class="string">'txtName'</span> ] );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Sanitize message input</span></span><br><span class="line">	$message = stripslashes( $message );</span><br><span class="line">	$message = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $message ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Sanitize name input</span></span><br><span class="line">	$name = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $name ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Update database</span></span><br><span class="line">	$query  = <span class="string">"INSERT INTO guestbook ( comment, name ) VALUES ( '$message', '$name' );"</span>;</span><br><span class="line">	$result = mysqli_query($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . ((is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_error($GLOBALS[<span class="string">"___mysqli_ston"</span>]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : <span class="keyword">false</span>)) . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">	<span class="comment">//mysql_close();</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="php">&lt;?php
 
+if( isset( $_POST[ &#39;btnSign&#39; ] ) ) {
+    // Get input
+    $message = trim( $_POST[ &#39;mtxMessage&#39; ] );
+    $name    = trim( $_POST[ &#39;txtName&#39; ] );
+
+    // Sanitize message input
+    $message = stripslashes( $message );
+    $message = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $message ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+
+    // Sanitize name input
+    $name = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $name ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+
+    // Update database
+    $query  = &quot;INSERT INTO guestbook ( comment, name ) VALUES ( &#39;$message&#39;, &#39;$name&#39; );&quot;;
+    $result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $query ) or die( &#39;&lt;pre&gt;&#39; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . &#39;&lt;/pre&gt;&#39; );
+
+    //mysql_close();
+}
+
+?&gt;</code></pre>
 <p>把代码插入到消息框中。<code>&lt;script&gt;alert(/xss/)&lt;/script&gt;</code></p>
 <img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk5kzhd8j30n706bwes.jpg"/>
 
@@ -604,8 +848,30 @@
 
 <p>成功。</p>
 <h5 id="medium-5"><a href="#medium-5" class="headerlink" title="medium"></a>medium</h5><p>看一下源代码：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'btnSign'</span> ] ) ) &#123;</span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	$message = trim( $_POST[ <span class="string">'mtxMessage'</span> ] );</span><br><span class="line">	$name    = trim( $_POST[ <span class="string">'txtName'</span> ] );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Sanitize message input</span></span><br><span class="line">	$message = strip_tags( addslashes( $message ) );</span><br><span class="line">	$message = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $message ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line">	$message = htmlspecialchars( $message );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Sanitize name input</span></span><br><span class="line">	$name = str_replace( <span class="string">'&lt;script&gt;'</span>, <span class="string">''</span>, $name );</span><br><span class="line">	$name = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $name ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Update database</span></span><br><span class="line">	$query  = <span class="string">"INSERT INTO guestbook ( comment, name ) VALUES ( '$message', '$name' );"</span>;</span><br><span class="line">	$result = mysqli_query($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . ((is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_error($GLOBALS[<span class="string">"___mysqli_ston"</span>]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : <span class="keyword">false</span>)) . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">	<span class="comment">//mysql_close();</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="php">&lt;?php
 
+if( isset( $_POST[ &#39;btnSign&#39; ] ) ) {
+    // Get input
+    $message = trim( $_POST[ &#39;mtxMessage&#39; ] );
+    $name    = trim( $_POST[ &#39;txtName&#39; ] );
+
+    // Sanitize message input
+    $message = strip_tags( addslashes( $message ) );
+    $message = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $message ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+    $message = htmlspecialchars( $message );
+
+    // Sanitize name input
+    $name = str_replace( &#39;&lt;script&gt;&#39;, &#39;&#39;, $name );
+    $name = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $name ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+
+    // Update database
+    $query  = &quot;INSERT INTO guestbook ( comment, name ) VALUES ( &#39;$message&#39;, &#39;$name&#39; );&quot;;
+    $result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $query ) or die( &#39;&lt;pre&gt;&#39; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . &#39;&lt;/pre&gt;&#39; );
+
+    //mysql_close();
+}
+
+?&gt;</code></pre>
 <p>查看源代码，发现message有htmlspecialchars()函数，因此没法使用message进行xss。</p>
 <blockquote>
 <p>$message = htmlspecialchars( $message );</p>
@@ -623,8 +889,30 @@
 <img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk7hiabkj30ik05imx4.jpg"/>
 
 <h5 id="high-5"><a href="#high-5" class="headerlink" title="high"></a>high</h5><p>看一下源代码：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'btnSign'</span> ] ) ) &#123;</span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	$message = trim( $_POST[ <span class="string">'mtxMessage'</span> ] );</span><br><span class="line">	$name    = trim( $_POST[ <span class="string">'txtName'</span> ] );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Sanitize message input</span></span><br><span class="line">	$message = strip_tags( addslashes( $message ) );</span><br><span class="line">	$message = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $message ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line">	$message = htmlspecialchars( $message );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Sanitize name input</span></span><br><span class="line">	$name = preg_replace( <span class="string">'/&lt;(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i'</span>, <span class="string">''</span>, $name );</span><br><span class="line">	$name = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $name ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Update database</span></span><br><span class="line">	$query  = <span class="string">"INSERT INTO guestbook ( comment, name ) VALUES ( '$message', '$name' );"</span>;</span><br><span class="line">	$result = mysqli_query($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . ((is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_error($GLOBALS[<span class="string">"___mysqli_ston"</span>]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : <span class="keyword">false</span>)) . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">	<span class="comment">//mysql_close();</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="php">&lt;?php
 
+if( isset( $_POST[ &#39;btnSign&#39; ] ) ) {
+    // Get input
+    $message = trim( $_POST[ &#39;mtxMessage&#39; ] );
+    $name    = trim( $_POST[ &#39;txtName&#39; ] );
+
+    // Sanitize message input
+    $message = strip_tags( addslashes( $message ) );
+    $message = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $message ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+    $message = htmlspecialchars( $message );
+
+    // Sanitize name input
+    $name = preg_replace( &#39;/&lt;(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i&#39;, &#39;&#39;, $name );
+    $name = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $name ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+
+    // Update database
+    $query  = &quot;INSERT INTO guestbook ( comment, name ) VALUES ( &#39;$message&#39;, &#39;$name&#39; );&quot;;
+    $result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $query ) or die( &#39;&lt;pre&gt;&#39; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . &#39;&lt;/pre&gt;&#39; );
+
+    //mysql_close();
+}
+
+?&gt;</code></pre>
 <p>查看源代码，和之前一样。</p>
 <blockquote>
 <p>$message = htmlspecialchars( $message );</p>
@@ -637,8 +925,37 @@
 <img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk88swh4j30ie05odfs.jpg"/>
 
 <h5 id="impossible-5"><a href="#impossible-5" class="headerlink" title="impossible"></a>impossible</h5><p>看一下源代码：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'btnSign'</span> ] ) ) &#123;</span><br><span class="line">	<span class="comment">// Check Anti-CSRF token</span></span><br><span class="line">	checkToken( $_REQUEST[ <span class="string">'user_token'</span> ], $_SESSION[ <span class="string">'session_token'</span> ], <span class="string">'index.php'</span> );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Get input</span></span><br><span class="line">	$message = trim( $_POST[ <span class="string">'mtxMessage'</span> ] );</span><br><span class="line">	$name    = trim( $_POST[ <span class="string">'txtName'</span> ] );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Sanitize message input</span></span><br><span class="line">	$message = stripslashes( $message );</span><br><span class="line">	$message = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $message ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line">	$message = htmlspecialchars( $message );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Sanitize name input</span></span><br><span class="line">	$name = stripslashes( $name );</span><br><span class="line">	$name = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $name ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line">	$name = htmlspecialchars( $name );</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Update database</span></span><br><span class="line">	$data = $db-&gt;prepare( <span class="string">'INSERT INTO guestbook ( comment, name ) VALUES ( :message, :name );'</span> );</span><br><span class="line">	$data-&gt;bindParam( <span class="string">':message'</span>, $message, PDO::PARAM_STR );</span><br><span class="line">	$data-&gt;bindParam( <span class="string">':name'</span>, $name, PDO::PARAM_STR );</span><br><span class="line">	$data-&gt;execute();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Generate Anti-CSRF token</span></span><br><span class="line">generateSessionToken();</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="php">&lt;?php
 
+if( isset( $_POST[ &#39;btnSign&#39; ] ) ) {
+    // Check Anti-CSRF token
+    checkToken( $_REQUEST[ &#39;user_token&#39; ], $_SESSION[ &#39;session_token&#39; ], &#39;index.php&#39; );
+
+    // Get input
+    $message = trim( $_POST[ &#39;mtxMessage&#39; ] );
+    $name    = trim( $_POST[ &#39;txtName&#39; ] );
+
+    // Sanitize message input
+    $message = stripslashes( $message );
+    $message = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $message ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+    $message = htmlspecialchars( $message );
+
+    // Sanitize name input
+    $name = stripslashes( $name );
+    $name = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $name ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+    $name = htmlspecialchars( $name );
+
+    // Update database
+    $data = $db-&gt;prepare( &#39;INSERT INTO guestbook ( comment, name ) VALUES ( :message, :name );&#39; );
+    $data-&gt;bindParam( &#39;:message&#39;, $message, PDO::PARAM_STR );
+    $data-&gt;bindParam( &#39;:name&#39;, $name, PDO::PARAM_STR );
+    $data-&gt;execute();
+}
+
+// Generate Anti-CSRF token
+generateSessionToken();
+
+?&gt;</code></pre>
 <p>name和message都是用htmlspecialchars函数，把符号转化为了实体。</p>
 <h4 id="DOM型xss"><a href="#DOM型xss" class="headerlink" title="DOM型xss"></a>DOM型xss</h4><h5 id="low-6"><a href="#low-6" class="headerlink" title="low"></a>low</h5><img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk8kp9exj30nn095755.jpg"/>
 
@@ -646,8 +963,20 @@
 <img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk8womrtj30g905nq2y.jpg"/>
 
 <h5 id="medium-6"><a href="#medium-6" class="headerlink" title="medium"></a>medium</h5><p>看一下源代码：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span> ( array_key_exists( <span class="string">"default"</span>, $_GET ) &amp;&amp; !is_null ($_GET[ <span class="string">'default'</span> ]) ) &#123;</span><br><span class="line">	$default = $_GET[<span class="string">'default'</span>];</span><br><span class="line">	</span><br><span class="line">	<span class="comment"># Do not allow script tags</span></span><br><span class="line">	<span class="keyword">if</span> (stripos ($default, <span class="string">"&lt;script"</span>) !== <span class="keyword">false</span>) &#123;</span><br><span class="line">		header (<span class="string">"location: ?default=English"</span>);</span><br><span class="line">		<span class="keyword">exit</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="php">&lt;?php
 
+// Is there any input?
+if ( array_key_exists( &quot;default&quot;, $_GET ) &amp;&amp; !is_null ($_GET[ &#39;default&#39; ]) ) {
+    $default = $_GET[&#39;default&#39;];
+
+    # Do not allow script tags
+    if (stripos ($default, &quot;&lt;script&quot;) !== false) {
+        header (&quot;location: ?default=English&quot;);
+        exit;
+    }
+}
+
+?&gt;</code></pre>
 <p>这里过滤了&lt;script，如果default值中存在&lt;script，default=English。</p>
 <p><code>&lt;img src=1 onerror=alert(/xss/)&gt;</code></p>
 <img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk979l8hj30np08yt9k.jpg"/>
@@ -664,8 +993,26 @@
 <img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk9lgdjzj30g705qwej.jpg"/>
 
 <h5 id="high-6"><a href="#high-6" class="headerlink" title="high"></a>high</h5><p>看一下源代码：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span> ( array_key_exists( <span class="string">"default"</span>, $_GET ) &amp;&amp; !is_null ($_GET[ <span class="string">'default'</span> ]) ) &#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment"># White list the allowable languages</span></span><br><span class="line">	<span class="keyword">switch</span> ($_GET[<span class="string">'default'</span>]) &#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"French"</span>:</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"English"</span>:</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"German"</span>:</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"Spanish"</span>:</span><br><span class="line">			<span class="comment"># ok</span></span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			header (<span class="string">"location: ?default=English"</span>);</span><br><span class="line">			<span class="keyword">exit</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="php">&lt;?php
 
+// Is there any input?
+if ( array_key_exists( &quot;default&quot;, $_GET ) &amp;&amp; !is_null ($_GET[ &#39;default&#39; ]) ) {
+
+    # White list the allowable languages
+    switch ($_GET[&#39;default&#39;]) {
+        case &quot;French&quot;:
+        case &quot;English&quot;:
+        case &quot;German&quot;:
+        case &quot;Spanish&quot;:
+            # ok
+            break;
+        default:
+            header (&quot;location: ?default=English&quot;);
+            exit;
+    }
+}
+
+?&gt;</code></pre>
 <p>使用<code>#&lt;script&gt;alert(/xss/)&lt;/script&gt;</code>，注意#前有空格。</p>
 <img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk9v6s4ij30hq05o74c.jpg"/>
 
@@ -736,16 +1083,16 @@
                     
                         <div class="article-tag">
                             
+                                <a href="/tags/web/">
+                                    <span class="chip bg-color">web</span>
+                                </a>
+                            
                                 <a href="/tags/DVWA/">
                                     <span class="chip bg-color">DVWA</span>
                                 </a>
                             
                                 <a href="/tags/XSS/">
                                     <span class="chip bg-color">XSS</span>
-                                </a>
-                            
-                                <a href="/tags/web/">
-                                    <span class="chip bg-color">web</span>
                                 </a>
                             
                         </div>
@@ -828,12 +1175,12 @@ Burp SuiteIntruder_暴力破解模块抓到数据包之后，发送到Intruder�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/web/">
-                        <span class="chip bg-color">web</span>
-                    </a>
-                    
                     <a href="/tags/Burp-Suite/">
                         <span class="chip bg-color">Burp Suite</span>
+                    </a>
+                    
+                    <a href="/tags/web/">
+                        <span class="chip bg-color">web</span>
                     </a>
                     
                 </div>
@@ -1077,7 +1424,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">19.2k</span>&nbsp;字
+                class="white-color">19.7k</span>&nbsp;字
             
             
             

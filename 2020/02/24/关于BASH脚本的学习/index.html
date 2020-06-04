@@ -361,7 +361,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    379
+                    398
                 </div>
                 
 
@@ -381,13 +381,31 @@
                 <p>这一天，在网上冲浪中度过，发现比较简单实用的bash脚本，看到脚本对日常使用的助力，感觉还不错就记录一下，就当是bash脚本的入门吧。为了避免自己忘记，就在此作为第一篇博客记录一下吧。</p>
 <h2 id="案例一：打开软件的小脚本"><a href="#案例一：打开软件的小脚本" class="headerlink" title="案例一：打开软件的小脚本"></a>案例一：打开软件的小脚本</h2><p>将经常使用的命令写成一个脚本能够提高效率。</p>
 <p><code>vim burp.sh</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">cd</span> /root/Desktop/burpsuuite1.7.6</span><br><span class="line">java -jar BurpLoader.jar</span><br></pre></td></tr></table></figure>
-
+<pre><code class="bash">#!/bin/bash
+cd /root/Desktop/burpsuuite1.7.6
+java -jar BurpLoader.jar</code></pre>
 <p>给文件一个执行权限<code>chmod +x burp.sh</code></p>
 <p><code>./burp.sh</code></p>
 <p>这样，一个简单的脚本文件就完成了。挺简单的，作为一个小白，发现脚本文件真的挺实用的，特别在面对大量重复的命令而言。</p>
-<h2 id="案例二：打开软件脚本的进阶版"><a href="#案例二：打开软件脚本的进阶版" class="headerlink" title="案例二：打开软件脚本的进阶版"></a>案例二：打开软件脚本的进阶版</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#the tool you want to run</span></span><br><span class="line"><span class="built_in">read</span> -p <span class="string">"bp == burp ; w == DirBuster ; f == cknife ; p =openvpn ;"</span> choice</span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$&#123;choice&#125;</span>"</span> == <span class="string">"bp"</span>]; <span class="keyword">then</span></span><br><span class="line">		<span class="built_in">cd</span> tool/burpsuite1.7.26</span><br><span class="line">		java -jar BurpLoader.jar</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$&#123;choice&#125;</span>"</span> == <span class="string">"w"</span>]; <span class="keyword">then</span></span><br><span class="line">		<span class="built_in">cd</span> tool/DirBuster-0.12/</span><br><span class="line">		java -jar DirBuster-0.12.jar</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$&#123;choice&#125;</span>"</span> == <span class="string">"f"</span>]; <span class="keyword">then</span></span><br><span class="line">		<span class="built_in">cd</span> tool/cknife/</span><br><span class="line">		java -jar cknife.jar</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$&#123;choice&#125;</span>"</span> == <span class="string">"p"</span>]; <span class="keyword">then</span></span><br><span class="line">		<span class="built_in">cd</span> tool/DirBuster-0.12/</span><br><span class="line">		java -jar DirBuster-0.12.jar</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-
+<h2 id="案例二：打开软件脚本的进阶版"><a href="#案例二：打开软件脚本的进阶版" class="headerlink" title="案例二：打开软件脚本的进阶版"></a>案例二：打开软件脚本的进阶版</h2><pre><code class="bash">#!/bin/bash
+#the tool you want to run
+read -p &quot;bp == burp ; w == DirBuster ; f == cknife ; p =openvpn ;&quot; choice
+if [ &quot;${choice}&quot; == &quot;bp&quot;]; then
+        cd tool/burpsuite1.7.26
+        java -jar BurpLoader.jar
+fi
+if [ &quot;${choice}&quot; == &quot;w&quot;]; then
+        cd tool/DirBuster-0.12/
+        java -jar DirBuster-0.12.jar
+fi
+if [ &quot;${choice}&quot; == &quot;f&quot;]; then
+        cd tool/cknife/
+        java -jar cknife.jar
+fi
+if [ &quot;${choice}&quot; == &quot;p&quot;]; then
+        cd tool/DirBuster-0.12/
+        java -jar DirBuster-0.12.jar
+fi</code></pre>
 <p>在这个脚本中出现了变量，需要注意的是</p>
 <ol>
 <li>变量要用<code>${ }</code>标识</li>
@@ -800,7 +818,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">19.2k</span>&nbsp;字
+                class="white-color">19.7k</span>&nbsp;字
             
             
             

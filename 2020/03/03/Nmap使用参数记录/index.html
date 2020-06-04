@@ -397,14 +397,216 @@
 <p><code>-T4</code>时间优化(0-5)，默认是<code>T3</code>，建议使用T4</p>
 <p><code>-F</code>快速扫描</p>
 <p><code>-Pn</code> <a href="http://www.xxx.com" target="_blank" rel="noopener">www.xxx.com</a> 穿透防火墙扫描结果</p>
-<h3 id="nmap参数"><a href="#nmap参数" class="headerlink" title="nmap参数"></a>nmap参数</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line">nmap --help</span><br><span class="line">Nmap 7.70 ( https://nmap.org )</span><br><span class="line">Usage: nmap [Scan Type(s)] [Options] &#123;target specification&#125;</span><br><span class="line">TARGET SPECIFICATION:</span><br><span class="line">  Can pass hostnames, IP addresses, networks, etc.</span><br><span class="line">  Ex: scanme.nmap.org, microsoft.com/24, 192.168.0.1; 10.0.0-255.1-254</span><br><span class="line">  -iL &lt;inputfilename&gt;: Input from list of hosts/networks</span><br><span class="line">  -iR &lt;num hosts&gt;: Choose random targets</span><br><span class="line">  --exclude &lt;host1[,host2][,host3],...&gt;: Exclude hosts/networks</span><br><span class="line">  --excludefile &lt;exclude_file&gt;: Exclude list from file</span><br><span class="line">HOST DISCOVERY:</span><br><span class="line">  -sL: List Scan - simply list targets to scan</span><br><span class="line">  -sn: Ping Scan - disable port scan</span><br><span class="line">  -Pn: Treat all hosts as online -- skip host discovery</span><br><span class="line">  -PS/PA/PU/PY[portlist]: TCP SYN/ACK, UDP or SCTP discovery to given ports</span><br><span class="line">  -PE/PP/PM: ICMP echo, timestamp, and netmask request discovery probes</span><br><span class="line">  -PO[protocol list]: IP Protocol Ping</span><br><span class="line">  -n/-R: Never do DNS resolution/Always resolve [default: sometimes]</span><br><span class="line">  --dns-servers &lt;serv1[,serv2],...&gt;: Specify custom DNS servers</span><br><span class="line">  --system-dns: Use OS's DNS resolver</span><br><span class="line">  --traceroute: Trace hop path to each host</span><br><span class="line">SCAN TECHNIQUES:</span><br><span class="line">  -sS/sT/sA/sW/sM: TCP SYN/Connect()/ACK/Window/Maimon scans</span><br><span class="line">  -sU: UDP Scan</span><br><span class="line">  -sN/sF/sX: TCP Null, FIN, and Xmas scans</span><br><span class="line">  --scanflags &lt;flags&gt;: Customize TCP scan flags</span><br><span class="line">  -sI &lt;zombie host[:probeport]&gt;: Idle scan</span><br><span class="line">  -sY/sZ: SCTP INIT/COOKIE-ECHO scans</span><br><span class="line">  -sO: IP protocol scan</span><br><span class="line">  -b &lt;FTP relay host&gt;: FTP bounce scan</span><br><span class="line">PORT SPECIFICATION AND SCAN ORDER:</span><br><span class="line">  -p &lt;port ranges&gt;: Only scan specified ports</span><br><span class="line">    Ex: -p22; -p1-65535; -p U:53,111,137,T:21-25,80,139,8080,S:9</span><br><span class="line">  --exclude-ports &lt;port ranges&gt;: Exclude the specified ports from scanning</span><br><span class="line">  -F: Fast mode - Scan fewer ports than the default scan</span><br><span class="line">  -r: Scan ports consecutively - don't randomize</span><br><span class="line">  --top-ports &lt;number&gt;: Scan &lt;number&gt; most common ports</span><br><span class="line">  --port-ratio &lt;ratio&gt;: Scan ports more common than &lt;ratio&gt;</span><br><span class="line">SERVICE/VERSION DETECTION:</span><br><span class="line">  -sV: Probe open ports to determine service/version info</span><br><span class="line">  --version-intensity &lt;level&gt;: Set from 0 (light) to 9 (try all probes)</span><br><span class="line">  --version-light: Limit to most likely probes (intensity 2)</span><br><span class="line">  --version-all: Try every single probe (intensity 9)</span><br><span class="line">  --version-trace: Show detailed version scan activity (for debugging)</span><br><span class="line">SCRIPT SCAN:</span><br><span class="line">  -sC: equivalent to --script=default</span><br><span class="line">  --script=&lt;Lua scripts&gt;: &lt;Lua scripts&gt; is a comma separated list of</span><br><span class="line">           directories, script-files or script-categories</span><br><span class="line">  --script-args=&lt;n1=v1,[n2=v2,...]&gt;: provide arguments to scripts</span><br><span class="line">  --script-args-file=filename: provide NSE script args in a file</span><br><span class="line">  --script-trace: Show all data sent and received</span><br><span class="line">  --script-updatedb: Update the script database.</span><br><span class="line">  --script-help=&lt;Lua scripts&gt;: Show help about scripts.</span><br><span class="line">           &lt;Lua scripts&gt; is a comma-separated list of script-files or</span><br><span class="line">           script-categories.</span><br><span class="line">OS DETECTION:</span><br><span class="line">  -O: Enable OS detection</span><br><span class="line">  --osscan-limit: Limit OS detection to promising targets</span><br><span class="line">  --osscan-guess: Guess OS more aggressively</span><br><span class="line">TIMING AND PERFORMANCE:</span><br><span class="line">  Options which take &lt;time&gt; are in seconds, or append 'ms' (milliseconds),</span><br><span class="line">  's' (seconds), 'm' (minutes), or 'h' (hours) to the value (e.g. 30m).</span><br><span class="line">  -T&lt;0-5&gt;: Set timing template (higher is faster)</span><br><span class="line">  --min-hostgroup/max-hostgroup &lt;size&gt;: Parallel host scan group sizes</span><br><span class="line">  --min-parallelism/max-parallelism &lt;numprobes&gt;: Probe parallelization</span><br><span class="line">  --min-rtt-timeout/max-rtt-timeout/initial-rtt-timeout &lt;time&gt;: Specifies</span><br><span class="line">      probe round trip time.</span><br><span class="line">  --max-retries &lt;tries&gt;: Caps number of port scan probe retransmissions.</span><br><span class="line">  --host-timeout &lt;time&gt;: Give up on target after this long</span><br><span class="line">  --scan-delay/--max-scan-delay &lt;time&gt;: Adjust delay between probes</span><br><span class="line">  --min-rate &lt;number&gt;: Send packets no slower than &lt;number&gt; per second</span><br><span class="line">  --max-rate &lt;number&gt;: Send packets no faster than &lt;number&gt; per second</span><br><span class="line">FIREWALL/IDS EVASION AND SPOOFING:</span><br><span class="line">  -f; --mtu &lt;val&gt;: fragment packets (optionally w/given MTU)</span><br><span class="line">  -D &lt;decoy1,decoy2[,ME],...&gt;: Cloak a scan with decoys</span><br><span class="line">  -S &lt;IP_Address&gt;: Spoof source address</span><br><span class="line">  -e &lt;iface&gt;: Use specified interface</span><br><span class="line">  -g/--source-port &lt;portnum&gt;: Use given port number</span><br><span class="line">  --proxies &lt;url1,[url2],...&gt;: Relay connections through HTTP/SOCKS4 proxies</span><br><span class="line">  --data &lt;hex string&gt;: Append a custom payload to sent packets</span><br><span class="line">  --data-string &lt;string&gt;: Append a custom ASCII string to sent packets</span><br><span class="line">  --data-length &lt;num&gt;: Append random data to sent packets</span><br><span class="line">  --ip-options &lt;options&gt;: Send packets with specified ip options</span><br><span class="line">  --ttl &lt;val&gt;: Set IP time-to-live field</span><br><span class="line">  --spoof-mac &lt;mac address/prefix/vendor name&gt;: Spoof your MAC address</span><br><span class="line">  --badsum: Send packets with a bogus TCP/UDP/SCTP checksum</span><br><span class="line">OUTPUT:</span><br><span class="line">  -oN/-oX/-oS/-oG &lt;file&gt;: Output scan in normal, XML, s|&lt;rIpt kIddi3,</span><br><span class="line">     and Grepable format, respectively, to the given filename.</span><br><span class="line">  -oA &lt;basename&gt;: Output in the three major formats at once</span><br><span class="line">  -v: Increase verbosity level (use -vv or more for greater effect)</span><br><span class="line">  -d: Increase debugging level (use -dd or more for greater effect)</span><br><span class="line">  --reason: Display the reason a port is in a particular state</span><br><span class="line">  --open: Only show open (or possibly open) ports</span><br><span class="line">  --packet-trace: Show all packets sent and received</span><br><span class="line">  --iflist: Print host interfaces and routes (for debugging)</span><br><span class="line">  --append-output: Append to rather than clobber specified output files</span><br><span class="line">  --resume &lt;filename&gt;: Resume an aborted scan</span><br><span class="line">  --stylesheet &lt;path/URL&gt;: XSL stylesheet to transform XML output to HTML</span><br><span class="line">  --webxml: Reference stylesheet from Nmap.Org for more portable XML</span><br><span class="line">  --no-stylesheet: Prevent associating of XSL stylesheet w/XML output</span><br><span class="line">MISC:</span><br><span class="line">  -6: Enable IPv6 scanning</span><br><span class="line">  -A: Enable OS detection, version detection, script scanning, and traceroute</span><br><span class="line">  --datadir &lt;dirname&gt;: Specify custom Nmap data file location</span><br><span class="line">  --send-eth/--send-ip: Send using raw ethernet frames or IP packets</span><br><span class="line">  --privileged: Assume that the user is fully privileged</span><br><span class="line">  --unprivileged: Assume the user lacks raw socket privileges</span><br><span class="line">  -V: Print version number</span><br><span class="line">  -h: Print this help summary page.</span><br><span class="line">EXAMPLES:</span><br><span class="line">  nmap -v -A scanme.nmap.org</span><br><span class="line">  nmap -v -sn 192.168.0.0/16 10.0.0.0/8</span><br><span class="line">  nmap -v -iR 10000 -Pn -p 80</span><br><span class="line">SEE THE MAN PAGE (https://nmap.org/book/man.html) FOR MORE OPTIONS AND EXAMPLES</span><br></pre></td></tr></table></figure>
+<h3 id="nmap参数"><a href="#nmap参数" class="headerlink" title="nmap参数"></a>nmap参数</h3><pre><code class="shell">nmap --help
+Nmap 7.70 ( https://nmap.org )
+Usage: nmap [Scan Type(s)] [Options] {target specification}
+TARGET SPECIFICATION:
+  Can pass hostnames, IP addresses, networks, etc.
+  Ex: scanme.nmap.org, microsoft.com/24, 192.168.0.1; 10.0.0-255.1-254
+  -iL &lt;inputfilename&gt;: Input from list of hosts/networks
+  -iR &lt;num hosts&gt;: Choose random targets
+  --exclude &lt;host1[,host2][,host3],...&gt;: Exclude hosts/networks
+  --excludefile &lt;exclude_file&gt;: Exclude list from file
+HOST DISCOVERY:
+  -sL: List Scan - simply list targets to scan
+  -sn: Ping Scan - disable port scan
+  -Pn: Treat all hosts as online -- skip host discovery
+  -PS/PA/PU/PY[portlist]: TCP SYN/ACK, UDP or SCTP discovery to given ports
+  -PE/PP/PM: ICMP echo, timestamp, and netmask request discovery probes
+  -PO[protocol list]: IP Protocol Ping
+  -n/-R: Never do DNS resolution/Always resolve [default: sometimes]
+  --dns-servers &lt;serv1[,serv2],...&gt;: Specify custom DNS servers
+  --system-dns: Use OS&#39;s DNS resolver
+  --traceroute: Trace hop path to each host
+SCAN TECHNIQUES:
+  -sS/sT/sA/sW/sM: TCP SYN/Connect()/ACK/Window/Maimon scans
+  -sU: UDP Scan
+  -sN/sF/sX: TCP Null, FIN, and Xmas scans
+  --scanflags &lt;flags&gt;: Customize TCP scan flags
+  -sI &lt;zombie host[:probeport]&gt;: Idle scan
+  -sY/sZ: SCTP INIT/COOKIE-ECHO scans
+  -sO: IP protocol scan
+  -b &lt;FTP relay host&gt;: FTP bounce scan
+PORT SPECIFICATION AND SCAN ORDER:
+  -p &lt;port ranges&gt;: Only scan specified ports
+    Ex: -p22; -p1-65535; -p U:53,111,137,T:21-25,80,139,8080,S:9
+  --exclude-ports &lt;port ranges&gt;: Exclude the specified ports from scanning
+  -F: Fast mode - Scan fewer ports than the default scan
+  -r: Scan ports consecutively - don&#39;t randomize
+  --top-ports &lt;number&gt;: Scan &lt;number&gt; most common ports
+  --port-ratio &lt;ratio&gt;: Scan ports more common than &lt;ratio&gt;
+SERVICE/VERSION DETECTION:
+  -sV: Probe open ports to determine service/version info
+  --version-intensity &lt;level&gt;: Set from 0 (light) to 9 (try all probes)
+  --version-light: Limit to most likely probes (intensity 2)
+  --version-all: Try every single probe (intensity 9)
+  --version-trace: Show detailed version scan activity (for debugging)
+SCRIPT SCAN:
+  -sC: equivalent to --script=default
+  --script=&lt;Lua scripts&gt;: &lt;Lua scripts&gt; is a comma separated list of
+           directories, script-files or script-categories
+  --script-args=&lt;n1=v1,[n2=v2,...]&gt;: provide arguments to scripts
+  --script-args-file=filename: provide NSE script args in a file
+  --script-trace: Show all data sent and received
+  --script-updatedb: Update the script database.
+  --script-help=&lt;Lua scripts&gt;: Show help about scripts.
+           &lt;Lua scripts&gt; is a comma-separated list of script-files or
+           script-categories.
+OS DETECTION:
+  -O: Enable OS detection
+  --osscan-limit: Limit OS detection to promising targets
+  --osscan-guess: Guess OS more aggressively
+TIMING AND PERFORMANCE:
+  Options which take &lt;time&gt; are in seconds, or append &#39;ms&#39; (milliseconds),
+  &#39;s&#39; (seconds), &#39;m&#39; (minutes), or &#39;h&#39; (hours) to the value (e.g. 30m).
+  -T&lt;0-5&gt;: Set timing template (higher is faster)
+  --min-hostgroup/max-hostgroup &lt;size&gt;: Parallel host scan group sizes
+  --min-parallelism/max-parallelism &lt;numprobes&gt;: Probe parallelization
+  --min-rtt-timeout/max-rtt-timeout/initial-rtt-timeout &lt;time&gt;: Specifies
+      probe round trip time.
+  --max-retries &lt;tries&gt;: Caps number of port scan probe retransmissions.
+  --host-timeout &lt;time&gt;: Give up on target after this long
+  --scan-delay/--max-scan-delay &lt;time&gt;: Adjust delay between probes
+  --min-rate &lt;number&gt;: Send packets no slower than &lt;number&gt; per second
+  --max-rate &lt;number&gt;: Send packets no faster than &lt;number&gt; per second
+FIREWALL/IDS EVASION AND SPOOFING:
+  -f; --mtu &lt;val&gt;: fragment packets (optionally w/given MTU)
+  -D &lt;decoy1,decoy2[,ME],...&gt;: Cloak a scan with decoys
+  -S &lt;IP_Address&gt;: Spoof source address
+  -e &lt;iface&gt;: Use specified interface
+  -g/--source-port &lt;portnum&gt;: Use given port number
+  --proxies &lt;url1,[url2],...&gt;: Relay connections through HTTP/SOCKS4 proxies
+  --data &lt;hex string&gt;: Append a custom payload to sent packets
+  --data-string &lt;string&gt;: Append a custom ASCII string to sent packets
+  --data-length &lt;num&gt;: Append random data to sent packets
+  --ip-options &lt;options&gt;: Send packets with specified ip options
+  --ttl &lt;val&gt;: Set IP time-to-live field
+  --spoof-mac &lt;mac address/prefix/vendor name&gt;: Spoof your MAC address
+  --badsum: Send packets with a bogus TCP/UDP/SCTP checksum
+OUTPUT:
+  -oN/-oX/-oS/-oG &lt;file&gt;: Output scan in normal, XML, s|&lt;rIpt kIddi3,
+     and Grepable format, respectively, to the given filename.
+  -oA &lt;basename&gt;: Output in the three major formats at once
+  -v: Increase verbosity level (use -vv or more for greater effect)
+  -d: Increase debugging level (use -dd or more for greater effect)
+  --reason: Display the reason a port is in a particular state
+  --open: Only show open (or possibly open) ports
+  --packet-trace: Show all packets sent and received
+  --iflist: Print host interfaces and routes (for debugging)
+  --append-output: Append to rather than clobber specified output files
+  --resume &lt;filename&gt;: Resume an aborted scan
+  --stylesheet &lt;path/URL&gt;: XSL stylesheet to transform XML output to HTML
+  --webxml: Reference stylesheet from Nmap.Org for more portable XML
+  --no-stylesheet: Prevent associating of XSL stylesheet w/XML output
+MISC:
+  -6: Enable IPv6 scanning
+  -A: Enable OS detection, version detection, script scanning, and traceroute
+  --datadir &lt;dirname&gt;: Specify custom Nmap data file location
+  --send-eth/--send-ip: Send using raw ethernet frames or IP packets
+  --privileged: Assume that the user is fully privileged
+  --unprivileged: Assume the user lacks raw socket privileges
+  -V: Print version number
+  -h: Print this help summary page.
+EXAMPLES:
+  nmap -v -A scanme.nmap.org
+  nmap -v -sn 192.168.0.0/16 10.0.0.0/8
+  nmap -v -iR 10000 -Pn -p 80
+SEE THE MAN PAGE (https://nmap.org/book/man.html) FOR MORE OPTIONS AND EXAMPLES</code></pre>
+<pre><code class="shell">Nmap支持主机名,ip,网段的表示方式
+例如:blah.highon.coffee, namp.org/24, 192.168.0.1;10.0.0-25.1-254
 
+-iL filename                    从文件中读取待检测的目标,文件中的表示方法支持机名,ip,网段
+--exclude host1[, host2]        从扫描任务中需要排除的主机          
+--exculdefile exclude_file      排除文件中的IP,格式和-iL指定扫描文件的格式相同
 
+主机发现
+-sL                     仅仅是显示,扫描的IP数目,不会进行任何扫描
+-sn                     ping扫描,即主机发现
+-Pn                     不检测主机存活
+-PS/PA/PU/PY[portlist]  TCP SYN Ping/TCP ACK Ping/UDP Ping发现
+-PE/PP/PM               使用ICMP echo, timestamp and netmask 请求包发现主机
+-PO[prococol list]      使用IP协议包探测对方主机是否开启  
+-n/-R                   不对IP进行域名反向解析/为所有的IP都进行域名的反响解析
 
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line">Nmap支持主机名,ip,网段的表示方式</span><br><span class="line">例如:blah.highon.coffee, namp.org/24, 192.168.0.1;10.0.0-25.1-254</span><br><span class="line"> </span><br><span class="line">-iL filename                    从文件中读取待检测的目标,文件中的表示方法支持机名,ip,网段</span><br><span class="line">--exclude host1[, host2]        从扫描任务中需要排除的主机          </span><br><span class="line">--exculdefile exclude_file      排除文件中的IP,格式和-iL指定扫描文件的格式相同</span><br><span class="line"> </span><br><span class="line">主机发现</span><br><span class="line">-sL                     仅仅是显示,扫描的IP数目,不会进行任何扫描</span><br><span class="line">-sn                     ping扫描,即主机发现</span><br><span class="line">-Pn                     不检测主机存活</span><br><span class="line">-PS/PA/PU/PY[portlist]  TCP SYN Ping/TCP ACK Ping/UDP Ping发现</span><br><span class="line">-PE/PP/PM               使用ICMP echo, timestamp and netmask 请求包发现主机</span><br><span class="line">-PO[prococol list]      使用IP协议包探测对方主机是否开启  </span><br><span class="line">-n/-R                   不对IP进行域名反向解析/为所有的IP都进行域名的反响解析</span><br><span class="line"> </span><br><span class="line">扫描技巧</span><br><span class="line">-sS/sT/sA/sW/sM                 TCP SYN/TCP connect()/ACK/TCP窗口扫描/TCP Maimon扫描</span><br><span class="line">-sU                             UDP扫描</span><br><span class="line"></span><br><span class="line">指定端口和扫描顺序</span><br><span class="line">-p                      特定的端口 -p80,443 或者 -p1-65535</span><br><span class="line">-p U:PORT               扫描udp的某个端口, -p U:53</span><br><span class="line">-F                      快速扫描模式,比默认的扫描端口还少</span><br><span class="line">-r                      不随机扫描端口,默认是随机扫描的</span><br><span class="line">--top-ports "number"    扫描开放概率最高的number个端口,出现的概率需要参考nmap-services文件,ubuntu中该文件位于/usr/share/nmap.nmap默认扫前1000个</span><br><span class="line">--port-ratio "ratio"    扫描指定频率以上的端口</span><br><span class="line"> </span><br><span class="line">服务版本识别</span><br><span class="line">-sV                             开放版本探测,可以直接使用-A同时打开操作系统探测和版本探测</span><br><span class="line">--version-intensity "level"     设置版本扫描强度,强度水平说明了应该使用哪些探测报文。数值越高，服务越有可能被正确识别。默认是7</span><br><span class="line">--version-light                 打开轻量级模式,为--version-intensity 2的别名</span><br><span class="line">--version-all                   尝试所有探测,为--version-intensity 9的别名</span><br><span class="line">--version-trace                 显示出详细的版本侦测过程信息</span><br><span class="line"> </span><br><span class="line">脚本扫描</span><br><span class="line">-sC　　根据端口识别的服务,调用默认脚本</span><br><span class="line">--script=”Lua scripts”　　调用的脚本名</span><br><span class="line">--script-args=n1=v1,[n2=v2]　　调用的脚本传递的参数</span><br><span class="line">--script-args-file=filename　　使用文本传递参数</span><br><span class="line">--script-trace　　显示所有发送和接收到的数据</span><br><span class="line">--script-updatedb　　更新脚本的数据库</span><br><span class="line">--script-help=”Lua script”　　显示指定脚本的帮助</span><br><span class="line"> </span><br><span class="line">OS识别</span><br><span class="line">-O              启用操作系统检测,-A来同时启用操作系统检测和版本检测</span><br><span class="line">--osscan-limit 　　 针对指定的目标进行操作系统检测(至少需确知该主机分别有一个open和closed的端口)</span><br><span class="line">--osscan-guess  　　推测操作系统检测结果,当Nmap无法确定所检测的操作系统时，会尽可能地提供最相近的匹配，Nmap默认进行这种匹配</span><br><span class="line"> </span><br><span class="line">防火墙/IDS躲避和哄骗</span><br><span class="line">-f; --mtu value                 指定使用分片、指定数据包的MTU.</span><br><span class="line">-D decoy1,decoy2,ME             使用诱饵隐蔽扫描</span><br><span class="line">-S IP-ADDRESS                   源地址欺骗</span><br><span class="line">-e interface                    使用指定的接口</span><br><span class="line">-g/ --source-port PROTNUM       使用指定源端口 </span><br><span class="line">--proxies url1,[url2],...       使用HTTP或者SOCKS4的代理</span><br><span class="line">--data-length NUM               填充随机数据让数据包长度达到NUM</span><br><span class="line">--ip-options OPTIONS            使用指定的IP选项来发送数据包</span><br><span class="line">--ttl VALUE                     设置IP time-to-live域</span><br><span class="line">--spoof-mac ADDR/PREFIX/VEBDOR  MAC地址伪装</span><br><span class="line">--badsum                        使用错误的checksum来发送数据包</span><br><span class="line"> </span><br><span class="line">Nmap 输出</span><br><span class="line">-oN                     将标准输出直接写入指定的文件</span><br><span class="line">-oX                     输出xml文件</span><br><span class="line">-oS                     将所有的输出都改为大写</span><br><span class="line">-oG                     输出便于通过bash或者perl处理的格式,非xml</span><br><span class="line">-oA BASENAME            可将扫描结果以标准格式、XML格式和Grep格式一次性输出</span><br><span class="line">-v                      提高输出信息的详细度</span><br><span class="line">-d level                设置debug级别,最高是9</span><br><span class="line">--reason                显示端口处于带确认状态的原因</span><br><span class="line">--open                  只输出端口状态为open的端口</span><br><span class="line">--packet-trace          显示所有发送或者接收到的数据包</span><br><span class="line">--iflist                显示路由信息和接口,便于调试</span><br><span class="line">--log-errors            把日志等级为errors/warings的日志输出</span><br><span class="line">--append-output         追加到指定的文件</span><br><span class="line">--resume FILENAME       恢复已停止的扫描</span><br><span class="line">--stylesheet PATH/URL   设置XSL样式表，转换XML输出</span><br><span class="line">--webxml                从namp.org得到XML的样式</span><br><span class="line">--no-sytlesheet         忽略XML声明的XSL样式表</span><br><span class="line"> </span><br><span class="line">时间性能优化</span><br><span class="line">-T 　 时间优化(0-5)(paranoid|sneaky|polite|normal|aggressive|insane)</span><br><span class="line">-F　　快速扫描。</span><br><span class="line">--host-timeout time　　设置扫描主机的最大时间</span><br><span class="line"></span><br><span class="line">其他nmap选项</span><br><span class="line">-6                      开启IPv6</span><br><span class="line">-A                      OS识别,版本探测,脚本扫描和traceroute</span><br><span class="line">--datedir DIRNAME       说明用户Nmap数据文件位置</span><br><span class="line">--send-eth / --send-ip  使用原以太网帧发送/在原IP层发送</span><br><span class="line">--privileged            假定用户具有全部权限</span><br><span class="line">--unprovoleged          假定用户不具有全部权限,创建原始套接字需要root权限</span><br><span class="line">-V                      打印版本信息</span><br><span class="line">-h                      输出帮助</span><br></pre></td></tr></table></figure>
+扫描技巧
+-sS/sT/sA/sW/sM                 TCP SYN/TCP connect()/ACK/TCP窗口扫描/TCP Maimon扫描
+-sU                             UDP扫描
 
+指定端口和扫描顺序
+-p                      特定的端口 -p80,443 或者 -p1-65535
+-p U:PORT               扫描udp的某个端口, -p U:53
+-F                      快速扫描模式,比默认的扫描端口还少
+-r                      不随机扫描端口,默认是随机扫描的
+--top-ports &quot;number&quot;    扫描开放概率最高的number个端口,出现的概率需要参考nmap-services文件,ubuntu中该文件位于/usr/share/nmap.nmap默认扫前1000个
+--port-ratio &quot;ratio&quot;    扫描指定频率以上的端口
 
+服务版本识别
+-sV                             开放版本探测,可以直接使用-A同时打开操作系统探测和版本探测
+--version-intensity &quot;level&quot;     设置版本扫描强度,强度水平说明了应该使用哪些探测报文。数值越高，服务越有可能被正确识别。默认是7
+--version-light                 打开轻量级模式,为--version-intensity 2的别名
+--version-all                   尝试所有探测,为--version-intensity 9的别名
+--version-trace                 显示出详细的版本侦测过程信息
 
+脚本扫描
+-sC　　根据端口识别的服务,调用默认脚本
+--script=”Lua scripts”　　调用的脚本名
+--script-args=n1=v1,[n2=v2]　　调用的脚本传递的参数
+--script-args-file=filename　　使用文本传递参数
+--script-trace　　显示所有发送和接收到的数据
+--script-updatedb　　更新脚本的数据库
+--script-help=”Lua script”　　显示指定脚本的帮助
+
+OS识别
+-O              启用操作系统检测,-A来同时启用操作系统检测和版本检测
+--osscan-limit 　　 针对指定的目标进行操作系统检测(至少需确知该主机分别有一个open和closed的端口)
+--osscan-guess  　　推测操作系统检测结果,当Nmap无法确定所检测的操作系统时，会尽可能地提供最相近的匹配，Nmap默认进行这种匹配
+
+防火墙/IDS躲避和哄骗
+-f; --mtu value                 指定使用分片、指定数据包的MTU.
+-D decoy1,decoy2,ME             使用诱饵隐蔽扫描
+-S IP-ADDRESS                   源地址欺骗
+-e interface                    使用指定的接口
+-g/ --source-port PROTNUM       使用指定源端口 
+--proxies url1,[url2],...       使用HTTP或者SOCKS4的代理
+--data-length NUM               填充随机数据让数据包长度达到NUM
+--ip-options OPTIONS            使用指定的IP选项来发送数据包
+--ttl VALUE                     设置IP time-to-live域
+--spoof-mac ADDR/PREFIX/VEBDOR  MAC地址伪装
+--badsum                        使用错误的checksum来发送数据包
+
+Nmap 输出
+-oN                     将标准输出直接写入指定的文件
+-oX                     输出xml文件
+-oS                     将所有的输出都改为大写
+-oG                     输出便于通过bash或者perl处理的格式,非xml
+-oA BASENAME            可将扫描结果以标准格式、XML格式和Grep格式一次性输出
+-v                      提高输出信息的详细度
+-d level                设置debug级别,最高是9
+--reason                显示端口处于带确认状态的原因
+--open                  只输出端口状态为open的端口
+--packet-trace          显示所有发送或者接收到的数据包
+--iflist                显示路由信息和接口,便于调试
+--log-errors            把日志等级为errors/warings的日志输出
+--append-output         追加到指定的文件
+--resume FILENAME       恢复已停止的扫描
+--stylesheet PATH/URL   设置XSL样式表，转换XML输出
+--webxml                从namp.org得到XML的样式
+--no-sytlesheet         忽略XML声明的XSL样式表
+
+时间性能优化
+-T 　 时间优化(0-5)(paranoid|sneaky|polite|normal|aggressive|insane)
+-F　　快速扫描。
+--host-timeout time　　设置扫描主机的最大时间
+
+其他nmap选项
+-6                      开启IPv6
+-A                      OS识别,版本探测,脚本扫描和traceroute
+--datedir DIRNAME       说明用户Nmap数据文件位置
+--send-eth / --send-ip  使用原以太网帧发送/在原IP层发送
+--privileged            假定用户具有全部权限
+--unprovoleged          假定用户不具有全部权限,创建原始套接字需要root权限
+-V                      打印版本信息
+-h                      输出帮助</code></pre>
 
             </div>
             <hr/>
@@ -803,7 +1005,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">19.2k</span>&nbsp;字
+                class="white-color">19.7k</span>&nbsp;字
             
             
             
