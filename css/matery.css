@@ -614,7 +614,7 @@ header .go-back i {
 @keyframes rainbow {
     0%,
     100% {
-        background-image: linear-gradient(to top, #00c9ff 0%, #66a6ff 100%);
+        background-image: linear-gradient(to top, #48D1CC 0%, #48D1CC 100%);
     }
     
 }
