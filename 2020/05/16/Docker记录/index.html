@@ -348,7 +348,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    539
+                    569
                 </div>
                 
 
@@ -412,6 +412,13 @@
 <li>history命令会打印出指定镜像的历史版本信息，即构建该镜像的每一层镜像的<br>命令记录; </li>
 <li>logs命令会打印出容器中进程的运行日志。</li>
 </ul>
+<h3 id="docker使用"><a href="#docker使用" class="headerlink" title="docker使用"></a>docker使用</h3><pre><code class="c">docker pull ubuntu:latest
+docker run -it ubuntu bash
+//docker exec -it ubuntu bash
+//docker exec -it ID bash
+apt-get update
+apt-get install vim
+echo $PATH</code></pre>
 <hr>
 <p>一个容器只运行一个进程。所以要使用多个容器。</p>
 
