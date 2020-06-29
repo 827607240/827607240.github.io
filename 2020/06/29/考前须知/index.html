@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Burp Suite使用记录, HA">
+    <meta name="keywords" content="考前须知, HA">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Burp Suite使用记录 | HA</title>
+    <title>考前须知 | HA</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -201,7 +201,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '';
+        let pwd = 'f474d078e69802444d24c3b2deef5666e1294aa89d78d5376a5561b7abcad012';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('本文章暂不公开')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -219,7 +219,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Burp Suite使用记录</h1>
+                    <h1 class="description center-align post-title">考前须知</h1>
                 </div>
             </div>
         </div>
@@ -336,27 +336,14 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/web/">
-                                <span class="chip bg-color">web</span>
-                            </a>
-                        
-                            <a href="/tags/Burp-Suite/">
-                                <span class="chip bg-color">Burp Suite</span>
+                            <a href="/tags/private/">
+                                <span class="chip bg-color">private</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/Burp-Suite/" class="post-category">
-                                Burp Suite
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -365,7 +352,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-08
+                    2020-06-29
                 </div>
                 
 
@@ -374,7 +361,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    688
+                    170
                 </div>
                 
 
@@ -391,28 +378,15 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>之前学bp，学到了一点皮毛，知道怎么来爆破密码，但是对具体的操作没有进行实验，这几天闲了，再重新把爆破这部分做了一遍。ヾ(•ω•`)o</p>
-<h2 id="Burp-Suite"><a href="#Burp-Suite" class="headerlink" title="Burp Suite"></a>Burp Suite</h2><h3 id="Intruder-暴力破解模块"><a href="#Intruder-暴力破解模块" class="headerlink" title="Intruder_暴力破解模块"></a>Intruder_暴力破解模块</h3><p>抓到数据包之后，发送到Intruder。</p>
-<p><img src="http://ww1.sinaimg.cn/large/006sKd2tly1gdqc7x6sukj30yy0c3myo.jpg" alt="发送到爆破模块"></p>
-<p>设置攻击目标和目标端口</p>
-<p><img src="http://ww1.sinaimg.cn/large/006sKd2tly1gdqcc9oon9j30yz09edga.jpg" alt="设置攻击目标.png"></p>
-<p>设置变量和攻击模式。</p>
-<p><img src="http://ww1.sinaimg.cn/large/006sKd2tly1gdqcalndr0j30yy0igq4d.jpg" alt="攻击类型"></p>
-<h4 id="attack-type-攻击类型介绍"><a href="#attack-type-攻击类型介绍" class="headerlink" title="attack type 攻击类型介绍"></a>attack type 攻击类型介绍</h4><ul>
-<li><p><strong>Sniper - 单个变量使用一个字典的情况。从上到下，单个匹配。</strong>这个是我们最常用的，Sniper是狙击手的意思。这个模式会使用单一的payload【就是导入字典的payload】组。它会针对每个position中$$位置设置payload。这种攻击类型适合对常见漏洞中的请求参数单独地进行测试。攻击中的请求总数应该是position数量和payload数量的乘积。</p>
-</li>
-<li><p><strong>Battering ram – 多个变量使用同一个字典的情况。A变量=B变量，每次两个位置用同样的密码。</strong>这一模式是使用单一的payload组。它会重复payload并且一次把所有相同的payload放入指定的位置中。这种攻击适合那种需要在请求中把相同的输入放到多个位置的情况。请求的总数是payload组中payload的总数。简单说就是一个playload字典同时应用到多个position中。</p>
-</li>
-<li><p><strong>Pitchfork - 多个变量使用不同字典的情况。A字典的第一行对应B字典的第一行</strong>这一模式是使用多个payload组。对于定义的位置可以使用不同的payload组。攻击会同步迭代所有的payload组，把payload放入每个定义的位置中。比如：position中A处有a字典，B处有b字典，则a【1】将会对应b【1】进行attack处理，这种攻击类型非常适合那种不同位置中需要插入不同但相关的输入的情况。请求的数量应该是最小的payload组中的payload数量</p>
-</li>
-<li><p><strong>Cluster bomb – 交叉爆破，每一种组合都会测试。多变量建议使用这个模式</strong>这种模式会使用多个payload组。每个定义的位置中有不同的payload组。攻击会迭代每个payload组，每种payload组合都会被测试一遍。比如：position中A处有a字典，B处有b字典，则两个字典将会循环搭配组合进行attack处理这种攻击适用于那种位置中需要不同且不相关或者未知的输入的攻击。攻击请求的总数是各payload组中payload数量的乘积。</p>
-</li>
+                <h3 id="考前须知"><a href="#考前须知" class="headerlink" title="考前须知"></a>考前须知</h3><p><code>**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************</code></p>
+<ul>
+<li>河南人事网报名网站：<a href="http://www.hnrsks.com/LinkPage/News_list.aspx?dict_id=d_sgwyzt&amp;dict_values=A&amp;_d_id=1b335f82e8f8f17e4209556eec8515" target="_blank" rel="noopener">http://www.hnrsks.com/LinkPage/News_list.aspx?dict_id=d_sgwyzt&amp;dict_values=A&amp;_d_id=1b335f82e8f8f17e4209556eec8515</a></li>
 </ul>
-<h4 id="payloads"><a href="#payloads" class="headerlink" title="payloads"></a>payloads</h4><p><img src="http://ww1.sinaimg.cn/large/006sKd2tly1gdqcalndr0j30yy0igq4d.jpg" alt="1583647566242.png"></p>
-<p>Burp Intruder包含以下几种attack type:</p>
-<blockquote>
-<p>Simple list–简单字典<br>Runtime file–运行文件<br>Custom iterator–自定义迭代器<br>Character substitution–字符替换</p>
-</blockquote>
+<p>其中，提交报名申请及初审环节，通过河南人事考试网进行。报名确认、打印准考证两个环节，报考省直机关（单位）的，通过河南人事考试网进行；报考省辖市及以下职位的，通过相关省辖市的考试录用公务员工作专用网站进行。</p>
+<ul>
+<li>报名确认缴费地址：鹤壁人事考试网<a href="http://www.hbsrsks.com/st/default.html" target="_blank" rel="noopener">http://www.hbsrsks.com/st/default.html</a></li>
+</ul>
+<p>这是为了改变当前的现状所做的选择，这是一次改变人生轨迹的机会。</p>
 
             </div>
             <hr/>
@@ -438,7 +412,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/03/08/Burp-Suite%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/">http://yoursite.com/2020/03/08/Burp-Suite%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/</a>
+                    <a href="http://yoursite.com/2020/06/29/%E8%80%83%E5%89%8D%E9%A1%BB%E7%9F%A5/">http://yoursite.com/2020/06/29/%E8%80%83%E5%89%8D%E9%A1%BB%E7%9F%A5/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -476,12 +450,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/web/">
-                                    <span class="chip bg-color">web</span>
-                                </a>
-                            
-                                <a href="/tags/Burp-Suite/">
-                                    <span class="chip bg-color">Burp Suite</span>
+                                <a href="/tags/private/">
+                                    <span class="chip bg-color">private</span>
                                 </a>
                             
                         </div>
@@ -786,31 +756,30 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/09/Vim%E7%BB%83%E7%BA%A7%E6%94%BB%E7%95%A5%E8%AE%B0%E5%BD%95/">
+                <a href="/2020/06/29/%E8%80%83%E5%89%8D%E9%A1%BB%E7%9F%A5/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Vim练级攻略记录">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="考前须知">
                         
-                        <span class="card-title">Vim练级攻略记录</span>
+                        <span class="card-title">考前须知</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一直想着自己能熟练的使用vim，有时候命令忘记了又要去百度，于是找了一篇详细介绍vim的文档，并进行了总结（把一些我觉得有用的记录下来）。
-Vim攻略第一级 - 基础普通模式
-i → Insert 模式，按 ESC 回到 Normal 模式
+                            考前须知********************************************************************************************************************
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-29
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -819,11 +788,12 @@ i → Insert 模式，按 ESC 回到 Normal 模式
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Vim/">
-                        <span class="chip bg-color">Vim</span>
+                    <a href="/tags/private/">
+                        <span class="chip bg-color">private</span>
                     </a>
                     
                 </div>
@@ -837,35 +807,33 @@ i → Insert 模式，按 ESC 回到 Normal 模式
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/05/DVWA-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%85%A5%E9%97%A8/">
+                <a href="/2020/06/14/Git%E8%AE%B0%E5%BD%95/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="DVWA-渗透测试入门">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Git记录">
                         
-                        <span class="card-title">DVWA-渗透测试入门</span>
+                        <span class="card-title">Git记录</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            dvwa是web渗透测试入门训练平台，了解基础的web安全知识，通过搭建这个平台并学习利用平台上的漏洞来提高自己的能力。
-DVWA-渗透测试入门暴力破解暴力破解即用暴力穷举的方式大量尝试性地猜破密码。
-low刚开始看到这个题目不知如何下手。
+                            学习了一点Git基础用法，记录一下。
+Git记录Git是分布式版本控制系统。是用C语言开发的，没有中央服务器，任何一台电脑都能充当中央服务器。
+Git可以管理文件的修改版本。
+Git安装后配置
+$ git config --global u
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-14
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Web/" class="post-category">
-                                    Web
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            HA
                             
                         </span>
                     </div>
@@ -873,16 +841,8 @@ low刚开始看到这个题目不知如何下手。
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/DVWA/">
-                        <span class="chip bg-color">DVWA</span>
-                    </a>
-                    
-                    <a href="/tags/XSS/">
-                        <span class="chip bg-color">XSS</span>
-                    </a>
-                    
-                    <a href="/tags/web/">
-                        <span class="chip bg-color">web</span>
+                    <a href="/tags/Git/">
+                        <span class="chip bg-color">Git</span>
                     </a>
                     
                 </div>
