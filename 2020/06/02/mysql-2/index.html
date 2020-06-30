@@ -361,7 +361,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    470
+                    525
                 </div>
                 
 
@@ -393,8 +393,14 @@ mysql&gt; select * from students;
 |    1 | 张三   | M      | 2020-01-01 | 2020-01-01 |
 +------+--------+--------+------------+------------+
 1 row in set (0.00 sec)</code></pre>
-<p>创建一条表数据，发现mysql数据库一开始不能输入中文数据。需要修改编码格式才能正常运行。解决方法为在创建表的命令后面添加指定字符集的命令<code>default charset=utf8</code></p>
-<p>还有就是格式化显示数据库的表格，有时候数据库的表格看不清楚需要进行处理。</p>
+<p>创建一条表数据，发现mysql数据库一开始不能输入中文数据。需要修改编码格式才能正常运行。解决方法为在创建表的命令后面添加指定字符集的命令<code>default charset=utf8</code>。当然这只是临时解决办法。</p>
+<p>如果要完全解决这个问题，只有修改配置文件。修改mysql配置文件/etc/my.cnf</p>
+<pre><code>[mysqld]
+character-set-server=utf8 
+[client]
+default-character-set=utf8 
+[mysql]
+default-character-set=utf8</code></pre><p>还有就是格式化显示数据库的表格，有时候数据库的表格看不清楚需要进行处理。</p>
 <ul>
 <li><p>在命令后面添加<code>\g</code>这样数据会按照列显示。看的更明了一些。</p>
 </li>
@@ -1050,7 +1056,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">20.9k</span>&nbsp;字
+                class="white-color">21k</span>&nbsp;字
             
             
             
