@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="数据库基本使用, HA">
+    <meta name="keywords" content="web基本概念, HA">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>数据库基本使用 | HA</title>
+    <title>web基本概念 | HA</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -219,7 +219,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">数据库基本使用</h1>
+                    <h1 class="description center-align post-title">web基本概念</h1>
                 </div>
             </div>
         </div>
@@ -336,23 +336,14 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/MySQL/">
-                                <span class="chip bg-color">MySQL</span>
+                            <a href="/tags/web/">
+                                <span class="chip bg-color">web</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                数据库
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -361,7 +352,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-02
+                    2020-07-07
                 </div>
                 
 
@@ -370,7 +361,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    600
+                    1.3k
                 </div>
                 
 
@@ -387,139 +378,114 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>其他的数据库还没用过，就在这里先记录一下MySQL数据库的基本操作吧。我有点怀疑我为什么要写这个了。随便百度都能百度到的东西，我跪了（没办法，我是真的菜鸡）。</p>
-<h2 id="数据库的基本用法"><a href="#数据库的基本用法" class="headerlink" title="数据库的基本用法"></a>数据库的基本用法</h2><p>数据库的种类有很多，也有对应的图形化管理界面，但还是要掌握使用命令来对数据库进行操作。</p>
-<p>由于平常自己也很少使用数据库，现在只记录一些最基本的用法。</p>
-<h3 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h3><p>登录数据库；</p>
-<pre><code class="shell">mysql -u root -p</code></pre>
-<p>查看数据库；</p>
-<pre><code class="shell">mysql&gt; show databases;   
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| app                |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-5 rows in set (0.00 sec)</code></pre>
-<p>删除app数据库；</p>
-<pre><code class="shell">mysql&gt; drop database app;
-Query OK, 0 rows affected (0.00 sec)
+                <h3 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h3><p>一、域名简介</p>
+<p>为了便于我们访问服务器，就有了域名的诞生。域名和IP地址的关系就相当于姓名和身份证号之间的关系。域名是为了方便记忆。</p>
+<p> 二、域名查询</p>
+<p>1、根据域名我们可以查询一些服务器的信息，比如ip地址，管理员的部分信息。</p>
+<p>2、推荐网址：<a href="http://tool.chinaz.com" target="_blank" rel="noopener">http://tool.chinaz.com</a></p>
+<p><a href="https://www.aizhan.com" target="_blank" rel="noopener">https://www.aizhan.com</a></p>
+<p> 三、子域名收集</p>
+<p>.com 顶级域名</p>
+<p>baidu.com 二级域名</p>
+<p>m.baidu.com 三级域名</p>
+<p>一个服务器上可以搭建多个网站，所有就有许多域名对应一个IP地址，想找这个服务器上的漏洞，可以从多个网站入手，这就是子域名收集的重要性。</p>
+<h3 id="CMS识别"><a href="#CMS识别" class="headerlink" title="CMS识别"></a>CMS识别</h3><p>打开一个网站，我们可以先看一下该网站的CMS，</p>
+<p>推荐使用在线识别工具：</p>
+<p><a href="http://whatweb.bugscaner.com/look/" target="_blank" rel="noopener">http://whatweb.bugscaner.com/look/</a></p>
+<p><a href="http://www.yunsee.cn/finger.html" target="_blank" rel="noopener">http://www.yunsee.cn/finger.html</a></p>
+<h3 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h3><p>一个服务器可以对应多个域名，同样也可以对应多个端口，比如：192.168.1.111:80 192.168.1.111:82，不同端口可以搭建不同网站。</p>
+<hr>
+<p>常见端口：</p>
+<p>HTTP协议代理服务器：80/8080/3128/8081/9080</p>
+<p>FTP文件传输协议:21</p>
+<p>Telnet远程登录协议:23</p>
+<p>TFTP协议:69/udp</p>
+<p>SMTP(E-mail): 25/tcp</p>
+<p>POP3:110/tcp</p>
+<p>TOMCAT:8080</p>
+<p>win2003远程登录:3389</p>
+<p>Oracle数据库:1521</p>
+<p>MS SQL SERVER:1433/tcp/udp</p>
+<p>QQ: 1080/udp</p>
+<p>SSH安全登录、SCP文件传输、端口重定向：22/tcp</p>
+<hr>
+<p>查看服务器开放工具：masscan，nmap</p>
+<h3 id="搜索引擎语法"><a href="#搜索引擎语法" class="headerlink" title="搜索引擎语法"></a>搜索引擎语法</h3><p>一、Google搜索</p>
+<p>site:baidu.com  可以查看子域名</p>
+<p>inurl:.php?id= 搜索我们指定的字符是否存在于URL中</p>
+<p>intext:管理 将返回所有在网页正文部分包含关键词的网页</p>
+<p>intitle: 管理 将返回所有网页标题中包含关键词的网页</p>
+<p>filetype:txt 搜索指定的文件类型</p>
+<p>“精准查找” 引号里面的内容是精准查找的</p>
+<p>aiyou -bucuo 搜索有aiyou，但是排除带bucuo的内容</p>
+<p>link:baidu.com 可以返回所有和baidu.com做了链接的URL。</p>
+<p>二、fofa搜索</p>
+<p>title=”abc” 从标题中搜索abc</p>
+<p>header=”abc” 从http头中搜索abc</p>
+<p>body=”abc” 从html正文中搜索abc</p>
+<p>domain=”qq.com” 搜索根域名带有qq.com的网站</p>
+<p>host=”.gov.cn” 从url中搜索.gov.cn,注意搜索要用host作为名称</p>
+<p>port=”443” 查找对应443端口</p>
+<p>ip=”1.1.1.1” 从ip中搜索包含1.1.1.1的网站,注意搜索要用ip作为名称</p>
+<p>protocol=”https” 搜索制定协议类型(在开启端口扫描的情况下有效)</p>
+<p>city=”Beijing” 搜索指定城市</p>
+<p>region=”Zhejiang” 搜索指定行政区</p>
+<p>country=”CN” 搜索指定国家(编码)</p>
+<p>三、钟馗之眼</p>
+<p>app:nginx 组件名</p>
+<p>ver:1.0 版本</p>
+<p>os:windows 操作系统</p>
+<p>country:”China” 国家</p>
+<p>city:”hangzhou” 城市</p>
+<p>port:80 端口</p>
+<p>vhostname:google 主机名</p>
+<p>`site:thief.onev 网站域名</p>
+<p>desc:nmask 描述</p>
+<p>keywords:nmask’blog 关键词</p>
+<p>service:ftpv 服务类型</p>
+<p>ip:8.8.8.8 ip地址</p>
+<p>cidr:8.8.8.8/24 ip地址段</p>
+<h3 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h3><p>CDN：当一个服务器被不同地方的客户端大量访问的时候，服务器可能会出现压力，为了减小这些压力，就有CDN的出现。还有一个作用就是隐藏真实IP。</p>
+<p>一、判断CDN是否存在</p>
+<p>我们可以随便ping一下网址，得到一个IP地址，然后把这个IP直接放到浏览器，看是否能正常该网站，如果能说明没有CDN防护。</p>
+<p>二、绕过CDN</p>
+<p>1、通过站长工具的多地ping</p>
+<p>2、通过ping子域名，一般网站只在主站挂CDN</p>
+<p>在线查询：</p>
+<p><a href="https://asm.ca.com/en/ping.php" target="_blank" rel="noopener">https://asm.ca.com/en/ping.php</a></p>
+<p><a href="https://viewdns.info/" target="_blank" rel="noopener">https://viewdns.info/</a></p>
+<p><a href="http://ping.chinaz.com" target="_blank" rel="noopener">http://ping.chinaz.com</a> </p>
+<h3 id="mysql语法"><a href="#mysql语法" class="headerlink" title="mysql语法"></a>mysql语法</h3><p>一、基本语法</p>
+<p>show databases(); 显示当前数据库</p>
+<p>show user()；显示当前用户</p>
+<p>show now()；显示当前时间</p>
+<p>use 数据库名称；选择数据库</p>
+<p>show tables；显示选择的数据的所有表</p>
+<p>show create table users \G;显示表结构的详细数据</p>
+<p>DESCribe 表名；显示表结构，大写可以自动补全</p>
+<p>select * from users；查询所有数据</p>
+<p>select id,name from users; 查询两列表</p>
+<p>select * from users where id=‘2’； 如果不加引号表示字段名称，加上引号表示字段内容</p>
+<p>limit 3 限制显示3行</p>
+<p>select DISTINCT 表名 去重复的名字</p>
+<p>select database() 显示当前数据库</p>
+<p>select version 显示数据库版本</p>
+<p>select user() 显示当前用户</p>
+<p>二、增删改查</p>
+<p>select 列名称 from 表名称 where 字段1=’条件1’ and 字段2=’条件2’</p>
+<p>insert into 表名(列1，列2.。。)values（值1，值2）</p>
+<p>update 表名称 set 列名称=新值 where 列名称=某值</p>
+<p>delete from 表名称 where 列名称=值</p>
+<p>三、注释</p>
+<p>–空格</p>
+<p>#</p>
+<p>/**/</p>
+<p>四、mysql5.0以上版本的特性：</p>
+<p>默认定义information_schema数据库，里面具有表schemata(数据库名)、tables(表名)、columns(列名或字段名)</p>
+<p>在schemata表中，schema_name字段用来存储数据库名</p>
+<p>在tables表中，table_schema和table_name分别用来存储数据库名。</p>
+<p>在columns表中，tabel_schema存储数据库名，table_name存储表名，column_name存储字段名</p>
 
-mysql&gt; show databases;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-4 rows in set (0.00 sec)</code></pre>
-<p>创建app数据库；</p>
-<pre><code class="shell">mysql&gt; create database app;
-Query OK, 1 row affected (0.00 sec)
-
-mysql&gt; show databases;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| app                |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-5 rows in set (0.00 sec)</code></pre>
-<p>选择数据库，查看数据库中的表；</p>
-<pre><code class="shell">use app;    
-show tables;   </code></pre>
-<p>选择数据库，创建一个新表，插入一行新数据；</p>
-<pre><code class="shell">mysql&gt; use app;
-Database changed
-mysql&gt; create table table_name(id int,username varchar(50),password varchar(50));
-Query OK, 0 rows affected (0.01 sec)
-
-mysql&gt; select * from table_name;
-Empty set (0.00 sec)
-
-mysql&gt; insert into table_name(id,username,password) values(1,&#39;root&#39;,&#39;toor&#39;);
-Query OK, 1 row affected (0.00 sec)
-
-mysql&gt; select * from table_name;
-+------+----------+----------+
-| id   | username | password |
-+------+----------+----------+
-|    1 | root     | toor     |
-+------+----------+----------+
-1 row in set (0.00 sec)</code></pre>
-<p>插入多行新数据；</p>
-<pre><code class="shell">mysql&gt; insert into table_name(id,username,password) values(2,&#39;admin&#39;,&#39;admin123&#39;),(3,&#39;sysadm&#39;,&#39;admin456&#39;),(4,&#39;secadm&#39;,&#39;secadm&#39;);
-Query OK, 3 rows affected (0.01 sec)
-Records: 3  Duplicates: 0  Warnings: 0
-
-mysql&gt; select * from table_name;
-+------+----------+----------+
-| id   | username | password |
-+------+----------+----------+
-|    1 | root     | toor     |
-|    2 | admin    | admin123 |
-|    3 | sysadm   | admin456 |
-|    4 | secadm   | secadm   |
-+------+----------+----------+
-4 rows in set (0.00 sec)</code></pre>
-<p>更新表中的字段内容；</p>
-<pre><code class="shell">mysql&gt; update table_name set password=&#39;123456&#39; where id=4;
-Query OK, 1 row affected (0.00 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-mysql&gt; select * from table_name;
-+------+----------+----------+
-| id   | username | password |
-+------+----------+----------+
-|    1 | root     | toor     |
-|    2 | admin    | admin123 |
-|    3 | sysadm   | admin456 |
-|    4 | secadm   | 123456   |
-+------+----------+----------+
-4 rows in set (0.00 sec)
-
-mysql&gt; select * from table_name where id=4;
-+------+----------+----------+
-| id   | username | password |
-+------+----------+----------+
-|    4 | secadm   | 123456   |
-+------+----------+----------+
-1 row in set (0.00 sec)
-
-mysql&gt; select * from table_name;
-+------+----------+----------+
-| id   | username | password |
-+------+----------+----------+
-|    1 | root     | toor     |
-|    2 | admin    | admin123 |
-|    3 | sysadm   | admin456 |
-|    4 | secadm   | 123456   |
-+------+----------+----------+
-4 rows in set (0.00 sec)</code></pre>
-<p>删除一行数据；</p>
-<pre><code class="shell">mysql&gt; delete from table_name where id=3;
-Query OK, 1 row affected (0.01 sec)
-
-mysql&gt; select * from table_name;
-+------+----------+----------+
-| id   | username | password |
-+------+----------+----------+
-|    1 | root     | toor     |
-|    2 | admin    | admin123 |
-|    4 | secadm   | 123456   |
-+------+----------+----------+
-3 rows in set (0.00 sec)
-mysql&gt; exit
-Bye</code></pre>
-<h3 id="SQL-server"><a href="#SQL-server" class="headerlink" title="SQL server"></a>SQL server</h3><h3 id="access"><a href="#access" class="headerlink" title="access"></a>access</h3><h3 id="Oracle"><a href="#Oracle" class="headerlink" title="Oracle"></a>Oracle</h3>
             </div>
             <hr/>
 
@@ -544,7 +510,7 @@ Bye</code></pre>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://827607240.github.io/2020/03/02/mysql-1/">https://827607240.github.io/2020/03/02/mysql-1/</a>
+                    <a href="https://827607240.github.io/2020/07/07/web-1/">https://827607240.github.io/2020/07/07/web-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -582,8 +548,8 @@ Bye</code></pre>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/MySQL/">
-                                    <span class="chip bg-color">MySQL</span>
+                                <a href="/tags/web/">
+                                    <span class="chip bg-color">web</span>
                                 </a>
                             
                         </div>
@@ -888,59 +854,48 @@ Bye</code></pre>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/03/Nmap/">
+                <a href="/2020/07/07/web-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Nmap使用参数记录">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="web基本概念">
                         
-                        <span class="card-title">Nmap使用参数记录</span>
+                        <span class="card-title">web基本概念</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            nmap，端口扫描神器。但是扫描速度有点慢。
-nmap的使用nmap介绍Nmap — 网络探测工具和安全/端口扫描器。
-nmap常用参数ping扫描
-nmap -sP 192.168.0.1/24
-SYN扫描（半开扫描）
-nmap -sS 
+                            域名一、域名简介
+为了便于我们访问服务器，就有了域名的诞生。域名和IP地址的关系就相当于姓名和身份证号之间的关系。域名是为了方便记忆。
+ 二、域名查询
+1、根据域名我们可以查询一些服务器的信息，比如ip地址，管理员的部分信息。
+2、推荐网址
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-03
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-07
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Nmap/" class="post-category">
-                                    Nmap
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            HA
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Nmap/">
-                        <span class="chip bg-color">Nmap</span>
-                    </a>
-                    
-                    <a href="/tags/Windows/">
-                        <span class="chip bg-color">Windows</span>
-                    </a>
-                    
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/web/">
+                        <span class="chip bg-color">web</span>
                     </a>
                     
                 </div>
@@ -954,35 +909,29 @@ nmap -sS
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/01/sqlmap-2/">
+                <a href="/2020/06/29/%E8%80%83%E5%89%8D%E9%A1%BB%E7%9F%A5/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="记一次完整的SQL注入">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="考前须知">
                         
-                        <span class="card-title">记一次完整的SQL注入</span>
+                        <span class="card-title">考前须知</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            这是之前学习SQLMAP时做过的记录，第一次使用SQL注入获取用户密码，当时还是挺激动的，虽然这个很简单。存粹的学习记录，把一些试错的过程删掉了。
-SQLMAP注入首先查找到注入点，用sqlmap进行注入。
-sqlmap.py -u &qu
+                            考前须知********************************************************************************************************************
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-29
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/SQLMap/" class="post-category">
-                                    SQLMap
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            HA
                             
                         </span>
                     </div>
@@ -990,16 +939,8 @@ sqlmap.py -u &qu
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/web/">
-                        <span class="chip bg-color">web</span>
-                    </a>
-                    
-                    <a href="/tags/SQLMap/">
-                        <span class="chip bg-color">SQLMap</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                        <span class="chip bg-color">数据库</span>
+                    <a href="/tags/private/">
+                        <span class="chip bg-color">private</span>
                     </a>
                     
                 </div>
