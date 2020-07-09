@@ -201,7 +201,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '';
+        let pwd = 'e05d94c169b387b7bd3beeb09ed5b60ed302f9b3518aaac36fa9143574ecd9c5';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('本文章暂不公开')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
