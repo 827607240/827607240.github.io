@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Nmap使用参数记录, HA">
+    <meta name="keywords" content="实现自动化签到, HA">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Nmap使用参数记录 | HA</title>
+    <title>实现自动化签到 | HA</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -219,7 +219,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Nmap使用参数记录</h1>
+                    <h1 class="description center-align post-title">实现自动化签到</h1>
                 </div>
             </div>
         </div>
@@ -336,31 +336,22 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Nmap/">
-                                <span class="chip bg-color">Nmap</span>
+                            <a href="/tags/bash/">
+                                <span class="chip bg-color">bash</span>
                             </a>
                         
-                            <a href="/tags/Windows/">
-                                <span class="chip bg-color">Windows</span>
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
                             </a>
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
+                            <a href="/tags/linux/">
+                                <span class="chip bg-color">linux</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/Nmap/" class="post-category">
-                                Nmap
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -369,7 +360,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-03
+                    2020-07-09
                 </div>
                 
 
@@ -378,7 +369,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.4k
+                    522
                 </div>
                 
 
@@ -395,231 +386,64 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>nmap，端口扫描神器。但是扫描速度有点慢。</p>
-<h2 id="nmap的使用"><a href="#nmap的使用" class="headerlink" title="nmap的使用"></a>nmap的使用</h2><h3 id="nmap介绍"><a href="#nmap介绍" class="headerlink" title="nmap介绍"></a>nmap介绍</h3><p>Nmap — 网络探测工具和安全/端口扫描器。</p>
-<h3 id="nmap常用参数"><a href="#nmap常用参数" class="headerlink" title="nmap常用参数"></a>nmap常用参数</h3><p>ping扫描</p>
-<p><code>nmap -sP 192.168.0.1/24</code></p>
-<p>SYN扫描（半开扫描）</p>
-<p><code>nmap -sS 192.168.0.1/24</code></p>
-<p><code>-P0</code>   扫描前不用ping命令</p>
-<p><code>-O</code>    判断操作系统，存在误报</p>
-<p><code>-oN</code>  输出txt文件</p>
-<p><code>-iL</code>    读取主机列表，“-iL C:\ip.txt”</p>
-<p><code>-vv</code>对结果进行详细的输出</p>
-<p><code>-PR</code>使用ARP协议扫描</p>
-<p><code>-T4</code>时间优化(0-5)，默认是<code>T3</code>，建议使用T4</p>
-<p><code>-F</code>快速扫描</p>
-<p><code>-Pn</code> <a href="http://www.xxx.com" target="_blank" rel="noopener">www.xxx.com</a> 穿透防火墙扫描结果</p>
-<h3 id="nmap参数"><a href="#nmap参数" class="headerlink" title="nmap参数"></a>nmap参数</h3><pre><code class="shell">nmap --help
-Nmap 7.70 ( https://nmap.org )
-Usage: nmap [Scan Type(s)] [Options] {target specification}
-TARGET SPECIFICATION:
-  Can pass hostnames, IP addresses, networks, etc.
-  Ex: scanme.nmap.org, microsoft.com/24, 192.168.0.1; 10.0.0-255.1-254
-  -iL &lt;inputfilename&gt;: Input from list of hosts/networks
-  -iR &lt;num hosts&gt;: Choose random targets
-  --exclude &lt;host1[,host2][,host3],...&gt;: Exclude hosts/networks
-  --excludefile &lt;exclude_file&gt;: Exclude list from file
-HOST DISCOVERY:
-  -sL: List Scan - simply list targets to scan
-  -sn: Ping Scan - disable port scan
-  -Pn: Treat all hosts as online -- skip host discovery
-  -PS/PA/PU/PY[portlist]: TCP SYN/ACK, UDP or SCTP discovery to given ports
-  -PE/PP/PM: ICMP echo, timestamp, and netmask request discovery probes
-  -PO[protocol list]: IP Protocol Ping
-  -n/-R: Never do DNS resolution/Always resolve [default: sometimes]
-  --dns-servers &lt;serv1[,serv2],...&gt;: Specify custom DNS servers
-  --system-dns: Use OS&#39;s DNS resolver
-  --traceroute: Trace hop path to each host
-SCAN TECHNIQUES:
-  -sS/sT/sA/sW/sM: TCP SYN/Connect()/ACK/Window/Maimon scans
-  -sU: UDP Scan
-  -sN/sF/sX: TCP Null, FIN, and Xmas scans
-  --scanflags &lt;flags&gt;: Customize TCP scan flags
-  -sI &lt;zombie host[:probeport]&gt;: Idle scan
-  -sY/sZ: SCTP INIT/COOKIE-ECHO scans
-  -sO: IP protocol scan
-  -b &lt;FTP relay host&gt;: FTP bounce scan
-PORT SPECIFICATION AND SCAN ORDER:
-  -p &lt;port ranges&gt;: Only scan specified ports
-    Ex: -p22; -p1-65535; -p U:53,111,137,T:21-25,80,139,8080,S:9
-  --exclude-ports &lt;port ranges&gt;: Exclude the specified ports from scanning
-  -F: Fast mode - Scan fewer ports than the default scan
-  -r: Scan ports consecutively - don&#39;t randomize
-  --top-ports &lt;number&gt;: Scan &lt;number&gt; most common ports
-  --port-ratio &lt;ratio&gt;: Scan ports more common than &lt;ratio&gt;
-SERVICE/VERSION DETECTION:
-  -sV: Probe open ports to determine service/version info
-  --version-intensity &lt;level&gt;: Set from 0 (light) to 9 (try all probes)
-  --version-light: Limit to most likely probes (intensity 2)
-  --version-all: Try every single probe (intensity 9)
-  --version-trace: Show detailed version scan activity (for debugging)
-SCRIPT SCAN:
-  -sC: equivalent to --script=default
-  --script=&lt;Lua scripts&gt;: &lt;Lua scripts&gt; is a comma separated list of
-           directories, script-files or script-categories
-  --script-args=&lt;n1=v1,[n2=v2,...]&gt;: provide arguments to scripts
-  --script-args-file=filename: provide NSE script args in a file
-  --script-trace: Show all data sent and received
-  --script-updatedb: Update the script database.
-  --script-help=&lt;Lua scripts&gt;: Show help about scripts.
-           &lt;Lua scripts&gt; is a comma-separated list of script-files or
-           script-categories.
-OS DETECTION:
-  -O: Enable OS detection
-  --osscan-limit: Limit OS detection to promising targets
-  --osscan-guess: Guess OS more aggressively
-TIMING AND PERFORMANCE:
-  Options which take &lt;time&gt; are in seconds, or append &#39;ms&#39; (milliseconds),
-  &#39;s&#39; (seconds), &#39;m&#39; (minutes), or &#39;h&#39; (hours) to the value (e.g. 30m).
-  -T&lt;0-5&gt;: Set timing template (higher is faster)
-  --min-hostgroup/max-hostgroup &lt;size&gt;: Parallel host scan group sizes
-  --min-parallelism/max-parallelism &lt;numprobes&gt;: Probe parallelization
-  --min-rtt-timeout/max-rtt-timeout/initial-rtt-timeout &lt;time&gt;: Specifies
-      probe round trip time.
-  --max-retries &lt;tries&gt;: Caps number of port scan probe retransmissions.
-  --host-timeout &lt;time&gt;: Give up on target after this long
-  --scan-delay/--max-scan-delay &lt;time&gt;: Adjust delay between probes
-  --min-rate &lt;number&gt;: Send packets no slower than &lt;number&gt; per second
-  --max-rate &lt;number&gt;: Send packets no faster than &lt;number&gt; per second
-FIREWALL/IDS EVASION AND SPOOFING:
-  -f; --mtu &lt;val&gt;: fragment packets (optionally w/given MTU)
-  -D &lt;decoy1,decoy2[,ME],...&gt;: Cloak a scan with decoys
-  -S &lt;IP_Address&gt;: Spoof source address
-  -e &lt;iface&gt;: Use specified interface
-  -g/--source-port &lt;portnum&gt;: Use given port number
-  --proxies &lt;url1,[url2],...&gt;: Relay connections through HTTP/SOCKS4 proxies
-  --data &lt;hex string&gt;: Append a custom payload to sent packets
-  --data-string &lt;string&gt;: Append a custom ASCII string to sent packets
-  --data-length &lt;num&gt;: Append random data to sent packets
-  --ip-options &lt;options&gt;: Send packets with specified ip options
-  --ttl &lt;val&gt;: Set IP time-to-live field
-  --spoof-mac &lt;mac address/prefix/vendor name&gt;: Spoof your MAC address
-  --badsum: Send packets with a bogus TCP/UDP/SCTP checksum
-OUTPUT:
-  -oN/-oX/-oS/-oG &lt;file&gt;: Output scan in normal, XML, s|&lt;rIpt kIddi3,
-     and Grepable format, respectively, to the given filename.
-  -oA &lt;basename&gt;: Output in the three major formats at once
-  -v: Increase verbosity level (use -vv or more for greater effect)
-  -d: Increase debugging level (use -dd or more for greater effect)
-  --reason: Display the reason a port is in a particular state
-  --open: Only show open (or possibly open) ports
-  --packet-trace: Show all packets sent and received
-  --iflist: Print host interfaces and routes (for debugging)
-  --append-output: Append to rather than clobber specified output files
-  --resume &lt;filename&gt;: Resume an aborted scan
-  --stylesheet &lt;path/URL&gt;: XSL stylesheet to transform XML output to HTML
-  --webxml: Reference stylesheet from Nmap.Org for more portable XML
-  --no-stylesheet: Prevent associating of XSL stylesheet w/XML output
-MISC:
-  -6: Enable IPv6 scanning
-  -A: Enable OS detection, version detection, script scanning, and traceroute
-  --datadir &lt;dirname&gt;: Specify custom Nmap data file location
-  --send-eth/--send-ip: Send using raw ethernet frames or IP packets
-  --privileged: Assume that the user is fully privileged
-  --unprivileged: Assume the user lacks raw socket privileges
-  -V: Print version number
-  -h: Print this help summary page.
-EXAMPLES:
-  nmap -v -A scanme.nmap.org
-  nmap -v -sn 192.168.0.0/16 10.0.0.0/8
-  nmap -v -iR 10000 -Pn -p 80
-SEE THE MAN PAGE (https://nmap.org/book/man.html) FOR MORE OPTIONS AND EXAMPLES</code></pre>
-<pre><code class="shell">Nmap支持主机名,ip,网段的表示方式
-例如:blah.highon.coffee, namp.org/24, 192.168.0.1;10.0.0-25.1-254
+                <h2 id="实现自动化签到"><a href="#实现自动化签到" class="headerlink" title="实现自动化签到"></a>实现自动化签到</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在OA上签到打卡和签退，但是总有些时候会忘记打卡，每天签到签退又很麻烦，于是就想到通过脚本实现自动化签到签退。</p>
+<h3 id="获取请求包信息"><a href="#获取请求包信息" class="headerlink" title="获取请求包信息"></a>获取请求包信息</h3><p>首先打开网页打开F12，点击<code>Network</code>，点击<code>签到</code>。会出现一些请求文件，打开并查看<code>Headers</code>，查看<code>preview</code>显示得是返回的信息。</p>
+<p>请求包内容，<code>request headers</code></p>
+<pre><code>&#39;Content-Type&#39;: &#39;application/x-www-form-urlencoded&#39;,
+&#39;Referer&#39;: &#39;从哪个网页跳转过来的&#39;,
+&#39;User-Agent&#39;: &#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36&#39;,
+&#39;Cookie&#39;: &#39;&#39;</code></pre><p>查看是<code>GET</code>请求还是<code>POST</code>请求。</p>
+<h3 id="签到脚本"><a href="#签到脚本" class="headerlink" title="签到脚本"></a>签到脚本</h3><pre><code class="python">import requests
+import time
 
--iL filename                    从文件中读取待检测的目标,文件中的表示方法支持机名,ip,网段
---exclude host1[, host2]        从扫描任务中需要排除的主机          
---exculdefile exclude_file      排除文件中的IP,格式和-iL指定扫描文件的格式相同
+url = &#39;http://xxx/hrm/schedule/HrmScheduleSignXMLHTTP.jsp?t=0.2655744879360351&#39;
+headers = {
+    &#39;Content-Type&#39;: &#39;application/x-www-form-urlencoded&#39;,
+    &#39;Referer&#39;: &#39;http://xxx/wui/main.jsp&#39;,
+    &#39;User-Agent&#39;: &#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36&#39;,
+    &#39;Cookie&#39;: &#39;xxx&#39;
+}
+response = requests.post(url=url,headers=headers)
+print(response.text)</code></pre>
+<p>签到返回内容</p>
+<p><img src="https://s1.ax1x.com/2020/07/09/UeBhdA.png" alt="UeBhdA.png"></p>
+<p>签到成功。</p>
+<p>添加日志功能，只记录了运行时间。这个脚本还不够完美。</p>
+<pre><code class="python">import requests
+import time
+import re
 
-主机发现
--sL                     仅仅是显示,扫描的IP数目,不会进行任何扫描
--sn                     ping扫描,即主机发现
--Pn                     不检测主机存活
--PS/PA/PU/PY[portlist]  TCP SYN Ping/TCP ACK Ping/UDP Ping发现
--PE/PP/PM               使用ICMP echo, timestamp and netmask 请求包发现主机
--PO[prococol list]      使用IP协议包探测对方主机是否开启  
--n/-R                   不对IP进行域名反向解析/为所有的IP都进行域名的反响解析
+url = &#39;http://xxx/hrm/schedule/HrmScheduleSignXMLHTTP.jsp?t=0.2655744879360351&#39;
+headers = {
+    &#39;Content-Type&#39;: &#39;application/x-www-form-urlencoded&#39;,
+    &#39;Referer&#39;: &#39;http://xxx/wui/main.jsp&#39;,
+    &#39;User-Agent&#39;: &#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36&#39;,
+    &#39;Cookie&#39;: &#39;&#39;
+}
+response = requests.post(url=url,headers=headers)
 
-扫描技巧
--sS/sT/sA/sW/sM                 TCP SYN/TCP connect()/ACK/TCP窗口扫描/TCP Maimon扫描
--sU                             UDP扫描
-
-指定端口和扫描顺序
--p                      特定的端口 -p80,443 或者 -p1-65535
--p U:PORT               扫描udp的某个端口, -p U:53
--F                      快速扫描模式,比默认的扫描端口还少
--r                      不随机扫描端口,默认是随机扫描的
---top-ports &quot;number&quot;    扫描开放概率最高的number个端口,出现的概率需要参考nmap-services文件,ubuntu中该文件位于/usr/share/nmap.nmap默认扫前1000个
---port-ratio &quot;ratio&quot;    扫描指定频率以上的端口
-
-服务版本识别
--sV                             开放版本探测,可以直接使用-A同时打开操作系统探测和版本探测
---version-intensity &quot;level&quot;     设置版本扫描强度,强度水平说明了应该使用哪些探测报文。数值越高，服务越有可能被正确识别。默认是7
---version-light                 打开轻量级模式,为--version-intensity 2的别名
---version-all                   尝试所有探测,为--version-intensity 9的别名
---version-trace                 显示出详细的版本侦测过程信息
-
-脚本扫描
--sC　　根据端口识别的服务,调用默认脚本
---script=”Lua scripts”　　调用的脚本名
---script-args=n1=v1,[n2=v2]　　调用的脚本传递的参数
---script-args-file=filename　　使用文本传递参数
---script-trace　　显示所有发送和接收到的数据
---script-updatedb　　更新脚本的数据库
---script-help=”Lua script”　　显示指定脚本的帮助
-
-OS识别
--O              启用操作系统检测,-A来同时启用操作系统检测和版本检测
---osscan-limit 　　 针对指定的目标进行操作系统检测(至少需确知该主机分别有一个open和closed的端口)
---osscan-guess  　　推测操作系统检测结果,当Nmap无法确定所检测的操作系统时，会尽可能地提供最相近的匹配，Nmap默认进行这种匹配
-
-防火墙/IDS躲避和哄骗
--f; --mtu value                 指定使用分片、指定数据包的MTU.
--D decoy1,decoy2,ME             使用诱饵隐蔽扫描
--S IP-ADDRESS                   源地址欺骗
--e interface                    使用指定的接口
--g/ --source-port PROTNUM       使用指定源端口 
---proxies url1,[url2],...       使用HTTP或者SOCKS4的代理
---data-length NUM               填充随机数据让数据包长度达到NUM
---ip-options OPTIONS            使用指定的IP选项来发送数据包
---ttl VALUE                     设置IP time-to-live域
---spoof-mac ADDR/PREFIX/VEBDOR  MAC地址伪装
---badsum                        使用错误的checksum来发送数据包
-
-Nmap 输出
--oN                     将标准输出直接写入指定的文件
--oX                     输出xml文件
--oS                     将所有的输出都改为大写
--oG                     输出便于通过bash或者perl处理的格式,非xml
--oA BASENAME            可将扫描结果以标准格式、XML格式和Grep格式一次性输出
--v                      提高输出信息的详细度
--d level                设置debug级别,最高是9
---reason                显示端口处于带确认状态的原因
---open                  只输出端口状态为open的端口
---packet-trace          显示所有发送或者接收到的数据包
---iflist                显示路由信息和接口,便于调试
---log-errors            把日志等级为errors/warings的日志输出
---append-output         追加到指定的文件
---resume FILENAME       恢复已停止的扫描
---stylesheet PATH/URL   设置XSL样式表，转换XML输出
---webxml                从namp.org得到XML的样式
---no-sytlesheet         忽略XML声明的XSL样式表
-
-时间性能优化
--T 　 时间优化(0-5)(paranoid|sneaky|polite|normal|aggressive|insane)
--F　　快速扫描。
---host-timeout time　　设置扫描主机的最大时间
-
-其他nmap选项
--6                      开启IPv6
--A                      OS识别,版本探测,脚本扫描和traceroute
---datedir DIRNAME       说明用户Nmap数据文件位置
---send-eth / --send-ip  使用原以太网帧发送/在原IP层发送
---privileged            假定用户具有全部权限
---unprovoleged          假定用户不具有全部权限,创建原始套接字需要root权限
--V                      打印版本信息
--h                      输出帮助</code></pre>
+now = time.strftime(&#39;%Y-%m-%d %H:%M:%S&#39;,time.localtime())
+msg = response.text
+time = re.findall(r&#39;&lt;tr&gt;(.+?)&lt;/tr&gt;&#39;,msg)
+print(time)
+try:
+    with open(&#39;/home/admin/oa/log/log.txt&#39;,&#39;a&#39;) as f:
+        f.write(&#39;{} --- {}\n&#39;.format(now,time))
+        f.close()
+        print(response.text)
+except Exception as e:
+    print(e)</code></pre>
+<p>运行成功后，测试。</p>
+<h3 id="设置定时任务"><a href="#设置定时任务" class="headerlink" title="设置定时任务"></a>设置定时任务</h3><p>编辑<code>/etc/crontab</code>文件。</p>
+<blockquote>
+<p>30 8    * * 1-5 root    sh /home/admin/oa/oa.sh</p>
+<p>每周一到周五的8点半运行这个脚本。</p>
+</blockquote>
+<p>查看记录的日志文件。</p>
+<p><img src="https://s1.ax1x.com/2020/07/09/UeHhjg.png" alt="UeHhjg.png"></p>
+<p>自动签到部分大功告成。</p>
+<hr>
+<p>自动签退</p>
 
             </div>
             <hr/>
@@ -645,7 +469,7 @@ Nmap 输出
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://827607240.github.io/2020/03/03/Nmap/">https://827607240.github.io/2020/03/03/Nmap/</a>
+                    <a href="https://827607240.github.io/2020/07/09/python-1/">https://827607240.github.io/2020/07/09/python-1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -683,16 +507,16 @@ Nmap 输出
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Nmap/">
-                                    <span class="chip bg-color">Nmap</span>
+                                <a href="/tags/bash/">
+                                    <span class="chip bg-color">bash</span>
                                 </a>
                             
-                                <a href="/tags/Windows/">
-                                    <span class="chip bg-color">Windows</span>
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
                                 </a>
                             
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
+                                <a href="/tags/linux/">
+                                    <span class="chip bg-color">linux</span>
                                 </a>
                             
                         </div>
@@ -997,51 +821,53 @@ Nmap 输出
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/03/sqlmap-1/">
+                <a href="/2020/07/09/python-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="SQLMap注入参数记录">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="实现自动化签到">
                         
-                        <span class="card-title">SQLMap注入参数记录</span>
+                        <span class="card-title">实现自动化签到</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            在浏览别人分享的文章后，了解到SQLMap的灵活性，学习到了新姿势，觉得自己又菜了，有好工具不会用你说气人不气人，简直就是暴殄天物。没有仔细地看过这款工具，这可能就是差距吧。orz
-SQLMap注入SQLMap支持的数据库MySQL, Or
+                            实现自动化签到前言在OA上签到打卡和签退，但是总有些时候会忘记打卡，每天签到签退又很麻烦，于是就想到通过脚本实现自动化签到签退。
+获取请求包信息首先打开网页打开F12，点击Network，点击签到。会出现一些请求文件，打开并查看Header
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-03
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-09
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/SQLMap/" class="post-category">
-                                    SQLMap
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            HA
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/SQLMap/">
-                        <span class="chip bg-color">SQLMap</span>
+                    <a href="/tags/bash/">
+                        <span class="chip bg-color">bash</span>
                     </a>
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                        <span class="chip bg-color">数据库</span>
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/linux/">
+                        <span class="chip bg-color">linux</span>
                     </a>
                     
                 </div>
@@ -1055,34 +881,33 @@ SQLMap注入SQLMap支持的数据库MySQL, Or
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/02/mysql-1/">
+                <a href="/2020/07/07/web-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="数据库基本使用">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="web基本概念">
                         
-                        <span class="card-title">数据库基本使用</span>
+                        <span class="card-title">web基本概念</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            其他的数据库还没用过，就在这里先记录一下MySQL数据库的基本操作吧。我有点怀疑我为什么要写这个了。随便百度都能百度到的东西，我跪了（没办法，我是真的菜鸡）。
-数据库的基本用法数据库的种类有很多，也有对应的图形化管理界面，但还是要掌握使用命
+                            域名一、域名简介
+为了便于我们访问服务器，就有了域名的诞生。域名和IP地址的关系就相当于姓名和身份证号之间的关系。域名是为了方便记忆。
+ 二、域名查询
+1、根据域名我们可以查询一些服务器的信息，比如ip地址，管理员的部分信息。
+2、推荐网址
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-02
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-07
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                    数据库
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            HA
                             
                         </span>
                     </div>
@@ -1090,8 +915,8 @@ SQLMap注入SQLMap支持的数据库MySQL, Or
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/MySQL/">
-                        <span class="chip bg-color">MySQL</span>
+                    <a href="/tags/web/">
+                        <span class="chip bg-color">web</span>
                     </a>
                     
                 </div>
