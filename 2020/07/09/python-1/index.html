@@ -369,7 +369,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    522
+                    728
                 </div>
                 
 
@@ -443,7 +443,37 @@ except Exception as e:
 <p><img src="https://s1.ax1x.com/2020/07/09/UeHhjg.png" alt="UeHhjg.png"></p>
 <p>自动签到部分大功告成。</p>
 <hr>
-<p>自动签退</p>
+<h3 id="自动签退"><a href="#自动签退" class="headerlink" title="自动签退"></a>自动签退</h3><p>点击签退，抓包，获得签退时的请求链接。</p>
+<p><img src="https://s1.ax1x.com/2020/07/09/Un8UQs.png" alt="Un8UQs.png"></p>
+<p>修改脚本请求的链接即可完成签退脚本。</p>
+<pre><code class="python">import requests
+import time
+import re
+
+url = &#39;http://xxx/hrm/schedule/HrmScheduleSignXMLHTTP.jsp?t=0.961868599700483&#39;
+headers = {
+    &#39;Content-Type&#39;: &#39;application/x-www-form-urlencoded&#39;,
+    &#39;Referer&#39;: &#39;http://xxx/wui/main.jsp&#39;,
+    &#39;User-Agent&#39;: &#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36&#39;,
+    &#39;Cookie&#39;: &#39;xxx&#39;
+}
+response = requests.post(url=url,headers=headers)
+
+now = time.strftime(&#39;%Y-%m-%d %H:%M:%S&#39;,time.localtime())
+msg = response.text
+time = re.findall(r&#39;&lt;tr&gt;(.+?)&lt;/tr&gt;&#39;,msg)
+print(time)
+try:
+    with open(&#39;/home/admin/oa/log/log.txt&#39;,&#39;a&#39;) as f:
+        f.write(&#39;{} ---quit success {}\n&#39;.format(now,time))
+        f.close()
+        print(response.text)
+except Exception as e:
+    print(e)</code></pre>
+<p>查看运行后的日志记录</p>
+<p><img src="https://s1.ax1x.com/2020/07/09/UnGF6s.png" alt="UnGF6s.png"></p>
+<p>测试完成。添加到定时任务中。</p>
+<p>完。</p>
 
             </div>
             <hr/>
@@ -1106,7 +1136,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">22.8k</span>&nbsp;字
+                class="white-color">23k</span>&nbsp;字
             
             
             
