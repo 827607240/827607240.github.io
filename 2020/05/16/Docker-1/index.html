@@ -361,7 +361,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    569
+                    592
                 </div>
                 
 
@@ -386,9 +386,11 @@
 <p>docker run -d（后台运行）-p（端口） 外部端口：内部端口 nginx</p>
 <p>decker exec -it ID bash，修改容器（虚拟机）配置。</p>
 <p>ctrl+F5强制刷新。</p>
-<p>docker rm -f ID删除容器</p>
+<p>docker stop ID 先停止容器</p>
+<p>docker rm -f ID删除已停止运行的容器</p>
 <p>docker commit ID 自定义名字</p>
 <p>docker images 查看所有镜像</p>
+<p>docker ps -a查看所有容器</p>
 <p>docker build -t 镜像名 .</p>
 <p>docker save 镜像名 &gt; 1.tar</p>
 <p>docker load &lt;  1.tar</p>
@@ -1093,7 +1095,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">23k</span>&nbsp;字
+                class="white-color">23.8k</span>&nbsp;字
             
             
             
