@@ -378,11 +378,11 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="服务器配置记录"><a href="#服务器配置记录" class="headerlink" title="服务器配置记录"></a>服务器配置记录</h1><h2 id="宝塔安装命令"><a href="#宝塔安装命令" class="headerlink" title="宝塔安装命令"></a>宝塔安装命令</h2><h3 id="Centos"><a href="#Centos" class="headerlink" title="Centos"></a>Centos</h3><p>yum install -y wget &amp;&amp; wget -O install.sh <a href="http://download.bt.cn/install/install_6.0.sh" target="_blank" rel="noopener">http://download.bt.cn/install/install_6.0.sh</a> &amp;&amp; sh install.sh</p>
+                <h2 id="服务器配置记录"><a href="#服务器配置记录" class="headerlink" title="服务器配置记录"></a>服务器配置记录</h2><h2 id="宝塔安装命令"><a href="#宝塔安装命令" class="headerlink" title="宝塔安装命令"></a>宝塔安装命令</h2><h3 id="Centos"><a href="#Centos" class="headerlink" title="Centos"></a>Centos</h3><p>yum install -y wget &amp;&amp; wget -O install.sh <a href="http://download.bt.cn/install/install_6.0.sh" target="_blank" rel="noopener">http://download.bt.cn/install/install_6.0.sh</a> &amp;&amp; sh install.sh</p>
 <h3 id="Ubuntu-Debian"><a href="#Ubuntu-Debian" class="headerlink" title="Ubuntu/Debian"></a>Ubuntu/Debian</h3><p>wget -O install.sh <a href="http://download.bt.cn/install/install-ubuntu_6.0.sh" target="_blank" rel="noopener">http://download.bt.cn/install/install-ubuntu_6.0.sh</a> &amp;&amp; sudo bash install.sh</p>
 <p>安装宝塔后，一键部署web环境，导入网站源码，设置默认站点即可正常访问。</p>
 <p>如果访问失败，查看防火墙是否放行端口。</p>
-<h1 id="KIFT私人网盘"><a href="#KIFT私人网盘" class="headerlink" title="KIFT私人网盘"></a>KIFT私人网盘</h1><p>kiftd：<a href="https://kohgylw.gitee.io/#myCarousel" target="_blank" rel="noopener">https://kohgylw.gitee.io/#myCarousel</a></p>
+<h2 id="KIFT私人网盘"><a href="#KIFT私人网盘" class="headerlink" title="KIFT私人网盘"></a>KIFT私人网盘</h2><p>kiftd：<a href="https://kohgylw.gitee.io/#myCarousel" target="_blank" rel="noopener">https://kohgylw.gitee.io/#myCarousel</a></p>
 <p>前期准备工作</p>
 <h2 id="配置java环境"><a href="#配置java环境" class="headerlink" title="配置java环境"></a>配置java环境</h2><p>使用解压即用版 Java（.tar.gz）的 Linux 用户 而言，您需要先将解压后的 Java 主目录中的 bin 文件夹添加到您的环境变量 PATH 中。<br>在 Linux 系统中，一个较为常见的做法是通过配置 /etc/profile 文件来添加环境变量:</p>
 <pre><code>apt install default-jre
@@ -404,7 +404,7 @@ ls -lrt
 <h2 id="修改端口"><a href="#修改端口" class="headerlink" title="修改端口"></a>修改端口</h2><p>自带的8080端口有冲突，Kiftd 的配置文件是 kiftd 存储设置信息的基础。该文件位于 kiftd 主目录下的 conf 文件夹中，名为 server.properties 。您可以使用任意文本编辑器打开并编辑它。</p>
 <p>修改端口后重新启动进程，开启服务。</p>
 <hr>
-<h1 id="wiznote笔记"><a href="#wiznote笔记" class="headerlink" title="wiznote笔记"></a>wiznote笔记</h1><h2 id="ubuntu下载docker"><a href="#ubuntu下载docker" class="headerlink" title="ubuntu下载docker"></a>ubuntu下载docker</h2><p>curl -fsSL <a href="https://get.docker.com" target="_blank" rel="noopener">https://get.docker.com</a> | bash -s docker –mirror Aliyun</p>
+<h2 id="wiznote笔记"><a href="#wiznote笔记" class="headerlink" title="wiznote笔记"></a>wiznote笔记</h2><h2 id="ubuntu下载docker"><a href="#ubuntu下载docker" class="headerlink" title="ubuntu下载docker"></a>ubuntu下载docker</h2><p>curl -fsSL <a href="https://get.docker.com" target="_blank" rel="noopener">https://get.docker.com</a> | bash -s docker –mirror Aliyun</p>
 <p>将用户添加到docker组<br>sudo usermod -aG docker admin</p>
 <p>创建文件夹<br>cd ~<br>mkdir wizdata</p>
 <h2 id="docker下载wiznote镜像"><a href="#docker下载wiznote镜像" class="headerlink" title="docker下载wiznote镜像"></a>docker下载wiznote镜像</h2><p>docker run –name wiz –restart=always -it -d -v  ~/wizdata:/wiz/storage -v  /etc/localtime:/etc/localtime -p 80:80 -p 9269:9269/udp  wiznote/wizserver</p>
@@ -417,7 +417,7 @@ ls -lrt
 <p>计划实现在公网访问，但是有点麻烦，先不搞这个了。</p>
 <p>参考文档：<a href="https://www.wiz.cn/zh-cn/docker" target="_blank" rel="noopener">https://www.wiz.cn/zh-cn/docker</a><br>         <a href="https://www.runoob.com/docker/ubuntu-docker-install.html" target="_blank" rel="noopener">https://www.runoob.com/docker/ubuntu-docker-install.html</a><br>         <a href="https://hub.docker.com/search?q=&amp;type=edition&amp;offering=community&amp;operating_system=linux" target="_blank" rel="noopener">https://hub.docker.com/search?q=&amp;type=edition&amp;offering=community&amp;operating_system=linux</a></p>
 <hr>
-<h1 id="leanote云笔记"><a href="#leanote云笔记" class="headerlink" title="leanote云笔记"></a>leanote云笔记</h1><p>使用wiznote搭建公网访问的云笔记过于麻烦，于是又找到了leanote。现在开始部署。</p>
+<h2 id="leanote云笔记"><a href="#leanote云笔记" class="headerlink" title="leanote云笔记"></a>leanote云笔记</h2><p>使用wiznote搭建公网访问的云笔记过于麻烦，于是又找到了leanote。现在开始部署。</p>
 <h2 id="下载MongoDB数据库"><a href="#下载MongoDB数据库" class="headerlink" title="下载MongoDB数据库"></a>下载MongoDB数据库</h2><p>下载源码：<code>wget http://labs-1253675457.cosgz.myqcloud.com/mongodb-linux-x86_64-3.0.1.tgz</code></p>
 <p>解压缩源码包：<code>tar -xzvf mongodb-linux-x86_64-3.0.1.tgz</code><br>创建用于存储的文件夹目录：<code>mkdir -p /data/db</code></p>
 <p>配置 MongoDB 的环境变量：<br>编辑 /etc/profile，在文件末尾追加以下配置：</p>
