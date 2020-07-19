@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Vim练级攻略记录, wiki">
+    <meta name="keywords" content="搭建云笔记和云网盘, wiki">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Vim练级攻略记录 | wiki</title>
+    <title>搭建云笔记和云网盘 | wiki</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -219,7 +219,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Vim练级攻略记录</h1>
+                    <h1 class="description center-align post-title">搭建云笔记和云网盘</h1>
                 </div>
             </div>
         </div>
@@ -336,8 +336,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Vim/">
-                                <span class="chip bg-color">Vim</span>
+                            <a href="/tags/server/">
+                                <span class="chip bg-color">server</span>
                             </a>
                         
                     </div>
@@ -352,7 +352,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-09
+                    2020-07-19
                 </div>
                 
 
@@ -361,7 +361,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    702
+                    1.3k
                 </div>
                 
 
@@ -378,73 +378,62 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>一直想着自己能熟练的使用vim，有时候命令忘记了又要去百度，于是找了一篇详细介绍vim的文档，并进行了总结（把一些我觉得有用的记录下来）。</p>
-<h2 id="Vim攻略"><a href="#Vim攻略" class="headerlink" title="Vim攻略"></a>Vim攻略</h2><h3 id="第一级-基础"><a href="#第一级-基础" class="headerlink" title="第一级 - 基础"></a>第一级 - 基础</h3><h4 id="普通模式"><a href="#普通模式" class="headerlink" title="普通模式"></a>普通模式</h4><ul>
-<li><code>i</code> → <em>Insert</em> 模式，按 <code>ESC</code> 回到 <em>Normal</em> 模式.</li>
-<li><code>x</code> → 删当前光标所在的一个字符。</li>
-<li><code>:wq</code> → 保存 + 退出 (<code>:w</code> 存盘, <code>:q</code> 退出)</li>
-<li><code>dd</code> → 删除当前行，并把删除的行存到剪贴板里</li>
-<li><code>p</code> → 粘贴剪贴板</li>
-<li><code>: N</code> 到第N行</li>
-</ul>
-<h3 id="第二级-感觉良好"><a href="#第二级-感觉良好" class="headerlink" title="第二级 - 感觉良好"></a>第二级 - 感觉良好</h3><h4 id="插入模式"><a href="#插入模式" class="headerlink" title="插入模式"></a>插入模式</h4><ul>
-<li><code>a</code> → 在光标后插入</li>
-<li><code>o</code> → 在当前行后插入一个新行</li>
-<li><code>O</code> → 在当前行前插入一个新行</li>
-<li><code>cw</code> → 替换从光标所在位置后到一个单词结尾的字符</li>
-</ul>
-<h4 id="移动光标"><a href="#移动光标" class="headerlink" title="移动光标"></a>移动光标</h4><ul>
-<li><code>0</code> → 数字零，到行头</li>
-<li><code>$</code> → 到本行行尾</li>
-</ul>
-<h4 id="复制粘贴"><a href="#复制粘贴" class="headerlink" title="复制粘贴"></a>复制粘贴</h4><ul>
-<li><code>P</code> → 粘贴</li>
-<li><code>yy</code> → 拷贝当前行当行于 <code>ddP</code></li>
-</ul>
-<h4 id="保存文件"><a href="#保存文件" class="headerlink" title="保存文件"></a>保存文件</h4><ul>
-<li><code>:x</code>， <code>ZZ</code> 或 <code>:wq</code> → 保存并退出 (<code>:x</code> 表示仅在需要时保存，ZZ不需要输入冒号并回车)</li>
-<li><code>:q!</code> → 退出不保存 <code>:qa!</code> 强行退出所有的正在编辑的文件，就算别的文件有更改。</li>
-<li><code>:bn</code> 和 <code>:bp</code> → 你可以同时打开很多文件，使用这两个命令来切换下一个或上一个文件。</li>
-</ul>
-<h3 id="第三级-更好，更强，更快"><a href="#第三级-更好，更强，更快" class="headerlink" title="第三级-更好，更强，更快"></a>第三级-更好，更强，更快</h3><h4 id="更好"><a href="#更好" class="headerlink" title="更好"></a>更好</h4><ul>
-<li><code>.</code> → (小数点) 可以重复上一次的命令</li>
-<li>N<command> → 重复某个命令N次</li>
-<li><code>2dd</code>→删除2行</li>
-<li><code>3p</code>→粘贴文本3次</li>
-</ul>
-<h4 id="更强"><a href="#更强" class="headerlink" title="更强"></a>更强</h4><ul>
-<li>N<code>G</code> → 到第 N 行 （陈皓注：注意命令中的G是大写的，另我一般使用 : N 到第N行，如 :137 到第137行）</li>
-<li><code>gg</code> → 到第一行。（陈皓注：相当于1G，或 :1）</li>
-<li><code>G</code> → 到最后一行。</li>
-<li>按单词移动<ul>
-<li><code>w</code>→到下一个单词的开头</li>
-<li><code>e</code>→到下一个单词的结尾</li>
-</ul>
-</li>
-</ul>
-<pre><code>&gt; 如果你认为单词是由默认方式，那么就用小写的e和w。默认上来说，一个单词由字母，数字和下划线组成（陈皓注：程序变量）
-&gt; 如果你认为单词是由blank字符分隔符，那么你需要使用大写的E和W。（陈皓注：程序语句）</code></pre><ul>
-<li><code>%</code> : 匹配括号移动，包括 <code>(</code>, <code>{</code>, <code>[</code>. （陈皓注：你需要把光标先移到括号上）</li>
-<li><code>*</code> 和 <code>#</code>:  匹配光标当前所在的单词，移动光标到下一个（或上一个）匹配单词（*是下一个，#是上一个）</li>
-</ul>
-<h4 id="更快"><a href="#更快" class="headerlink" title="更快"></a>更快</h4><ul>
-<li>例如 <code>0y$</code> 命令意味着：<ul>
-<li><code>0</code> → 先到行头</li>
-<li><code>y</code> → 从这里开始拷贝</li>
-<li><code>$</code> → 拷贝到本行最后一个字符</li>
-</ul>
-</li>
-<li>还有很多时间并不一定你就一定要按y才会拷贝，下面的命令也会被拷贝：<ul>
-<li><code>d</code> (删除 )</li>
-<li><code>v</code> (可视化的选择)</li>
-<li><code>gU</code> (变大写)</li>
-<li><code>gu</code> (变小写)</li>
-</ul>
-</li>
-</ul>
-<h3 id="第四级-Vim超能力"><a href="#第四级-Vim超能力" class="headerlink" title="第四级 - Vim超能力"></a>第四级 - Vim超能力</h3><ul>
-<li><code>:split</code> → 创建分屏 (<code>:vsplit</code>创建垂直分屏)</li>
-</ul>
+                <h1 id="服务器配置记录"><a href="#服务器配置记录" class="headerlink" title="服务器配置记录"></a>服务器配置记录</h1><h2 id="宝塔安装命令"><a href="#宝塔安装命令" class="headerlink" title="宝塔安装命令"></a>宝塔安装命令</h2><h3 id="Centos"><a href="#Centos" class="headerlink" title="Centos"></a>Centos</h3><p>yum install -y wget &amp;&amp; wget -O install.sh <a href="http://download.bt.cn/install/install_6.0.sh" target="_blank" rel="noopener">http://download.bt.cn/install/install_6.0.sh</a> &amp;&amp; sh install.sh</p>
+<h3 id="Ubuntu-Debian"><a href="#Ubuntu-Debian" class="headerlink" title="Ubuntu/Debian"></a>Ubuntu/Debian</h3><p>wget -O install.sh <a href="http://download.bt.cn/install/install-ubuntu_6.0.sh" target="_blank" rel="noopener">http://download.bt.cn/install/install-ubuntu_6.0.sh</a> &amp;&amp; sudo bash install.sh</p>
+<p>安装宝塔后，一键部署web环境，导入网站源码，设置默认站点即可正常访问。</p>
+<p>如果访问失败，查看防火墙是否放行端口。</p>
+<h1 id="KIFT私人网盘"><a href="#KIFT私人网盘" class="headerlink" title="KIFT私人网盘"></a>KIFT私人网盘</h1><p>kiftd：<a href="https://kohgylw.gitee.io/#myCarousel" target="_blank" rel="noopener">https://kohgylw.gitee.io/#myCarousel</a></p>
+<p>前期准备工作</p>
+<h2 id="配置java环境"><a href="#配置java环境" class="headerlink" title="配置java环境"></a>配置java环境</h2><p>使用解压即用版 Java（.tar.gz）的 Linux 用户 而言，您需要先将解压后的 Java 主目录中的 bin 文件夹添加到您的环境变量 PATH 中。<br>在 Linux 系统中，一个较为常见的做法是通过配置 /etc/profile 文件来添加环境变量:</p>
+<pre><code>apt install default-jre
+apt install openjdk-11-jre-headless
+apt install openjdk-8-jre-headless
+
+which java
+ls -lrt
+找到java路径/usr/lib/jvm/java-11-oracle/jre/bin/</code></pre><ol>
+<li>在“终端”中使用文本编辑器（例如 nano）打开/etc/profile 文件：<br>sudo nano /etc/profile</li>
+<li>在该文件下方的空白处加入以下内容：<br>export PATH=/{您 JAVA 的解压路径} /bin:$PATH</li>
+<li>保存修改并关闭该文件。</li>
+<li>执行以下命令使得该环境变量配置文件立即生效：<br>source /etc/profile</li>
+</ol>
+<p>完成上述步骤后，您便能够在任意路径下使用 java 命令了。当然，您可以通过以下方式测试它是否已经可用：<br>java -version<br>如果在该命令执行后能正确显示 Java 的版本信息，则说明配置成功。否则请重新检查 PATH 配置。</p>
+<h2 id="下载KITD软件包"><a href="#下载KITD软件包" class="headerlink" title="下载KITD软件包"></a>下载KITD软件包</h2><p>使用命令启动 kiftd<br>1，使用 cd 命令进入 kiftd 应用主目录。<br>2，以命令模式启动 kiftd：<br>java -jar kiftd-x.x.x-xxx.jar -console</p>
+<p>这样运行关闭终端，服务会被关闭。</p>
+<h2 id="后台运行"><a href="#后台运行" class="headerlink" title="后台运行"></a>后台运行</h2><p>nohup java -jar kiftd-x.x.x-xxx.jar -start &amp; echo $!<br>该操作将令 kiftd 以后台模式运行，直接启动服务器且不受终端关闭的影响，<br>持续提供访问服务。Kiftd 的所有输出信息将保存在同级目录下的 nohup.out 文<br>件中，同时该命令还会在下方打印其进程的 PID 号。<br>当您需要结束 kiftd 运行时，可以使用如下命令将其关闭：<br>kill {PID}</p>
+<h2 id="修改端口"><a href="#修改端口" class="headerlink" title="修改端口"></a>修改端口</h2><p>自带的8080端口有冲突，Kiftd 的配置文件是 kiftd 存储设置信息的基础。该文件位于 kiftd 主目录下的 conf 文件夹中，名为 server.properties 。您可以使用任意文本编辑器打开并编辑它。</p>
+<p>修改端口后重新启动进程，开启服务。</p>
+<hr>
+<h1 id="wiznote笔记"><a href="#wiznote笔记" class="headerlink" title="wiznote笔记"></a>wiznote笔记</h1><h2 id="ubuntu下载docker"><a href="#ubuntu下载docker" class="headerlink" title="ubuntu下载docker"></a>ubuntu下载docker</h2><p>curl -fsSL <a href="https://get.docker.com" target="_blank" rel="noopener">https://get.docker.com</a> | bash -s docker –mirror Aliyun</p>
+<p>将用户添加到docker组<br>sudo usermod -aG docker admin</p>
+<p>创建文件夹<br>cd ~<br>mkdir wizdata</p>
+<h2 id="docker下载wiznote镜像"><a href="#docker下载wiznote镜像" class="headerlink" title="docker下载wiznote镜像"></a>docker下载wiznote镜像</h2><p>docker run –name wiz –restart=always -it -d -v  ~/wizdata:/wiz/storage -v  /etc/localtime:/etc/localtime -p 80:80 -p 9269:9269/udp  wiznote/wizserver</p>
+<p>通过 8080:80 告诉 Docker 8080 端口是对外开放的端口，80 端口对外开放的端口映射到容器里的端口号。</p>
+<p>修改启动参数，并重新启动服务，例如修改映射端口<br>docker stop wiz<br>docker rm wiz<br>docker run –name wiz –restart=always -it -d -v  ~/wizdata:/wiz/storage -v  /etc/localtime:/etc/localtime -p 80:80 -p 9269:9269/udp  wiznote/wizserver</p>
+<p>系统重启后启动wiznote<br>docker start wiz</p>
+<p>查看容器绑定和映射的端口及Ip地址<br>docker port 44de1b0b5312(容器ID)</p>
+<p>默认管理员账号：<a href="mailto:admin@wiz.cn">admin@wiz.cn</a>，密码：123456。请在部署完成后，使用这个账号，登录网页版，然后修改管理员密码。其他用户，请自行注册。免费版本可以注册5个用户（不包含管理员账号）</p>
+<p>现在只能在局域网中使用。</p>
+<p>计划实现在公网访问，但是有点麻烦，先不搞这个了。</p>
+<p>参考文档：<a href="https://www.wiz.cn/zh-cn/docker" target="_blank" rel="noopener">https://www.wiz.cn/zh-cn/docker</a><br>         <a href="https://www.runoob.com/docker/ubuntu-docker-install.html" target="_blank" rel="noopener">https://www.runoob.com/docker/ubuntu-docker-install.html</a><br>         <a href="https://hub.docker.com/search?q=&amp;type=edition&amp;offering=community&amp;operating_system=linux" target="_blank" rel="noopener">https://hub.docker.com/search?q=&amp;type=edition&amp;offering=community&amp;operating_system=linux</a></p>
+<hr>
+<h1 id="leanote云笔记"><a href="#leanote云笔记" class="headerlink" title="leanote云笔记"></a>leanote云笔记</h1><p>使用wiznote搭建公网访问的云笔记过于麻烦，于是又找到了leanote。现在开始部署。</p>
+<h2 id="下载MongoDB数据库"><a href="#下载MongoDB数据库" class="headerlink" title="下载MongoDB数据库"></a>下载MongoDB数据库</h2><p>下载源码：<code>wget http://labs-1253675457.cosgz.myqcloud.com/mongodb-linux-x86_64-3.0.1.tgz</code></p>
+<p>解压缩源码包：<code>tar -xzvf mongodb-linux-x86_64-3.0.1.tgz</code><br>创建用于存储的文件夹目录：<code>mkdir -p /data/db</code></p>
+<p>配置 MongoDB 的环境变量：<br>编辑 /etc/profile，在文件末尾追加以下配置：</p>
+<pre><code>export PATH=$PATH:/home/mongodb-linux-x86_64-3.0.1/bin</code></pre><p>执行以下命令，使环境变量生效：<code>source /etc/profile</code><br>启动 MongoDB：<code>mongod --bind_ip localhost --port 27017 --dbpath /data/db/ --logpath=/var/log/mongod.log --fork</code></p>
+<h2 id="安装Leanote"><a href="#安装Leanote" class="headerlink" title="安装Leanote"></a>安装Leanote</h2><p>下载源码：<code>wget http://labs-1253675457.cosgz.myqcloud.com/leanote-linux-amd64-v2.4.bin.tar.gz</code></p>
+<p>解压缩：<code>tar -zxvf leanote-linux-amd64-v2.4.bin.tar.gz</code></p>
+<p>编辑 Leanote 配置文件</p>
+<p>编辑文件 <code>/home/leanote/conf/app.conf</code>，在文件中找到 <code>app.secret=</code>项，并修改为如下内容：</p>
+<pre><code>app.secret=qcloud666</code></pre><p>初始化数据库</p>
+<p>导入初始化数据：<code>mongorestore -h localhost -d leanote --dir /home/admin/leanote/mongodb_backup/leanote_install_data/</code></p>
+<p>启动服务：<code>nohup /bin/bash /home/admin/leanote/bin/run.sh &gt;&gt; /var/log/leanote.log 2&gt;&amp;1 &amp;</code></p>
+<p>查看日志文件： <code>tail -f leanote.log</code></p>
+<p>参考资料：<a href="https://blog.csdn.net/weixin_41360517/article/details/98790419" target="_blank" rel="noopener">https://blog.csdn.net/weixin_41360517/article/details/98790419</a></p>
+<hr>
+<h1 id="vulhub"><a href="#vulhub" class="headerlink" title="vulhub"></a>vulhub</h1><p>ubuntu下载docker<br>curl -fsSL <a href="https://get.docker.com" target="_blank" rel="noopener">https://get.docker.com</a> | bash -s docker –mirror Aliyun</p>
+<p>将用户添加到docker组<br>sudo usermod -aG docker admin</p>
 
             </div>
             <hr/>
@@ -470,7 +459,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://827607240.github.io/2020/03/09/Vim/">https://827607240.github.io/2020/03/09/Vim/</a>
+                    <a href="https://827607240.github.io/2020/07/19/cloud-server/">https://827607240.github.io/2020/07/19/cloud-server/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -508,8 +497,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Vim/">
-                                    <span class="chip bg-color">Vim</span>
+                                <a href="/tags/server/">
+                                    <span class="chip bg-color">server</span>
                                 </a>
                             
                         </div>
@@ -814,47 +803,44 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/04/11/linux-2/">
+                <a href="/2020/07/19/cloud-server/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="如何学习Linux系统_笔记">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="搭建云笔记和云网盘">
                         
-                        <span class="card-title">如何学习Linux系统_笔记</span>
+                        <span class="card-title">搭建云笔记和云网盘</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            网上冲浪过程中看到这样一篇文章，觉得有些地方写的挺不错，摘抄过来，留一些我觉得比较有用的东西。这就是一篇关于linux系统的科普文。
-如何学习Linux系统_笔记1、Linux初学者入门首选-Redhat系列Redhat 是最早发行的个人版
+                            服务器配置记录宝塔安装命令Centosyum install -y wget &amp;&amp; wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-11
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-19
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            DDD
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/server/">
+                        <span class="chip bg-color">server</span>
                     </a>
                     
                 </div>
@@ -868,36 +854,29 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/08/Burp-Suite/">
+                <a href="/2020/07/19/Aapache-Tomcat-AJP%EF%BC%88CVE-2020-1938%EF%BC%89/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Burp Suite使用记录">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Aapache Tomcat AJP 文件包含漏洞（CVE-2020-1938）">
                         
-                        <span class="card-title">Burp Suite使用记录</span>
+                        <span class="card-title">Aapache Tomcat AJP 文件包含漏洞（CVE-2020-1938）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            之前学bp，学到了一点皮毛，知道怎么来爆破密码，但是对具体的操作没有进行实验，这几天闲了，再重新把爆破这部分做了一遍。ヾ(•ω•`)o
-Burp SuiteIntruder_暴力破解模块抓到数据包之后，发送到Intruder。
-
-设置攻击目
+                            Aapache Tomcat AJP 文件包含漏洞（CVE-2020-1938）Java 是目前 Web 开发中最主流的编程语言，而 Tomcat 是当前最流行的 Java 中间件服务器之一，从初版发布到现在已经有二十多年历史，在世界范围内
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-19
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Burp-Suite/" class="post-category">
-                                    Burp Suite
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            DDD
                             
                         </span>
                     </div>
@@ -905,12 +884,8 @@ Burp SuiteIntruder_暴力破解模块抓到数据包之后，发送到Intruder�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/web/">
-                        <span class="chip bg-color">web</span>
-                    </a>
-                    
-                    <a href="/tags/Burp-Suite/">
-                        <span class="chip bg-color">Burp Suite</span>
+                    <a href="/tags/cve/">
+                        <span class="chip bg-color">cve</span>
                     </a>
                     
                 </div>
