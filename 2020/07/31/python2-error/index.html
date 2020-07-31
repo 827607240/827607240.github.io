@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="数据库基本使用, wiki">
+    <meta name="keywords" content="python 2安装requests模块报错, wiki">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>数据库基本使用 | wiki</title>
+    <title>python 2安装requests模块报错 | wiki</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -219,7 +219,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">数据库基本使用</h1>
+                    <h1 class="description center-align post-title">python 2安装requests模块报错</h1>
                 </div>
             </div>
         </div>
@@ -336,23 +336,14 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/MySQL/">
-                                <span class="chip bg-color">MySQL</span>
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                数据库
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -361,7 +352,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-02
+                    2020-07-31
                 </div>
                 
 
@@ -370,7 +361,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    600
+                    94
                 </div>
                 
 
@@ -387,139 +378,16 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>其他的数据库还没用过，就在这里先记录一下MySQL数据库的基本操作吧。我有点怀疑我为什么要写这个了。随便百度都能百度到的东西，我跪了（没办法，我是真的菜鸡）。</p>
-<h2 id="数据库的基本用法"><a href="#数据库的基本用法" class="headerlink" title="数据库的基本用法"></a>数据库的基本用法</h2><p>数据库的种类有很多，也有对应的图形化管理界面，但还是要掌握使用命令来对数据库进行操作。</p>
-<p>由于平常自己也很少使用数据库，现在只记录一些最基本的用法。</p>
-<h3 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h3><p>登录数据库；</p>
-<pre><code class="shell">mysql -u root -p</code></pre>
-<p>查看数据库；</p>
-<pre><code class="shell">mysql&gt; show databases;   
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| app                |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-5 rows in set (0.00 sec)</code></pre>
-<p>删除app数据库；</p>
-<pre><code class="shell">mysql&gt; drop database app;
-Query OK, 0 rows affected (0.00 sec)
+                <h3 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h3><p><img src="https://s1.ax1x.com/2020/07/31/aQki3F.png" alt="aQki3F.png"></p>
+<h3 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h3><p>因为用户目录包含中文导致，用户名是中文导致的。</p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>在安装目录 Python27\Lib\目录,找到mimetypes.py文件。</p>
+<p>在import下添加几行代码。</p>
+<pre><code>if sys.getdefaultencoding() != &#39;gbk&#39;: 
+ reload(sys) 
+ sys.setdefaultencoding(&#39;gbk&#39;)</code></pre><p>完成后保存，在cmd中执行pip install requests</p>
+<p><img src="https://s1.ax1x.com/2020/07/31/aQknN6.png" alt="aQknN6.png"></p>
+<p>参考资料:<a href="https://blog.csdn.net/qq_32448559/article/details/81279267" target="_blank" rel="noopener">https://blog.csdn.net/qq_32448559/article/details/81279267</a></p>
 
-mysql&gt; show databases;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-4 rows in set (0.00 sec)</code></pre>
-<p>创建app数据库；</p>
-<pre><code class="shell">mysql&gt; create database app;
-Query OK, 1 row affected (0.00 sec)
-
-mysql&gt; show databases;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| app                |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-5 rows in set (0.00 sec)</code></pre>
-<p>选择数据库，查看数据库中的表；</p>
-<pre><code class="shell">use app;    
-show tables;   </code></pre>
-<p>选择数据库，创建一个新表，插入一行新数据；</p>
-<pre><code class="shell">mysql&gt; use app;
-Database changed
-mysql&gt; create table table_name(id int,username varchar(50),password varchar(50));
-Query OK, 0 rows affected (0.01 sec)
-
-mysql&gt; select * from table_name;
-Empty set (0.00 sec)
-
-mysql&gt; insert into table_name(id,username,password) values(1,&#39;root&#39;,&#39;toor&#39;);
-Query OK, 1 row affected (0.00 sec)
-
-mysql&gt; select * from table_name;
-+------+----------+----------+
-| id   | username | password |
-+------+----------+----------+
-|    1 | root     | toor     |
-+------+----------+----------+
-1 row in set (0.00 sec)</code></pre>
-<p>插入多行新数据；</p>
-<pre><code class="shell">mysql&gt; insert into table_name(id,username,password) values(2,&#39;admin&#39;,&#39;admin123&#39;),(3,&#39;sysadm&#39;,&#39;admin456&#39;),(4,&#39;secadm&#39;,&#39;secadm&#39;);
-Query OK, 3 rows affected (0.01 sec)
-Records: 3  Duplicates: 0  Warnings: 0
-
-mysql&gt; select * from table_name;
-+------+----------+----------+
-| id   | username | password |
-+------+----------+----------+
-|    1 | root     | toor     |
-|    2 | admin    | admin123 |
-|    3 | sysadm   | admin456 |
-|    4 | secadm   | secadm   |
-+------+----------+----------+
-4 rows in set (0.00 sec)</code></pre>
-<p>更新表中的字段内容；</p>
-<pre><code class="shell">mysql&gt; update table_name set password=&#39;123456&#39; where id=4;
-Query OK, 1 row affected (0.00 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
-
-mysql&gt; select * from table_name;
-+------+----------+----------+
-| id   | username | password |
-+------+----------+----------+
-|    1 | root     | toor     |
-|    2 | admin    | admin123 |
-|    3 | sysadm   | admin456 |
-|    4 | secadm   | 123456   |
-+------+----------+----------+
-4 rows in set (0.00 sec)
-
-mysql&gt; select * from table_name where id=4;
-+------+----------+----------+
-| id   | username | password |
-+------+----------+----------+
-|    4 | secadm   | 123456   |
-+------+----------+----------+
-1 row in set (0.00 sec)
-
-mysql&gt; select * from table_name;
-+------+----------+----------+
-| id   | username | password |
-+------+----------+----------+
-|    1 | root     | toor     |
-|    2 | admin    | admin123 |
-|    3 | sysadm   | admin456 |
-|    4 | secadm   | 123456   |
-+------+----------+----------+
-4 rows in set (0.00 sec)</code></pre>
-<p>删除一行数据；</p>
-<pre><code class="shell">mysql&gt; delete from table_name where id=3;
-Query OK, 1 row affected (0.01 sec)
-
-mysql&gt; select * from table_name;
-+------+----------+----------+
-| id   | username | password |
-+------+----------+----------+
-|    1 | root     | toor     |
-|    2 | admin    | admin123 |
-|    4 | secadm   | 123456   |
-+------+----------+----------+
-3 rows in set (0.00 sec)
-mysql&gt; exit
-Bye</code></pre>
-<h3 id="SQL-server"><a href="#SQL-server" class="headerlink" title="SQL server"></a>SQL server</h3><h3 id="access"><a href="#access" class="headerlink" title="access"></a>access</h3><h3 id="Oracle"><a href="#Oracle" class="headerlink" title="Oracle"></a>Oracle</h3>
             </div>
             <hr/>
 
@@ -544,7 +412,7 @@ Bye</code></pre>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://827607240.github.io/2020/03/02/mysql-1/">https://827607240.github.io/2020/03/02/mysql-1/</a>
+                    <a href="https://827607240.github.io/2020/07/31/python2-error/">https://827607240.github.io/2020/07/31/python2-error/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -582,8 +450,8 @@ Bye</code></pre>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/MySQL/">
-                                    <span class="chip bg-color">MySQL</span>
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
                                 </a>
                             
                         </div>
@@ -888,59 +756,48 @@ Bye</code></pre>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/03/Nmap/">
+                <a href="/2020/07/31/python2-error/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Nmap使用参数记录">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="python 2安装requests模块报错">
                         
-                        <span class="card-title">Nmap使用参数记录</span>
+                        <span class="card-title">python 2安装requests模块报错</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            nmap，端口扫描神器。但是扫描速度有点慢。
-nmap的使用nmap介绍Nmap — 网络探测工具和安全/端口扫描器。
-nmap常用参数ping扫描
-nmap -sP 192.168.0.1/24
-SYN扫描（半开扫描）
-nmap -sS 
+                            报错信息
+问题原因因为用户目录包含中文导致，用户名是中文导致的。
+解决方法在安装目录 Python27\Lib\目录,找到mimetypes.py文件。
+在import下添加几行代码。
+if sys.getdefaultencoding()
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-03
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-31
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Nmap/" class="post-category">
-                                    Nmap
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            u1a2
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Nmap/">
-                        <span class="chip bg-color">Nmap</span>
-                    </a>
-                    
-                    <a href="/tags/Windows/">
-                        <span class="chip bg-color">Windows</span>
-                    </a>
-                    
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>
@@ -954,35 +811,29 @@ nmap -sS
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/01/sqlmap-2/">
+                <a href="/2020/07/31/Weblogic-CVE-2017-10271/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="记一次完整的SQL注入">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Weblogic &lt; 10.3.6 反序列化漏洞（CVE-2017-10271）">
                         
-                        <span class="card-title">记一次完整的SQL注入</span>
+                        <span class="card-title">Weblogic &lt; 10.3.6 反序列化漏洞（CVE-2017-10271）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            这是之前学习SQLMAP时做过的记录，第一次使用SQL注入获取用户密码，当时还是挺激动的，虽然这个很简单。存粹的学习记录，把一些试错的过程删掉了。
-SQLMAP注入首先查找到注入点，用sqlmap进行注入。
-sqlmap.py -u &qu
+                            Weblogic &lt; 10.3.6 ‘wls-wsat’ XMLDecoder 反序列化漏洞（CVE-2017-10271）漏洞描述WebLogic WLS组件中存在CVE-2017-10271远程代码执行漏洞，可以构造请求对运行We
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-31
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/SQLMap/" class="post-category">
-                                    SQLMap
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            u1a2
                             
                         </span>
                     </div>
@@ -990,16 +841,8 @@ sqlmap.py -u &qu
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/web/">
-                        <span class="chip bg-color">web</span>
-                    </a>
-                    
-                    <a href="/tags/SQLMap/">
-                        <span class="chip bg-color">SQLMap</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                        <span class="chip bg-color">数据库</span>
+                    <a href="/tags/cve/">
+                        <span class="chip bg-color">cve</span>
                     </a>
                     
                 </div>
