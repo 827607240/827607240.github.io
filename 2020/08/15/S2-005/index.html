@@ -412,7 +412,7 @@ docker-compose up -d</code></pre><p><img src="https://s1.ax1x.com/2020/08/15/dFO
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">u1a2</a>
+                    <a href="/about" rel="external nofollow noreferrer">uaa</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -435,7 +435,7 @@ docker-compose up -d</code></pre><p><img src="https://s1.ax1x.com/2020/08/15/dFO
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="/about" target="_blank">u1a2</a>
+                    <a href="/about" target="_blank">uaa</a>
                     !
                 </span>
             </div>
@@ -795,7 +795,7 @@ s2-005漏洞的起源源于S2-003(受影响版本: 低于Struts 2.0.12)，struts
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            u1a2
+                            uaa
                             
                         </span>
                     </div>
@@ -819,22 +819,19 @@ s2-005漏洞的起源源于S2-003(受影响版本: 低于Struts 2.0.12)，struts
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/08/15/Redis/">
+                <a href="/2020/08/15/struts2-001/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Redis 4.x/5.x 未授权访问漏洞">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="struts2-001 远程代码执行漏洞">
                         
-                        <span class="card-title">Redis 4.x/5.x 未授权访问漏洞</span>
+                        <span class="card-title">struts2-001 远程代码执行漏洞</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Redis 4.x/5.x 未授权访问漏洞环境搭建执行如下命令启动redis 4.0.14：
-docker-compose up -d环境启动后，通过redis-cli -h your-ip即可进行连接，可见存在未授权访问漏洞。
-
-漏洞复现
+                            struts2-001 远程代码执行漏洞漏洞原理该漏洞因为用户提交表单数据并且验证失败时，后端会将用户之前提交的参数值使用 OGNL 表达式 %{value} 进行解析，然后重新填充到对应的表单数据中。例如注册或登录页面，提交失败后端一般会
                         
                     </div>
                     <div class="publish-info">
@@ -844,7 +841,7 @@ docker-compose up -d环境启动后，通过redis-cli -h your-ip即可进行连�
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            u1a2
+                            uaa
                             
                         </span>
                     </div>
@@ -852,8 +849,8 @@ docker-compose up -d环境启动后，通过redis-cli -h your-ip即可进行连�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Redis/">
-                        <span class="chip bg-color">Redis</span>
+                    <a href="/tags/struts/">
+                        <span class="chip bg-color">struts</span>
                     </a>
                     
                 </div>
@@ -895,7 +892,7 @@ docker-compose up -d环境启动后，通过redis-cli -h your-ip即可进行连�
         var url = document.location.href;
         newdiv.innerHTML += '<br />'
             + '来源: wiki<br />'
-            + '文章作者: u1a2<br />'
+            + '文章作者: uaa<br />'
             + '文章链接: <a href="' + url + '">' + url + '</a><br />'
             + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
 
@@ -1037,13 +1034,13 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             <span id="year">2020</span>
-            <a href="/about" target="_blank">u1a2</a>
+            <a href="/about" target="_blank">uaa</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">29.2k</span>&nbsp;字
+                class="white-color">29.7k</span>&nbsp;字
             
             
             
