@@ -361,7 +361,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    94
+                    171
                 </div>
                 
 
@@ -378,7 +378,12 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h3><p><img src="https://s1.ax1x.com/2020/07/31/aQki3F.png" alt="aQki3F.png"></p>
+                <p>电脑里有python2和python3两个环境。配置起来容易出问题。</p>
+<h2 id="安装模块遇到的坑"><a href="#安装模块遇到的坑" class="headerlink" title="安装模块遇到的坑"></a>安装模块遇到的坑</h2><p>pip install xxxxxx默认使用的是我python2的pip</p>
+<p>那么如何安装python3的pip呢？</p>
+<p>通过python3 -m pip install cryptography可以正常安装python3模块。</p>
+<p>通过python2 -m pip install cryptography可以正常安装python2模块。</p>
+<h3 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h3><p><img src="https://s1.ax1x.com/2020/07/31/aQki3F.png" alt="aQki3F.png"></p>
 <h3 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h3><p>因为用户目录包含中文导致，用户名是中文导致的。</p>
 <h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>在安装目录 Python27\Lib\目录,找到mimetypes.py文件。</p>
 <p>在import下添加几行代码。</p>
@@ -1034,7 +1039,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">31.9k</span>&nbsp;字
+                class="white-color">32.6k</span>&nbsp;字
             
             
             
