@@ -407,14 +407,17 @@ ls -lrt
 <h2 id="wiznote笔记"><a href="#wiznote笔记" class="headerlink" title="wiznote笔记"></a>wiznote笔记</h2><h3 id="ubuntu下载docker"><a href="#ubuntu下载docker" class="headerlink" title="ubuntu下载docker"></a>ubuntu下载docker</h3><p>curl -fsSL <a href="https://get.docker.com" target="_blank" rel="noopener">https://get.docker.com</a> | bash -s docker –mirror Aliyun</p>
 <p>将用户添加到docker组<br>sudo usermod -aG docker admin</p>
 <p>创建文件夹<br>cd ~<br>mkdir wizdata</p>
-<h3 id="docker下载wiznote镜像"><a href="#docker下载wiznote镜像" class="headerlink" title="docker下载wiznote镜像"></a>docker下载wiznote镜像</h3><p>docker run –name wiz –restart=always -it -d -v  ~/wizdata:/wiz/storage -v  /etc/localtime:/etc/localtime -p 80:80 -p 9269:9269/udp  wiznote/wizserver</p>
-<p>通过 8080:80 告诉 Docker 8080 端口是对外开放的端口，80 端口对外开放的端口映射到容器里的端口号。</p>
+<h3 id="docker下载wiznote镜像"><a href="#docker下载wiznote镜像" class="headerlink" title="docker下载wiznote镜像"></a>docker下载wiznote镜像</h3><pre><code>docker search wiznote
+#搜索wiznote镜像
+docker pull wiznote/wizserver-amd64
+#下载镜像
+docker run --name wiz --restart=always -it -d -v  ~/wizdata:/wiz/storage -v  /etc/localtime:/etc/localtime -p 81:80 -p 9269:9269/udp wiznote/wizserver-amd64
+#81端口是外网访问端口</code></pre><p>通过 8080:80 告诉 Docker 8080 端口是对外开放的端口，80 端口对外开放的端口映射到容器里的端口号。</p>
 <p>修改启动参数，并重新启动服务，例如修改映射端口<br>docker stop wiz<br>docker rm wiz<br>docker run –name wiz –restart=always -it -d -v  ~/wizdata:/wiz/storage -v  /etc/localtime:/etc/localtime -p 80:80 -p 9269:9269/udp  wiznote/wizserver</p>
 <p>系统重启后启动wiznote<br>docker start wiz</p>
 <p>查看容器绑定和映射的端口及Ip地址<br>docker port 44de1b0b5312(容器ID)</p>
 <p>默认管理员账号：<a href="mailto:admin@wiz.cn">admin@wiz.cn</a>，密码：123456。请在部署完成后，使用这个账号，登录网页版，然后修改管理员密码。其他用户，请自行注册。免费版本可以注册5个用户（不包含管理员账号）</p>
-<p>现在只能在局域网中使用。</p>
-<p>计划实现在公网访问，但是有点麻烦，先不搞这个了。</p>
+<p><img src="https://s1.ax1x.com/2020/08/25/d6A6Yt.png" alt="d6A6Yt.png"></p>
 <p>参考文档：<a href="https://www.wiz.cn/zh-cn/docker" target="_blank" rel="noopener">https://www.wiz.cn/zh-cn/docker</a><br>         <a href="https://www.runoob.com/docker/ubuntu-docker-install.html" target="_blank" rel="noopener">https://www.runoob.com/docker/ubuntu-docker-install.html</a><br>         <a href="https://hub.docker.com/search?q=&amp;type=edition&amp;offering=community&amp;operating_system=linux" target="_blank" rel="noopener">https://hub.docker.com/search?q=&amp;type=edition&amp;offering=community&amp;operating_system=linux</a></p>
 <hr>
 <h2 id="leanote云笔记"><a href="#leanote云笔记" class="headerlink" title="leanote云笔记"></a>leanote云笔记</h2><p>使用wiznote搭建公网访问的云笔记过于麻烦，于是又找到了leanote。现在开始部署。</p>
@@ -1081,7 +1084,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">29.8k</span>&nbsp;字
+                class="white-color">31.9k</span>&nbsp;字
             
             
             
