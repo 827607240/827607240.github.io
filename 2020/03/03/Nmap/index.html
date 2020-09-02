@@ -374,14 +374,24 @@
                 
 
                 
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-09-02
+                </div>
+                
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.5k
+                    2.7k
                 </div>
                 
 
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    10 分
+                </div>
                 
 
                 
@@ -437,6 +447,15 @@
 <li>–scan-delay 报文时间间隔</li>
 <li>-S &lt;源地址&gt;  定义扫描源地址，避免被发现。</li>
 </ul>
+<blockquote>
+<h1 id="快速扫描"><a href="#快速扫描" class="headerlink" title="快速扫描"></a>快速扫描</h1><p>说明：使用masscan做全端口开放检测，过出来端口信息后，用nmap进行识别。</p>
+<pre><code class="bash">masscan -p1-65535 10.10.10.10 --rate=1000 -e tun0 &gt; ports
+ports=$(cat ports | awk -F &quot; &quot; &#39;{print $4}&#39; | awk -F &quot;/&quot; &#39;{print $1}&#39; | sort -n | tr &#39;\n&#39; &#39;,&#39; | sed &#39;s/,$//&#39;)
+nmap -Pn -A -sV -sC -p$ports 10.10.10.10</code></pre>
+<p>补充：经同学指点，其实用nmap也是可以提高扫描速度的，原理也是先快速判断端口开放情况再做服务识别。命令如下供参考。</p>
+<pre><code class="bash">ports=$(nmap -p- --min-rate=1000 -sT -T4 10.10.10.10 | grep ^[0-9] | cut -d &#39;/&#39; -f 1 | tr &#39;\n&#39; &#39;,&#39; | sed s/,$//)
+nmap -sC -sV -p$ports -sT 10.10.10.10</code></pre>
+</blockquote>
 <h3 id="nmap参数"><a href="#nmap参数" class="headerlink" title="nmap参数"></a>nmap参数</h3><pre><code class="shell">Nmap支持主机名,ip,网段的表示方式
 例如:blah.highon.coffee, namp.org/24, 192.168.0.1;10.0.0-25.1-254
 
@@ -1254,7 +1273,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">42.4k</span>&nbsp;字
+                class="white-color">46.1k</span>&nbsp;字
             
             
             

