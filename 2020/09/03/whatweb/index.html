@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="S2-005 远程代码执行漏洞, wiki">
+    <meta name="keywords" content="网站指纹识别-whatweb, wiki">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>S2-005 远程代码执行漏洞 | wiki</title>
+    <title>网站指纹识别-whatweb | wiki</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -214,12 +214,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://hotforsecurity.bitdefender.com/wp-content/uploads/2018/11/Struts.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://s1.ax1x.com/2020/09/03/wPnmPH.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">S2-005 远程代码执行漏洞</h1>
+                    <h1 class="description center-align post-title">网站指纹识别-whatweb</h1>
                 </div>
             </div>
         </div>
@@ -336,8 +336,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/struts/">
-                                <span class="chip bg-color">struts</span>
+                            <a href="/tags/whatweb/">
+                                <span class="chip bg-color">whatweb</span>
                             </a>
                         
                     </div>
@@ -352,28 +352,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-08-15
+                    2020-09-03
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-02
+                    2020-09-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    310
+                    946
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -388,25 +388,107 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="S2-005-远程代码执行漏洞"><a href="#S2-005-远程代码执行漏洞" class="headerlink" title="S2-005 远程代码执行漏洞"></a>S2-005 远程代码执行漏洞</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>参考吴翰清的《白帽子讲Web安全》一书。</p>
+                <h1 id="whatweb-学习总结"><a href="#whatweb-学习总结" class="headerlink" title="whatweb 学习总结"></a>whatweb 学习总结</h1><p>Whatweb 是一款优秀的基于 Ruby 开发的网络指纹识别软件，不但拥有丰富的命令参数可以自定义探测过程，还有上千个集成的插件供我们使用。</p>
+<h2 id="whatweb介绍"><a href="#whatweb介绍" class="headerlink" title="whatweb介绍"></a>whatweb介绍</h2><ul>
+<li>拥有超过 1700+ 个插件</li>
+<li>若网站返回 302，会跳转到重定向的网站</li>
+<li>可以根据服务器返回的响应头确定网站使用的服务器类型， web 中间件类型， cookie 信息</li>
+<li>可以从网站的源代码中确定网站使用了哪些 JavaScript 库</li>
+<li>可以通过页面 hash，path 等确定网站使用的 cms 版本。</li>
+<li>查询网站 ip 及所属国家</li>
+<li>多种日志格式：XML,JSON,MagicTree, RubyObject, MongoDB</li>
+<li>可定制化 HTTP 头</li>
+<li>可进行基础的认证设置</li>
+<li>支持批量扫描网站</li>
+</ul>
+<h2 id="whatweb命令"><a href="#whatweb命令" class="headerlink" title="whatweb命令"></a>whatweb命令</h2><p><img src="https://s1.ax1x.com/2020/09/03/wPnmPH.png" alt="wPnmPH.png"></p>
+<h3 id="基础使用"><a href="#基础使用" class="headerlink" title="基础使用"></a>基础使用</h3><ul>
+<li><p>目标探测</p>
+<ul>
+<li>whatweb 192.168.1.1</li>
+<li>whatweb 192.168.1.1/24</li>
+<li>whatweb 域名</li>
+</ul>
+</li>
+<li><p>扫描文件中的地址</p>
+<ul>
+<li>whatweb –input-file=/root/ip.txt</li>
+</ul>
+<p>输入 <code>-i 目标</code> 的命令也可以导入文件</p>
+<ul>
+<li>whatweb -i ‘/root/ip.txt’</li>
+</ul>
+</li>
+</ul>
 <blockquote>
-<p>s2-005漏洞的起源源于S2-003(受影响版本: 低于Struts 2.0.12)，struts2会将http的每个参数名解析为OGNL语句执行(可理解为java代码)。OGNL表达式通过#来访问struts的对象，struts框架通过过滤#字符防止安全问题，然而通过unicode编码(\u0023)或8进制(\43)即绕过了安全限制，对于S2-003漏洞，官方通过增加安全配置(禁止静态方法调用和类方法执行等)来修补，但是安全配置被绕过再次导致了漏洞，攻击者可以利用OGNL表达式将这2个选项打开，S2-003的修补方案把自己上了一个锁，但是把锁钥匙给插在了锁头上</p>
+<p><strong>ps：</strong>批量探测时，可以 # 注释掉不想探测的网站</p>
 </blockquote>
-<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>执行以下命令启动s2-005测试环境</p>
-<pre><code>docker-compose build
-docker-compose up -d</code></pre><p><img src="https://s1.ax1x.com/2020/08/15/dFOgds.png" alt="dFOgds.png"></p>
-<h2 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><p>使用网上的POC复现失败，用Struts2全版本测试工具进行测试</p>
-<p><img src="https://s1.ax1x.com/2020/08/15/dFOWiq.png" alt="dFOWiq.png"></p>
-<p>验证存在S2-005漏洞。上传具有上传功能的小马</p>
-<p><img src="https://s1.ax1x.com/2020/08/15/dFOTL4.png" alt="dFOTL4.png"></p>
-<p>上传一句话木马</p>
-<p><img src="https://s1.ax1x.com/2020/08/15/dFOHeJ.png" alt="dFOHeJ.png"></p>
-<p>上传木马成功</p>
-<p><img src="https://s1.ax1x.com/2020/08/15/dFOOF1.png" alt="dFOOF1.png"></p>
-<p>使用木马连接工具，成功getshell。</p>
-<p><img src="https://s1.ax1x.com/2020/08/15/dFOzQO.png" alt="dFOzQO.png"></p>
-<p><img src="https://s1.ax1x.com/2020/08/15/dFXCeH.png" alt="dFXCeH.png"></p>
-<p>完。</p>
+<ul>
+<li>导出探测结果到文件<ul>
+<li>whatweb 192.168.1.1 –log-json=result.json</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>其他格式导出文件同理：</p>
+<ul>
+<li>–log-brief = FILE Brief，one-line，greppable format</li>
+<li>–log-verbose = FILE 详细输出</li>
+<li>–log-xml = FILE XML格式。提供了 XSL 样式表</li>
+<li>–log-json = FILE JSON格式</li>
+<li>–log-json-verbose = FILE JSON详细格式</li>
+<li>–log-magictree = FILE MagicTree XML格式</li>
+<li>–log-object = FILE Ruby 对象检查格式</li>
+<li>–log-mongo-database MongoDB 数据库的名称</li>
+<li>–log-mongo-collection MongoDB 集合的名称。默认值：whatweb</li>
+<li>–log-mongo-host MongoDB 主机名或 IP 地址。默认值：0.0.0.0</li>
+<li>–log-mongo-username MongoDB 用户名。默认值：nil</li>
+<li>–log-mongo-password MongoDB 密码。默认值：nil</li>
+<li>–log-elastic-index 用于存储结果的索引的名称。默认值：whatweb</li>
+<li>–log-elastic-host Host：弹性 http 接口的端口。默认值：127.0.0.1：9200</li>
+<li>–log-errors = FILE 记录错误。这通常以红色打印到屏幕上。</li>
+</ul>
+<p>注：</p>
+<ol>
+<li>Json 格式需要安装 json 依赖 sudo gem install json</li>
+<li>Mongo 格式需要安装 mongo 依赖 sudo gem install mongo</li>
+</ol>
+</blockquote>
+<h3 id="常见参数"><a href="#常见参数" class="headerlink" title="常见参数"></a>常见参数</h3><ol>
+<li><p>-v 参数</p>
+<p>可以将探测的的结果详细的罗列出来。</p>
+<p>whatweb -v 192.168.1.1</p>
+</li>
+<li><p>-url 参数</p>
+<p>whatweb 默认是探测 80 端口 的 web 应用，当然不排除使用其他端口的网站，那么时候我们可以通过加 –url-parameter 指定探测的端口</p>
+<ul>
+<li>–url-prefix Add a prefix to target URLs.   //添加前缀</li>
+<li>–url-suffix Add a suffix to target URLs.   //添加后缀</li>
+<li>–url-pattern    Insert the targets into a URL.  //在中间插入内容</li>
+</ul>
+<pre><code>whatweb 192.168.1.1/24 –-url-suffix=&quot;:8080&quot;</code></pre></li>
+<li><p>-a 参数</p>
+<p>whatweb 定义了不同的级别的探测强度，目前有三个等级的探测级别，默认不带任何参数的额时候使用的是等级 1，等级数值越高表示探测的类型越复杂。可通过如下参数自定义探测的级别：</p>
+<pre><code>root@kali :~# whatweb -a 3 http://www.baidu.com/</code></pre></li>
+<li><p>–proxy-user</p>
+<p>如果网站需要输入账号密码，可以通过 –proxy-user 的方式指定用户名和密码进行探测。</p>
+<pre><code>whatweb -v --proxy-user admin:passwoed www.dvwa.com/login.php</code></pre></li>
+<li><p>-c 参数</p>
+<p>如果有需要验证 cookie 的值时，可以使用 -c 参数指定 cookie 的值。</p>
+<pre><code>whatweb -v -c=&#39;PHPSESSID=031a6d42fac3bdce24bf4dc02accd080; security=low&#39; http://www.dvwa.com/login.php</code></pre></li>
+<li><p>-l 参数</p>
+<p>使用 -l 参数可以列出插件的列表，包括插件的名称以及插件的描述。</p>
+<pre><code>whatweb -l</code></pre></li>
+<li><p>–info参数</p>
+<p>如果想查看具体某个插件的内容，可以使用 –info 参数来实现。</p>
+<pre><code>whatweb –-info-plugins=&quot;YouTube&quot;</code></pre></li>
+<li><p>–max-threads 参数</p>
+<p>可以使用 –max-threads 指定 whatweb 的最大线程</p>
+<pre><code>whatweb 192.168.1.1/24 --max-threads=30</code></pre></li>
+</ol>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.yuque.com/sunj3t/ovd2hb/whatweb-xue-xi-zong-jie" target="_blank" rel="noopener">https://www.yuque.com/sunj3t/ovd2hb/whatweb-xue-xi-zong-jie</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/28017554" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/28017554</a></p>
+<p><a href="https://www.freebuf.com/column/152611.html" target="_blank" rel="noopener">https://www.freebuf.com/column/152611.html</a></p>
 
             </div>
             <hr/>
@@ -432,7 +514,7 @@ docker-compose up -d</code></pre><p><img src="https://s1.ax1x.com/2020/08/15/dFO
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://827607240.github.io/2020/08/15/S2-005/">https://827607240.github.io/2020/08/15/S2-005/</a>
+                    <a href="https://827607240.github.io/2020/09/03/whatweb/">https://827607240.github.io/2020/09/03/whatweb/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -470,8 +552,8 @@ docker-compose up -d</code></pre><p><img src="https://s1.ax1x.com/2020/08/15/dFO
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/struts/">
-                                    <span class="chip bg-color">struts</span>
+                                <a href="/tags/whatweb/">
+                                    <span class="chip bg-color">whatweb</span>
                                 </a>
                             
                         </div>
@@ -776,30 +858,32 @@ docker-compose up -d</code></pre><p><img src="https://s1.ax1x.com/2020/08/15/dFO
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/08/28/zoomeye/">
+                <a href="/2020/09/03/whatweb/">
                     <div class="card-image">
                         
-                        <img src="https://s1.ax1x.com/2020/09/02/w9Gui8.png" class="responsive-img" alt="网络空间搜索引擎">
+                        <img src="https://s1.ax1x.com/2020/09/03/wPnmPH.png" class="responsive-img" alt="网站指纹识别-whatweb">
                         
-                        <span class="card-title">网络空间搜索引擎</span>
+                        <span class="card-title">网站指纹识别-whatweb</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            网络空间搜索引擎如果说GPS绘制出了世界的地图，那么网络空间搜索引擎就是整个互联网的地图。
-网络空间搜索引擎的作用就是将互联网上公开的网络资产收集和整理，以此方便人们进行查阅和利用。
-钟馗之眼-ZoomEyehttps://www.zoom
+                            whatweb 学习总结Whatweb 是一款优秀的基于 Ruby 开发的网络指纹识别软件，不但拥有丰富的命令参数可以自定义探测过程，还有上千个集成的插件供我们使用。
+whatweb介绍
+拥有超过 1700+ 个插件
+若网站返回 302，会
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-03
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -808,11 +892,12 @@ docker-compose up -d</code></pre><p><img src="https://s1.ax1x.com/2020/08/15/dFO
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">
-                        <span class="chip bg-color">信息收集</span>
+                    <a href="/tags/whatweb/">
+                        <span class="chip bg-color">whatweb</span>
                     </a>
                     
                 </div>
@@ -826,23 +911,26 @@ docker-compose up -d</code></pre><p><img src="https://s1.ax1x.com/2020/08/15/dFO
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/08/15/struts2-001/">
+                <a href="/2020/09/01/OSCP/">
                     <div class="card-image">
                         
-                        <img src="https://jstechno.com/images/struts2/apache-struts-vulnerability.png" class="responsive-img" alt="struts2-001 远程代码执行漏洞">
+                        <img src="https://s1.ax1x.com/2020/09/02/w9GdWF.png" class="responsive-img" alt="OSCP指南">
                         
-                        <span class="card-title">struts2-001 远程代码执行漏洞</span>
+                        <span class="card-title">OSCP指南</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            struts2-001 远程代码执行漏洞漏洞原理该漏洞因为用户提交表单数据并且验证失败时，后端会将用户之前提交的参数值使用 OGNL 表达式 %{value} 进行解析，然后重新填充到对应的表单数据中。例如注册或登录页面，提交失败后端一般会
+                            OSCP指南1、kali linux1.1 开启服务systemctl start ssh
+systemctl start apache2开机自启服务
+systemctl enable ssh下载网页
+wget http://www.cis
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-01
                             </span>
                         <span class="publish-author">
                             
@@ -855,8 +943,8 @@ docker-compose up -d</code></pre><p><img src="https://s1.ax1x.com/2020/08/15/dFO
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/struts/">
-                        <span class="chip bg-color">struts</span>
+                    <a href="/tags/OSCP/">
+                        <span class="chip bg-color">OSCP</span>
                     </a>
                     
                 </div>
