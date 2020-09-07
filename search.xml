@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>john the ripper</title>
+      <link href="/2020/09/07/john-the-ripper/"/>
+      <url>/2020/09/07/john-the-ripper/</url>
+      
+        <content type="html"><![CDATA[<h1 id="爆破工具-john"><a href="#爆破工具-john" class="headerlink" title="爆破工具-john"></a>爆破工具-john</h1><ul><li>网址：<a href="https://www.openwall.com/john/" target="_blank" rel="noopener">https://www.openwall.com/john/</a></li><li>John the Ripper免费的开源软件，是一个快速的密码破解工具，用于在已知密文的情况下尝试破解出明文的破解密码软件，支持目前大多数的加密算法，如DES、MD4、MD5等。它支持多种不同类型的系统架构，包括Unix、Linux、Windows、DOS模式、BeOS和OpenVMS，主要目的是破解不够牢固的Unix/Linux系统密码</li><li>John the ripper是一款基于字典的免费的密码破解工具。简单来说就是进行暴力密码破解，这种密码破解方式，耗费时间长、耗费处理器资源多。尝试的密码越多，所需的时间就越长</li><li>起初，John the ripper是运行在Linux类平台上，现在可以运行在不同平台上。在安全服务项目中，主要采用了windows和linux下两个版本的工具。在进行实际测试中发现，windows下支持的密码HASH算法不是特别全面，后期采用Linux版本的John the ripper</li></ul><blockquote><h3 id="密码文件"><a href="#密码文件" class="headerlink" title="密码文件"></a><strong>密码文件</strong></h3><ul><li>John the ripper在安全服务项目中，主要用来测试Linux操作系统密码、AIX操作系统的密码。存放这个密码加密的文件分别是：/etc/shadow这个文件和/etc/security/passwd这个文件</li></ul></blockquote><p> <strong>John支援了以下几种的破解方式：</strong></p><ul><li>有规则及不规则的字典档破解模式</li><li>“Single Crack”, 用最简单的资讯来进行破解的工作, 速度最快</li><li>增强破解模式(我们称暴力法), 尝试所有可能的字元组合</li><li>外部破解模式, 让你可以定义你的破解模式</li></ul><h2 id="John-the-ripper特点"><a href="#John-the-ripper特点" class="headerlink" title="John the ripper特点"></a><strong>John the ripper特点</strong></h2><p>John the ripper在密码破解方面功能确实很强大，且密码破解效果比较好。但是在密码破解中存在一些问题。</p><ul><li>John the ripper一次性只能破解一个shadow。</li><li>John the ripper破解时间长。</li><li>Windows下John the ripper可破解的加密算法种类有限。</li><li>破解过程中，需要人工参与，需要随时查看破解进度。</li><li>需要收集一个针对特定行业的密码字典。</li></ul><h2 id="系统默认字典文件"><a href="#系统默认字典文件" class="headerlink" title="系统默认字典文件"></a>系统默认字典文件</h2><ul><li>/usr/share/john/password.lst</li><li>该文件收集了很多字符串密码。当你使用john破解密码时，john会去匹配该文件中的内容，如果密码存在于下面这个文件中，john就可以破解出来，如果不存在就破解不出来</li><li>当然你也可以手动向这个文件中添加内容。或者自己建立字典文件，然后使用–wordlist参数调用字典文件</li></ul><h2 id="爆破实例"><a href="#爆破实例" class="headerlink" title="爆破实例"></a>爆破实例</h2><ol><li><p>首先要生成一个密码字典</p></li><li><p>开始爆破</p><blockquote><p>其实在Linux操作系统中有很重要的一步：使用unshadow命令合并passwd与shadow文件，具体命令如下：</p><p>unshadow /etc/passwd /etc/shadow &gt; CombinedFile.txt</p><p>其中的CombinedFile.txt就是最后合并的密码文件，也是使用john进行破解的目标文件。</p></blockquote><p>最后破解命令是：</p><p>john -wordlist PwdDictionary.txt CombinedFile.txt</p><p><img src="https://s1.ax1x.com/2020/09/07/wuKN9A.png" alt="wuKN9A.png"></p></li><li><p>查看结果</p><p>结果会直接显示在运行界面中，也可以使用如下命令查看结果：</p><p>john -show CombinedFile.txt</p></li></ol><hr><p>上面这个实例只爆破出admin用户的密码，没有爆破出root用户密码。</p><ol><li><p>破解root密码，查看/etc/shadow文件内容，复制加密后的密文</p><p><img src="https://s1.ax1x.com/2020/09/07/wuK6hj.png" alt="wuK6hj.png"></p><p><code>$6$i9PZlNKY1JSE8dkG$1eCFIsAtnxzHfhZ/tw3FUBr/2NMZOlM.8HmSA4KYy9SfBBBTEUj2JS79tvudskedc7bUp9EMktTGXsblpALbl.</code></p></li><li><p>新建文件，将密文复制到新建文件中。</p><p><img src="https://s1.ax1x.com/2020/09/07/wuKRcq.png" alt="wuKRcq.png"></p></li><li><p>john -wordlist /root/Desktop/password_top100.txt ./hash</p><p>跑出root密码，忘记截图了。</p><blockquote><p>在网上找到如下回答：</p><p>john工具对于同一个shadow文件只会进行一次爆破，如果第二次执行john shadow是不会得到结果的，只会得到如下输出。</p><p><img src="https://s1.ax1x.com/2020/09/07/wuK74J.png" alt="wuK74J.png"></p></blockquote></li><li><p>查看密码</p><p><img src="https://s1.ax1x.com/2020/09/07/wuKvDK.png" alt="wuKvDK.png"></p><p>查看john.pot文件</p><p><img src="https://s1.ax1x.com/2020/09/07/wuMFgI.png" alt="wuMFgI.png"></p></li></ol><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://blog.csdn.net/FunkyPants/article/details/78648109" target="_blank" rel="noopener">https://blog.csdn.net/FunkyPants/article/details/78648109</a></p><p><a href="https://www.jianshu.com/p/bed96891dc3e" target="_blank" rel="noopener">https://www.jianshu.com/p/bed96891dc3e</a></p><p><a href="https://blog.csdn.net/qq_41453285/article/details/101049848" target="_blank" rel="noopener">https://blog.csdn.net/qq_41453285/article/details/101049848</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> tool </tag>
+            
+            <tag> john </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>网站指纹识别-whatweb</title>
       <link href="/2020/09/03/whatweb/"/>
       <url>/2020/09/03/whatweb/</url>
