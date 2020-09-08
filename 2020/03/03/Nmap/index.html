@@ -376,7 +376,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-02
+                    2020-09-08
                 </div>
                 
 
@@ -441,7 +441,10 @@
 <pre><code>nmap -sV -v target_ip </code></pre><ul>
 <li>操作系统扫描:</li>
 </ul>
-<pre><code>nmap -O -v target_ip</code></pre></blockquote>
+<pre><code>nmap -O -v target_ip</code></pre><ul>
+<li>测试waf是否存在</li>
+</ul>
+<pre><code>nmap -p 80,443 --script=http-waf-detect 192.168.1.1</code></pre></blockquote>
 <h3 id="其他技巧"><a href="#其他技巧" class="headerlink" title="其他技巧"></a>其他技巧</h3><ul>
 <li>–host-timeout  主机超时时间</li>
 <li>–scan-delay 报文时间间隔</li>
@@ -1271,7 +1274,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">48.5k</span>&nbsp;字
+                class="white-color">48.9k</span>&nbsp;字
             
             
             

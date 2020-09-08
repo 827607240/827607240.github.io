@@ -221,7 +221,7 @@
 
 <script>
     // 每天切换 banner 图.  Switch banner image every day.
-    $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
+    $('.bg-cover').css('background-image', 'url(/medias/banner/2.jpg)');
 </script>
 
 
@@ -238,6 +238,48 @@
     <!-- 所有文章卡片 -->
     <article id="articles" class="container articles">
         <div class="row article-row">
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2020/08/15/struts2-001/">
+                        <div class="card-image">
+                            
+                            <img src="https://jstechno.com/images/struts2/apache-struts-vulnerability.png" class="responsive-img" alt="struts2-001 远程代码执行漏洞">
+                            
+                            <span class="card-title">struts2-001 远程代码执行漏洞</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                struts2-001 远程代码执行漏洞漏洞原理该漏洞因为用户提交表单数据并且验证失败时，后端会将用户之前提交的参数值使用 OGNL 表达式 %{value} 进行解析，然后重新填充到对应的表单数据中。例如注册或登录页面，提交失败后端一般会
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-15
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                uaa
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/struts/">
+                            <span class="chip bg-color">struts</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
@@ -598,52 +640,6 @@ docker-compose up -d环境启动后，通过redis-cli -h your-ip即可进行连�
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/07/19/Aapache-Tomcat-AJP%EF%BC%88CVE-2020-1938%EF%BC%89/">
-                        <div class="card-image">
-                            
-                            <img src="https://image.qinjiangbo.com/blog/image/apache-tomcat.png" class="responsive-img" alt="Aapache Tomcat AJP 文件包含漏洞（CVE-2020-1938）">
-                            
-                            <span class="card-title">Aapache Tomcat AJP 文件包含漏洞（CVE-2020-1938）</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                Apache Tomcat AJP 文件包含漏洞（CVE-2020-1938）Java 是目前 Web 开发中最主流的编程语言，而 Tomcat 是当前最流行的 Java 中间件服务器之一，从初版发布到现在已经有二十多年历史，在世界范围内广
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-19
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                uaa
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/cve/">
-                            <span class="chip bg-color">cve</span>
-                        </a>
-                        
-                        <a href="/tags/apache/">
-                            <span class="chip bg-color">apache</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 
@@ -689,7 +685,7 @@ docker-compose up -d环境启动后，通过redis-cli -h your-ip即可进行连�
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">48.5k</span>&nbsp;字
+                class="white-color">48.9k</span>&nbsp;字
             
             
             
