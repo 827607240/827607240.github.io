@@ -376,21 +376,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-08
+                    2020-09-10
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.7k
+                    3.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    15 分
                 </div>
                 
 
@@ -405,8 +405,8 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>nmap，端口扫描神器。但是扫描速度有点慢。</p>
-<h2 id="nmap的使用"><a href="#nmap的使用" class="headerlink" title="nmap的使用"></a>nmap的使用</h2><h3 id="nmap介绍"><a href="#nmap介绍" class="headerlink" title="nmap介绍"></a>nmap介绍</h3><p>Nmap — 网络探测工具和安全/端口扫描器。</p>
+                <h2 id="nmap的使用"><a href="#nmap的使用" class="headerlink" title="nmap的使用"></a>nmap的使用</h2><p>nmap，端口扫描神器。</p>
+<h3 id="nmap介绍"><a href="#nmap介绍" class="headerlink" title="nmap介绍"></a>nmap介绍</h3><p>Nmap — 网络探测工具和安全/端口扫描器。</p>
 <h3 id="nmap常用参数"><a href="#nmap常用参数" class="headerlink" title="nmap常用参数"></a>nmap常用参数</h3><p>ping扫描</p>
 <p><code>nmap -sP 192.168.0.1/24</code></p>
 <p>SYN扫描（半开扫描）</p>
@@ -445,13 +445,32 @@
 <li>测试waf是否存在</li>
 </ul>
 <pre><code>nmap -p 80,443 --script=http-waf-detect 192.168.1.1</code></pre></blockquote>
+<h3 id="快速扫描"><a href="#快速扫描" class="headerlink" title="快速扫描"></a>快速扫描</h3><p>在面对大量地址的时候，进行全端口扫描总是太慢，有时候nmap还会崩溃。nmap还有一个缺点就是必须扫描完成后才会有结果输出。</p>
+<p>最近又学习到一种加速扫描的办法，扫描速度挺快的。==这种方法只适用于防火墙未拦截的情况。==其他情况也可以做一个参考。</p>
+<p>首先拿到一段地址，我们使用sn先判断存活的IP数量。不对ip进行域名反向解析。</p>
+<pre><code>nmap -sn -v -n -iL ip-in.txt -oX ip-out.xml --min-hostgroup 1024 --min-parallelism 1024 -PE</code></pre><p>各参数具体的意思查看帮助手册。确认存活地址后，进行全端口全服务扫描。</p>
+<pre><code>nmap -T4 -v -Pn -sV -O -p1-65535 -oX nmap-out.xml -iL ip-out.txt --open -sS</code></pre><p>xml表转换为xsl表</p>
+<pre><code>--stylesheet PATH/URL   设置XSL样式表，转换XML输出</code></pre><blockquote>
+<p><strong>时间和性能</strong></p>
+<p>Nmap开发的最高优先级是性能。在本地网络对一个主机的默认扫描(<strong>nmap <hostname></strong>)需要1/5秒。而仅仅眨眼的 时间，就需要扫描上万甚至几十万的主机。此外，一些特定的扫描选项会明显增 加扫描时间，如UDP扫描和版本检测。同样，防火墙配置以及特殊的响应速度限制也会 增加时间。Nmap使用了并行算法和许多先进的算法来加速扫描，用户对Nmap如何 工作有最终的控制权。高级用户可以仔细地调整Nmap命令，在满足时间要求的同时获得他们所关心的信息。</p>
+<p>改善扫描时间的技术有：忽略非关键的检测、升级最新版本的Nmap(性能增强不断改善)。 优化时间参数也会带来实质性的变化，这些参数如下。</p>
+<ul>
+<li><p><code>--min-hostgroup &lt;milliseconds&gt;</code>; <code>--max-hostgroup &lt;milliseconds&gt;</code> (调整并行扫描组的大小)</p>
+<p>Nmap具有并行扫描多主机端口或版本的能力，Nmap将多个目标IP地址 空间分成组，然后在同一时间对一个组进行扫描。通常，大的组更有效。缺 点是只有当整个组扫描结束后才会提供主机的扫描结果。如果组的大小定义 为50，则只有当前50个主机扫描结束后才能得到报告(详细模式中的补充信息 除外)。默认方式下，Nmap采取折衷的方法。开始扫描时的组较小， 最小为5，这样便于尽快产生结果；随后增长组的大小，最大为1024。确切的 大小依赖于所给定的选项。为保证效率，针对UDP或少量端口的TCP扫描，Nmap 使用大的组。<code>--max-hostgroup</code>选项用于说明使用最大的组，Nmap不 会超出这个大小。<code>--min-hostgroup</code>选项说明最小的组，Nmap 会保持组大于这个值。如果在指定的接口上没有足够的目标主机来满足所 指定的最小值，Nmap可能会采用比所指定的值小的组。这两个参数虽然很少使用， 但都用于保持组的大小在一个指定的范围之内。这些选项的主要用途是说明一个最小组的大小，使得整个扫描更加快速。通常 选择256来扫描C类网段。对于端口数较多的扫描，超出该值没有意义。对于 端口数较少的扫描，2048或更大的组大小是有帮助的。</p>
+</li>
+<li><p><code>--min-parallelism &lt;milliseconds&gt;</code>; <code>--max-parallelism &lt;milliseconds&gt;</code> (调整探测报文的并行度)</p>
+<p>这些选项控制用于主机组的探测报文数量，可用于端口扫描和主机发现。默认状态下， Nmap基于网络性能计算一个理想的并行度，这个值经常改变。如果报文被丢弃， Nmap降低速度，探测报文数量减少。随着网络性能的改善，理想的探测报文数量会缓慢增加。 这些选项确定这个变量的大小范围。默认状态下，当网络不可靠时，理想的并行度值 可能为1，在好的条件下，可能会增长至几百。最常见的应用是<code>--min-parallelism</code>值大于1，以加快 性能不佳的主机或网络的扫描。这个选项具有风险，如果过高则影响准确度，同时 也会降低Nmap基于网络条件动态控制并行度的能力。这个值设为10较为合适， 这个值的调整往往作为最后的手段。<code>--max-parallelism</code>选项通常设为1，以防止Nmap在同一时间 向主机发送多个探测报文，和选择<code>--scan-delay</code>同时使用非常有用，虽然 这个选项本身的用途已经很好。</p>
+</li>
+</ul>
+</blockquote>
 <h3 id="其他技巧"><a href="#其他技巧" class="headerlink" title="其他技巧"></a>其他技巧</h3><ul>
 <li>–host-timeout  主机超时时间</li>
 <li>–scan-delay 报文时间间隔</li>
 <li>-S &lt;源地址&gt;  定义扫描源地址，避免被发现。</li>
 </ul>
 <blockquote>
-<h1 id="快速扫描"><a href="#快速扫描" class="headerlink" title="快速扫描"></a>快速扫描</h1><p>说明：使用masscan做全端口开放检测，过出来端口信息后，用nmap进行识别。</p>
+<p><strong>快速扫描</strong></p>
+<p>说明：使用masscan做全端口开放检测，过出来端口信息后，用nmap进行识别。</p>
 <pre><code class="bash">masscan -p1-65535 10.10.10.10 --rate=1000 -e tun0 &gt; ports
 ports=$(cat ports | awk -F &quot; &quot; &#39;{print $4}&#39; | awk -F &quot;/&quot; &#39;{print $1}&#39; | sort -n | tr &#39;\n&#39; &#39;,&#39; | sed &#39;s/,$//&#39;)
 nmap -Pn -A -sV -sC -p$ports 10.10.10.10</code></pre>
@@ -1274,7 +1293,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">48.9k</span>&nbsp;字
+                class="white-color">57.2k</span>&nbsp;字
             
             
             
