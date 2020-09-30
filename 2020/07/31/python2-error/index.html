@@ -359,21 +359,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-02
+                    2020-09-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    171
+                    719
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -389,6 +389,50 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>电脑里有python2和python3两个环境。配置起来容易出问题。</p>
+<blockquote>
+<p>Windows上Python2和3如何兼容</p>
+<p>官方的解法是什么？</p>
+<p>我们在安装Python3（&gt;=3.3）时，Python的安装包实际上在系统中安装了一个启动器py.exe，默认放置在文件夹C:\Windows\下面。这个启动器允许我们指定使用Python2还是Python3来运行代码（当然前提是你已经成功安装了Python2和Python3）。</p>
+<p>如果你有一个Python文件叫 hello.py，那么你可以这样用Python2运行它</p>
+<blockquote>
+<p>py -2 hello.py</p>
+</blockquote>
+<p>类似的，如果你想用Python3运行它，就这样</p>
+<blockquote>
+<p>py -3 hello.py</p>
+</blockquote>
+<p><strong>去掉参数 -2/-3</strong></p>
+<p>每次运行都要加入参数-2/-3还是比较麻烦，所以py.exe这个启动器允许你在代码中加入说明，表明这个文件应该是由python2解释运行，还是由python3解释运行。说明的方法是在代码文件的最开始加入一行</p>
+<blockquote>
+<p>#! python2</p>
+</blockquote>
+<p>或者</p>
+<blockquote>
+<p>#! python3</p>
+</blockquote>
+<p><strong>使用pip</strong></p>
+<p>当Python2和Python3同时存在于windows上时，它们对应的pip都叫pip.exe，所以不能够直接使用 pip install 命令来安装软件包。而是要使用启动器py.exe来指定pip的版本。命令如下：</p>
+<blockquote>
+<p>py -2 -m pip install XXXX</p>
+</blockquote>
+<p>-2 还是表示使用 Python2，-m pip 表示运行 pip 模块，也就是运行pip命令了。如果是为Python3安装软件，那么命令类似的变成</p>
+<blockquote>
+<p>py -3 -m pip install XXXX</p>
+</blockquote>
+<p><strong>Python2要在代码文件顶部增加一行说明，才能够在代码中使用中文。</strong>如果指明使用的Python版本也需要在文件顶部增加一行，那哪一行应该放在第一行呢？</p>
+<p>#! python2 需要放在第一行，编码说明可以放在第二行。所以文件开头应该类似于：</p>
+<blockquote>
+<pre><code class="text">#! python2
+# coding: utf-8</code></pre>
+</blockquote>
+</blockquote>
+<h2 id="pip未安装"><a href="#pip未安装" class="headerlink" title="pip未安装"></a>pip未安装</h2><p>首先打开 下面的URL</p>
+<p><a href="https://bootstrap.pypa.io/get-pip.py" target="_blank" rel="noopener">https://bootstrap.pypa.io/get-pip.py</a></p>
+<p>新建get-pip.py 文件张贴上面网址打开的内容</p>
+<p>确保你的Python可以正常使用（cmd下面输入Python 可以进入Python交互界面）</p>
+<p>进入你存放get-pip.py的目录</p>
+<p>python get-pip.py  </p>
+<p>以上完成，如果还是不能用那就是你的Python的 Scripts 目录没有加入环境变量 。</p>
 <h2 id="安装模块遇到的坑"><a href="#安装模块遇到的坑" class="headerlink" title="安装模块遇到的坑"></a>安装模块遇到的坑</h2><p>pip install xxxxxx默认使用的是我python2的pip</p>
 <p>那么如何安装python3的pip呢？</p>
 <p>通过python3 -m pip install cryptography可以正常安装python3模块。</p>
@@ -1047,7 +1091,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">57.2k</span>&nbsp;字
+                class="white-color">57.9k</span>&nbsp;字
             
             
             
