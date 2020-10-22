@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      497 字
+      510 字
     </span>
   
 
@@ -220,13 +220,14 @@
             <h1 style="display: none">Tomcat7+ 弱口令 &amp;&amp; 后台getshell漏洞</h1>
             
             <div class="markdown-body" id="post-body">
-              <h1 id="Tomcat7-弱口令-amp-amp-后台getshell漏洞"><a href="#Tomcat7-弱口令-amp-amp-后台getshell漏洞" class="headerlink" title="Tomcat7+ 弱口令 &amp;&amp; 后台getshell漏洞"></a>Tomcat7+ 弱口令 &amp;&amp; 后台getshell漏洞</h1><p>tomcat6版本以后针对爆破做了锁定机制的设置。tomcat7版本以上无法爆破。</p>
+              <h1 id="Tomcat7-弱口令-amp-amp-后台getshell漏洞"><a href="#Tomcat7-弱口令-amp-amp-后台getshell漏洞" class="headerlink" title="Tomcat7+ 弱口令 &amp;&amp; 后台getshell漏洞"></a>Tomcat7+ 弱口令 &amp;&amp; 后台getshell漏洞</h1><p><strong>tomcat6版本以后针对爆破做了锁定机制的设置。tomcat7版本以上无法爆破。</strong></p>
 <h2 id="弱口令"><a href="#弱口令" class="headerlink" title="弱口令"></a>弱口令</h2><p>在tomcat6及6之前，是可以直接暴力破解的。在tomcat6以后，默认是做了暴力破解的限制的。默认尝试5次失败后，账号被锁定。该参数在配置文件server.xml中默认无配置，在无配置的情况下，默认是5次错误机会。</p>
 <p>因此在编写弱口令扫描插件时，要注意如果尝试次数过多，即使字典中有正确密码，会提示401错误，而且和密码错误的返回结果相同，很容易误认为是脚本的问题。这点要注意。解决办法就是在测试时，将server.xml中添加 failureCount=”999999” lockOutTime=”0”。</p>
 <p>所以暴力破解前需注意两个问题。</p>
-<p>第一个是版本问题。</p>
-<p>第二个要注意的是，密码正确时，不一定返回200，返回403也是密码正确的情况。</p>
-<h2 id="后台getshell"><a href="#后台getshell" class="headerlink" title="后台getshell"></a>后台getshell</h2><p>首先启动tomcat环境，<code>docker-compose up -d</code></p>
+<p><strong>第一个是版本问题。</strong></p>
+<p><strong>第二个要注意的是，密码正确时，不一定返回200，返回403也是密码正确的情况。</strong></p>
+<h2 id="后台getshell"><a href="#后台getshell" class="headerlink" title="后台getshell"></a>后台getshell</h2><p><strong>漏洞利用前提：能够登录后台</strong></p>
+<p>首先启动tomcat环境，<code>docker-compose up -d</code></p>
 <p>打开tomcat管理页面<code>http://your-ip:8080/manager/html</code>，输入弱密码<code>tomcat:tomcat</code>，即可访问后台：</p>
 <p><img src="https://s1.ax1x.com/2020/08/09/aoZg0O.png" srcset="/img/loading.gif" alt="aoZg0O.png"></p>
 <p>找到上传文件</p>
@@ -246,6 +247,13 @@
             <hr>
             <div>
               <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/tomcat/">tomcat</a>
+                    
+                  </div>
                 
                 
                   <div class="post-meta">

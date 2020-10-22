@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="booom">
   <meta name="keywords" content="">
-  <title>标签 - tool - wiki</title>
+  <title>分类 - tool - wiki</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -43,7 +43,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 60vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -167,19 +167,85 @@
                 
 
 <div class="list-group">
-  <p class="h4">共计 1 篇文章</p>
+  <p class="h4">共计 15 篇文章</p>
   <hr>
   
     
       
       <p class="h5">2020</p>
     
+    <a href="/2020/10/12/wfuzz/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">wfuzz</span>
+      <time style="float: right;">10-12</time>
+    </a>
+  
+    
+    <a href="/2020/09/09/Hydra/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">爆破密码工具Hydra学习总结</span>
+      <time style="float: right;">09-09</time>
+    </a>
+  
+    
+    <a href="/2020/09/08/gobuster/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">gobuster学习记录</span>
+      <time style="float: right;">09-08</time>
+    </a>
+  
+    
     <a href="/2020/09/07/john-the-ripper/" class="list-group-item list-group-item-action">
       <span class="archive-post-title">爆破工具-john</span>
       <time style="float: right;">09-07</time>
     </a>
   
+    
+    <a href="/2020/09/03/whatweb/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">网站指纹识别-whatweb</span>
+      <time style="float: right;">09-03</time>
+    </a>
+  
+    
+    <a href="/2020/09/01/Tmux/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">Tmux学习记录</span>
+      <time style="float: right;">09-01</time>
+    </a>
+  
+    
+    <a href="/2020/09/01/metasploit/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">metasploit学习记录</span>
+      <time style="float: right;">09-01</time>
+    </a>
+  
+    
+    <a href="/2020/08/28/zoomeye/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">网络空间搜索引擎</span>
+      <time style="float: right;">08-28</time>
+    </a>
+  
+    
+    <a href="/2020/06/14/Git/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">Git记录</span>
+      <time style="float: right;">06-14</time>
+    </a>
+  
+    
+    <a href="/2020/05/16/Docker-1/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">Docker记录</span>
+      <time style="float: right;">05-16</time>
+    </a>
+  
 </div>
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/categories/tool/page/2/">2</a><a class="extend next" rel="next" href="/categories/tool/page/2/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
 
 
 
@@ -295,7 +361,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "标签 - tool&nbsp;",
+        "分类 - tool&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
