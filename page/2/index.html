@@ -177,6 +177,195 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2020/08/28/CVE-2020-0796/">Microsoft SMBv3远程代码执行漏洞（CVE-2020-0796）</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/08/28/CVE-2020-0796/">
+          
+          
+            
+          
+          CVE-2020-0796远程代码执行漏洞Microsoft SMBv3远程代码执行漏洞（CVE-2020-0796）
+漏洞描述SMB通信协议是微软和英特尔在1987年制定的协议，主要是作为Microsoft网络的通讯协议。
+Microsoft Server Message Block 3.1.1(SMBv3)中存在一个远程代码执行漏洞，成功利用该漏洞的攻击者可以在目标SMB服务器或SMB客户端上
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-28 15:33" pubdate>
+              2020-08-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/windows/">windows</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/cve/">cve</a>
+            
+              <a href="/tags/%E6%8F%90%E6%9D%83/">提权</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/08/28/zoomeye/">网络空间搜索引擎</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/08/28/zoomeye/">
+          
+          
+            
+          
+          网络空间搜索引擎如果说GPS绘制出了世界的地图，那么网络空间搜索引擎就是整个互联网的地图。
+网络空间搜索引擎的作用就是将互联网上公开的网络资产收集和整理，以此方便人们进行查阅和利用。
+钟馗之眼-ZoomEyehttps://www.zoomeye.org/
+ZoomEye是一款针对网络空间的搜索引擎，收录了互联网空间中的设备、网站及其使用的服务或组件等信息。
+ZoomEye 拥有两大探测引擎：Xm
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-28 09:48" pubdate>
+              2020-08-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/tool/">tool</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">信息收集</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/08/15/S2-005/">S2-005 远程代码执行漏洞</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/08/15/S2-005/">
+          
+          
+            
+          
+          S2-005 远程代码执行漏洞原理参考吴翰清的《白帽子讲Web安全》一书。
+
+s2-005漏洞的起源源于S2-003(受影响版本: 低于Struts 2.0.12)，struts2会将http的每个参数名解析为OGNL语句执行(可理解为java代码)。OGNL表达式通过#来访问struts的对象，struts框架通过过滤#字符防止安全问题，然而通过unicode编码(\u0023)或8进制(\43
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-15 15:00" pubdate>
+              2020-08-15
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/struts/">struts</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/08/15/struts2-001/">struts2-001 远程代码执行漏洞</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/08/15/struts2-001/">
+          
+          
+            
+          
+          struts2-001 远程代码执行漏洞漏洞原理该漏洞因为用户提交表单数据并且验证失败时，后端会将用户之前提交的参数值使用 OGNL 表达式 %{value} 进行解析，然后重新填充到对应的表单数据中。例如注册或登录页面，提交失败后端一般会默认返回之前提交的数据，由于后端使用 %{value} 对提交的数据执行了一次 OGNL 表达式解析，所以可以直接构造 Payload 进行命令执行
+漏洞环境启
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-15 15:00" pubdate>
+              2020-08-15
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/struts/">struts</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2020/08/15/Redis/">Redis 4.x/5.x 未授权访问漏洞</a>
       </h1>
 
@@ -983,212 +1172,6 @@ $ git config --global user.email "email@example.com"
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/Git/">Git</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/06/02/mysql-2/">数据库复习风波</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/06/02/mysql-2/">
-          
-          
-            
-          
-          写这篇文章的起因，实在是巧合，微信群里有人发了一张有关于数据库的面试题。本来想着自己会点儿，于是试着做一下。但由于自己也好久没用过数据库，很多基本的命令都忘记了。orz，真的是不做题都不知道自己其实根本就不会。学点皮毛又缺乏练习导致最后跟没学一样，这样看来，复习真的是太有必要了。不过自己一直都是随缘复习。发现自己不会了才会再进行复习。
-觉得自己太废物了，自愧不如，再使用以下数据库，不使用数据库管理
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-06-02 21:30" pubdate>
-              2020-06-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/mysql/">mysql</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/05/30/bash-2/">Bash脚本应用记录</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/05/30/bash-2/">
-          
-          
-            
-          
-          最近一直在看关于脚本的书籍，但是没有需求就没有想要去实现的动力。不仅如此，只看不练的话其实没什么用，过一段时间就忘了。这可真是让人头疼的一件事，不练习的话看书总感觉是浪费时间的一件事。最近要安装一个平台，安装过程稍微有点繁琐。想着通过脚本提高效率。
-
-Bash脚本应用通过脚本来实现功能。首先遇到的第一个需求是在文件中插入多行文字。
-在文件中添加多行文字# 这是一个错误的脚本示范
-#!/bin/ba
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-05-30 19:14" pubdate>
-              2020-05-30
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E8%84%9A%E6%9C%AC/">脚本</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/bash/">bash</a>
-            
-              <a href="/tags/shell/">shell</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/05/27/iMC/">安装iMC智能管理中心</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/05/27/iMC/">
-          
-          
-            
-          
-          仅以此做一下记录。
-服务器上安装iMC智能管理中心
-服务器安装系统前做磁盘阵列（此次使用的是raid5），提升磁盘读写速度，备份数据，保护数据安全。
-安装操作系统，此次安装的是湖南麒麟系统，工作站运行模式。
-安装数据库，安装iMC智能管理中心，部署平台组件。
-
-安装准备
-Kylin-3.3.4系统镜像
-H3C_iMC_PLAT_7.3_E0703_Standard_linux.rar安装包
-H3C
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-05-27 18:19" pubdate>
-              2020-05-27
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Kylin/">Kylin</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/05/26/Kylin-1/">Kylin系统单用户重置密码</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/05/26/Kylin-1/">
-          
-          
-            
-          
-          安装系统时，创建了新用户并勾选了设置为管理员。登陆后却没有权限，也无法切换其他用户。secadm、sysadm在创建系统是未配置。在登录界面也无法正常登录。无果，联系湖南麒麟客服热线，无人接听。没办法，由于湖南麒麟也是用的Linux内核，只能尝试通过Linux系统重置密码的方式来尝试一下。
-Kylin3.3.4系统忘记密码使用单用户模式修改密码
-重启服务器，在启动界面按‘e’键进入编辑模式。
-
-
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-05-26 23:40" pubdate>
-              2020-05-26
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">踩过的坑</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Kylin/">Kylin</a>
             
           </div>
         
