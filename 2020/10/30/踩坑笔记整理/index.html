@@ -1,0 +1,759 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="booom">
+  <meta name="keywords" content="">
+  <title>踩坑笔记整理 - wiki</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>wiki</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-10-30 09:49" pubdate>
+        2020年10月30日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      40
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">踩坑笔记整理</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="踩坑笔记整理"><a href="#踩坑笔记整理" class="headerlink" title="踩坑笔记整理"></a>踩坑笔记整理</h1><h2 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h2><p>jdk旧版本下载账号</p>
+<p>目前在官网下载低于jdk1.8的java jdk的时候需要登陆，这边分享一个账号，方便下载<br><a href="mailto:2696671285@qq.com">2696671285@qq.com</a><br>密码：Oracle123</p>
+<p>jdk旧版本下载教程：<a href="https://blog.51cto.com/sandshell/2171768" target="_blank" rel="noopener">https://blog.51cto.com/sandshell/2171768</a></p>
+<p>jdk旧版本下载地址：<a href="http://www.oracle.com/technetwork/java/javase/archive-139210.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/java/javase/archive-139210.html</a></p>
+<h2 id="虚拟机和主机网络不通"><a href="#虚拟机和主机网络不通" class="headerlink" title="虚拟机和主机网络不通"></a>虚拟机和主机网络不通</h2><p>虚拟机NAT模式下，IP配置正确，但是与本机之间无法正常ping通，可以通过恢复默认设置来解决。</p>
+<p>但是，每次这样过于麻烦，如果ping不通，<strong>可以右键我的电脑&gt;&gt;管理&gt;&gt;服务,然后找到VMware DHCP Service和VMware NAT Service；两个服务，看看是否启动。</strong>这两个服务默认是开机自启，启动类型为自动。如果启动类型是自动，但是并未开机自启，导致虚拟机与本机之间无法ping通，可以看下安全管家或者360之类，将VMware托盘程序启动项允许即可。</p>
+<p>这两项设置完之后，网络基本就正常了，但是长时间不用再次打开还是会无法ping通，两个虚拟机服务也运行正常。最后查了些资料发现是dhcp的问题，于是就在虚拟机设置了静态IP，但是还是会出现无法ping通的问题。<strong>最后发现ping不通的时候重启一下（主机对应虚拟机的）网络适配器就好了。</strong></p>
+<h3 id="虚拟机配置静态IP、动态IP"><a href="#虚拟机配置静态IP、动态IP" class="headerlink" title="虚拟机配置静态IP、动态IP"></a>虚拟机配置静态IP、动态IP</h3><p>修改脚本/etc/network/interfaces，自动获取IP#iface eth3  inet dhcp</p>
+<pre><code class="hljs angelscript"><span class="hljs-built_in">auto</span> lo
+iface lo inet loopback
+<span class="hljs-built_in">auto</span> eth3
+iface eth3 inet static
+address <span class="hljs-number">192.168</span><span class="hljs-number">.200</span><span class="hljs-number">.130</span>
+netmask <span class="hljs-number">255.255</span><span class="hljs-number">.255</span><span class="hljs-number">.0</span>
+gateway <span class="hljs-number">192.168</span><span class="hljs-number">.200</span><span class="hljs-number">.2</span></code></pre>
+
+<p>重启networking服务或重启虚拟机之后生效。</p>
+<p><code>sudo /etc/init.d/networking restart</code></p>
+<p>配置DNS： <code>sudo gedit /etc/resolv.conf</code></p>
+<p>114.114.114.114</p>
+<p>重启网络：<code>sudo /etc/init.d/networking restart</code></p>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p>远程连接数据库：<code>mysql -h ip -u root -p -P 3306</code></p>
+<p>linux命令行下导出导入.sql文件</p>
+<h3 id="导出数据库用mysqldump命令"><a href="#导出数据库用mysqldump命令" class="headerlink" title="导出数据库用mysqldump命令"></a>导出数据库用mysqldump命令</h3><p>（注意mysql的安装路径，即此命令的路径）：</p>
+<ol>
+<li><p>导出数据和表结构：mysqldump -u用户名 -p密码 数据库名 &gt; 数据库名.sql<br>#/usr/local/mysql/bin/</p>
+<p><code>mysqldump -uroot -p abc &gt; abc.sql</code> 敲回车后会提示输入密码</p>
+</li>
+<li><p>只导出表结构<br>mysqldump -u用户名 -p密码 -d 数据库名 &gt; 数据库名.sql<br>#/usr/local/mysql/bin/   <code>mysqldump -uroot -p -d abc &gt; abc.sql</code></p>
+</li>
+</ol>
+<p>注：/usr/local/mysql/bin/  —&gt;  mysql的data目录</p>
+<h3 id="导入数据库"><a href="#导入数据库" class="headerlink" title="导入数据库"></a>导入数据库</h3><p>（注意：有命令行模式，有sql命令）</p>
+<ol>
+<li>首先建空数据库<br>mysql&gt;create database abc;</li>
+<li>导入数据库<ul>
+<li>SQL命令模式<ul>
+<li>（1）选择数据库：mysql&gt;use abc;<br>（2）设置数据库编码：mysql&gt;set names utf8;<br>（3）导入数据（注意sql文件的路径）：mysql&gt;source /home/abc/abc.sql;</li>
+</ul>
+</li>
+<li>命令行模式<ul>
+<li>mysql -u用户名 -p密码 数据库名 &lt; 数据库名.sql<br>#mysql -uabc_f -p abc &lt; abc.sql</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>建议使用命令行模式导入。</p>
+<h3 id="数据库通配符介绍"><a href="#数据库通配符介绍" class="headerlink" title="数据库通配符介绍"></a>数据库通配符介绍</h3><p>需要注意的是在Like后的查询条件中要用单引号或双引号括起来。<br>Like操作符共有以下4种通配符，他们的含义如下:<br>%﻿:代表零个或者多个任意字符<br>代表一个任意字符﻿<br>[]:指定范围内的任意单个字符</p>
+<p>[^]:不在指定范围内的任意单个字符</p>
+<p>上面说的比较理论话,大家可能都还没完全理解透，下面我给大家举些例子。Like”BR%”<br>返回以BR开始的任意字符串<br>Like “%een”返回以 een结束的任意字符串<br>Like “%en%”返回包 含en的任意字符串<br>Like” en”<br>返回以en结束的3个字符串<br>Like”[CK]%”返回以 C或者K开始的任意字符串<br>Like”[S-V]ing”返回长为4个字符的字符串，结尾是”ing”，开始是从S到V<br>Like”M[^c]%”返回以”M”开始且第二个字符不是”c”的任意字符串  </p>
+<h2 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h2><p>查看docker容器密码<code>root@docker:/var/lib/docker/containers/4403a729460c4a17e58603bdd8982fd029d1b9855cb7135941eb672c00c793e2# cat 4403a729460c4a17e58603bdd8982fd029d1b9855cb7135941eb672c00c793e2-json.log | grep password</code> </p>
+<p>列出所有容器：docker ps -aq</p>
+<p>开启容器：docker start ID</p>
+<p>删除容器：docker rm ID</p>
+<p>进入容器：docker exec -it  ID /bin/bash</p>
+<p>docker inspect 容器id：查看容器的所有信息</p>
+<p>docker container logs 容器id：查看容器日志</p>
+<p>docker top 容器id：查看容器里的进程</p>
+<p>docker exec -it 容器id /bin/bash：进入容器</p>
+<h2 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h2><p>利用nmap五条指令快速捡洞和检洞：</p>
+<p>系统漏洞检测：nmap–script smb-check-vulns.nse -p 192.168.1.1</p>
+<p>数据库密码检测：nmap–script=brute 192.168.1.1</p>
+<p>收集应用服务信息：nmap -sC 192.168.1.1</p>
+<p>检测常见漏洞：nmap–script=vuln 192.168.1.1</p>
+<p>检测部分应用的弱口令（负责处理鉴权证书）： nmap –script=auth 192.168.1.1</p>
+<p><a href="https://blog.csdn.net/abc_12366/article/details/82807108" target="_blank" rel="noopener">https://blog.csdn.net/abc_12366/article/details/82807108</a></p>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h3 id="curl命令无法使用"><a href="#curl命令无法使用" class="headerlink" title="curl命令无法使用"></a>curl命令无法使用</h3><p><code>sudo apt-get purge  libcurl3-gnutls</code></p>
+<p>用purge命令重新安装就好了。</p>
+<h3 id="SCP"><a href="#SCP" class="headerlink" title="SCP"></a>SCP</h3><p>scp与ssh不同，scp使用大写P开关来设置端口而不是小写p</p>
+<h3 id="alias快捷命令永久生效"><a href="#alias快捷命令永久生效" class="headerlink" title="alias快捷命令永久生效"></a>alias快捷命令永久生效</h3><p><strong>方法一</strong></p>
+<p>1、 执行 <code>cd ~</code> 进入到家目录，编辑 ~/.bashrc 文件（没有的话则新建该文件），将需要执行的别名命令添加到这个文件末尾，如：</p>
+<blockquote>
+<p>alias md=mkdir</p>
+</blockquote>
+<p>然后退出保存，执行 <code>source ~/.bashrc</code> 使刚才的配置生效。<br>2、重启终端进行验证，若执行 <code>md</code> 命令可以生效则说明我们已经成功。如果没有生效，则说明没有~/.bash_profile文件，或者文件中没有执行.bashrc文件。.bash_profile 文件是用户登陆终端的时候会自动执行的文件，一般此文件中会调用.bashrc。那么接下来则需要编辑（如果没有的话先创建） .bash_profile 文件：<br>在文件里面加入一行：</p>
+<blockquote>
+<p>source ~/.bashrc</p>
+</blockquote>
+<p>同样的，退出保存后执行 source ~/.bash_profile 使刚才的配置生效就可以了。</p>
+<p><strong>方法二</strong>（使用了Zsh的终端）</p>
+<p>如果你的终端安装了Zsh，发现使用上面的步骤后并不一定生效（本自己的电脑上就是这样<del>(&gt;_&lt;)</del>），经过排查后发现Zsh有自己的启动默认执行的文件 ~/.zshrc ，要在Zsh中使alias永久生效，则仅需编辑 ~/.zshrc 文件，在文件中添加一行：</p>
+<blockquote>
+<p>alias md=mkdir</p>
+</blockquote>
+<p>退出保存后执行 source ~/.zshrc 使刚才的配置生效就OK啦。</p>
+<h3 id="ssh连接或反弹shell无法使用tab、上下方向键等快捷方式"><a href="#ssh连接或反弹shell无法使用tab、上下方向键等快捷方式" class="headerlink" title="ssh连接或反弹shell无法使用tab、上下方向键等快捷方式"></a>ssh连接或反弹shell无法使用tab、上下方向键等快捷方式</h3><p>用ssh连接主机或者通过其他各种途径反弹shell时，无法使用tab和上下方向键等快捷方式，只需在shell中输入以下命令：</p>
+<pre><code class="hljs swift">python -<span class="hljs-built_in">c</span> '<span class="hljs-keyword">import</span> pty; pty.spawn("/bin/bash")'</code></pre>
+
+<p>py2，py3均可</p>
+<h3 id="kali"><a href="#kali" class="headerlink" title="kali"></a>kali</h3><p>解决Kali图形化界面打不开的问题:<a href="https://www.cnblogs.com/Ziggy29/p/12425927.html" target="_blank" rel="noopener">https://www.cnblogs.com/Ziggy29/p/12425927.html</a></p>
+<h3 id="添加国内镜像源"><a href="#添加国内镜像源" class="headerlink" title="添加国内镜像源"></a>添加国内镜像源</h3><p>编辑/etc/apt/sources.list</p>
+<p>在后面添加源：</p>
+<p>deb <a href="http://mirrors.ustc.edu.cn/kali" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/kali</a> kali-rolling main non-free contrib<br>deb-src <a href="http://mirrors.ustc.edu.cn/kali" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/kali</a> kali-rolling main non-free contrib</p>
+<p>开始更新：先执行：apt update<br>再执行：apt full-upgrade</p>
+<p>从Kali Linux2019.4开始，在安装过程将要求创建一个普通用户来代替root用户执行大部分操作。由于root用户密码未知，所以都只能以创建的普通用户登录系统。当普通用户执行ifconfig命令时，将出现如下错误提示：</p>
+<p>此时，<strong>用户使用sudo ifconfig命令，即可成功显示ifconfig命令输出结果。</strong></p>
+<h2 id="中间件默认路径"><a href="#中间件默认路径" class="headerlink" title="中间件默认路径"></a>中间件默认路径</h2><p>例如，在 Linux 下，我们就可以使用 file=/etc/passwd 来读取系统密码。<br>这里是一些常见的日志文件位置：<br>apache+Linux日志默认路径<br>/etc/httpd/logs/access.log<br>/var/log/httpd/access.log<br>apache+win2003日志默认路径<br>D:\xampp\apache\logs\access.log<br>D:\xampp\apache\logs\error.log<br>IIS6.0+win2003默认日志文件<br>C:\WINDOWS\system32\Lognames<br>IIS7.0+win2003 默认日志文件<br>%SystemDrive%\inetpub\logs\Lognames<br>nginx 日志文件<br>&lt;安装目录&gt;/logs<br>如果安装目录为 /usr/local/nginx ，则为 /usr/local/nginx/logs<br>apache+linux 默认配置文件<br>/etc/httpd/conf/httpd.conf<br>/etc/init.d/httpd<br>IIS6.0+win2003 配置文件<br>C:/Windows/system32/inetsrv/metabase.xml<br>IIS7.0+WIN 配置文件<br>C:\Windows\System32\inetsrv\config\applicationHost.config</p>
+<p>中间件默认路径<br>Tomcat： http://<host>:8080/manager/html<br>WebLogic： http://<host>:7001/console/<br>JOnAS： http://<host>:9000/jonasAdmin/<br>JBoss： http://<host>:9990<br>WebSphere： http://<host>:7043/ibm/console/logon.jsp</p>
+<p><strong>利用</strong><br>当我们发现了本地包含漏洞时，首先寻找上传点，比如用户头像上传功能。然后我<br>们可以构造一个纯文本文件，内容为 <?php phpinfo();?> ，并将其命名<br>为 xxx.jpg 。<br>之后我们就可以把 xxx.jpg 上传上去，并通过应用得到它的位置，假设<br>是 /upload/xxx.jpg ，然后我们就可以把 file 参数的值改为它。以前面的代码<br>为例，URL<br>是 <a href="http://localhost/fileinclude.php?file=/upload/xxx.jpg" target="_blank" rel="noopener">http://localhost/fileinclude.php?file=/upload/xxx.jpg</a> 。<br>如果我们把 xxx.jpg 的内容改为菜刀的一句话，那就可以用菜刀连接</p>
+<h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><p>如何使用WMIC查找用户的SID：<code>wmic useraccount get name,sid</code>﻿</p>
+<h2 id="python"><a href="#python" class="headerlink" title="python"></a>python</h2><h3 id="pip安装"><a href="#pip安装" class="headerlink" title="pip安装"></a>pip安装</h3><p>由于kali自带python2.x 所以只需要安装pip即可：</p>
+<p><code>curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py</code></p>
+<p><code>python get-pip.py</code></p>
+<p><strong>pip安装速度慢</strong></p>
+<p>pip3 install numpy -i <a href="https://pypi.douban.com/simple/" target="_blank" rel="noopener">https://pypi.douban.com/simple/</a>﻿</p>
+<p><strong>Python3 安装pip 提示ModuleNotFoundError: No module named ‘distutils.util’</strong></p>
+<p><code>sudo apt-get install python3-distutils</code>﻿</p>
+<h3 id="修改root密码"><a href="#修改root密码" class="headerlink" title="修改root密码"></a>修改root密码</h3><p>在系统选择页面按‘e’进入grub编辑模式。</p>
+<p>在红框处添加<code>rw single init=/bin/bash</code>，按<strong>ctrl + x</strong>，进入单用户模式。</p>
+<h3 id="Python离线安装requests第三方库"><a href="#Python离线安装requests第三方库" class="headerlink" title="Python离线安装requests第三方库"></a>Python离线安装requests第三方库</h3><p>一、介绍</p>
+<p>requests是Python的一个HTTP客户端库，跟urllib，urllib2类似，不过requests的优势在于使用简单，相同一个功能，用requests实现起来代码量要少很多。毕竟官方文档都很直白的说：</p>
+<p>python的标准库urllib2提供了大部分需要的HTTP功能，但是API太逆天了，一个简单的功能就需要一大堆代码。</p>
+<p>所以，使用requests方便的多。</p>
+<p>二、下载安装</p>
+<p>注：没有配置好Python开发环境的同学可以先戳<a href="http://blog.csdn.net/qq_28484355/article/details/53191139" target="_blank" rel="noopener">配置Python开发环境</a></p>
+<p>1、首先去这里<a href="https://github.com/kennethreitz/requests" target="_blank" rel="noopener">requests库下载</a>下载安装包</p>
+<p><img src="https://img-blog.csdn.net/20161116205952419?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" srcset="/img/loading.gif" alt="img"></p>
+<p>并解压到python的安装目录中</p>
+<p><img src="https://img-blog.csdn.net/20161116205902646?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" srcset="/img/loading.gif" alt="img"></p>
+<p>2、然后打开cmd命令行，使用命令“cd (requests-master路径)”或者选中上图的requests-master，按住shift右键打开cmd快速通道，如下图：</p>
+<p><img src="https://img-blog.csdn.net/20161116210454684?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" srcset="/img/loading.gif" alt="img"></p>
+<p>3、然后输入命令：python setup.py install,回车即可</p>
+<p><img src="https://img-blog.csdn.net/20161116210656171?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" srcset="/img/loading.gif" alt="img"></p>
+<p>4、检查是否安装成功</p>
+<p>打开cmd命令行，输入:python回车</p>
+<p><img src="https://img-blog.csdn.net/20161116211037082?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" srcset="/img/loading.gif" alt="img"></p>
+<p>接着输入:import requests。</p>
+<h2 id="VMware"><a href="#VMware" class="headerlink" title="VMware"></a>VMware</h2><h3 id="vmware15-0激活码"><a href="#vmware15-0激活码" class="headerlink" title="vmware15.0激活码"></a>vmware15.0激活码</h3><p>软件序列号：</p>
+<p>UG5J2-0ME12-M89WY-NPWXX-WQH88</p>
+<p>GA590-86Y05-4806Y-X4PEE-ZV8E0</p>
+<p>YA18K-0WY8P-H85DY-L4NZG-X7RAD</p>
+<p>UA5DR-2ZD4H-089FY-6YQ5T-YPRX6</p>
+<p>B806Y-86Y05-GA590-X4PEE-ZV8E0</p>
+<p>ZF582-0NW5N-H8D2P-0XZEE-Z22VA</p>
+<p>UY758-0RXEQ-M81WP-8ZM7Z-Y3HDA</p>
+<p>VF750-4MX5Q-488DQ-9WZE9-ZY2D6</p>
+<p>UU54R-FVD91-488PP-7NNGC-ZFAX6</p>
+<p>YC74H-FGF92-081VZ-R5QNG-P6RY4</p>
+<p>YC34H-6WWDK-085MQ-JYPNX-NZRA2</p>
+<h3 id="vmware10-0-4激活码"><a href="#vmware10-0-4激活码" class="headerlink" title="vmware10.0.4激活码"></a>vmware10.0.4激活码</h3><p>5C4A7-6Q20J-6ZD58-K2C72-0AKPE</p>
+<p>1Y0W5-0W205-7Z8J0-C8C5M-9A6MF</p>
+<p>NF2A7-AYK43-CZCT8-FCAN6-CA84</p>
+<p>4A4QH-6Q195-XZW10-6K8N2-A3CJX</p>
+<p>5A6ZT-20JD2-LZWZ9-H38N0-92L62</p>
+<h2 id="metasploit"><a href="#metasploit" class="headerlink" title="metasploit"></a>metasploit</h2><p><strong>kali 下metasploit （msf）初始化使用</strong></p>
+<p>首先启动postgresql，命令在图中；</p>
+<p><img src="https://img-blog.csdn.net/20170614213116464?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGFyZGhhcmQxMjM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" srcset="/img/loading.gif" alt="img">service postgresql status</p>
+<p><img src="https://img-blog.csdn.net/20170614213116464?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGFyZGhhcmQxMjM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" srcset="/img/loading.gif" alt="img">service postgresql start</p>
+<p>然后初始化数据库</p>
+<p><img src="https://img-blog.csdn.net/20170614213151308" srcset="/img/loading.gif" alt="img">msfdb init</p>
+<p>进入msf框架</p>
+<p><img src="https://img-blog.csdn.net/20170614213219965?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGFyZGhhcmQxMjM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" srcset="/img/loading.gif" alt="img">msfconsole</p>
+<p>查看一下数据库状态</p>
+<p><img src="https://img-blog.csdn.net/20170614213247418?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGFyZGhhcmQxMjM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" srcset="/img/loading.gif" alt="img">db_status</p>
+<p>如果执行search时，很慢，而且还提示Module database cache not build yet的话，</p>
+<p>我们可以这样解决问题</p>
+<p><img src="https://img-blog.csdn.net/20170614213550092" srcset="/img/loading.gif" alt="img">msfdb init</p>
+<p>db_rebuild_cache</p>
+<p>将数据库再次初始化，并且重新建一下cache，再试一下是不是很快了。</p>
+<h3 id="32位kali安装burpsuite"><a href="#32位kali安装burpsuite" class="headerlink" title="32位kali安装burpsuite"></a>32位kali安装burpsuite</h3><p>Kali 2019.02下 BP 替换坑不少，网上的教程各有各的办法，综合了前辈的方法，提出一种方便的部署方式，仅供大家参考：</p>
+<p>一、JAVA 环境部署，安装注册 JKD1.8，不影响本机 JDK11：（为什么用此版本JDK，因为字体清晰呀，新版本你可以自己试试，字体都是模糊的）</p>
+<p>1、下载 JDK ：</p>
+<p>jdk旧版本下载<a href="https://blog.51cto.com/sandshell/2171768" target="_blank" rel="noopener">https://blog.51cto.com/sandshell/2171768</a></p>
+<p><a href="http://www.oracle.com/technetwork/java/javase/archive-139210.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/java/javase/archive-139210.html</a></p>
+<p>放在哪里都行，在当前目录打开终端</p>
+<p>目前在官网下载低于jdk1.8的java jdk的时候需要登陆，这边分享一个账号，方便下载<br><a href="mailto:2696671285@qq.com">2696671285@qq.com</a><br>密码：Oracle123</p>
+<p>2、复制JDK到安装目录：</p>
+<p>tar -xzvf jdk-8u191-linux-x64.tar.gz</p>
+<p>mv jdk1.8.0_191 /opt</p>
+<p>cd /opt/jdk1.8.0_191</p>
+<p>3、设置系统环境：</p>
+<p>leafpad ~/.bashrc</p>
+<p>在末尾添加以下内容：</p>
+<p>export JAVA_HOME=/opt/jdk1.8.0_191</p>
+<p>export CLASSPATH=.:${JAVA_HOME}/lib</p>
+<p>export PATH=${JAVA_HOME}/bin:$PATH</p>
+<p>文件保存退出</p>
+<p>执行 source ~/.bashrc</p>
+<p>\4. 安装JDK并注册：</p>
+<p>依次执行：</p>
+<p>update-alternatives –install /usr/bin/java java /opt/jdk1.8.0_191/bin/java 1</p>
+<p>update-alternatives –install /usr/bin/javac javac /opt/jdk1.8.0_191/bin/javac 1</p>
+<p>update-alternatives –set java /opt/jdk1.8.0_191/bin/java</p>
+<p>update-alternatives –set javac /opt/jdk1.8.0_191/bin/javac</p>
+<p>查看结果：</p>
+<p>update-alternatives –config java</p>
+<p>update-alternatives –config javac</p>
+<p>显示含有如下就成了呀：</p>
+<p>java version “1.8.0_191”Java(TM) SE Runtime Environment</p>
+<p>在网上找到的大多是64位的burpsuite，无法使用。</p>
+<p>最终找到了burpsuite1.7.37专业版可以在32位kali上运行。</p>
+<p>链接: <a href="https://pan.baidu.com/s/1s4cJnQzswIZCH1KfKI3GnA" target="_blank" rel="noopener">https://pan.baidu.com/s/1s4cJnQzswIZCH1KfKI3GnA</a> 提取码: 9gj5 </p>
+<p>注册机运行步骤参考<a href="https://www.ddosi.com/b210/" target="_blank" rel="noopener">https://www.ddosi.com/b210/</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">踩过的坑</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Docker/">Docker</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
+                    
+                      <a class="hover-with-bg" href="/tags/python/">python</a>
+                    
+                      <a class="hover-with-bg" href="/tags/metasploit/">metasploit</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+                    
+                      <a class="hover-with-bg" href="/tags/JDK/">JDK</a>
+                    
+                      <a class="hover-with-bg" href="/tags/nmap/">nmap</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/10/30/F5-BIG-IP-TMUI-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%EF%BC%88CVE-2020-5902%EF%BC%89/">
+                        <span class="hidden-mobile">F5 BIG-IP TMUI 远程代码执行漏洞（CVE-2020-5902）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "zJq4EoET2FEb1trGzTayy1uq-gzGzoHsz",
+          app_key: "oFcTVTBJYrfsIGdYNnoWMVJ9",
+          placeholder: "留下你的足迹",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    }
+    waitElementVisible('vcomments', loadValine);
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    
+<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Hexo-Fluid</span></a>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "踩坑笔记整理&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d8cb5311ff5a7a66ad88e94f5290da89";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>
