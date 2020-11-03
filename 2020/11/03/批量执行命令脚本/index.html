@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="booom">
   <meta name="keywords" content="">
-  <title>RDP_CVE-2019-0708 - wiki</title>
+  <title>批量执行命令脚本 - wiki</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -165,8 +165,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-10-10 18:03" pubdate>
-        2020年10月10日 晚上
+      <time datetime="2020-11-03 17:15" pubdate>
+        2020年11月3日 下午
       </time>
     </span>
   
@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      779 字
+      555 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11
+      7
        分钟
     </span>
   
@@ -217,78 +217,67 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">RDP_CVE-2019-0708</h1>
+            <h1 style="display: none">批量执行命令脚本</h1>
             
             <div class="markdown-body" id="post-body">
-              <h1 id="CVE-2019-0708漏洞复现"><a href="#CVE-2019-0708漏洞复现" class="headerlink" title="CVE-2019-0708漏洞复现"></a>CVE-2019-0708漏洞复现</h1><h2 id="漏洞简述"><a href="#漏洞简述" class="headerlink" title="漏洞简述"></a>漏洞简述</h2><p>Remote Desktop Services，在Windows Server 2008及更早版本中称为终端服务，是Microsoft Windows的一个组件，允许用户通过网络连接控制远程计算机或虚拟机。<br>当未经身份验证的攻击者使用Remote Desktop Services（RDP）连接到目标系统并发送特制请求时，RDP中存在远程执行代码漏洞。此漏洞发生在身份验证前，无需用户交互。成功利用此漏洞的攻击者可以在目标系统上执行任意代码，然后可以安装程序， 查看、更改或删除数据，或创建具有完全用户权限的新帐户。<br>要利用此漏洞，攻击者需要通过RDP向目标系统远程桌面服务发送特制请求。</p>
-<h2 id="漏洞影响范围"><a href="#漏洞影响范围" class="headerlink" title="漏洞影响范围"></a>漏洞影响范围</h2><p>Microsoft Windows XP<br>Microsoft Windows Server 2008 R2 for x64-based S<br>Microsoft Windows Server 2008 R2 for Itanium-bas<br>Microsoft Windows Server 2008 for x64-based Syst<br>Microsoft Windows Server 2008 for Itanium-based<br>Microsoft Windows Server 2008 for 32-bit Systems<br>Microsoft Windows Server 2003<br>Microsoft Windows 7 for x64-based Systems SP1<br>Microsoft Windows 7 for 32-bit Systems SP1</p>
-<h2 id="漏洞版本"><a href="#漏洞版本" class="headerlink" title="漏洞版本"></a>漏洞版本</h2><p>Microsoft Windows 7 for x64-based Systems SP1</p>
-<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>Windows 7 专业版：192.168.2.133</p>
-<p>kali Linux ：192.168.2.128</p>
-<h2 id="漏洞复现具体步骤"><a href="#漏洞复现具体步骤" class="headerlink" title="漏洞复现具体步骤"></a>漏洞复现具体步骤</h2><p>打开metasploit。</p>
-<p><img src="https://s1.ax1x.com/2020/10/10/0y7p8A.png" srcset="/img/loading.gif" alt="0y7p8A.png"></p>
-<p>设置好参数后，开始运行run</p>
-<p><img src="https://s1.ax1x.com/2020/10/10/0y7EVS.png" srcset="/img/loading.gif" alt="0y7EVS.png"></p>
-<p>发现虚拟机蓝屏。未获取到shell。</p>
-<p><img src="https://s1.ax1x.com/2020/10/10/0y7J54.png" srcset="/img/loading.gif" alt="0y7J54.png"></p>
-<p>网上找了下原因，发现很多都是蓝屏的情况，推荐的解决方法有加注册表或者尝试target选择2。先尝试了把target换成2，再运行。成功！</p>
-<p><img src="https://s1.ax1x.com/2020/10/10/0y7yIe.png" srcset="/img/loading.gif" alt="0y7yIe.png"></p>
-<p>options查看选项</p>
-<p><img src="https://s1.ax1x.com/2020/10/10/0y7cPH.png" srcset="/img/loading.gif" alt="0y7cPH.png"></p>
-<p>info查看一下参数信息</p>
-<p><img src="https://s1.ax1x.com/2020/10/10/0y7gGd.png" srcset="/img/loading.gif" alt="0y7gGd.png"></p>
-<p>选择target为2，运行，成功获取shell。</p>
-<p><img src="https://s1.ax1x.com/2020/10/10/0y72RA.png" srcset="/img/loading.gif" alt="0y72RA.png"></p>
-<p>运行calc。</p>
-<p><img src="https://s1.ax1x.com/2020/10/10/0y7qRs.png" srcset="/img/loading.gif" alt="0y7qRs.png"></p>
-<p>选择查看消息，命令成功执行。</p>
-<p><img src="https://s1.ax1x.com/2020/10/10/0y7vLV.png" srcset="/img/loading.gif" alt="0y7vLV.png"></p>
-<h2 id="漏洞基础分析"><a href="#漏洞基础分析" class="headerlink" title="漏洞基础分析"></a>漏洞基础分析</h2><h2 id="漏洞防御"><a href="#漏洞防御" class="headerlink" title="漏洞防御"></a>漏洞防御</h2><p>Microsoft已经为此发布了一个安全公告（CVE-2019-0708）以及相应补丁:<br>CVE-2019-0708：Remote Desktop Services Remote Code Execution Vulnerability<br>链接：<a href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0708" target="_blank" rel="noopener">https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0708</a></p>
-<p>1.Windows Server 2008 漏洞补丁系列下载地址</p>
-<pre><code class="hljs awk">CopyWindows Server <span class="hljs-number">2008</span> <span class="hljs-number">32</span>位系统:
+              <h1 id="批量执行命令脚本"><a href="#批量执行命令脚本" class="headerlink" title="批量执行命令脚本"></a>批量执行命令脚本</h1><h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>在日常工作中，有很多重复性工作，刚接到任务时没有办法很快的写一个满足实际情况需求的脚本。</p>
+<p>找个不忙的时间学习一下，方便下一次使用。</p>
+<p>平常也没有写过脚本，这个脚本其实很简单，就是一直不知道怎么写。</p>
+<p>后来发现了一个类似的脚本，对该脚本进行改造，完成了我目前的需求。</p>
+<h2 id="无交互shell脚本"><a href="#无交互shell脚本" class="headerlink" title="无交互shell脚本"></a>无交互shell脚本</h2><p>例子，1.sh</p>
+<pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">!/bin/bash</span>
+params=$&#123;@:2&#125;
+for line in `cat $1`
+do
+ echo "============= &#123;print %s, $line&#125; $params ============="
+ ssh $line "$params"
+done</code></pre>
 
-http:<span class="hljs-regexp">//</span>download.windowsupdate.com<span class="hljs-regexp">/d/m</span>sdownload<span class="hljs-regexp">/update/</span>software<span class="hljs-regexp">/secu/</span><span class="hljs-number">2019</span><span class="hljs-regexp">/05/</span>windows6.<span class="hljs-number">0</span>-kb4499149-x86_832cf179b302b861c83f2a92acc5e2a152405377.msu
+<p>这是一个批量远程ssh登录的脚本。里边有我需要的变量元素。</p>
+<p><code>./1.sh ip.txt hostname</code></p>
+<p>第一个变量<code>$1</code>，是一个文件，ip.txt。</p>
+<p>第二个变量<code>$params</code>，是一条命令。最好整个命令用双引号引起。</p>
+<hr>
+<p>我的需求是从文件中逐个获取一个IP地址执行相同的命令。</p>
+<pre><code class="hljs bash"><span class="hljs-comment">#!/bin/bash -e</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Usage:testssl-w.sh ip.txt"</span>
+<span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> `cat <span class="hljs-variable">$1</span>`
+<span class="hljs-keyword">do</span>
+ <span class="hljs-built_in">echo</span> <span class="hljs-string">"============= &#123;print %s, <span class="hljs-variable">$line</span>&#125; <span class="hljs-variable">$params</span> ============="</span>
+ bash /home/kali/Desktop/testssl.sh/testssl.sh --quiet -W <span class="hljs-variable">$line</span>
+<span class="hljs-keyword">done</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"end"</span></code></pre>
 
-Windows Server <span class="hljs-number">2008</span> x64位系统:
+<p>ip.txt文件中的IP可以空格隔开，也可以分行隔开。</p>
+<p>我这个脚本只是用了一个变量。虽然比较简单，但还是挺实用的。</p>
+<h2 id="bat脚本"><a href="#bat脚本" class="headerlink" title="bat脚本"></a>bat脚本</h2><p>先写个简单的试一下，批量ping IP地址的脚本</p>
+<pre><code class="hljs powershell">@echo off
+set target=<span class="hljs-string">''</span>
+<span class="hljs-keyword">for</span> /f %%i <span class="hljs-keyword">in</span> (C:\Users\xxx\Desktop\ip.txt) <span class="hljs-keyword">do</span> (
+set target=%%i
+ping %%i
+)
+echo <span class="hljs-keyword">end</span>
+pause</code></pre>
 
-http:<span class="hljs-regexp">//</span>download.windowsupdate.com<span class="hljs-regexp">/d/m</span>sdownload<span class="hljs-regexp">/update/</span>software<span class="hljs-regexp">/secu/</span><span class="hljs-number">2019</span><span class="hljs-regexp">/05/</span>windows6.<span class="hljs-number">0</span>-kb4499149-x64_9236b098f7cea864f7638e7d4b77aa8f81f70fd6.msu
+<p>这里的ip.txt文件中的IP地址只能一行写一个地址。</p>
+<p><a href="https://imgchr.com/i/Byweht" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/11/03/Byweht.png" srcset="/img/loading.gif" alt="Byweht.png"></a></p>
+<p>到这一步离胜利又进了一步，把命令再改一下就可以了。</p>
+<p>之后发现ip.txt不能读到空格后的文本。于是端口信息就添加到命令行中。</p>
+<p>本来想着，再加一个变量。但是现在我还不会就先使用这种笨方法吧。起码功能实现了。</p>
+<pre><code class="hljs vim">@echo off
+<span class="hljs-keyword">set</span> target=<span class="hljs-string">''</span>
+<span class="hljs-keyword">for</span> /<span class="hljs-keyword">f</span> %%i in (C:\Users\xxx\Desktop\ip.txt) <span class="hljs-keyword">do</span> (
+<span class="hljs-keyword">set</span> target=%%i
+<span class="hljs-keyword">echo</span> <span class="hljs-keyword">py</span> -<span class="hljs-number">2</span> ms12-<span class="hljs-number">020</span>_one.<span class="hljs-keyword">py</span> %%i <span class="hljs-number">3389</span>
+<span class="hljs-keyword">py</span> -<span class="hljs-number">2</span> ms12-<span class="hljs-number">020</span>_one.<span class="hljs-keyword">py</span> %%i <span class="hljs-number">3389</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-keyword">py</span> -<span class="hljs-number">2</span> ms12-<span class="hljs-number">020</span>_one.<span class="hljs-keyword">py</span> %%i <span class="hljs-number">13389</span>
+<span class="hljs-keyword">py</span> -<span class="hljs-number">2</span> ms12-<span class="hljs-number">020</span>_one.<span class="hljs-keyword">py</span> %%i <span class="hljs-number">13389</span>
+)
+<span class="hljs-keyword">echo</span> end
+pause</code></pre>
 
-Windows Server <span class="hljs-number">2008</span> R2 Itanium系统:
-
-http:<span class="hljs-regexp">//</span>download.windowsupdate.com<span class="hljs-regexp">/c/m</span>sdownload<span class="hljs-regexp">/update/</span>software<span class="hljs-regexp">/secu/</span><span class="hljs-number">2019</span><span class="hljs-regexp">/05/</span>windows6.<span class="hljs-number">1</span>-kb4499175-ia64_fabc8e54caa0d31a5abe8a0b347ab4a77aa98c36.msu
-
-Windows Server <span class="hljs-number">2008</span> R2 x64系统:
-
-http:<span class="hljs-regexp">//</span>download.windowsupdate.com<span class="hljs-regexp">/d/m</span>sdownload<span class="hljs-regexp">/update/</span>software<span class="hljs-regexp">/secu/</span><span class="hljs-number">2019</span><span class="hljs-regexp">/05/</span>windows6.<span class="hljs-number">1</span>-kb4499175-x64_3704acfff45ddf163d8049683d5a3b75e49b58cb.msu
-
-Windows Server <span class="hljs-number">2008</span> Itanium:
-
-http:<span class="hljs-regexp">//</span>download.windowsupdate.com<span class="hljs-regexp">/d/m</span>sdownload<span class="hljs-regexp">/update/</span>software<span class="hljs-regexp">/secu/</span><span class="hljs-number">2019</span><span class="hljs-regexp">/05/</span>windows6.<span class="hljs-number">0</span>-kb4499180-ia64_805e448d48ab8b1401377ab9845f39e1cae836d4.msu</code></pre>
-
-<p>2.Windows Server 2003 漏洞补丁系列下载地址</p>
-<pre><code class="hljs angelscript">CopyWindows Server <span class="hljs-number">2003</span> <span class="hljs-number">32</span>位系统:
-
-http:<span class="hljs-comment">//download.windowsupdate.com/d/csa/csa/secu/2019/04/windowsserver2003-kb4500331-x86-custom-chs_4892823f525d9d532ed3ae36fc440338d2b46a72.exe</span>
-
-Windows Server <span class="hljs-number">2003</span> <span class="hljs-number">64</span>位系统:
-
-http:<span class="hljs-comment">//download.windowsupdate.com/d/csa/csa/secu/2019/04/windowsserver2003-kb4500331-x64-custom-chs_f2f949a9a764ff93ea13095a0aca1fc507320d3c.exe</span></code></pre>
-
-<p>3.Windows XP 漏洞补丁系列下载地址</p>
-<pre><code class="hljs crystal">CopyWindows XP SP3 <span class="hljs-number">32</span>位系统:
-
-<span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/download.windowsupdate.com/c</span><span class="hljs-regexp">/csa/csa</span><span class="hljs-regexp">/secu/</span><span class="hljs-number">2019</span>/<span class="hljs-number">0</span>4/windowsxp-kb4500331-x86-custom-chs_718543e86e06b08b568826ac13c05f967392238c.exe
-
-Windows XP SP2 <span class="hljs-number">64</span>位系统:
-
-<span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/download.windowsupdate.com/d</span><span class="hljs-regexp">/csa/csa</span><span class="hljs-regexp">/secu/</span><span class="hljs-number">2019</span>/<span class="hljs-number">0</span>4/windowsserver2003-kb4500331-x64-custom-enu_e2fd240c402134839cfa22227b11a5ec80ddafcf.exe
-
-Windows XP SP3 <span class="hljs-keyword">for</span> <span class="hljs-symbol">XPe:</span>
-
-<span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/download.windowsupdate.com/d</span><span class="hljs-regexp">/csa/csa</span><span class="hljs-regexp">/secu/</span><span class="hljs-number">2019</span>/<span class="hljs-number">0</span>4/windowsxp-kb4500331-x86-embedded-custom-chs_96da48aaa9d9bcfe6cd820f239db2fe96500bfae.exe</code></pre>
-
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.cnblogs.com/-mo-/p/11483820.html" target="_blank" rel="noopener">https://www.cnblogs.com/-mo-/p/11483820.html</a></p>
-<p><a href="https://tearorca.github.io/cve-2019-0708%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/" target="_blank" rel="noopener">https://tearorca.github.io/cve-2019-0708%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</a></p>
+<p>其他类似的脚本基本都可以用这种方式实现了。</p>
 
             </div>
             <hr>
@@ -298,7 +287,7 @@ Windows XP SP3 <span class="hljs-keyword">for</span> <span class="hljs-symbol">X
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/windows/">windows</a>
+                      <a class="hover-with-bg" href="/categories/%E8%84%9A%E6%9C%AC/">脚本</a>
                     
                   </div>
                 
@@ -306,7 +295,9 @@ Windows XP SP3 <span class="hljs-keyword">for</span> <span class="hljs-symbol">X
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/cve/">cve</a>
+                      <a class="hover-with-bg" href="/tags/bash/">bash</a>
+                    
+                      <a class="hover-with-bg" href="/tags/shell/">shell</a>
                     
                   </div>
                 
@@ -319,18 +310,12 @@ Windows XP SP3 <span class="hljs-keyword">for</span> <span class="hljs-symbol">X
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/12/wfuzz/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">wfuzz学习记录</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/23/OpenSSH-CVE-2020-15778/">
-                        <span class="hidden-mobile">OpenSSH_CVE-2020-15778</span>
+                      <a href="/2020/11/03/showmount-CVE-1999-0554/">
+                        <span class="hidden-mobile">showmount CVE-1999-0554</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -526,7 +511,7 @@ Windows XP SP3 <span class="hljs-keyword">for</span> <span class="hljs-symbol">X
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "RDP_CVE-2019-0708&nbsp;",
+        "批量执行命令脚本&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

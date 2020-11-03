@@ -4,6 +4,58 @@
   
     
     <entry>
+      <title>批量执行命令脚本</title>
+      <link href="/2020/11/03/%E6%89%B9%E9%87%8F%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%E8%84%9A%E6%9C%AC/"/>
+      <url>/2020/11/03/%E6%89%B9%E9%87%8F%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%E8%84%9A%E6%9C%AC/</url>
+      
+        <content type="html"><![CDATA[<h1 id="批量执行命令脚本"><a href="#批量执行命令脚本" class="headerlink" title="批量执行命令脚本"></a>批量执行命令脚本</h1><h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>在日常工作中，有很多重复性工作，刚接到任务时没有办法很快的写一个满足实际情况需求的脚本。</p><p>找个不忙的时间学习一下，方便下一次使用。</p><p>平常也没有写过脚本，这个脚本其实很简单，就是一直不知道怎么写。</p><p>后来发现了一个类似的脚本，对该脚本进行改造，完成了我目前的需求。</p><h2 id="无交互shell脚本"><a href="#无交互shell脚本" class="headerlink" title="无交互shell脚本"></a>无交互shell脚本</h2><p>例子，1.sh</p><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">!/bin/bash</span>params=$&#123;@:2&#125;for line in `cat $1`do echo "============= &#123;print %s, $line&#125; $params =============" ssh $line "$params"done</code></pre><p>这是一个批量远程ssh登录的脚本。里边有我需要的变量元素。</p><p><code>./1.sh ip.txt hostname</code></p><p>第一个变量<code>$1</code>，是一个文件，ip.txt。</p><p>第二个变量<code>$params</code>，是一条命令。最好整个命令用双引号引起。</p><hr><p>我的需求是从文件中逐个获取一个IP地址执行相同的命令。</p><pre><code class="hljs bash"><span class="hljs-comment">#!/bin/bash -e</span><span class="hljs-built_in">echo</span> <span class="hljs-string">"Usage:testssl-w.sh ip.txt"</span><span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> `cat <span class="hljs-variable">$1</span>`<span class="hljs-keyword">do</span> <span class="hljs-built_in">echo</span> <span class="hljs-string">"============= &#123;print %s, <span class="hljs-variable">$line</span>&#125; <span class="hljs-variable">$params</span> ============="</span> bash /home/kali/Desktop/testssl.sh/testssl.sh --quiet -W <span class="hljs-variable">$line</span><span class="hljs-keyword">done</span><span class="hljs-built_in">echo</span> <span class="hljs-string">"end"</span></code></pre><p>ip.txt文件中的IP可以空格隔开，也可以分行隔开。</p><p>我这个脚本只是用了一个变量。虽然比较简单，但还是挺实用的。</p><h2 id="bat脚本"><a href="#bat脚本" class="headerlink" title="bat脚本"></a>bat脚本</h2><p>先写个简单的试一下，批量ping IP地址的脚本</p><pre><code class="hljs powershell">@echo offset target=<span class="hljs-string">''</span><span class="hljs-keyword">for</span> /f %%i <span class="hljs-keyword">in</span> (C:\Users\xxx\Desktop\ip.txt) <span class="hljs-keyword">do</span> (set target=%%iping %%i)echo <span class="hljs-keyword">end</span>pause</code></pre><p>这里的ip.txt文件中的IP地址只能一行写一个地址。</p><p><a href="https://imgchr.com/i/Byweht" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/11/03/Byweht.png" srcset="/img/loading.gif" alt="Byweht.png"></a></p><p>到这一步离胜利又进了一步，把命令再改一下就可以了。</p><p>之后发现ip.txt不能读到空格后的文本。于是端口信息就添加到命令行中。</p><p>本来想着，再加一个变量。但是现在我还不会就先使用这种笨方法吧。起码功能实现了。</p><pre><code class="hljs vim">@echo off<span class="hljs-keyword">set</span> target=<span class="hljs-string">''</span><span class="hljs-keyword">for</span> /<span class="hljs-keyword">f</span> %%i in (C:\Users\xxx\Desktop\ip.txt) <span class="hljs-keyword">do</span> (<span class="hljs-keyword">set</span> target=%%i<span class="hljs-keyword">echo</span> <span class="hljs-keyword">py</span> -<span class="hljs-number">2</span> ms12-<span class="hljs-number">020</span>_one.<span class="hljs-keyword">py</span> %%i <span class="hljs-number">3389</span><span class="hljs-keyword">py</span> -<span class="hljs-number">2</span> ms12-<span class="hljs-number">020</span>_one.<span class="hljs-keyword">py</span> %%i <span class="hljs-number">3389</span><span class="hljs-keyword">echo</span> <span class="hljs-keyword">py</span> -<span class="hljs-number">2</span> ms12-<span class="hljs-number">020</span>_one.<span class="hljs-keyword">py</span> %%i <span class="hljs-number">13389</span><span class="hljs-keyword">py</span> -<span class="hljs-number">2</span> ms12-<span class="hljs-number">020</span>_one.<span class="hljs-keyword">py</span> %%i <span class="hljs-number">13389</span>)<span class="hljs-keyword">echo</span> endpause</code></pre><p>其他类似的脚本基本都可以用这种方式实现了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 脚本 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> bash </tag>
+            
+            <tag> shell </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>showmount CVE-1999-0554</title>
+      <link href="/2020/11/03/showmount-CVE-1999-0554/"/>
+      <url>/2020/11/03/showmount-CVE-1999-0554/</url>
+      
+        <content type="html"><![CDATA[<h1 id="目标主机showmount-e信息泄露-CVE-1999-0554"><a href="#目标主机showmount-e信息泄露-CVE-1999-0554" class="headerlink" title="目标主机showmount -e信息泄露(CVE-1999-0554)"></a>目标主机showmount -e信息泄露(CVE-1999-0554)</h1><h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>可以对目标主机进行”showmount -e”操作，此操作将泄露目标主机大量敏感信息，比如目录结构。更糟糕的是，如果访问控制不严的话，攻击者有可能直接访问到目标主机上的数据。</p><h2 id="showmount命令"><a href="#showmount命令" class="headerlink" title="showmount命令"></a>showmount命令</h2><p><strong>showmount命令</strong>查询“mountd”守护进程，以显示NFS服务器加载的信息。</p><pre><code class="hljs dsconfig"><span class="hljs-string">showmount命</span>令用于查询<span class="hljs-string">NFS服</span>务器 (<span class="hljs-string">NFS </span>网络文件系统)<span class="hljs-comment"># showmount --help</span> <span class="hljs-string">Usage:</span> <span class="hljs-string">showmount </span>[-<span class="hljs-string">adehv]</span>        [<span class="hljs-built_in">--all]</span> [<span class="hljs-built_in">--directories]</span> [<span class="hljs-built_in">--exports]</span><span class="hljs-built_in"></span>        [<span class="hljs-built_in">--no-headers]</span> [<span class="hljs-built_in">--help]</span> [<span class="hljs-built_in">--version]</span> [<span class="hljs-string">host]</span> -a或<span class="hljs-built_in">--all</span><span class="hljs-built_in"></span>    以 <span class="hljs-string">host:dir </span>这样的格式来显示客户主机名和挂载点目录。-d或<span class="hljs-built_in">--directories</span><span class="hljs-built_in"></span>    仅显示被客户挂载的目录名。-e或<span class="hljs-built_in">--exports</span><span class="hljs-built_in"></span>    显示<span class="hljs-string">NFS服</span>务器的输出清单。-h或<span class="hljs-built_in">--help</span><span class="hljs-built_in"></span>    显示帮助信息。-v或<span class="hljs-built_in">--version</span><span class="hljs-built_in"></span>    显示版本信。<span class="hljs-built_in">--no-headers</span><span class="hljs-built_in"></span>    禁止输出描述头部信息。 显示<span class="hljs-string">NFS客</span>户端信息<span class="hljs-comment"># showmount</span> 显示指定<span class="hljs-string">NFS服</span>务器连接<span class="hljs-string">NFS客</span>户端的信息<span class="hljs-comment"># showmount 192.168.1.1  #此ip为nfs服务器</span> 显示输出目录列表（在<span class="hljs-string">NFS服</span>务器）<span class="hljs-comment"># showmount -e</span> 显示被挂载的共享目录<span class="hljs-comment"># showmount -d  </span> 显示客户端信息和共享目录<span class="hljs-comment"># showmount -a</span> 显示指定<span class="hljs-string">NFS服</span>务器的客户端信息和共享目录<span class="hljs-comment"># showmount -a 192.168.1.1</span>显示指定<span class="hljs-string">NFS服</span>务器输出目录列表（也称为共享目录列表）<span class="hljs-comment"># showmount -e 192.168.1.1</span></code></pre><h2 id="漏洞防御"><a href="#漏洞防御" class="headerlink" title="漏洞防御"></a>漏洞防御</h2><p>建议采取以下措施以降低威胁:</p><ul><li>限制可以获取NFS输出列表的IP和用户。</li><li>除非绝对必要，请关闭NFS服务、MOUNTD。</li></ul><p><strong>在正式环境对共享服务器的hosts.allow和hosts.deny两个文件进行配置修改。</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> cve </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Netatalk CVE-2018-1160</title>
       <link href="/2020/11/02/Netatalk-CVE-2018-1160/"/>
       <url>/2020/11/02/Netatalk-CVE-2018-1160/</url>
@@ -403,7 +455,7 @@
     
     
     <entry>
-      <title>wfuzz</title>
+      <title>wfuzz学习记录</title>
       <link href="/2020/10/12/wfuzz/"/>
       <url>/2020/10/12/wfuzz/</url>
       

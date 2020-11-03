@@ -177,6 +177,113 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2020/11/03/%E6%89%B9%E9%87%8F%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%E8%84%9A%E6%9C%AC/">批量执行命令脚本</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/11/03/%E6%89%B9%E9%87%8F%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%E8%84%9A%E6%9C%AC/">
+          
+          
+            
+          
+          批量执行命令脚本简述在日常工作中，有很多重复性工作，刚接到任务时没有办法很快的写一个满足实际情况需求的脚本。
+找个不忙的时间学习一下，方便下一次使用。
+平常也没有写过脚本，这个脚本其实很简单，就是一直不知道怎么写。
+后来发现了一个类似的脚本，对该脚本进行改造，完成了我目前的需求。
+无交互shell脚本例子，1.sh
+#!/bin/bash
+params=$&#123;@:2&#125;
+for l
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-03 17:15" pubdate>
+              2020-11-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E8%84%9A%E6%9C%AC/">脚本</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/bash/">bash</a>
+            
+              <a href="/tags/shell/">shell</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/11/03/showmount-CVE-1999-0554/">showmount CVE-1999-0554</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/11/03/showmount-CVE-1999-0554/">
+          
+          
+            
+          
+          目标主机showmount -e信息泄露(CVE-1999-0554)描述可以对目标主机进行”showmount -e”操作，此操作将泄露目标主机大量敏感信息，比如目录结构。更糟糕的是，如果访问控制不严的话，攻击者有可能直接访问到目标主机上的数据。
+showmount命令showmount命令查询“mountd”守护进程，以显示NFS服务器加载的信息。
+showmount命令用于查询NFS服务器 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-03 17:15" pubdate>
+              2020-11-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Linux/">Linux</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/cve/">cve</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2020/11/02/Netatalk-CVE-2018-1160/">Netatalk CVE-2018-1160</a>
       </h1>
 
@@ -952,7 +1059,7 @@ Thinkphp 5.0.x&lt;=5.0.23
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/10/12/wfuzz/">wfuzz</a>
+        <a href="/2020/10/12/wfuzz/">wfuzz学习记录</a>
       </h1>
 
       <p class="index-excerpt">
@@ -1087,100 +1194,6 @@ wfuzz基本功能爆破文件、目录地址。相对Fuzz
               <a href="/tags/cve/">cve</a>
             
               <a href="/tags/OpenSSH/">OpenSSH</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/09/10/shen-tou-ce-shi/">测试流程学习总结</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/09/10/shen-tou-ce-shi/">
-          
-          
-            
-          
-          渗透测试流程渗透测试是指渗透人员在不同的位置（比如从内网、从外网等位置）利用各种手段对某个特定网络进行测试，以期发现和挖掘系统中存在的漏洞，然后输出渗透测试报告，并提交给网络所有者。网络所有者根据渗透人员提供的渗透测试报告，可以清晰知晓系统中存在的安全隐患和问题。
-明确目标拿到一个合法的渗透测试项目时，我们首先应该明确客户要求我们进行渗透测试的范围以及整体项目的时间。
-信息搜集搜集哪些信息？
-
-W
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-10 10:01" pubdate>
-              2020-09-10
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/web/">web</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/09/09/Hydra/">爆破密码工具Hydra学习总结</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/09/09/Hydra/">
-          
-          
-            
-          
-          爆破密码工具Hydra学习总结hydra是著名黑客组织thc的一款开源的暴力密码破解工具，可以在线破解多种密码。九头蛇是一个并发的登录破解程序，支持许多协议攻击。新模块更容易添加，除此之外，Hydra非常灵活和迅速的。这款暴力密码破解工具相当强大，支持几乎所有协议的在线密码破解，其密码能否被破解关键在于字典是否足够强大。对于社会工程型渗透来说，有时能够得到事半功倍的效果。
-支持的协议可支持AFP,
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-09 14:14" pubdate>
-              2020-09-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/tool/">tool</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Hydra/">Hydra</a>
             
           </div>
         
