@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="booom">
   <meta name="keywords" content="">
-  <title>python 2安装requests模块报错 - wiki</title>
+  <title>Dirsearch目录扫描工具 - wiki</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -165,8 +165,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-07-31 11:07" pubdate>
-        2020年7月31日 上午
+      <time datetime="2020-11-16 21:50" pubdate>
+        2020年11月16日 晚上
       </time>
     </span>
   
@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      715 字
+      687 字
     </span>
   
 
@@ -217,69 +217,61 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">python 2安装requests模块报错</h1>
+            <h1 style="display: none">Dirsearch目录扫描工具</h1>
             
             <div class="markdown-body" id="post-body">
-              <p>电脑里有python2和python3两个环境。配置起来容易出问题。</p>
-<blockquote>
-<p>Windows上Python2和3如何兼容</p>
-<p>官方的解法是什么？</p>
-<p>我们在安装Python3（&gt;=3.3）时，Python的安装包实际上在系统中安装了一个启动器py.exe，默认放置在文件夹C:\Windows\下面。这个启动器允许我们指定使用Python2还是Python3来运行代码（当然前提是你已经成功安装了Python2和Python3）。</p>
-<p>如果你有一个Python文件叫 hello.py，那么你可以这样用Python2运行它</p>
-<blockquote>
-<p>py -2 hello.py</p>
-</blockquote>
-<p>类似的，如果你想用Python3运行它，就这样</p>
-<blockquote>
-<p>py -3 hello.py</p>
-</blockquote>
-<p><strong>去掉参数 -2/-3</strong></p>
-<p>每次运行都要加入参数-2/-3还是比较麻烦，所以py.exe这个启动器允许你在代码中加入说明，表明这个文件应该是由python2解释运行，还是由python3解释运行。说明的方法是在代码文件的最开始加入一行</p>
-<blockquote>
-<p>#! python2</p>
-</blockquote>
-<p>或者</p>
-<blockquote>
-<p>#! python3</p>
-</blockquote>
-<p><strong>使用pip</strong></p>
-<p>当Python2和Python3同时存在于windows上时，它们对应的pip都叫pip.exe，所以不能够直接使用 pip install 命令来安装软件包。而是要使用启动器py.exe来指定pip的版本。命令如下：</p>
-<blockquote>
-<p>py -2 -m pip install XXXX</p>
-</blockquote>
-<p>-2 还是表示使用 Python2，-m pip 表示运行 pip 模块，也就是运行pip命令了。如果是为Python3安装软件，那么命令类似的变成</p>
-<blockquote>
-<p>py -3 -m pip install XXXX</p>
-</blockquote>
-<p><strong>Python2要在代码文件顶部增加一行说明，才能够在代码中使用中文。</strong>如果指明使用的Python版本也需要在文件顶部增加一行，那哪一行应该放在第一行呢？</p>
-<p>#! python2 需要放在第一行，编码说明可以放在第二行。所以文件开头应该类似于：</p>
-<blockquote>
-<pre><code class="hljs text">#! python2
-# coding: utf-8</code></pre>
-</blockquote>
-</blockquote>
-<h2 id="pip未安装"><a href="#pip未安装" class="headerlink" title="pip未安装"></a>pip未安装</h2><p>首先打开 下面的URL</p>
-<p><a href="https://bootstrap.pypa.io/get-pip.py" target="_blank" rel="noopener">https://bootstrap.pypa.io/get-pip.py</a></p>
-<p>新建get-pip.py 文件张贴上面网址打开的内容</p>
-<p>确保你的Python可以正常使用（cmd下面输入Python 可以进入Python交互界面）</p>
-<p>进入你存放get-pip.py的目录</p>
-<p>python get-pip.py  </p>
-<p>以上完成，如果还是不能用那就是你的Python的 Scripts 目录没有加入环境变量 。</p>
-<h2 id="安装模块遇到的坑"><a href="#安装模块遇到的坑" class="headerlink" title="安装模块遇到的坑"></a>安装模块遇到的坑</h2><p>pip install xxxxxx默认使用的是我python2的pip</p>
-<p>那么如何安装python3的pip呢？</p>
-<p>通过python3 -m pip install cryptography可以正常安装python3模块。</p>
-<p>通过python2 -m pip install cryptography可以正常安装python2模块。</p>
-<h3 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h3><p><img src="https://s1.ax1x.com/2020/07/31/aQki3F.png" srcset="/img/loading.gif" alt="aQki3F.png"></p>
-<h3 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h3><p>因为用户目录包含中文导致，用户名是中文导致的。</p>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>在安装目录 Python27\Lib\目录,找到mimetypes.py文件。</p>
-<p>在import下添加几行代码。</p>
-<pre><code class="hljs isbl"><span class="hljs-variable"><span class="hljs-keyword">if</span></span> <span class="hljs-variable">sys.getdefaultencoding</span>() <span class="hljs-variable">!</span>= <span class="hljs-string">'gbk'</span>: 
- <span class="hljs-function"><span class="hljs-title">reload</span>(<span class="hljs-variable">sys</span>) </span>
-<span class="hljs-function"> <span class="hljs-variable">sys.setdefaultencoding</span>(<span class="hljs-string">'gbk'</span>)</span></code></pre>
+              <h1 id="Dirsearch目录扫描工具"><a href="#Dirsearch目录扫描工具" class="headerlink" title="Dirsearch目录扫描工具"></a>Dirsearch目录扫描工具</h1><p>Dirsearch仅支持python3或更高。速度比 <code>gobuster</code>更快，结果展示也更加清晰、明了。</p>
+<p>&lt;目录猜测&gt;可以使用 dirb、gobuster、dirsearch、Wfuzz 等等，推荐使用 dirsearch，经过实测效率是最高的。</p>
+<h2 id="安装和使用"><a href="#安装和使用" class="headerlink" title="安装和使用"></a>安装和使用</h2><p>下载</p>
+<pre><code class="hljs crmsh">git <span class="hljs-keyword">clone</span> <span class="hljs-title">https</span>://github.com/maurosoria/dirsearch</code></pre>
 
-<p>完成后保存，在cmd中执行pip install requests</p>
-<p><img src="https://s1.ax1x.com/2020/07/31/aQknN6.png" srcset="/img/loading.gif" alt="aQknN6.png"></p>
-<p>参考资料:<a href="https://blog.csdn.net/qq_32448559/article/details/81279267" target="_blank" rel="noopener">https://blog.csdn.net/qq_32448559/article/details/81279267</a></p>
+<p>扫描网站需要指定网站脚本类型，*表示全部类型。</p>
+<pre><code class="hljs vim"><span class="hljs-keyword">python3</span> dirsearch.<span class="hljs-keyword">py</span> -<span class="hljs-keyword">u</span> <span class="hljs-string">"http://xxx"</span> -<span class="hljs-keyword">e</span> *</code></pre>
+
+<p>参数列表</p>
+<pre><code class="hljs routeros">-h, --help 查看帮助
+-u URL, <span class="hljs-attribute">--url</span>=URL 设置url
+-L URLLIST, <span class="hljs-attribute">--url-list</span>=URLLIST 设置url列表
+-e EXTENSIONS, <span class="hljs-attribute">--extensions</span>=EXTENSIONS 网站脚本类型
+-w WORDLIST, <span class="hljs-attribute">--wordlist</span>=WORDLIST 设置字典
+-l, --lowercase 小写
+-f, --force-extensions 强制扩展字典里的每个词条
+-s DELAY, <span class="hljs-attribute">--delay</span>=DELAY 设置请求之间的延时
+-r, --recursive Bruteforce recursively 递归地扫描
+–<span class="hljs-attribute">scan-subdir</span>=SCANSUBDIRS, <span class="hljs-attribute">--scan-subdirs</span>=SCANSUBDIRS 扫描给定的url的子目录(用逗号隔开)
+–<span class="hljs-attribute">exclude-subdir</span>=EXCLUDESUBDIRS, <span class="hljs-attribute">--exclude-subdirs</span>=EXCLUDESUBDIRS 在递归过程中排除指定的子目录扫描(用逗号隔开)
+-t THREADSCOUNT, <span class="hljs-attribute">--threads</span>=THREADSCOUNT 设置扫描线程
+-x EXCLUDESTATUSCODES, <span class="hljs-attribute">--exclude-status</span>=EXCLUDESTATUSCODES 排除指定的网站状态码(用逗号隔开)
+-c COOKIE, <span class="hljs-attribute">--cookie</span>=COOKIE 设置cookie
+–<span class="hljs-attribute">ua</span>=USERAGENT, <span class="hljs-attribute">--user-agent</span>=USERAGENT 设置用户代理
+-F, --follow-redirects 跟随地址重定向扫描
+-H HEADERS, <span class="hljs-attribute">--header</span>=HEADERS 设置请求头
+–random-agents, --random-user-agents 设置随机代理
+–<span class="hljs-attribute">timeout</span>=TIMEOUT 设置超时时间
+–<span class="hljs-attribute">ip</span>=IP 设置代理IP地址
+–<span class="hljs-attribute">proxy</span>=HTTPPROXY, <span class="hljs-attribute">--http-proxy</span>=HTTPPROXY 设置http代理。例如127.0.0.1:8080
+–<span class="hljs-attribute">max-retries</span>=MAXRETRIES 设置最大的重试次数
+-b, --request-by-hostname 通过主机名请求速度，默认通过IP
+–<span class="hljs-attribute">simple-report</span>=SIMPLEOUTPUTFILE 保存结果，发现的路径
+–<span class="hljs-attribute">plain-text-report</span>=PLAINTEXTOUTPUTFILE 保存结果，发现的路径和状态码
+–<span class="hljs-attribute">json-report</span>=JSONOUTPUTFILE 以json格式保存结果</code></pre>
+
+<p>dirsearch目录下有自带的字典文件db</p>
+<p>reports目录是扫描网站的历史记录。</p>
+<p>排除某些HTTP状态代码</p>
+<pre><code class="hljs vim"><span class="hljs-keyword">python3</span> dirsearch.<span class="hljs-keyword">py</span> -<span class="hljs-keyword">u</span> <span class="hljs-string">"http://xxx"</span> -<span class="hljs-keyword">e</span> * -<span class="hljs-keyword">x</span> <span class="hljs-number">403</span></code></pre>
+
+<p>使用-w标志来使用您选择的字典。如果字典太小，使用字典并不能获得大量的信息。为了发挥最大的性能，即执行递归目录扫描进行递归搜索。</p>
+<pre><code class="hljs vim"><span class="hljs-keyword">python3</span> dirsearch.<span class="hljs-keyword">py</span> -<span class="hljs-keyword">u</span> <span class="hljs-string">"http://xxx"</span> -<span class="hljs-keyword">e</span> * -<span class="hljs-keyword">x</span> <span class="hljs-number">403</span> -r</code></pre>
+
+<blockquote>
+<p>在扫描时，如果要退出扫描，请从键盘解析“ e”。 要从停止点继续执行，请解析“ c”。 解析“ n”以移至下一个目录。 这些步骤将使您可以控制结果，因为递归扫描是一个耗时的过程。</p>
+</blockquote>
+<p>如果要将递归级别设置为更深的值，则可以使用   <strong>-R</strong>   标志和要挖掘的深度级别的值。</p>
+<pre><code class="hljs lsl">python3 dirsearch.py -u <span class="hljs-string">"http://xxx"</span> -e * -x <span class="hljs-number">403</span> -r -R <span class="hljs-number">3</span></code></pre>
+
+<p>修改<code>–max-retries=MAXRETRIES</code> 设置最大的重试次数,可以提高扫描速度。</p>
+<p>–plain-text-report=文件名 保存结果，发现的路径和状态码</p>
 
             </div>
             <hr>
@@ -289,7 +281,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">踩过的坑</a>
+                      <a class="hover-with-bg" href="/categories/tool/">tool</a>
                     
                   </div>
                 
@@ -297,7 +289,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/python/">python</a>
+                      <a class="hover-with-bg" href="/tags/Linux/">Linux</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Tmux/">Tmux</a>
                     
                   </div>
                 
@@ -310,18 +304,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/08/08/Weblogic_CVE-2018-2628/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Weblogic WLS Core Components 反序列化命令执行漏洞（CVE-2018-2628）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/07/31/Weblogic_CVE-2017-10271/">
-                        <span class="hidden-mobile">Weblogic < 10.3.6 反序列化漏洞（CVE-2017-10271）</span>
+                      <a href="/2020/11/03/%E6%89%B9%E9%87%8F%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%E8%84%9A%E6%9C%AC/">
+                        <span class="hidden-mobile">批量执行命令脚本</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -517,7 +505,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "python 2安装requests模块报错&nbsp;",
+        "Dirsearch目录扫描工具&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
