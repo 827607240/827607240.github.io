@@ -236,11 +236,11 @@
       
       <tag>python</tag>
       
+      <tag>metasploit</tag>
+      
       <tag>网络</tag>
       
       <tag>数据库</tag>
-      
-      <tag>metasploit</tag>
       
       <tag>JDK</tag>
       
@@ -1563,9 +1563,9 @@
     
     <tags>
       
-      <tag>web</tag>
-      
       <tag>Burp Suite</tag>
+      
+      <tag>web</tag>
       
     </tags>
     
@@ -1590,11 +1590,11 @@
     
     <tags>
       
+      <tag>web</tag>
+      
       <tag>DVWA</tag>
       
       <tag>XSS</tag>
-      
-      <tag>web</tag>
       
     </tags>
     
@@ -1646,9 +1646,9 @@
     
     <tags>
       
-      <tag>Nmap</tag>
-      
       <tag>Linux</tag>
+      
+      <tag>Nmap</tag>
       
     </tags>
     
