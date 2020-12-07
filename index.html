@@ -227,7 +227,7 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/12/03/WAF/">WAF</a>
+        <a href="/2020/12/03/WAF/">WAF的识别与绕过思路</a>
       </h1>
 
       <p class="index-excerpt">
@@ -236,11 +236,7 @@
           
             
           
-          title: WAF的识别与绕过思路date: 2020-12-03 10:30:30tags: 
-
-WAFcategories: 总结
-
-WAF总结渗透过程中总会遇到各种各样的WAF，为了方便以后查找资料，先对此进行一些总结。
+          WAF总结渗透过程中总会遇到各种各样的WAF，为了方便以后查找资料，先对此进行一些总结。
 360网站卫士
 Naxsi WAF
 百度云
@@ -252,6 +248,11 @@ Xor 1=1，Xor 1=2绕过
 
 过滤规则
 /**/替换为空
+
+/*!*/替换为空
+
+匹配的关键有:and,or,updatexml,select xxx from,union xxx select
+
 
         </a>
       </p>
@@ -266,6 +267,20 @@ Xor 1=1，Xor 1=2绕过
           </div>
         
         
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%80%BB%E7%BB%93/">总结</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/WAF/">WAF</a>
+            
+          </div>
         
       </div>
     </article>
