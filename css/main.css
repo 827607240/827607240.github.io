@@ -663,8 +663,8 @@ img[srcset] {
 }
 @media (min-width: 600px) {
   .navbar.scrolling-navbar {
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
   .navbar.scrolling-navbar .navbar-nav > li {
     -webkit-transition-duration: 1s;
@@ -672,8 +672,8 @@ img[srcset] {
   }
 }
 .navbar.scrolling-navbar.top-nav-collapse {
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 .navbar .dropdown-menu {
   font-size: 0.875rem;
