@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="booom">
   <meta name="keywords" content="">
-  <title>WAF的识别与绕过思路 - wiki</title>
+  <title>WAF - wiki</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      358 字
+      377 字
     </span>
   
 
@@ -217,15 +217,19 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">WAF的识别与绕过思路</h1>
+            <h1 style="display: none">WAF</h1>
             
             <div class="markdown-body" id="post-body">
-              <h1 id="WAF总结"><a href="#WAF总结" class="headerlink" title="WAF总结"></a>WAF总结</h1><p>渗透过程中总会遇到各种各样的WAF，为了方便以后查找资料，先对此进行一些总结。</p>
-<h2 id="360网站卫士"><a href="#360网站卫士" class="headerlink" title="360网站卫士"></a>360网站卫士</h2><p><img src="WAF.assets/1606268271039.png" srcset="/img/loading.gif" alt="1606268271039"></p>
-<h2 id="Naxsi-WAF"><a href="#Naxsi-WAF" class="headerlink" title="Naxsi WAF"></a>Naxsi WAF</h2><p><img src="WAF.assets/1606268428357.png" srcset="/img/loading.gif" alt="1606268428357"></p>
-<h2 id="百度云"><a href="#百度云" class="headerlink" title="百度云"></a>百度云</h2><p><img src="WAF.assets/1606268451355.png" srcset="/img/loading.gif" alt="1606268451355"></p>
-<h2 id="腾讯云"><a href="#腾讯云" class="headerlink" title="腾讯云"></a>腾讯云</h2><p><img src="WAF.assets/1606268462153.png" srcset="/img/loading.gif" alt="1606268462153"></p>
-<h2 id="云锁"><a href="#云锁" class="headerlink" title="云锁"></a>云锁</h2><p><img src="WAF.assets/1606268476475.png" srcset="/img/loading.gif" alt="1606268476475"></p>
+              <p>title: WAF的识别与绕过思路<br>date: 2020-12-03 10:30:30<br>tags: </p>
+<ul>
+<li>WAF<br>categories: 总结</li>
+</ul>
+<h1 id="WAF总结"><a href="#WAF总结" class="headerlink" title="WAF总结"></a>WAF总结</h1><p>渗透过程中总会遇到各种各样的WAF，为了方便以后查找资料，先对此进行一些总结。</p>
+<h2 id="360网站卫士"><a href="#360网站卫士" class="headerlink" title="360网站卫士"></a>360网站卫士</h2><p><a href="https://imgchr.com/i/DxWO9x" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/DxWO9x.png" srcset="/img/loading.gif" alt="DxWO9x.png"></a></p>
+<h2 id="Naxsi-WAF"><a href="#Naxsi-WAF" class="headerlink" title="Naxsi WAF"></a>Naxsi WAF</h2><p><a href="https://imgchr.com/i/DxWq41" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/DxWq41.png" srcset="/img/loading.gif" alt="DxWq41.png"></a></p>
+<h2 id="百度云"><a href="#百度云" class="headerlink" title="百度云"></a>百度云</h2><p><a href="https://imgchr.com/i/DxWbNR" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/DxWbNR.png" srcset="/img/loading.gif" alt="DxWbNR.png"></a></p>
+<h2 id="腾讯云"><a href="#腾讯云" class="headerlink" title="腾讯云"></a>腾讯云</h2><p><a href="https://imgchr.com/i/DxWHE9" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/DxWHE9.png" srcset="/img/loading.gif" alt="DxWHE9.png"></a></p>
+<h2 id="云锁"><a href="#云锁" class="headerlink" title="云锁"></a>云锁</h2><p><a href="https://imgchr.com/i/DxWTHJ" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/DxWTHJ.png" srcset="/img/loading.gif" alt="DxWTHJ.png"></a></p>
 <h3 id="绕过思路"><a href="#绕过思路" class="headerlink" title="绕过思路"></a>绕过思路</h3><pre><code class="hljs angelscript">云锁v3<span class="hljs-number">.1</span><span class="hljs-number">.18</span><span class="hljs-number">.13</span>
 Xor绕过
 Xor <span class="hljs-number">1</span>=<span class="hljs-number">1</span>，Xor <span class="hljs-number">1</span>=<span class="hljs-number">2</span>绕过</code></pre>
@@ -243,9 +247,9 @@ Xor <span class="hljs-number">1</span>=<span class="hljs-number">1</span>，Xor 
 
 
 
-<h2 id="360主机卫士或360webscan"><a href="#360主机卫士或360webscan" class="headerlink" title="360主机卫士或360webscan"></a>360主机卫士或360webscan</h2><p> <img src="WAF.assets/1606268484217.png" srcset="/img/loading.gif" alt="1606268484217"></p>
-<h2 id="OpenRASP"><a href="#OpenRASP" class="headerlink" title="OpenRASP"></a>OpenRASP</h2><p><img src="WAF.assets/1606268546827.png" srcset="/img/loading.gif" alt="1606268546827"></p>
-<h2 id="宝塔"><a href="#宝塔" class="headerlink" title="宝塔"></a>宝塔</h2><p><img src="WAF.assets/1606268568566.png" srcset="/img/loading.gif" alt="1606268568566"></p>
+<h2 id="360主机卫士或360webscan"><a href="#360主机卫士或360webscan" class="headerlink" title="360主机卫士或360webscan"></a>360主机卫士或360webscan</h2><p> <a href="https://imgchr.com/i/DxWX36" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/DxWX36.png" srcset="/img/loading.gif" alt="DxWX36.png"></a></p>
+<h2 id="OpenRASP"><a href="#OpenRASP" class="headerlink" title="OpenRASP"></a>OpenRASP</h2><p><a href="https://imgchr.com/i/DxWjgK" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/DxWjgK.png" srcset="/img/loading.gif" alt="DxWjgK.png"></a></p>
+<h2 id="宝塔"><a href="#宝塔" class="headerlink" title="宝塔"></a>宝塔</h2><p><a href="https://imgchr.com/i/DxWvjO" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/DxWvjO.png" srcset="/img/loading.gif" alt="DxWvjO.png"></a></p>
 <h2 id="腾讯宙斯盾"><a href="#腾讯宙斯盾" class="headerlink" title="腾讯宙斯盾"></a>腾讯宙斯盾</h2><p>SDWAF</p>
 <p><a href="https://imgchr.com/i/Db1zdS" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/04/Db1zdS.png" srcset="/img/loading.gif" alt="Db1zdS.png"></a></p>
 <h2 id="长亭SafeLine"><a href="#长亭SafeLine" class="headerlink" title="长亭SafeLine"></a>长亭SafeLine</h2><p><a href="https://imgchr.com/i/Db1jqf" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/04/Db1jqf.png" srcset="/img/loading.gif" alt="Db1jqf.png"></a></p>
@@ -253,21 +257,20 @@ Xor <span class="hljs-number">1</span>=<span class="hljs-number">1</span>，Xor 
 <h2 id="UPUPW"><a href="#UPUPW" class="headerlink" title="UPUPW"></a>UPUPW</h2><p><a href="https://imgchr.com/i/Db1XsP" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/04/Db1XsP.png" srcset="/img/loading.gif" alt="Db1XsP.png"></a></p>
 <h2 id="创宇盾"><a href="#创宇盾" class="headerlink" title="创宇盾"></a>创宇盾</h2><p><a href="https://imgchr.com/i/Db1bRA" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/04/Db1bRA.png" srcset="/img/loading.gif" alt="Db1bRA.png"></a></p>
 <h2 id="网防G01"><a href="#网防G01" class="headerlink" title="网防G01"></a>网防G01</h2><p><a href="https://imgchr.com/i/Db1xZ8" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/04/Db1xZ8.png" srcset="/img/loading.gif" alt="Db1xZ8.png"></a></p>
-<h2 id="智创"><a href="#智创" class="headerlink" title="智创"></a>智创</h2><p><img src="WAF.assets/1606268685051.png" srcset="/img/loading.gif" alt="1606268685051"></p>
+<h2 id="智创"><a href="#智创" class="headerlink" title="智创"></a>智创</h2><p><a href="https://imgchr.com/i/DxfPUA" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/DxfPUA.png" srcset="/img/loading.gif" alt="DxfPUA.png"></a></p>
 <h2 id="D盾"><a href="#D盾" class="headerlink" title="D盾"></a>D盾</h2><p><a href="https://imgchr.com/i/Db3SIg" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/04/Db3SIg.png" srcset="/img/loading.gif" alt="Db3SIg.png"></a></p>
-<h2 id="阿里云盾"><a href="#阿里云盾" class="headerlink" title="阿里云盾"></a>阿里云盾</h2><p><img src="WAF.assets/1606268720500.png" srcset="/img/loading.gif" alt="1606268720500"></p>
-<h2 id="护卫神"><a href="#护卫神" class="headerlink" title="护卫神"></a>护卫神</h2><p><img src="WAF.assets/1606268740667.png" srcset="/img/loading.gif" alt="1606268740667"></p>
-<h2 id="网宿云"><a href="#网宿云" class="headerlink" title="网宿云"></a>网宿云</h2><p><img src="WAF.assets/1606268766892.png" srcset="/img/loading.gif" alt="1606268766892"></p>
-<h2 id="F5-BIG-IP"><a href="#F5-BIG-IP" class="headerlink" title="F5 BIG-IP"></a>F5 BIG-IP</h2><p><a href="https://imgchr.com/i/Db3CGj" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/04/Db3CGj.png" srcset="/img/loading.gif" alt="Db3CGj.png"></a></p>
-<p><img src="WAF.assets/1606268791543.png" srcset="/img/loading.gif" alt="1606268791543"></p>
-<h2 id="安恒明御"><a href="#安恒明御" class="headerlink" title="安恒明御"></a>安恒明御</h2><p><img src="WAF.assets/1606268805335.png" srcset="/img/loading.gif" alt="1606268805335"></p>
-<h2 id="华为云"><a href="#华为云" class="headerlink" title="华为云"></a>华为云</h2><p><img src="WAF.assets/1606268817608.png" srcset="/img/loading.gif" alt="1606268817608"></p>
-<h2 id="西部数码WTS-WAF"><a href="#西部数码WTS-WAF" class="headerlink" title="西部数码WTS-WAF"></a>西部数码WTS-WAF</h2><p><img src="WAF.assets/1606269471257.png" srcset="/img/loading.gif" alt="1606269471257"></p>
+<h2 id="阿里云盾"><a href="#阿里云盾" class="headerlink" title="阿里云盾"></a>阿里云盾</h2><p><a href="https://imgchr.com/i/DxfpHH" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/DxfpHH.png" srcset="/img/loading.gif" alt="DxfpHH.png"></a></p>
+<h2 id="护卫神"><a href="#护卫神" class="headerlink" title="护卫神"></a>护卫神</h2><p><a href="https://imgchr.com/i/DxfSDe" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/DxfSDe.png" srcset="/img/loading.gif" alt="DxfSDe.png"></a></p>
+<h2 id="网宿云"><a href="#网宿云" class="headerlink" title="网宿云"></a>网宿云</h2><p><a href="https://imgchr.com/i/DxfkCt" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/DxfkCt.png" srcset="/img/loading.gif" alt="DxfkCt.png"></a></p>
+<h2 id="F5-BIG-IP"><a href="#F5-BIG-IP" class="headerlink" title="F5 BIG-IP"></a>F5 BIG-IP</h2><p><a href="https://imgchr.com/i/DxfCEd" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/DxfCEd.png" srcset="/img/loading.gif" alt="DxfCEd.png"></a><br><a href="https://imgchr.com/i/Dxfi4I" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/Dxfi4I.png" srcset="/img/loading.gif" alt="Dxfi4I.png"></a></p>
+<h2 id="安恒明御"><a href="#安恒明御" class="headerlink" title="安恒明御"></a>安恒明御</h2><p><a href="https://imgchr.com/i/DxfA8P" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/DxfA8P.png" srcset="/img/loading.gif" alt="DxfA8P.png"></a></p>
+<h2 id="华为云"><a href="#华为云" class="headerlink" title="华为云"></a>华为云</h2><p><a href="https://imgchr.com/i/DxfEgf" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/DxfEgf.png" srcset="/img/loading.gif" alt="DxfEgf.png"></a></p>
+<h2 id="西部数码WTS-WAF"><a href="#西部数码WTS-WAF" class="headerlink" title="西部数码WTS-WAF"></a>西部数码WTS-WAF</h2><p><a href="https://imgchr.com/i/DxfMUs" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/DxfMUs.png" srcset="/img/loading.gif" alt="DxfMUs.png"></a></p>
 <h3 id="绕过思路-1"><a href="#绕过思路-1" class="headerlink" title="绕过思路"></a>绕过思路</h3><pre><code class="hljs routeros">加号替换空格绕过
 bypass：<span class="hljs-attribute">id</span>=1 an%d <span class="hljs-attribute">1</span>=2    只需要在关键词中加%即可绕过</code></pre>
 
-<h2 id="西部数码云网盾"><a href="#西部数码云网盾" class="headerlink" title="西部数码云网盾"></a>西部数码云网盾</h2><p><img src="WAF.assets/1606272976865.png" srcset="/img/loading.gif" alt="1606272976865"></p>
-<h2 id="安全狗"><a href="#安全狗" class="headerlink" title="安全狗"></a>安全狗</h2><p><img src="WAF.assets/1606269023255.png" srcset="/img/loading.gif" alt="1606269023255"></p>
+<h2 id="西部数码云网盾"><a href="#西部数码云网盾" class="headerlink" title="西部数码云网盾"></a>西部数码云网盾</h2><p><a href="https://imgchr.com/i/Dxf82V" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/Dxf82V.png" srcset="/img/loading.gif" alt="Dxf82V.png"></a></p>
+<h2 id="安全狗"><a href="#安全狗" class="headerlink" title="安全狗"></a>安全狗</h2><p><a href="https://imgchr.com/i/DxfVv8" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/DxfVv8.png" srcset="/img/loading.gif" alt="DxfVv8.png"></a></p>
 <h3 id="绕过思路-2"><a href="#绕过思路-2" class="headerlink" title="绕过思路"></a>绕过思路</h3><pre><code class="hljs crystal">安全狗v4.<span class="hljs-number">0.26550</span>
 Xor绕过
 Xor <span class="hljs-number">1</span>=<span class="hljs-number">1</span>，Xor <span class="hljs-number">1</span>=<span class="hljs-number">2</span>绕过
@@ -287,15 +290,15 @@ Xor <span class="hljs-number">1</span>=<span class="hljs-number">1</span>，Xor 
 <p><strong>过滤规则</strong></p>
 <pre><code class="hljs isbl">会拦截一些关键函数，如<span class="hljs-function"><span class="hljs-title">user</span>()，<span class="hljs-title">databse</span>()</span></code></pre>
 
-<h2 id="玄武盾"><a href="#玄武盾" class="headerlink" title="玄武盾"></a>玄武盾</h2><p><img src="WAF.assets/1606269335622.png" srcset="/img/loading.gif" alt="1606269335622"></p>
-<h2 id="Mod-Security"><a href="#Mod-Security" class="headerlink" title="Mod_Security"></a>Mod_Security</h2><p><img src="WAF.assets/1606269053928.png" srcset="/img/loading.gif" alt="1606269053928"></p>
-<h2 id="安域云"><a href="#安域云" class="headerlink" title="安域云"></a>安域云</h2><p><img src="WAF.assets/1606269067628.png" srcset="/img/loading.gif" alt="1606269067628"></p>
-<h2 id="奇安信网站卫士"><a href="#奇安信网站卫士" class="headerlink" title="奇安信网站卫士"></a>奇安信网站卫士</h2><p><img src="WAF.assets/1606269254994.png" srcset="/img/loading.gif" alt="1606269254994"></p>
-<h2 id="铱讯WAF"><a href="#铱讯WAF" class="headerlink" title="铱讯WAF"></a>铱讯WAF</h2><p><img src="WAF.assets/1606269098425.png" srcset="/img/loading.gif" alt="1606269098425"></p>
+<h2 id="玄武盾"><a href="#玄武盾" class="headerlink" title="玄武盾"></a>玄武盾</h2><p><a href="https://imgchr.com/i/DxfQ5n" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/DxfQ5n.png" srcset="/img/loading.gif" alt="DxfQ5n.png"></a></p>
+<h2 id="Mod-Security"><a href="#Mod-Security" class="headerlink" title="Mod_Security"></a>Mod_Security</h2><p><a href="https://imgchr.com/i/DxfeKS" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/DxfeKS.png" srcset="/img/loading.gif" alt="DxfeKS.png"></a></p>
+<h2 id="安域云"><a href="#安域云" class="headerlink" title="安域云"></a>安域云</h2><p><a href="https://imgchr.com/i/DxfmDg" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/DxfmDg.png" srcset="/img/loading.gif" alt="DxfmDg.png"></a></p>
+<h2 id="奇安信网站卫士"><a href="#奇安信网站卫士" class="headerlink" title="奇安信网站卫士"></a>奇安信网站卫士</h2><p><a href="https://imgchr.com/i/DxfKEj" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/DxfKEj.png" srcset="/img/loading.gif" alt="DxfKEj.png"></a></p>
+<h2 id="铱讯WAF"><a href="#铱讯WAF" class="headerlink" title="铱讯WAF"></a>铱讯WAF</h2><p><a href="https://imgchr.com/i/DxfnbQ" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/DxfnbQ.png" srcset="/img/loading.gif" alt="DxfnbQ.png"></a></p>
 <p><strong>未知云WAF</strong></p>
-<p><img src="WAF.assets/1606962499226.png" srcset="/img/loading.gif" alt="1606962499226"></p>
-<h2 id="可能存在waf（攻击包被丢弃）"><a href="#可能存在waf（攻击包被丢弃）" class="headerlink" title="可能存在waf（攻击包被丢弃）"></a>可能存在waf（攻击包被丢弃）</h2><p><img src="WAF.assets/1606269543344.png" srcset="/img/loading.gif" alt="1606269543344"></p>
-<p><img src="WAF.assets/1606269497814.png" srcset="/img/loading.gif" alt="1606269497814"></p>
+<p><a href="https://imgchr.com/i/DxfGvT" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/DxfGvT.png" srcset="/img/loading.gif" alt="DxfGvT.png"></a></p>
+<h2 id="可能存在waf（攻击包被丢弃）"><a href="#可能存在waf（攻击包被丢弃）" class="headerlink" title="可能存在waf（攻击包被丢弃）"></a>可能存在waf（攻击包被丢弃）</h2><p><a href="https://imgchr.com/i/Dxf380" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/Dxf380.png" srcset="/img/loading.gif" alt="Dxf380.png"></a></p>
+<p><a href="https://imgchr.com/i/Dxf1Cq" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/07/Dxf1Cq.png" srcset="/img/loading.gif" alt="Dxf1Cq.png"></a></p>
 <p>长期更新</p>
 
             </div>
@@ -303,20 +306,6 @@ Xor <span class="hljs-number">1</span>=<span class="hljs-number">1</span>，Xor 
             <div>
               <div class="post-metas mb-3">
                 
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E6%80%BB%E7%BB%93/">总结</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/WAF/">WAF</a>
-                    
-                  </div>
                 
               </div>
               
@@ -534,7 +523,7 @@ Xor <span class="hljs-number">1</span>=<span class="hljs-number">1</span>，Xor 
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "WAF的识别与绕过思路&nbsp;",
+        "WAF&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
