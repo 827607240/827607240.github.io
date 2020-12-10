@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      373 字
+      527 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      6
        分钟
     </span>
   
@@ -246,6 +246,18 @@
 <p>//复制到本机</p>
 <p>scp /scp/456.txt <a href="mailto:root@192.168.1.128">root@192.168.1.128</a>:/home/duyada/scp/</p>
 <p>//上传到目标机</p>
+</blockquote>
+<h3 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h3><p>一般用来查看文件内容。</p>
+<blockquote>
+<p>查看/etc/profile的前10行内容，应该是：# head -n 10 /etc/profile<br>查看/etc/profile的最后5行内容，应该是：# tail  -n 5 /etc/profile﻿<br> sed -n ‘5,10p’ filename 这样你就可以只查看文件的第5行到第10行。</p>
+</blockquote>
+<p>将22的文件内容复制到11文件的末尾，<code>cat 22 &gt;&gt; 11</code></p>
+<p>将a.txt文件的内容清除，并且使得文件的大小为0，而不删除文件可以：</p>
+<pre><code class="hljs gradle">cat <span class="hljs-regexp">/dev/</span><span class="hljs-keyword">null</span> &gt; a.txt</code></pre>
+
+<blockquote>
+<p><code>&gt;&gt;</code>的意思是追加的意思</p>
+<p><code>&gt;</code> 的意思是重定向的意思，会覆盖原先的内容</p>
 </blockquote>
 
             </div>

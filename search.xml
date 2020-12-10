@@ -205,9 +205,9 @@
       
         <tags>
             
-            <tag> bash </tag>
-            
             <tag> shell </tag>
+            
+            <tag> bash </tag>
             
         </tags>
       
@@ -369,9 +369,9 @@
             
             <tag> 网络 </tag>
             
-            <tag> metasploit </tag>
-            
             <tag> 数据库 </tag>
+            
+            <tag> metasploit </tag>
             
             <tag> JDK </tag>
             
@@ -1327,11 +1327,11 @@
       
         <tags>
             
-            <tag> bash </tag>
-            
             <tag> python </tag>
             
             <tag> linux </tag>
+            
+            <tag> bash </tag>
             
         </tags>
       
@@ -1444,9 +1444,9 @@
       
         <tags>
             
-            <tag> bash </tag>
-            
             <tag> shell </tag>
+            
+            <tag> bash </tag>
             
         </tags>
       
@@ -1580,7 +1580,7 @@
       <link href="/2020/05/04/linux-3/"/>
       <url>/2020/05/04/linux-3/</url>
       
-        <content type="html"><![CDATA[<p>这几个命令平常不怎么用，但是实际用途还是有的。就先记录一下。</p><h3 id="lastb"><a href="#lastb" class="headerlink" title="lastb"></a>lastb</h3><p><strong>lastb命令</strong>用于显示用户错误的登录列表，此指令可以发现系统的登录异常。单独执行lastb命令，它会读取位于<code>/var/log</code>目录下，名称为btmp的文件，并把该文件内容记录的登入失败的用户名单，全部显示出来。</p><h3 id="nc"><a href="#nc" class="headerlink" title="nc"></a>nc</h3><p><strong>nc命令</strong>是<strong>netcat命令</strong>的简称。</p><ul><li><p>远程拷贝文件</p><p>server1上的文件拷贝到server2中。</p><ul><li><p>server2中运行</p><blockquote><p>netcat -lp 1234 &gt; 123.txt<br>netcat -lp 1234 &gt; 456.txt</p></blockquote></li><li><p>server1中运行</p><blockquote><p>nc -w 1 192.168.1.128 1234 &lt; 123.txt<br>nc -w 1 192.168.1.128 1234 &lt; 456.txt</p></blockquote></li></ul></li></ul><h3 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h3><p><strong>scp命令</strong>用于在Linux下进行远程拷贝文件的命令，和它类似的命令有<a href="http://man.linuxde.net/cp" target="_blank" rel="noopener">cp</a>，不过cp只是在本机进行拷贝不能跨服务器，而且scp传输是加密的。可能会稍微影响一下速度。当你服务器硬盘变为只读<a href="http://man.linuxde.net/read" target="_blank" rel="noopener">read</a> only system时，用scp可以帮你把文件移出来。另外，scp还非常不占资源，不会提高多少系统负荷，在这一点上，<a href="http://man.linuxde.net/rsync" target="_blank" rel="noopener">rsync</a>就远远不及它了。虽然 rsync比scp会快一点，但当小文件众多的情况下，rsync会导致硬盘I/O非常高，而scp基本不影响系统正常使用。</p><blockquote><p>scp <a href="mailto:root@192.168.1.128">root@192.168.1.128</a>:/home/duyada/scp/123.txt /scp</p><p>//复制到本机</p><p>scp /scp/456.txt <a href="mailto:root@192.168.1.128">root@192.168.1.128</a>:/home/duyada/scp/</p><p>//上传到目标机</p></blockquote>]]></content>
+        <content type="html"><![CDATA[<p>这几个命令平常不怎么用，但是实际用途还是有的。就先记录一下。</p><h3 id="lastb"><a href="#lastb" class="headerlink" title="lastb"></a>lastb</h3><p><strong>lastb命令</strong>用于显示用户错误的登录列表，此指令可以发现系统的登录异常。单独执行lastb命令，它会读取位于<code>/var/log</code>目录下，名称为btmp的文件，并把该文件内容记录的登入失败的用户名单，全部显示出来。</p><h3 id="nc"><a href="#nc" class="headerlink" title="nc"></a>nc</h3><p><strong>nc命令</strong>是<strong>netcat命令</strong>的简称。</p><ul><li><p>远程拷贝文件</p><p>server1上的文件拷贝到server2中。</p><ul><li><p>server2中运行</p><blockquote><p>netcat -lp 1234 &gt; 123.txt<br>netcat -lp 1234 &gt; 456.txt</p></blockquote></li><li><p>server1中运行</p><blockquote><p>nc -w 1 192.168.1.128 1234 &lt; 123.txt<br>nc -w 1 192.168.1.128 1234 &lt; 456.txt</p></blockquote></li></ul></li></ul><h3 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h3><p><strong>scp命令</strong>用于在Linux下进行远程拷贝文件的命令，和它类似的命令有<a href="http://man.linuxde.net/cp" target="_blank" rel="noopener">cp</a>，不过cp只是在本机进行拷贝不能跨服务器，而且scp传输是加密的。可能会稍微影响一下速度。当你服务器硬盘变为只读<a href="http://man.linuxde.net/read" target="_blank" rel="noopener">read</a> only system时，用scp可以帮你把文件移出来。另外，scp还非常不占资源，不会提高多少系统负荷，在这一点上，<a href="http://man.linuxde.net/rsync" target="_blank" rel="noopener">rsync</a>就远远不及它了。虽然 rsync比scp会快一点，但当小文件众多的情况下，rsync会导致硬盘I/O非常高，而scp基本不影响系统正常使用。</p><blockquote><p>scp <a href="mailto:root@192.168.1.128">root@192.168.1.128</a>:/home/duyada/scp/123.txt /scp</p><p>//复制到本机</p><p>scp /scp/456.txt <a href="mailto:root@192.168.1.128">root@192.168.1.128</a>:/home/duyada/scp/</p><p>//上传到目标机</p></blockquote><h3 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h3><p>一般用来查看文件内容。</p><blockquote><p>查看/etc/profile的前10行内容，应该是：# head -n 10 /etc/profile<br>查看/etc/profile的最后5行内容，应该是：# tail  -n 5 /etc/profile﻿<br> sed -n ‘5,10p’ filename 这样你就可以只查看文件的第5行到第10行。</p></blockquote><p>将22的文件内容复制到11文件的末尾，<code>cat 22 &gt;&gt; 11</code></p><p>将a.txt文件的内容清除，并且使得文件的大小为0，而不删除文件可以：</p><pre><code class="hljs gradle">cat <span class="hljs-regexp">/dev/</span><span class="hljs-keyword">null</span> &gt; a.txt</code></pre><blockquote><p><code>&gt;&gt;</code>的意思是追加的意思</p><p><code>&gt;</code> 的意思是重定向的意思，会覆盖原先的内容</p></blockquote>]]></content>
       
       
       <categories>
@@ -1694,9 +1694,9 @@
       
         <tags>
             
-            <tag> Burp Suite </tag>
-            
             <tag> web </tag>
+            
+            <tag> Burp Suite </tag>
             
         </tags>
       
@@ -1721,11 +1721,11 @@
       
         <tags>
             
-            <tag> web </tag>
-            
             <tag> DVWA </tag>
             
             <tag> XSS </tag>
+            
+            <tag> web </tag>
             
         </tags>
       
