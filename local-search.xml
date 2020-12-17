@@ -259,9 +259,9 @@
     
     <tags>
       
-      <tag>shell</tag>
-      
       <tag>bash</tag>
+      
+      <tag>shell</tag>
       
     </tags>
     
@@ -423,9 +423,9 @@
       
       <tag>网络</tag>
       
-      <tag>数据库</tag>
-      
       <tag>metasploit</tag>
+      
+      <tag>数据库</tag>
       
       <tag>JDK</tag>
       
@@ -1516,9 +1516,9 @@
     
     <tags>
       
-      <tag>shell</tag>
-      
       <tag>bash</tag>
+      
+      <tag>shell</tag>
       
     </tags>
     
@@ -1772,9 +1772,9 @@
     
     <tags>
       
-      <tag>web</tag>
-      
       <tag>Burp Suite</tag>
+      
+      <tag>web</tag>
       
     </tags>
     
@@ -1799,11 +1799,11 @@
     
     <tags>
       
+      <tag>web</tag>
+      
       <tag>DVWA</tag>
       
       <tag>XSS</tag>
-      
-      <tag>web</tag>
       
     </tags>
     
