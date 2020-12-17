@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title>Weblogic_CVE-2020-14882&amp;CVE-2020-14883</title>
+      <title>Oracle WebLogic Server远程代码执行漏洞（CVE-2020-14882&amp;CVE-2020-14883）</title>
       <link href="/2020/12/17/Weblogic-CVE-2020-14882-CVE-2020-14883/"/>
       <url>/2020/12/17/Weblogic-CVE-2020-14882-CVE-2020-14883/</url>
       
@@ -415,15 +415,15 @@
       
         <tags>
             
-            <tag> Docker </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> Docker </tag>
             
             <tag> python </tag>
             
-            <tag> 网络 </tag>
-            
             <tag> metasploit </tag>
+            
+            <tag> 网络 </tag>
             
             <tag> 数据库 </tag>
             
@@ -1397,11 +1397,11 @@
       
         <tags>
             
+            <tag> bash </tag>
+            
             <tag> python </tag>
             
             <tag> linux </tag>
-            
-            <tag> bash </tag>
             
         </tags>
       
