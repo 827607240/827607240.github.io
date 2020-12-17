@@ -177,6 +177,48 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2020/08/15/struts2-001/">struts2-001 远程代码执行漏洞</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/08/15/struts2-001/">
+          
+          
+            
+          
+          struts2-001 远程代码执行漏洞漏洞原理该漏洞因为用户提交表单数据并且验证失败时，后端会将用户之前提交的参数值使用 OGNL 表达式 %{value} 进行解析，然后重新填充到对应的表单数据中。例如注册或登录页面，提交失败后端一般会默认返回之前提交的数据，由于后端使用 %{value} 对提交的数据执行了一次 OGNL 表达式解析，所以可以直接构造 Payload 进行命令执行
+漏洞环境启
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-15 15:00" pubdate>
+              2020-08-15
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/struts/">struts</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2020/08/15/Redis/">Redis 4.x/5.x 未授权访问漏洞</a>
       </h1>
 
@@ -976,6 +1018,8 @@ $ git config --global user.email "email@example.com"
             
               <a href="/categories/tool/">tool</a>
             
+              <a href="/categories/tool/Linux/">Linux</a>
+            
           </div>
         
         
@@ -1130,59 +1174,6 @@ H3C
             </time>
           </div>
         
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Kylin/">Kylin</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/05/26/Kylin-1/">Kylin系统单用户重置密码</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/05/26/Kylin-1/">
-          
-          
-            
-          
-          安装系统时，创建了新用户并勾选了设置为管理员。登陆后却没有权限，也无法切换其他用户。secadm、sysadm在创建系统是未配置。在登录界面也无法正常登录。无果，联系湖南麒麟客服热线，无人接听。没办法，由于湖南麒麟也是用的Linux内核，只能尝试通过Linux系统重置密码的方式来尝试一下。
-Kylin3.3.4系统忘记密码使用单用户模式修改密码
-重启服务器，在启动界面按‘e’键进入编辑模式。
-
-
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-05-26 23:40" pubdate>
-              2020-05-26
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/">踩过的坑</a>
-            
-          </div>
         
         
           <div class="post-meta">
