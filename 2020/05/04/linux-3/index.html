@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="booom">
+  <meta name="author" content="302">
   <meta name="keywords" content="">
-  <title>Linux中的nc命令和scp命令 - wiki</title>
+  <title>Linux中常用命令 - 302</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -150,12 +150,14 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+		 style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
+              
+                Linux中常用命令
               
             </span>
 
@@ -177,7 +179,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      527 字
+      1.2k 字
     </span>
   
 
@@ -187,7 +189,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6
+      13
        分钟
     </span>
   
@@ -217,7 +219,7 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">Linux中的nc命令和scp命令</h1>
+            <h1 style="display: none">Linux中常用命令</h1>
             
             <div class="markdown-body" id="post-body">
               <p>这几个命令平常不怎么用，但是实际用途还是有的。就先记录一下。</p>
@@ -259,6 +261,35 @@
 <p><code>&gt;&gt;</code>的意思是追加的意思</p>
 <p><code>&gt;</code> 的意思是重定向的意思，会覆盖原先的内容</p>
 </blockquote>
+<hr>
+<h1 id="Linux常见命令的不同形式"><a href="#Linux常见命令的不同形式" class="headerlink" title="Linux常见命令的不同形式"></a>Linux常见命令的不同形式</h1><p>最近在搞各种版本的Linux，命令的形态不一样，有时候可以用，有时候不能用，为了清楚的区分它们之间的关系，做一些总结。也算一个补充吧。</p>
+<h2 id="service、chkconfig和systemctl"><a href="#service、chkconfig和systemctl" class="headerlink" title="service、chkconfig和systemctl"></a>service、chkconfig和systemctl</h2><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><strong>service命令</strong>：可以启动、停止、重新启动和关闭系统服务，还可以显示所有系统服务的当前状态。</p>
+<p><strong>chkconfig命令</strong>：是管理系统服务(service)的命令行工具。所谓系统服务(service)，就是随系统启动而启动，随系统关闭而关闭的程序。</p>
+<p><strong>systemctl命令</strong>：是一个systemd工具，主要负责控制systemd系统和服务管理器。</p>
+<p><strong>systemctl命令是系统服务管理器指令，它实际上将 service 和 chkconfig 这两个命令组合到一起。</strong></p>
+<h3 id="service"><a href="#service" class="headerlink" title="service"></a>service</h3><p>service命令其实是去/etc/init.d目录下，去执行相关程序。</p>
+<pre><code class="hljs routeros">service redis start
+service redis stop</code></pre>
+
+<h3 id="chkconfig"><a href="#chkconfig" class="headerlink" title="chkconfig"></a>chkconfig</h3><p>chkconfig是管理系统服务(service)的命令行工具。所谓系统服务(service)，就是随系统启动而启动，随系统关闭而关闭的程序。</p>
+<pre><code class="hljs cmake">chkconfig --<span class="hljs-keyword">list</span> [name]
+chkconfig --level <span class="hljs-number">2345</span> 服务名称 <span class="hljs-keyword">off</span>  <span class="hljs-comment">#关闭开机自启动</span></code></pre>
+
+<h3 id="systemctl"><a href="#systemctl" class="headerlink" title="systemctl"></a>systemctl</h3><p>systemctl是systemd的进程管理命令，systemd是Linux系统最新的初始化系统(init)，作用是提高系统的启动速度，尽可能启动较少的进程，尽可能更多进程并发启动。</p>
+<pre><code class="hljs sql">systemctl <span class="hljs-keyword">start</span> redis
+systemctl <span class="hljs-keyword">stop</span> redis
+systemctl <span class="hljs-keyword">enable</span> redis  <span class="hljs-comment"># 开机自启动</span>
+systemctl <span class="hljs-keyword">disable</span> redis</code></pre>
+
+<h2 id="iptables、firewall和ufw"><a href="#iptables、firewall和ufw" class="headerlink" title="iptables、firewall和ufw"></a>iptables、firewall和ufw</h2><h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>iptables是Linux下功能强大的应用层防火墙工具。</p>
+<p>firewall是centos7里面新的防火墙管理命令</p>
+<p>ufw是Ubuntu下的一个简易的防火墙配置工具。</p>
+<h3 id="iptables"><a href="#iptables" class="headerlink" title="iptables"></a>iptables</h3><p>Linux系统都存在的防火墙工具</p>
+<h3 id="firewall"><a href="#firewall" class="headerlink" title="firewall"></a>firewall</h3><p>firewall是centos7里面新的防火墙管理命令，底层还是调用iptables来处理的，主要区别是iptables服务，每次更改都意味着刷新所有旧规则并从/etc/sysconfig/iptables读取所有新规则，<strong>firewall可以在运行时更改设置，而不丢失现有连接。</strong></p>
+<h3 id="ufw"><a href="#ufw" class="headerlink" title="ufw"></a>ufw</h3><p>配置简单</p>
+<h2 id="apt和apt-get"><a href="#apt和apt-get" class="headerlink" title="apt和apt-get"></a>apt和apt-get</h2><h3 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h3><p>apt 可以看作 apt-get 和 apt-cache 命令的子集, 可以为包管理提供必要的命令选项。 </p>
+<p>apt-get 虽然没被弃用，但作为普通用户，还是应该首先使用 apt。</p>
+<h3 id="apt"><a href="#apt" class="headerlink" title="apt"></a>apt</h3><p>apt 命令的引入就是为了解决命令过于分散的问题，它包括了 apt-get 命令出现以来使用最广泛的功能选项，以及 apt-cache 和 apt-config 命令中很少用到的功能。</p>
 
             </div>
             <hr>
@@ -291,7 +322,7 @@
                     
                       <a href="/2020/05/10/dvwa-2/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">命令上传漏洞利用</span>
+                        <span class="hidden-mobile">文件上传漏洞利用</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -490,24 +521,6 @@
   </script>
 
 
-
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "Linux中的nc命令和scp命令&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
 
 
 

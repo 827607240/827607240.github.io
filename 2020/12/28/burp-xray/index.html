@@ -15,9 +15,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="booom">
+  <meta name="author" content="302">
   <meta name="keywords" content="">
-  <title>IIS 6 远程代码执行漏洞(CVE-2017-7269) - wiki</title>
+  <title>burp联动xray被动扫描 - 302</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -150,12 +150,14 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+		 style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
+              
+                burp联动xray被动扫描
               
             </span>
 
@@ -165,8 +167,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-10-27 08:59" pubdate>
-        2020年10月27日 早上
+      <time datetime="2020-12-28 18:16" pubdate>
+        2020年12月28日 晚上
       </time>
     </span>
   
@@ -177,7 +179,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      341 字
+      569 字
     </span>
   
 
@@ -187,7 +189,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      6
        分钟
     </span>
   
@@ -217,32 +219,50 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">IIS 6 远程代码执行漏洞(CVE-2017-7269)</h1>
+            <h1 style="display: none">burp联动xray被动扫描</h1>
             
             <div class="markdown-body" id="post-body">
-              <h1 id="IIS6远程代码执行漏洞CVE-2017-7269"><a href="#IIS6远程代码执行漏洞CVE-2017-7269" class="headerlink" title="IIS6远程代码执行漏洞CVE-2017-7269"></a>IIS6远程代码执行漏洞CVE-2017-7269</h1><h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>Windows Server是微软发布的一系列服务器操作系统。</p>
-<p>Microsoft Windows Server 2003 R2在Internet Information Services (IIS) 6.0的WebDAV服务实现中，ScStoragePathFromUrl函数存在缓冲区溢出漏洞，可使远程攻击者通过较长的标头，利用此漏洞执行任意代码。</p>
-<h2 id="漏洞影响范围"><a href="#漏洞影响范围" class="headerlink" title="漏洞影响范围"></a>漏洞影响范围</h2><p>Microsoft Windows Server 2003</p>
-<h2 id="漏洞版本"><a href="#漏洞版本" class="headerlink" title="漏洞版本"></a>漏洞版本</h2><p>Microsoft Windows Server 2003</p>
-<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>IIS6.0</p>
-<h2 id="漏洞验证"><a href="#漏洞验证" class="headerlink" title="漏洞验证"></a>漏洞验证</h2><p>验证脚本</p>
-<p><a href="https://github.com/lcatro/CVE-2017-7269-Echo-PoC" target="_blank" rel="noopener">https://github.com/lcatro/CVE-2017-7269-Echo-PoC</a></p>
-<p>CVE-2017-7269_remote_echo.py ip_address port</p>
-<h2 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><p>使用Metasploit模块进行攻击。</p>
-<p>网上流传的poc下载链接如下。</p>
-<p>github地址：<a href="https://github.com/edwardz246003/IIS_exploit" target="_blank" rel="noopener">https://github.com/edwardz246003/IIS_exploit</a></p>
-<h2 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h2><p>由恶意的 PROPFIND 请求所引起：当 If 字段包含了 <a href="http://localhost/xxxx" target="_blank" rel="noopener">http://localhost/xxxx</a> 这段超长URL时，导致缓冲区溢出（包括栈溢出和堆溢出）</p>
-<p>具体位置在w3wp.exe，httpext模块的ScStoragePathFromUrl函数处。</p>
-<ul>
-<li>httpext!ScStoragePathFromUrl+0x360 处复制内存时产生了堆溢出</li>
-<li>被溢出的堆块在 httpext!HrCheckIfHeader+0x0000013c 处分配；</li>
-<li>崩溃所在位置也是从函数 httpext!HrCheckIfHeader 执行过来的；</li>
+              <h1 id="burp联动xray被动扫描"><a href="#burp联动xray被动扫描" class="headerlink" title="burp联动xray被动扫描"></a>burp联动xray被动扫描</h1><p>被动式扫描web漏洞，在我们进行手动浏览网页的过程中，使用burp抓包，并能对浏览过的网页进行漏洞扫描。</p>
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><blockquote>
+<p>burp插件passive-scan-client<br>一个被动扫描器(xray)</p>
+</blockquote>
+<p><strong>passive-scan-client</strong></p>
+<p>此软件是国内大佬开发的burp流量转发插件，这个插件将正常访问网站的流量与提交给被动扫描器的流量分开，互不影响。<br>github下载passive-scan-client <a href="https://github.com/c0ny1/passive-scan-client" target="_blank" rel="noopener">https://github.com/c0ny1/passive-scan-client</a></p>
+<p><strong>xray扫描器</strong></p>
+<p>xray是一款功能强大的安全评估软件</p>
+<p>github下载xray:<a href="https://github.com/chaitin/xray" target="_blank" rel="noopener">https://github.com/chaitin/xray</a></p>
+<hr>
+<h2 id="联动配置"><a href="#联动配置" class="headerlink" title="联动配置"></a>联动配置</h2><p><strong>1.从github上面下载</strong></p>
+<p>下载burp插件passive-scan-client和扫描器xray(我用的是win版本)</p>
+<p>passive-scan-client.0.1.jar</p>
+<p><strong>2.打开burp加载passive-scan-client插件</strong></p>
+<p><a href="https://imgchr.com/i/rHEWQI" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/29/rHEWQI.png" srcset="/img/loading.gif" alt="rHEWQI.png"></a></p>
+<p>依次选择插件模块，添加插件，选择java格式，选择passive插件，点击安装完成。</p>
+<p>安装完成后显示上图界面，然后设置地址127.0.0.1，默认端口1664，点击run开始burp流量转发。</p>
+<p>关闭代理模块的抓包。</p>
+<p><a href="https://imgchr.com/i/rHERSA" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/29/rHERSA.png" srcset="/img/loading.gif" alt="rHERSA.png"></a></p>
+<p><strong>3.解压xray</strong></p>
+<p>得到xray_windows_amd64.exe，使用cmd卡开xray_windows_amd64.exe<br>可以使用xray_windows_amd64.exe -h查看各种指令。</p>
+<p><strong>4.使用xray的监听</strong></p>
+<p>监听本地1664端口模式进行被动扫描，并输出html报告，名为test.html</p>
+<pre><code class="hljs css"><span class="hljs-selector-tag">xray_windows_amd64</span><span class="hljs-selector-class">.exe</span> <span class="hljs-selector-tag">webscan</span> <span class="hljs-selector-tag">--listen</span> 127<span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.1</span><span class="hljs-selector-pseudo">:1664</span> <span class="hljs-selector-tag">--html-output</span> <span class="hljs-selector-tag">test</span><span class="hljs-selector-class">.html</span></code></pre>
+
+<p><a href="https://imgchr.com/i/rHEfyt" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/29/rHEfyt.png" srcset="/img/loading.gif" alt="rHEfyt.png"></a></p>
+<h2 id="抓取https流量"><a href="#抓取https流量" class="headerlink" title="抓取https流量"></a>抓取https流量</h2><p>如果需要抓取https流量则需要brup以及xray都安装https证书。</p>
+<p>brup安装证书抓取https</p>
+<p><a href="https://www.cnblogs.com/L0ading/p/12388835.html" target="_blank" rel="noopener">https://www.cnblogs.com/L0ading/p/12388835.html</a></p>
+<p>xray安装证书进行http以及https扫描</p>
+<p><a href="https://www.cnblogs.com/L0ading/p/12388850.html" target="_blank" rel="noopener">https://www.cnblogs.com/L0ading/p/12388850.html</a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>被动扫描可以在进行人工测试时候，扫描我们指定的网址，数据流量少，防止我们被封IP。</p>
+<h2 id="一些被动式漏洞扫描器"><a href="#一些被动式漏洞扫描器" class="headerlink" title="一些被动式漏洞扫描器"></a>一些被动式漏洞扫描器</h2><ul>
+<li><a href="https://github.com/ysrc/GourdScanV2" target="_blank" rel="noopener">GourdScanV2</a> 由ysrc出品的基于sqlmapapi的被动式漏洞扫描器</li>
+<li><a href="https://github.com/chaitin/xray" target="_blank" rel="noopener">xray</a> 由长亭科技出品的一款被动式漏洞扫描器</li>
+<li><a href="https://github.com/boy-hack/w13scan" target="_blank" rel="noopener">w13scan</a> Passive Security Scanner (被动安全扫描器)</li>
+<li><a href="https://github.com/fengxuangit/Fox-scan" target="_blank" rel="noopener">Fox-scan</a> 基于sqlmapapi的主动和被动资源发现的漏洞扫描工具</li>
+<li><a href="https://github.com/0xbug/SQLiScanner" target="_blank" rel="noopener">SQLiScanner</a> 一款基于sqlmapapi和Charles的被动SQL注入漏洞扫描工具</li>
+<li><a href="https://github.com/zt2/sqli-hunter" target="_blank" rel="noopener">sqli-hunter</a> 基于sqlmapapi，ruby编写的漏洞代理型检测工具</li>
+<li><a href="https://github.com/netxfly/passive_scan" target="_blank" rel="noopener">passive_scan</a> 基于http代理的web漏洞扫描器的实现</li>
 </ul>
-<h2 id="漏洞防御"><a href="#漏洞防御" class="headerlink" title="漏洞防御"></a>漏洞防御</h2><p>由于微软已不再对Windows Server 2003提供支持，建议您禁用webDAV功能。</p>
-<p>l 使用 WAF相关防护设备</p>
-<p>l 建议用户升级到最新系统 Windows Server 2016。</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://www.imooc.com/article/31695" target="_blank" rel="noopener">https://www.imooc.com/article/31695</a></p>
-<p><a href="https://www.secpulse.com/archives/57310.html" target="_blank" rel="noopener">https://www.secpulse.com/archives/57310.html</a></p>
 
             </div>
             <hr>
@@ -252,7 +272,9 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/windows/">windows</a>
+                      <a class="hover-with-bg" href="/categories/tool/">tool</a>
+                    
+                      <a class="hover-with-bg" href="/categories/tool/%E5%85%B6%E4%BB%96/">其他</a>
                     
                   </div>
                 
@@ -260,9 +282,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/cve/">cve</a>
-                    
-                      <a class="hover-with-bg" href="/tags/IIS/">IIS</a>
+                      <a class="hover-with-bg" href="/tags/Xray/">Xray</a>
                     
                   </div>
                 
@@ -275,9 +295,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/30/F5-BIG-IP-TMUI-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%EF%BC%88CVE-2020-5902%EF%BC%89/">
+                      <a href="/2020/12/28/Samba-CVE-2015-0240/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">F5 BIG-IP TMUI 远程代码执行漏洞（CVE-2020-5902）</span>
+                        <span class="hidden-mobile">Samba未初始化指针释放远程代码执行漏洞(CVE-2015-0240)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -285,8 +305,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/10/27/IIS-5-0-Hit-Highlighting%E8%AE%BF%E9%97%AE%E8%AE%A4%E8%AF%81%E6%BC%8F%E6%B4%9E%EF%BC%88CVE-2007-2815%EF%BC%89/">
-                        <span class="hidden-mobile">IIS 5.0 Hit Highlighting访问认证漏洞（CVE-2007-2815）</span>
+                      <a href="/2020/12/17/Weblogic-CVE-2020-14882-CVE-2020-14883/">
+                        <span class="hidden-mobile">Oracle WebLogic Server远程代码执行漏洞（CVE-2020-14882&CVE-2020-14883）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -476,24 +496,6 @@
   </script>
 
 
-
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "IIS 6 远程代码执行漏洞(CVE-2017-7269)&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 70,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
 
 
 

